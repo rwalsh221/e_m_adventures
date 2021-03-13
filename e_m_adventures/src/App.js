@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Home from './containers/Home/Home';
+import Home from './layout/Home/Home';
 
 require('./App.css');
 require('./Variables.css');

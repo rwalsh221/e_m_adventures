@@ -1,0 +1,12 @@
+.covid {
+  width: 100%;
+  background-color: var(--sec-color-grey);
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  text-decoration: underline;
+}
