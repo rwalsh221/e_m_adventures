@@ -10,19 +10,19 @@ const HeaderSearch = (props) => {
           <h6>Start Your Adventure</h6>
         </div>
         <div className={classes.date}>
-          <label for="checkIn" className={classes.searchLabel}>
+          <label htmlFor="checkIn" className={classes.searchLabel}>
             Check-in
           </label>
           <input type="date" id="checkIn"></input>
         </div>
         <div className={classes.date}>
-          <label for="checkOut" className={classes.searchLabel}>
+          <label htmlFor="checkOut" className={classes.searchLabel}>
             Check-out
           </label>
           <input type="date" id="checkOut"></input>
         </div>
         <div className={classes.guests}>
-          <label for="guests" className={classes.searchLabel}>
+          <label htmlFor="guests" className={classes.searchLabel}>
             Guests
           </label>
           <select id="guests">

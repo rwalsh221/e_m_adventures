@@ -29,7 +29,7 @@ const ExploreNearby = (props) => {
 
   const content = locations.map((element) => {
     return (
-      <div className={classes.exploreCard}>
+      <div className={classes.exploreCard} key={element.heading}>
         <img
           className={classes.exploreCardImg}
           alt="location"

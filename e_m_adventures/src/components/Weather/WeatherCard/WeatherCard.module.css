@@ -1,0 +1,47 @@
+.weatherNull {
+  height: 50rem;
+  width: 25%;
+  background-color: hotpink;
+  margin: 1rem;
+}
+
+.weatherCard {
+  display: grid;
+  grid-template-areas:
+    'day day'
+    'img temp'
+    'chanceRain description'
+    'windspeed sunrise';
+  grid-template-rows: 2fr repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  width: 25%;
+  margin: 1rem;
+}
+
+.day {
+  grid-area: day;
+}
+
+.weatherImg {
+  grid-area: img;
+}
+
+.temperature {
+  grid-area: temp;
+}
+
+.chanceRain {
+  grid-area: chanceRain;
+}
+
+.description {
+  grid-area: description;
+}
+
+.windSpeed {
+  grid-area: windspeed;
+}
+
+.sunrise {
+  grid-area: sunrise;
+}
