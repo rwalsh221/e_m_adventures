@@ -4,6 +4,7 @@ import Covid from '../../components/Covid/Covid';
 import Header from '../../components/Header/Header';
 import ExploreNearby from '../../components/ExploreNearby/ExploreNearby';
 import Weather from '../../components/Weather/Weather';
+import Food from '../../components/Food/Food';
 import classes from './Home.module.css';
 
 const Home = (props) => {
@@ -13,6 +14,8 @@ const Home = (props) => {
       <Header />
       <ExploreNearby />
       <Weather />
+      <Food />
+      <Food />
     </div>
   );
 };
