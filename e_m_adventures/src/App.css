@@ -69,6 +69,17 @@ button:focus {
   outline: 2px solid var(--main-color-gold);
 }
 
+h2 {
+  font-size: 4rem;
+  font-weight: 600;
+  margin: 5rem 0 3rem 0;
+}
+
+h5 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
 label {
   color: var(--main-color-white);
 }

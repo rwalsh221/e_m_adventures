@@ -1,0 +1,36 @@
+.exploreNearby {
+  width: 90%;
+  margin: 0 auto;
+}
+.exploreContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.exploreCard {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-basis: 25%;
+  margin: 1rem 0;
+}
+
+.exploreCardImg {
+  width: 128px;
+  height: 128px;
+  border-radius: 2rem;
+}
+
+.exploreCardContent {
+  margin-left: 1rem;
+}
+
+.exploreCardHeading {
+  text-transform: capitalize;
+}
+
+.exploreCardDistance {
+  color: var(--sec-color-grey);
+}
