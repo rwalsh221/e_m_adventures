@@ -6,6 +6,7 @@ import ExploreNearby from '../../components/ExploreNearby/ExploreNearby';
 import Weather from '../../components/Weather/Weather';
 import Food from '../../components/Food/Food';
 import ExploreWorld from '../../components/ExploreWorld/ExploreWorld';
+import Footer from '../../components/Footer/Footer';
 import classes from './Home.module.css';
 
 const Home = (props) => {
@@ -17,6 +18,7 @@ const Home = (props) => {
       <Weather />
       <Food />
       <ExploreWorld />
+      <Footer />
     </div>
   );
 };

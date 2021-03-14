@@ -42,3 +42,9 @@
   border-radius: 2rem;
   font-size: 4rem;
 }
+
+.foodButton:hover {
+  background-color: var(--main-color-black);
+  color: var(--main-color-gold);
+  border-color: var(--main-color-gold);
+}
