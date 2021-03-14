@@ -37,7 +37,7 @@ const WeatherCard = (props) => {
       <div className={classes.weatherCard}>
         {/* DAY */}
         <div className={classes.day}>
-          <h5>{getDay(futureWeatherData.daily[props.day].dt)}</h5>
+          <h3>{getDay(futureWeatherData.daily[props.day].dt)}</h3>
           <h5>{formatDate(futureWeatherData.daily[props.day].dt)}</h5>
         </div>
         {/* IMAGE */}
@@ -51,15 +51,24 @@ const WeatherCard = (props) => {
         </div>
         {/* TEMP */}
         <div className={classes.temperature}>
-          <h5>{futureWeatherData.daily[props.day].temp.day}</h5>
+          <h4>
+            {futureWeatherData.daily[props.day].temp.day.toFixed(0)}&#x2103;
+          </h4>
           <div className={classes.temperatureHiLo}>
-            <h6>{futureWeatherData.daily[props.day].temp.max}</h6>
-            <h6>{futureWeatherData.daily[props.day].temp.min}</h6>
+            <div className={classes.temperatureHiLoContainer}>
+              <ion-icon name="chevron-up-outline"></ion-icon>{' '}
+              <p>{futureWeatherData.daily[props.day].temp.max.toFixed(0)}</p>
+            </div>
+            <div className={classes.temperatureHiLoContainer}>
+              <ion-icon name="chevron-down-outline"></ion-icon>
+              <p>{futureWeatherData.daily[props.day].temp.min.toFixed(0)}</p>
+            </div>
           </div>
         </div>
         {/* CHANCERAIN */}
         <div className={classes.chanceRain}>
-          <h5>{futureWeatherData.daily[props.day].pop * 100}%</h5>
+          <ion-icon name="umbrella-outline"></ion-icon>
+          <h5>&ensp;{futureWeatherData.daily[props.day].pop * 100}%</h5>
         </div>
         {/* DESCRIPTION */}
         <div className={classes.description}>
@@ -67,12 +76,19 @@ const WeatherCard = (props) => {
         </div>
         {/* WINDSPEED */}
         <div className={classes.windSpeed}>
-          <h5>{futureWeatherData.daily[props.day].wind_speed}mp/h</h5>
+          <h5>{futureWeatherData.daily[props.day].wind_speed}&ensp;m/s</h5>
         </div>
         {/* SUNRISE */}
         <div className={classes.sunrise}>
-          {futureWeatherData.daily[props.day].sunrise}
-          {futureWeatherData.daily[props.day].sunset}
+          <div className={classes.sunTime}>
+            <ion-icon name="chevron-up-outline"></ion-icon>
+            <h5>{formatTime(futureWeatherData.daily[props.day].sunrise)}</h5>
+          </div>
+          <ion-icon name="sunny-outline"></ion-icon>
+          <div className={classes.sunTime}>
+            <ion-icon name="chevron-down-outline"></ion-icon>
+            <h5>{formatTime(futureWeatherData.daily[props.day].sunset)}</h5>
+          </div>
         </div>
       </div>
     );

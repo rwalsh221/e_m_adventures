@@ -16,32 +16,107 @@
   grid-template-columns: repeat(2, 1fr);
   width: 25%;
   margin: 1rem;
+  background-color: var(--main-color-black);
+  color: var(--main-color-white);
+  border-radius: 2rem;
+}
+
+.weatherCard ion-icon {
+  font-size: 3rem;
 }
 
 .day {
   grid-area: day;
+  border-bottom: var(--b-2-gold);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .weatherImg {
   grid-area: img;
+  border-bottom: var(--b-2-gold);
+  border-right: var(--b-2-gold);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .temperature {
   grid-area: temp;
+  border-bottom: var(--b-2-gold);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+
+.temperatureHiLo {
+  width: 100%;
+}
+
+.temperatureHiLoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.temperatureHiLoContainer p {
+  width: 30%;
+  text-align: center;
+}
+
+.temperatureHiLoContainer ion-icon {
+  font-size: 1.8rem;
 }
 
 .chanceRain {
   grid-area: chanceRain;
+  border-right: var(--b-2-gold);
+
+  border-bottom: var(--b-2-gold);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .description {
   grid-area: description;
+  border-bottom: var(--b-2-gold);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .windSpeed {
   grid-area: windspeed;
+  border-right: var(--b-2-gold);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .sunrise {
   grid-area: sunrise;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sunTime {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+}
+
+.sunTime ion-icon {
+  margin-right: 1rem;
+}
+
+.sunTime h5 {
+  width: 80%;
 }

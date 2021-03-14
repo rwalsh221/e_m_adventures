@@ -5,6 +5,7 @@ import Header from '../../components/Header/Header';
 import ExploreNearby from '../../components/ExploreNearby/ExploreNearby';
 import Weather from '../../components/Weather/Weather';
 import Food from '../../components/Food/Food';
+import ExploreWorld from '../../components/ExploreWorld/ExploreWorld';
 import classes from './Home.module.css';
 
 const Home = (props) => {
@@ -15,7 +16,7 @@ const Home = (props) => {
       <ExploreNearby />
       <Weather />
       <Food />
-      <Food />
+      <ExploreWorld />
     </div>
   );
 };

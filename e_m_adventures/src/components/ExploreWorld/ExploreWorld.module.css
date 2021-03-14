@@ -1,0 +1,22 @@
+.exploreWorld {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.exploreWorldContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.exploreWorldCard {
+  width: 30%;
+  position: relative;
+}
+
+.exploreWorldFlag {
+  position: absolute;
+  width: 20%;
+  left: 6%;
+  top: 4%;
+}

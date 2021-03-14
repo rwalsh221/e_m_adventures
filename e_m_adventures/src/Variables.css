@@ -6,4 +6,6 @@
   --sec-color-grey: #212121;
   /* SECONDARY COLOR VARIABLES */
   --sec-color-grey-light: #999999;
+  /* BORDER VARIABLES */
+  --b-2-gold: 2px solid var(--main-color-gold);
 }
