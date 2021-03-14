@@ -14,7 +14,10 @@ const HeaderNavigation = () => {
       </div>
       <div className={classes.loginContainer}>
         <p>manage your ADVENTURE</p>
-        <button className={classes.loginBtn}></button>
+        <button className={classes.loginBtn}>
+          <ion-icon name="menu-outline"></ion-icon>
+          <ion-icon name="people-circle-outline"></ion-icon>
+        </button>
       </div>
     </nav>
   );
