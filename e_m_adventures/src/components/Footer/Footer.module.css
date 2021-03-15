@@ -2,4 +2,70 @@
   width: 100%;
   background-color: var(--sec-color-grey);
   height: 30vh;
+  color: var(--sec-color-grey-light);
+}
+
+.footerTop,
+.footerBtm {
+  width: 80%;
+  margin: 5rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footerTopContent:not(:last-of-type) {
+  margin-right: 2rem;
+}
+
+.footerTopContent {
+  flex-basis: 25%;
+  border-right: var(--b-2-gold);
+  display: flex;
+  flex-direction: column;
+  font-size: 2rem;
+}
+
+.footerTopContent a:hover,
+.footerBtmContent a:hover {
+  text-decoration: underline;
+}
+
+.footerBtm {
+}
+
+.footerBtmContent {
+  flex-basis: max-content;
+  font-size: 2rem;
+  margin-right: 5rem;
+}
+
+.footerBtmContent a,
+.footerBtmContent a:visited,
+.footerBtmContentIcon a:hover,
+.footerBtmContentIcon a:hover:visited {
+  color: var(--main-color-gold);
+}
+
+.footerBtmContent p {
+  color: var(--sec-color-grey-light);
+}
+
+.footerBtmContent p:first-of-type {
+  margin-bottom: 1.5rem;
+}
+
+.footerBtmContent p:last-of-type {
+  padding-top: 1.5rem;
+  border-top: var(--b-2-gold);
+}
+
+.footerBtmContentIcon {
+  flex-basis: 10%;
+  font-size: 3rem;
+}
+
+.footerBtmContentIcon a:visited,
+.footerBtmContentIcon a:link {
+  color: var(--sec-color-grey-light);
 }

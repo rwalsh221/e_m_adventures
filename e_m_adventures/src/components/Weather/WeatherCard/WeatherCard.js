@@ -57,11 +57,15 @@ const WeatherCard = (props) => {
           <div className={classes.temperatureHiLo}>
             <div className={classes.temperatureHiLoContainer}>
               <ion-icon name="chevron-up-outline"></ion-icon>{' '}
-              <p>{futureWeatherData.daily[props.day].temp.max.toFixed(0)}</p>
+              <p>
+                {futureWeatherData.daily[props.day].temp.max.toFixed(0)}&#x2103;
+              </p>
             </div>
             <div className={classes.temperatureHiLoContainer}>
               <ion-icon name="chevron-down-outline"></ion-icon>
-              <p>{futureWeatherData.daily[props.day].temp.min.toFixed(0)}</p>
+              <p>
+                {futureWeatherData.daily[props.day].temp.min.toFixed(0)}&#x2103;
+              </p>
             </div>
           </div>
         </div>
@@ -76,7 +80,18 @@ const WeatherCard = (props) => {
         </div>
         {/* WINDSPEED */}
         <div className={classes.windSpeed}>
-          <h5>{futureWeatherData.daily[props.day].wind_speed}&ensp;m/s</h5>
+          <ion-icon
+            name="arrow-up-circle-outline"
+            style={{
+              transform: `rotate(${
+                futureWeatherData.daily[props.day].wind_deg
+              }deg)`,
+            }}
+          ></ion-icon>
+          <h5>
+            &ensp;{futureWeatherData.daily[props.day].wind_speed.toFixed(1)}
+            &ensp;m/s
+          </h5>
         </div>
         {/* SUNRISE */}
         <div className={classes.sunrise}>

@@ -3,9 +3,10 @@
   --main-color-black: #000000;
   --main-color-white: #fff;
   --main-color-gold: #b08f26;
-  --sec-color-grey: #212121;
+
   /* SECONDARY COLOR VARIABLES */
   --sec-color-grey-light: #999999;
+  --sec-color-grey: #212121;
   /* BORDER VARIABLES */
   --b-2-gold: 2px solid var(--main-color-gold);
 }

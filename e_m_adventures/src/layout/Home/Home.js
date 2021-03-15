@@ -15,7 +15,7 @@ const Home = (props) => {
       <Covid />
       <Header />
       <ExploreNearby />
-      <Weather />
+      {/* <Weather /> */}
       <Food />
       <ExploreWorld />
       <Footer />
