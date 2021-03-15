@@ -9,8 +9,8 @@ import classes from './Covid.module.css';
 const Covid = (props) => {
   return (
     <div className={classes.covid}>
-      {/* <HeaderSmall /> */}
-      {/* <CovidContent /> */}
+      <HeaderSmall />
+      <CovidContent />
       <Footer />
     </div>
   );

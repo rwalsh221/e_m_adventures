@@ -29,7 +29,6 @@ const Footer = (props) => {
           <p>
             Website built and designed by{' '}
             <a href={'https://github.com/rwalsh221'}>Consultio/Consultius</a>{' '}
-            Design Ltd
           </p>
         </div>
         <div className={classes.footerBtmContentIcon}>
