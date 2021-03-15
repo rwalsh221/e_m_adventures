@@ -10,14 +10,14 @@ import nIrelandFlag from '../../assets/img/nIrelandFlag.svg';
 
 const ExploreWorld = (props) => {
   const locations = [
-    { img: scotlandHero, flag: scotlandFlag },
-    { img: walesHero, flag: walesFlag },
-    { img: nIrelandHero, flag: nIrelandFlag },
+    { img: scotlandHero, flag: scotlandFlag, key: '1' },
+    { img: walesHero, flag: walesFlag, key: '2' },
+    { img: nIrelandHero, flag: nIrelandFlag, key: '3' },
   ];
 
   const content = locations.map((element) => {
     return (
-      <div className={classes.exploreWorldCard}>
+      <div className={classes.exploreWorldCard} key={element.key}>
         <img
           className={classes.exploreWorldHero}
           alt={'explore the world'}

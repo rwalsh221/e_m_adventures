@@ -5,7 +5,7 @@ import classes from './Covid.module.css';
 const Covid = (props) => {
   return (
     <div className={classes.covid}>
-      <a href="#">
+      <a href="/covid">
         <p className={classes.content}>View Our Covid Response</p>
       </a>
     </div>

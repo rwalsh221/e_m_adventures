@@ -9,6 +9,9 @@ import ExploreWorld from '../../components/ExploreWorld/ExploreWorld';
 import Footer from '../../components/Footer/Footer';
 import classes from './Home.module.css';
 
+// TODO: PUT ASYNC WEATHER CALL IN PARENT TO PREVENT MULTIPLE API CALLS
+// TODO: ADD ROUTING
+
 const Home = (props) => {
   return (
     <div className={classes.home}>

@@ -7,20 +7,20 @@ const Footer = (props) => {
     <footer className={classes.footer}>
       <div className={classes.footerTop}>
         <div className={classes.footerTopContent}>
-          <a>Our Place</a>
-          <a>Home</a>
+          <a href={'/ourplace'}>Our Place</a>
+          <a href={'/home'}>Home</a>
         </div>
         <div className={classes.footerTopContent}>
-          <a>Explore</a>
-          <a>Investors</a>
+          <a href={'/explore'}>Explore</a>
+          <a href={'/home'}>Investors</a>
         </div>
         <div className={classes.footerTopContent}>
-          <a>Local Eats</a>
-          <a>Careers</a>
+          <a href={'/eat'}>Local Eats</a>
+          <a href={'/home'}>Careers</a>
         </div>
         <div className={classes.footerTopContent}>
-          <a>Login</a>
-          <a>Covid 19 Information</a>
+          <a href={'/login'}>Login</a>
+          <a href={'/covid'}>Covid 19 Information</a>
         </div>
       </div>
       <div className={classes.footerBtm}>

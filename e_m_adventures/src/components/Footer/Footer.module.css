@@ -1,8 +1,9 @@
 .footer {
   width: 100%;
   background-color: var(--sec-color-grey);
-  height: 30vh;
+  height: max-content;
   color: var(--sec-color-grey-light);
+  padding: 4rem 0;
 }
 
 .footerTop,
