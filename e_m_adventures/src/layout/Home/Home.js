@@ -10,7 +10,8 @@ import Footer from '../../components/Footer/Footer';
 import classes from './Home.module.css';
 
 // TODO: PUT ASYNC WEATHER CALL IN PARENT TO PREVENT MULTIPLE API CALLS
-// TODO: ADD ROUTING
+// TODO: CHANGE <a> to <LINK> https://stackoverflow.com/questions/43087007/react-link-vs-a-tag-and-arrow-function
+// TODO: CHANGE ROUTE /home to /
 
 const Home = (props) => {
   return (
@@ -18,7 +19,7 @@ const Home = (props) => {
       <Covid />
       <Header />
       <ExploreNearby />
-      {/* <Weather /> */}
+      <Weather />
       <Food />
       <ExploreWorld />
       <Footer />

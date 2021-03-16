@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import classes from './ExploreNearby.module.css';
 
@@ -30,11 +31,14 @@ const ExploreNearby = (props) => {
   const content = locations.map((element) => {
     return (
       <div className={classes.exploreCard} key={element.heading}>
-        <img
-          className={classes.exploreCardImg}
-          alt="location"
-          src={element.img}
-        ></img>
+        <Link to={'/explore'}>
+          <img
+            className={classes.exploreCardImg}
+            alt="location"
+            src={element.img}
+          ></img>
+        </Link>
+
         <div className={classes.exploreCardContent}>
           <h5 className={classes.exploreCardHeading}>{element.heading}</h5>
           <p className={classes.exploreCardDistance}>{element.distance}</p>

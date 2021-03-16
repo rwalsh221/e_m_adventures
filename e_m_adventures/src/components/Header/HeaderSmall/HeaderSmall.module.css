@@ -1,13 +1,14 @@
 .headerSmall {
   background-color: var(--main-color-black);
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   padding: 2rem;
 }
 
 .logo {
   width: 15rem;
+  margin-right: 16rem;
 }
 
 .loginContainer {

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import HeaderSearch from '../HeaderSearch/HeaderSearch';
 
@@ -8,10 +9,10 @@ import classes from './HeaderSmall.module.css';
 const HeaderSmall = () => {
   return (
     <header className={classes.headerSmall}>
-      <a href={'/home'}>
+      <Link to={'/home'}>
         <img src={logoWhite} alt="e and m logo" className={classes.logo}></img>
-      </a>
-      <HeaderSearch />
+      </Link>
+      <HeaderSearch className={classes.search} />
       <div className={classes.loginContainer}>
         <p>manage your ADVENTURE</p>
         <button className={classes.loginBtn}>

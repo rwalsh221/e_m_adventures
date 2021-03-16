@@ -70,6 +70,11 @@ button:focus {
   outline: 2px solid var(--main-color-gold);
 }
 
+h1 {
+  font-size: 5rem;
+  font-weight: 600;
+}
+
 h2 {
   font-size: 4rem;
   font-weight: 600;
@@ -95,10 +100,5 @@ label {
 
 p {
   font-size: 1.8rem;
-  color: var(--main-color-white);
-}
-
-h1 {
-  font-size: 3.5rem;
   color: var(--main-color-white);
 }
