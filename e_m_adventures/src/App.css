@@ -94,6 +94,10 @@ h5 {
   font-weight: 600;
 }
 
+h6 {
+  font-size: 1.8rem;
+}
+
 label {
   color: var(--main-color-white);
 }

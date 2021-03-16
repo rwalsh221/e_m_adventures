@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import classes from './Food.module.css';
 
@@ -11,7 +12,9 @@ const Food = (props) => {
       <h3 className={classes.headerTop}>Eat Local</h3>
       <h3 className={classes.headerBtm}>Think Global</h3>
       <h5 className={classes.headerAdditional}>Enjoy some local eats</h5>
-      <button className={classes.foodButton}>EAT</button>
+      <Link to="/food">
+        <button className={classes.foodButton}>EAT</button>
+      </Link>
     </div>
   );
 };

@@ -1,0 +1,136 @@
+.foodContent {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-auto-rows: max-content;
+  width: 70%;
+  margin: 5rem auto;
+}
+
+.foodContent img {
+  border-radius: 2rem;
+}
+
+.heading,
+.paraMain,
+.hero,
+.paraSubL,
+.paraSubR {
+  grid-column: 1;
+  margin: 2rem 0;
+}
+
+.heading,
+.heading p,
+.paraSubL p,
+.paraSubR p {
+  color: var(--main-color-black);
+}
+
+.heading p {
+  margin: 2rem 0;
+}
+
+.paraSubL,
+.paraSubR {
+  align-self: center;
+}
+
+.paraHeading {
+  margin-bottom: 10rem;
+}
+
+.subImg {
+  width: 25rem;
+  height: 25rem;
+  border-radius: 50% !important;
+  shape-outside: circle(50%);
+  margin: 1rem;
+}
+
+.subImgL {
+  float: left;
+}
+
+.subImgR {
+  float: right;
+}
+
+/* SIDEBAR STYLE */
+
+.sidebarHeading,
+.sidebarContent {
+  margin: 2rem 0 2rem 4rem;
+}
+
+.sidebarHeading {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: center;
+  align-self: end;
+  text-decoration: underline;
+}
+
+.sidebarContent {
+  background-color: var(--main-color-black);
+  border-radius: 2rem;
+}
+
+.sidebarContent h5 {
+  margin: 1rem auto;
+  width: max-content;
+  color: var(--main-color-gold);
+  border: var(--b-2-gold);
+  padding: 0.5rem;
+}
+
+.sidebarImg {
+  width: 20%;
+  margin: 1rem auto;
+
+  display: block;
+}
+
+.sidebarTop,
+.sidebarMid,
+.sidebarBtm {
+  grid-column: 2;
+  /* color: hotpink; */
+}
+
+.sidebarTop {
+  grid-row: 2;
+}
+
+.sidebarMid {
+  grid-row: 3;
+}
+
+.sidebarBtm {
+  grid-row: 4;
+}
+
+.sidebarCardContainer {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  /* height: 100%; */
+  width: 100%;
+  flex-wrap: wrap;
+  padding: 0.5rem;
+}
+
+.sidebarCard {
+  /* min-width: 48%; */
+
+  /* flex-wrap: wrap; */
+  border: var(--b-2-gold);
+  /* display: flex; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* height: max-content; */
+}
+
+.sidebarCard h6 {
+  color: var(--main-color-gold);
+}

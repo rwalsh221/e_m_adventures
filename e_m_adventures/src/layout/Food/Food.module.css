@@ -1,0 +1,6 @@
+.food {
+  min-height: 100vh;
+  display: grid;
+  width: 100%;
+  grid-auto-rows: max-content;
+}

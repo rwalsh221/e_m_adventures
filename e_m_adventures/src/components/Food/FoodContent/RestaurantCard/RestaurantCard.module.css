@@ -1,0 +1,21 @@
+.sidebarCard {
+  flex-basis: 45%;
+
+  flex-wrap: wrap;
+  border: var(--b-2-gold);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: max-content;
+  margin: 0.5rem;
+}
+
+.sidebarCard h6 {
+  color: var(--main-color-gold);
+}
+
+.sidebarCardImg {
+  width: 15rem;
+  height: 10rem;
+}
