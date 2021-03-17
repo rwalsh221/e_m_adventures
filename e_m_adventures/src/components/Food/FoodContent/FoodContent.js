@@ -14,7 +14,6 @@ import marcos from '../../../assets/img/food/marcos.png';
 import stone from '../../../assets/img/food/stone.png';
 
 import classes from './FoodContent.module.css';
-import { Link } from 'react-router-dom';
 
 const FoodContent = (props) => {
   return (
@@ -187,17 +186,3 @@ const FoodContent = (props) => {
 };
 
 export default FoodContent;
-
-{
-  /* <div className={classes.sidebarCard}>
-<img
-  className={classes.sidebarCardImg}
-  src={babar}
-  alt={'babar'}
-></img>
-<h6>Babar Elephant</h6>
-<a href={'http://www.babarelephant.co.uk'}>babarelephant.co.uk/</a>
-<p>+441524388670</p>
-</div>
-</div> */
-}

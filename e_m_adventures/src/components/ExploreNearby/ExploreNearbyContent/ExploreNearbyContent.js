@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { LoremIpsum } from 'react-lorem-ipsum';
 
 import winderMereHero from '../../../assets/img/exploreNearby/windermereHero.jpg';

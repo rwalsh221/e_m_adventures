@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import classes from './ExploreWorld.module.css';
 import scotlandHero from '../../assets/img/scotlandHero.jpg';
@@ -17,7 +18,12 @@ const ExploreWorld = (props) => {
 
   const content = locations.map((element) => {
     return (
-      <div className={classes.exploreWorldCard} key={element.key}>
+      // <Link to={'/world'}>
+      <Link
+        to={'/world'}
+        className={classes.exploreWorldCard}
+        key={element.key}
+      >
         <img
           className={classes.exploreWorldHero}
           alt={'explore the world'}
@@ -28,7 +34,8 @@ const ExploreWorld = (props) => {
           alt={'flag'}
           src={element.flag}
         ></img>
-      </div>
+      </Link>
+      // </Link>
     );
   });
 

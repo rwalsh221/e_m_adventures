@@ -5,6 +5,7 @@ import Home from './layout/Home/Home';
 import Covid from './layout/Covid/Covid';
 import ExploreNearby from './layout/ExploreNearby/ExploreNearby';
 import Food from './layout/Food/Food';
+import ExploreWorld from './layout/ExploreWorld/ExploreWorld';
 
 require('./App.css');
 require('./Variables.css');
@@ -14,6 +15,7 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
+          <Route path="/world" component={ExploreWorld} />
           <Route path="/food" component={Food} />
           <Route path="/explore" component={ExploreNearby} />
           <Route path="/covid" component={Covid} />
