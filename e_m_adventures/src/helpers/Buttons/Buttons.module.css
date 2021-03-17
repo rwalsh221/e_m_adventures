@@ -1,0 +1,40 @@
+.loginBtn {
+  width: 8rem;
+  height: 4rem;
+  border-radius: 5rem;
+  outline: none;
+  border: none;
+  margin-left: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--main-color-white);
+  padding: 1rem;
+}
+
+.loginBtn ion-icon {
+  font-size: 4rem;
+  color: var(--main-color-gold);
+}
+
+.foodBtn {
+  position: absolute;
+  top: 11%;
+  left: 73%;
+  height: 13rem;
+  width: 23rem;
+  border: 2px solid var(--main-color-black);
+  outline: none;
+  background-color: var(--main-color-gold);
+  border-radius: 2rem;
+  font-size: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.foodBtn:hover {
+  background-color: var(--main-color-black);
+  color: var(--main-color-gold);
+  border-color: var(--main-color-gold);
+}

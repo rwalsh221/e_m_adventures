@@ -10,7 +10,7 @@ import classes from './ExploreNearbyContent.module.css';
 
 const ExploreNearbyContent = (props) => {
   return (
-    <main className={classes.exploreNearbyContent}>
+    <main className={'contentGrid'}>
       <div className={classes.heading}>
         <h1 className={classes.headingH1}>Explore Windermere</h1>
         <LoremIpsum p={1} />

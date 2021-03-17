@@ -16,22 +16,3 @@
   justify-content: center;
   align-items: center;
 }
-
-.loginBtn {
-  width: 8rem;
-  height: 4rem;
-  border-radius: 5rem;
-  outline: none;
-  border: none;
-  margin-left: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--main-color-white);
-  padding: 1rem;
-}
-
-.loginBtn ion-icon {
-  font-size: 4rem;
-  color: var(--main-color-gold);
-}

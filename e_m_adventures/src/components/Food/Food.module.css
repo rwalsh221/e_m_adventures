@@ -29,22 +29,3 @@
   left: 10%;
   color: var(--main-color-gold);
 }
-
-.foodButton {
-  position: absolute;
-  top: 11%;
-  left: 73%;
-  height: 13rem;
-  width: 23rem;
-  border: 2px solid var(--main-color-black);
-  outline: none;
-  background-color: var(--main-color-gold);
-  border-radius: 2rem;
-  font-size: 4rem;
-}
-
-.foodButton:hover {
-  background-color: var(--main-color-black);
-  color: var(--main-color-gold);
-  border-color: var(--main-color-gold);
-}

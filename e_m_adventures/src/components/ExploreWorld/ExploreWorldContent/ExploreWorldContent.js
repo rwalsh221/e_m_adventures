@@ -10,7 +10,7 @@ import classes from './ExploreWorldContent.module.css';
 
 const ExploreWorldContent = (props) => {
   return (
-    <main className={classes.exploreWorldContent}>
+    <main className={'contentGrid'}>
       <div className={classes.heading}>
         <h1 className={classes.headingH1}>Explore Scotland</h1>
         <LoremIpsum p={1} />

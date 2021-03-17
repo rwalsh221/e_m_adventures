@@ -1,6 +1,6 @@
 .login {
   width: 70%;
-  height: 70vh;
+  min-height: 70vh;
 
   margin: 0 auto;
   display: flex;
@@ -14,6 +14,7 @@
   padding: 5rem;
   border-radius: 2rem;
   border: 5px solid var(--main-color-gold);
+  margin: 4rem;
 }
 
 .loginForm {

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import classes from './Footer.module.css';
 
@@ -7,20 +8,20 @@ const Footer = (props) => {
     <footer className={classes.footer}>
       <div className={classes.footerTop}>
         <div className={classes.footerTopContent}>
-          <a href={'/ourplace'}>Our Place</a>
-          <a href={'/home'}>Home</a>
+          <Link to={'/ourplace'}>Our Place</Link>
+          <Link to={'/home'}>Home</Link>
         </div>
         <div className={classes.footerTopContent}>
-          <a href={'/explore'}>Explore</a>
-          <a href={'/home'}>Investors</a>
+          <Link to={'/explore'}>Explore</Link>
+          <Link to={'/home'}>Investors</Link>
         </div>
         <div className={classes.footerTopContent}>
-          <a href={'/eat'}>Local Eats</a>
-          <a href={'/home'}>Careers</a>
+          <Link to={'/eat'}>Local Eats</Link>
+          <Link to={'/home'}>Careers</Link>
         </div>
         <div className={classes.footerTopContent}>
-          <a href={'/login'}>Login</a>
-          <a href={'/covid'}>Covid 19 Information</a>
+          <Link to={'/login'}>Login</Link>
+          <Link to={'/covid'}>Covid 19 Information</Link>
         </div>
       </div>
       <div className={classes.footerBtm}>
@@ -28,28 +29,30 @@ const Footer = (props) => {
           <p>&copy; 2021 e &amp; m Adventures. All rights reserved</p>
           <p>
             Website built and designed by{' '}
-            <a href={'https://github.com/rwalsh221'}>Consultio/Consultius</a>{' '}
+            <Link to={'https://github.com/rwalsh221'}>
+              Consultio/Consultius
+            </Link>{' '}
           </p>
         </div>
         <div className={classes.footerBtmContentIcon}>
-          <a href={'https://github.com/rwalsh221'}>
+          <Link to={'https://github.com/rwalsh221'}>
             <ion-icon name="logo-github"></ion-icon>
-          </a>
+          </Link>
         </div>
         <div className={classes.footerBtmContentIcon}>
-          <a href={'https://en-gb.facebook.com/'}>
+          <Link to={'https://en-gb.facebook.com/'}>
             <ion-icon name="logo-facebook"></ion-icon>
-          </a>
+          </Link>
         </div>
         <div className={classes.footerBtmContentIcon}>
-          <a href={'https://twitter.com/'}>
+          <Link to={'https://twitter.com/'}>
             <ion-icon name="logo-twitter"></ion-icon>
-          </a>
+          </Link>
         </div>
         <div className={classes.footerBtmContentIcon}>
-          <a href={'https://www.instagram.com/'}>
+          <Link to={'https://www.instagram.com/'}>
             <ion-icon name="logo-instagram"></ion-icon>
-          </a>
+          </Link>
         </div>
       </div>
     </footer>

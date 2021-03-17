@@ -17,7 +17,7 @@ import classes from './FoodContent.module.css';
 
 const FoodContent = (props) => {
   return (
-    <main className={classes.foodContent}>
+    <main className={'contentGrid'}>
       <div className={classes.heading}>
         <h1 className={classes.headingH1}>Explore Real Local Food</h1>
         <LoremIpsum p={1} />
