@@ -63,6 +63,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: var(--main-color-white);
+  padding: 1rem;
 }
 
 .loginBtn ion-icon {

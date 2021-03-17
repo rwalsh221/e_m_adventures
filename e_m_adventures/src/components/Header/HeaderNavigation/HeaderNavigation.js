@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import logoWhite from '../../../assets/img/logo-white.png';
 import classes from './HeaderNavigation.module.css';
@@ -14,10 +15,15 @@ const HeaderNavigation = () => {
       </div>
       <div className={classes.loginContainer}>
         <p>manage your ADVENTURE</p>
-        <button className={classes.loginBtn}>
+        <Link
+          className={classes.loginBtn}
+          role="button"
+          to="/login"
+          // onClick={this.handleClick()}
+        >
           <ion-icon name="menu-outline"></ion-icon>
           <ion-icon name="people-circle-outline"></ion-icon>
-        </button>
+        </Link>
       </div>
     </nav>
   );
