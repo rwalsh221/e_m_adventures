@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import HeaderSearch from '../HeaderSearch/HeaderSearch';
-import { LoginButton } from '../../../helpers/Buttons/Buttons';
+import { LoginButton } from '../../miniComponents/Buttons/Buttons';
 
 import logoWhite from '../../../assets/img/logo-white.png';
 import classes from './HeaderSmall.module.css';

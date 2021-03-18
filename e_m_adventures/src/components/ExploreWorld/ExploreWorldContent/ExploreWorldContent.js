@@ -1,6 +1,8 @@
 import React from 'react';
 import LoremIpsum from 'react-lorem-ipsum';
 
+import { ContentPara } from '../../miniComponents/Content/ContentPara/ContentPara';
+
 import scotNature from '../../../assets/img/exploreWorld/nature.jpg';
 import scotCity from '../../../assets/img/exploreWorld/city.jpg';
 import scotNightlife from '../../../assets/img/exploreWorld/nightlife.jpg';
@@ -15,7 +17,7 @@ const ExploreWorldContent = (props) => {
         <h1 className={classes.headingH1}>Explore Scotland</h1>
         <LoremIpsum p={1} />
       </div>
-      <div className={classes.paraSubL}>
+      {/* <div className={classes.paraSubL}>
         <h4 className={classes.paraHeading}>Explore Scotish Nature</h4>
         <LoremIpsum p={1} />
         <img
@@ -24,7 +26,15 @@ const ExploreWorldContent = (props) => {
           alt={'sub'}
         ></img>
         <LoremIpsum p={2} />
-      </div>
+      </div> */}
+      <ContentPara
+        position={'left'}
+        imgPosition={'imgLeft'}
+        heading={'Explore Scotish Nature'}
+        loremTop={1}
+        loremBtm={2}
+        img={scotNature}
+      />
       <div className={classes.paraSubR}>
         <h4 className={classes.paraHeading}>Explore Scotish Cities</h4>
         <LoremIpsum p={1} />

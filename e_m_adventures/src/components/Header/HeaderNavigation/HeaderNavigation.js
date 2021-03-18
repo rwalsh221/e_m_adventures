@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { LoginButton } from '../../../helpers/Buttons/Buttons';
+import { LoginButton } from '../../miniComponents/Buttons/Buttons';
 
 import logoWhite from '../../../assets/img/logo-white.png';
 import classes from './HeaderNavigation.module.css';
