@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { LoginButton } from '../../miniComponents/Buttons/Buttons';
 
@@ -22,7 +23,9 @@ const HeaderNavigation = () => {
         <button className={classes.navBtn}>Local Eats</button>
       </div>
       <div className={classes.loginContainer}>
-        <p>manage your ADVENTURE</p>
+        <Link to={'/dashboard'}>
+          <p>manage your ADVENTURE</p>
+        </Link>
         <LoginButton />
       </div>
     </nav>

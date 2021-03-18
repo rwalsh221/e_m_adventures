@@ -8,7 +8,7 @@ export const LoginButton = (props) => {
     <Link
       className={classes.loginBtn}
       role="button"
-      to={'/login'}
+      to={'/signup'}
       onClick={props.clicked}
     >
       <ion-icon name="menu-outline"></ion-icon>
