@@ -27,6 +27,10 @@ const HeaderNavigation = () => {
           <p>manage your ADVENTURE</p>
         </Link>
         <LoginButton />
+        <Link to={'/login'}>
+          <p>manage your ADVENTURE</p>
+        </Link>
+        <LoginButton />
       </div>
     </nav>
   );

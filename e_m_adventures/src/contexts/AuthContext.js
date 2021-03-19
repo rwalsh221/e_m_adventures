@@ -15,6 +15,10 @@ export const AuthProvider = ({ children }) => {
     return auth.createUserWithEmailAndPassword(email, password);
   };
 
+  const login = (email, password) => {
+    return auth.signInWithEmailAndPassword(email, password);
+  };
+
   //   see minute 19 webdevsimpleified firbase setup
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -27,6 +31,7 @@ export const AuthProvider = ({ children }) => {
 
   const value = {
     currentUser,
+    login,
     signup,
   };
 

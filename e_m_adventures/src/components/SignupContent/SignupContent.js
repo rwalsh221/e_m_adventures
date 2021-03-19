@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Form, Button, Card, Alert } from 'react-bootstrap';
 import { useAuth } from '../../contexts/AuthContext';
+import { Link } from 'react-router-dom';
 
 import classes from './SignupContent.module.css';
 
@@ -58,7 +59,7 @@ const Signup = () => {
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
-        already have an account? Log In
+        already have an account? <Link to={'/login'}>Log in</Link>
       </div>
     </main>
   );

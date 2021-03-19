@@ -6,7 +6,7 @@ import Covid from './layout/Covid/Covid';
 import ExploreNearby from './layout/ExploreNearby/ExploreNearby';
 import Food from './layout/Food/Food';
 import ExploreWorld from './layout/ExploreWorld/ExploreWorld';
-// import Login from './layout/Login/Login';
+import Login from './layout/Login/Login';
 import Signup from './layout/Signup/Signup';
 import Dashboard from './layout/Dashboard/Dashboard';
 import { AuthProvider } from './contexts/AuthContext';
@@ -21,6 +21,7 @@ function App() {
       <Router>
         <AuthProvider>
           <Switch>
+            <Route path="/login" component={Login} />
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/signup" component={Signup} />
             <Route path="/world" component={ExploreWorld} />
