@@ -27,6 +27,14 @@ export const AuthProvider = ({ children }) => {
     return auth.sendPasswordResetEmail(email);
   };
 
+  const updateEmail = (email) => {
+    return currentUser.updateEmail(email);
+  };
+
+  const updatePassword = (password) => {
+    return currentUser.updatePassword(password);
+  };
+
   //   see minute 19 webdevsimpleified firbase setup
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -35,6 +43,9 @@ export const AuthProvider = ({ children }) => {
     });
 
     return unsubscribe;
+    // return () => {
+    //   unsubscribe();
+    // };
   }, []);
 
   const value = {
@@ -43,6 +54,8 @@ export const AuthProvider = ({ children }) => {
     signup,
     logout,
     resetPassword,
+    updateEmail,
+    updatePassword,
   };
 
   return (
