@@ -10,6 +10,7 @@ import Login from './layout/Login/Login';
 import Signup from './layout/Signup/Signup';
 import Dashboard from './layout/Dashboard/Dashboard';
 import { AuthProvider } from './contexts/AuthContext';
+import PrivateRoute from './helpers/Routes/PrivateRoute';
 
 require('./App.css');
 require('./Variables.css');
@@ -22,7 +23,7 @@ function App() {
         <AuthProvider>
           <Switch>
             <Route path="/login" component={Login} />
-            <Route path="/dashboard" component={Dashboard} />
+            <PrivateRoute path="/dashboard" component={Dashboard} />
             <Route path="/signup" component={Signup} />
             <Route path="/world" component={ExploreWorld} />
             <Route path="/food" component={Food} />
