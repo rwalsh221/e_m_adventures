@@ -2,7 +2,7 @@
 
 import React, { useRef, useState } from 'react';
 import { Form, Button, Card, Alert } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 
 import classes from './LoginSection.module.css';
@@ -11,10 +11,12 @@ const LoginSection = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  const { signup } = useAuth();
+  const { login } = useAuth();
 
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,6 +25,7 @@ const LoginSection = () => {
       setError('');
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
+      history.push('/dashboard');
     } catch {
       setError('Failed to sign in');
     }
