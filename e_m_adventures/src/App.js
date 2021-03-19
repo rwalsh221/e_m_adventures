@@ -9,6 +9,7 @@ import ExploreWorld from './layout/ExploreWorld/ExploreWorld';
 import Login from './layout/Login/Login';
 import Signup from './layout/Signup/Signup';
 import Dashboard from './layout/Dashboard/Dashboard';
+import ForgotPassword from './layout/ForgotPassword/ForgotPassword';
 import { AuthProvider } from './contexts/AuthContext';
 import PrivateRoute from './helpers/Routes/PrivateRoute';
 
@@ -22,6 +23,7 @@ function App() {
       <Router>
         <AuthProvider>
           <Switch>
+            <Route path="/forgot-password" component={ForgotPassword} />
             <Route path="/login" component={Login} />
             <PrivateRoute path="/dashboard" component={Dashboard} />
             <Route path="/signup" component={Signup} />

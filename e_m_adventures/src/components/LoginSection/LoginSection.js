@@ -52,6 +52,9 @@ const LoginSection = () => {
               Login
             </Button>
           </Form>
+          <div className="w-100 text-center mt-3">
+            <Link to={'/forgot-password'}>forgo password</Link>
+          </div>
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
