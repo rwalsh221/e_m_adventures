@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Button, Alert } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 
 import classes from './DashboardContent.module.css';
@@ -8,9 +8,20 @@ import classes from './DashboardContent.module.css';
 const DashboardContent = () => {
   const [error, setError] = useState('');
 
-  const { currentUser } = useAuth();
+  const { currentUser, logout } = useAuth();
 
-  const handleLogout = () => {};
+  const history = useHistory();
+
+  const handleLogout = async () => {
+    setError('');
+
+    try {
+      await logout();
+      history.pushState('/home');
+    } catch {
+      setError('Failed to logout');
+    }
+  };
 
   return (
     <main>
