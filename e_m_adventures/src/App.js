@@ -11,6 +11,8 @@ import Signup from './layout/Signup/Signup';
 import Dashboard from './layout/Dashboard/Dashboard';
 import ForgotPassword from './layout/ForgotPassword/ForgotPassword';
 import UpdateProfile from './layout/UpdateProfile/UpdateProfile';
+import BookingSummary from './layout/BookingSummary/BookingSummary';
+
 import { AuthProvider } from './contexts/AuthContext';
 import PrivateRoute from './helpers/Routes/PrivateRoute';
 
@@ -24,6 +26,7 @@ function App() {
       <Router>
         <AuthProvider>
           <Switch>
+            <Route path="/summary" component={BookingSummary} />
             <PrivateRoute path="/update-profile" component={UpdateProfile} />
             <Route path="/forgot-password" component={ForgotPassword} />
             <Route path="/login" component={Login} />

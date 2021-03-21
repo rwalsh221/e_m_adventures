@@ -2,15 +2,19 @@ import React, { useRef, useState } from 'react';
 import { Form, Button, Card, Alert } from 'react-bootstrap';
 import { useAuth } from '../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 import classes from './SignupContent.module.css';
 
 const Signup = () => {
+  const database =
+    'https://e-m-adventures-development-default-rtdb.europe-west1.firebasedatabase.app/';
+
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
 
-  const { signup } = useAuth();
+  const { signup, currentUser } = useAuth();
 
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -27,10 +31,23 @@ const Signup = () => {
     try {
       setError('');
       setLoading(true);
-      await signup(emailRef.current.value, passwordRef.current.value);
+      await signup(emailRef.current.value, passwordRef.current.value).then(
+        (newUser) => {
+          axios.patch(`${database}users.json`, {
+            [newUser.user.uid]: {
+              email: newUser.user.email,
+              uid: newUser.user.uid,
+              role: 'user',
+              booking: { checkin: '1', checkOut: '1' },
+            },
+          });
+        }
+      );
+
       history.push('./dashboard');
     } catch {
       setError('Failed to create an account');
+      console.error(error);
     }
 
     setLoading(false);

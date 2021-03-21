@@ -15,6 +15,16 @@ import Footer from '../../components/Footer/Footer';
 // TODO: REFACTOR CSS GRIDS FOR EASIER RESPONSIVENESS
 
 const Home = (props) => {
+  let database = async () => {
+    let test = await fetch(
+      'https://e-m-adventures-development-default-rtdb.europe-west1.firebasedatabase.app/.json '
+    );
+
+    let test2 = await test.json();
+    console.log(test2);
+  };
+
+  database();
   return (
     <div className={'layoutGrid'}>
       <Covid />
