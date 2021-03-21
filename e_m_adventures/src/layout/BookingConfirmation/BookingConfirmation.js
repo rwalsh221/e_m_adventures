@@ -1,17 +1,17 @@
 import React from 'react';
 
 import HeaderSmall from '../../components/Header/HeaderSmall/HeaderSmall';
-import LoginSection from '../../components/LoginSection/LoginSection';
+import BookingConfirmationContent from '../../components/Booking/BookingConfirmationContent/BookingConfirmationContent';
 import Footer from '../../components/Footer/Footer';
 
-const Login = (props) => {
+const BookingConfirmation = (props) => {
   return (
     <div className={'layoutGrid'}>
       <HeaderSmall />
-      <LoginSection />
+      <BookingConfirmationContent />
       <Footer />
     </div>
   );
 };
 
-export default Login;
+export default BookingConfirmation;

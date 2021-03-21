@@ -1,0 +1,35 @@
+.main {
+  width: 70%;
+  margin: 0 auto;
+  min-height: 50vh;
+  padding: 1rem;
+}
+
+.heading {
+  margin: 5rem 0;
+  padding: 1rem;
+}
+
+.bookingCard {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: var(--main-color-gold);
+  flex-wrap: wrap;
+  padding: 10rem;
+  border-radius: 2rem;
+  border: 2px solid var(--main-color-black);
+  margin: 10rem 0;
+}
+
+.checkIn,
+.checkOut {
+  flex-basis: 45%;
+  flex-shrink: 0;
+  text-align: center;
+  padding: 1rem;
+}
+
+.cardHeading {
+  margin: 0 auto;
+}

@@ -55,7 +55,7 @@ const BookingSummaryContent = (props) => {
         <p>08/08/2021</p>
         <h5 className={classes.summarySubHeading}>CheckOut:</h5>
         <p>08/08/2021</p>
-        <button className={classes.summaryBtn}>BOOK</button>
+        <button className={classes.summaryBtn}>Confirm</button>
       </div>
     </main>
   );
