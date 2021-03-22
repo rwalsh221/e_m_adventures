@@ -1,5 +1,5 @@
 import React from 'react';
-import { loremIpsum, LoremIpsum } from 'react-lorem-ipsum';
+import { LoremIpsum } from 'react-lorem-ipsum';
 
 import caraBig from '../../../assets/img/bookingSummary/caraBig.jpg';
 import caraMed from '../../../assets/img/bookingSummary/caraMed.jpg';

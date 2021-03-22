@@ -72,7 +72,9 @@ const WeatherCard = (props) => {
         {/* CHANCERAIN */}
         <div className={classes.chanceRain}>
           <ion-icon name="umbrella-outline"></ion-icon>
-          <h5>&ensp;{futureWeatherData.daily[props.day].pop * 100}%</h5>
+          <h5>
+            &ensp;{(futureWeatherData.daily[props.day].pop * 100).toFixed(0)}%
+          </h5>
         </div>
         {/* DESCRIPTION */}
         <div className={classes.description}>

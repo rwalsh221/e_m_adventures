@@ -3,7 +3,7 @@ import { Card, Button, Alert } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 
-import classes from './DashboardContent.module.css';
+// import classes from './DashboardContent.module.css';
 
 const DashboardContent = () => {
   const [error, setError] = useState('');

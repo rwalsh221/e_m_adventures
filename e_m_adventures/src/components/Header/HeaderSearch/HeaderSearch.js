@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { connect, useDispatch, useSelector } from 'react-redux';
+
+import * as actionTypes from './HeaderSearchSlice';
 
 import classes from './HeaderSearch.module.css';
 
+const mapDispatch = { ...actionTypes };
+
 const HeaderSearch = (props) => {
+  const dispatch = useDispatch();
+
+  const state = useSelector((state) => state);
+
+  console.log(state);
+  const checkIn = useRef();
+  const checkOut = useRef();
+
   return (
     <div className={classes.searchContainer}>
       <form className={classes.searchForm}>
@@ -13,13 +26,13 @@ const HeaderSearch = (props) => {
           <label htmlFor="checkIn" className={classes.searchLabel}>
             Check-in
           </label>
-          <input type="date" id="checkIn"></input>
+          <input type="date" id="checkIn" ref={checkIn}></input>
         </div>
         <div className={classes.date}>
           <label htmlFor="checkOut" className={classes.searchLabel}>
             Check-out
           </label>
-          <input type="date" id="checkOut"></input>
+          <input type="date" id="checkOut" ref={checkOut}></input>
         </div>
         <div className={classes.guests}>
           <label htmlFor="guests" className={classes.searchLabel}>
@@ -32,10 +45,26 @@ const HeaderSearch = (props) => {
             <option value="four">Four</option>
           </select>
         </div>
-        <button className={classes.btnSubmit}>SUBMIT</button>
+        <button
+          className={classes.btnSubmit}
+          onClick={(e) => {
+            e.preventDefault();
+            console.log(checkIn.current.value);
+            console.log(checkOut.current.value);
+            console.log();
+            dispatch(
+              actionTypes.booking({
+                checkIn: checkIn.current.value,
+                checkOut: checkOut.current.value,
+              })
+            );
+          }}
+        >
+          SUBMIT
+        </button>
       </form>
     </div>
   );
 };
 
-export default HeaderSearch;
+export default connect(null, mapDispatch)(HeaderSearch);
