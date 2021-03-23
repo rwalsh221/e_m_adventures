@@ -1,5 +1,7 @@
 import React, { useRef } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
+import { validateDate } from '../../../helpers/validation';
 
 import * as actionTypes from './HeaderSearchSlice';
 
@@ -15,6 +17,9 @@ const HeaderSearch = (props) => {
   console.log(state);
   const checkIn = useRef();
   const checkOut = useRef();
+  const history = useHistory();
+
+  let formIsValid = false;
 
   return (
     <div className={classes.searchContainer}>
@@ -45,6 +50,7 @@ const HeaderSearch = (props) => {
             <option value="four">Four</option>
           </select>
         </div>
+
         <button
           className={classes.btnSubmit}
           onClick={(e) => {
@@ -52,12 +58,21 @@ const HeaderSearch = (props) => {
             console.log(checkIn.current.value);
             console.log(checkOut.current.value);
             console.log();
-            dispatch(
-              actionTypes.booking({
-                checkIn: checkIn.current.value,
-                checkOut: checkOut.current.value,
-              })
+            formIsValid = validateDate(
+              checkIn.current.value,
+              checkOut.current.value
             );
+            if (formIsValid) {
+              dispatch(
+                actionTypes.booking({
+                  checkIn: checkIn.current.value,
+                  checkOut: checkOut.current.value,
+                })
+              );
+              history.push('/summary');
+            } else {
+              console.log('invalid form');
+            }
           }}
         >
           SUBMIT
