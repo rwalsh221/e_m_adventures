@@ -1,0 +1,26 @@
+.main {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+
+  align-items: center;
+  min-height: 70vh;
+  flex-direction: column;
+}
+
+.card {
+  margin: 5rem 0 12rem 0;
+  background-color: black;
+  padding: 5rem;
+  border-radius: 2rem;
+}
+
+.header {
+  color: var(--main-color-white);
+}
+
+.test {
+  color: var(--main-color-black) !important;
+  font-size: 3rem;
+  margin-top: 3rem;
+}

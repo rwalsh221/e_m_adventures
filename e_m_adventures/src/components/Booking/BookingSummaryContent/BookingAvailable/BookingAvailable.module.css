@@ -1,0 +1,78 @@
+.heading {
+}
+
+.headingSecondary {
+  grid-row: 2;
+  /* text-decoration: wavy; */
+}
+
+.placeGrid {
+  grid-row: 3;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, max-content);
+  background-color: var(--main-color-black);
+  gap: 1rem;
+  border-radius: 2rem;
+  padding: 1rem;
+}
+
+.placeHeading {
+  grid-row: 1;
+  grid-column: 1 / span 5;
+  color: var(--main-color-gold);
+}
+
+.placeHeading p {
+  color: var(--main-color-gold);
+}
+
+.imgBig,
+.imgMed {
+  grid-row: 2;
+}
+
+.imgBig {
+}
+
+.imgBig1 {
+  grid-column: 1 / span 2;
+}
+
+.imgBig2 {
+  grid-column: 4 / span 2;
+}
+
+.imgMed1 {
+  grid-column: 3;
+  align-self: center;
+}
+
+.imgSml {
+  grid-row: 3;
+}
+
+.summaryCard {
+  grid-row: 3;
+  grid-column: 2;
+  margin-left: 2rem;
+  color: var(--main-color-white);
+  background-color: var(--main-color-black);
+  height: 60%;
+  border-radius: 2rem;
+  align-self: center;
+  padding: 2rem;
+}
+
+.summaryHeading,
+.summarySubHeading {
+  margin: 2rem 0;
+}
+
+.summarySubHeading {
+  /* display: inline; */
+}
+.summaryBtn {
+  display: block;
+  margin: 6rem auto 0 auto;
+}

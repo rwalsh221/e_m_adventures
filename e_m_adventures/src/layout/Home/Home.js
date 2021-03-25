@@ -14,6 +14,7 @@ import Footer from '../../components/Footer/Footer';
 // TODO: REMOVE INDEX.CSS AND GET FONT
 // TODO: REFACTOR CSS GRIDS FOR EASIER RESPONSIVENESS
 //  TODO: ADD AXIOS CONFIG SEE BURGER BUILDER
+// TODO: create mini header
 
 const Home = (props) => {
   let database = async () => {

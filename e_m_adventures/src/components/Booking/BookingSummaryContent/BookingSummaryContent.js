@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { LoremIpsum } from 'react-lorem-ipsum';
 import axios from 'axios';
@@ -6,6 +6,8 @@ import { useHistory } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import { dateToMilliseconds } from '../../../helpers/utilities';
 
+import BookingUnavailable from './BookingUnavailable/BookingUnavailable';
+import BookingAvailable from './BookingAvailable/BookingAvailable';
 import caraBig from '../../../assets/img/bookingSummary/caraBig.jpg';
 import caraMed from '../../../assets/img/bookingSummary/caraMed.jpg';
 import caraSml from '../../../assets/img/bookingSummary/caraSml.jpg';
@@ -19,34 +21,41 @@ const BookingSummaryContent = (props) => {
   const database =
     'https://e-m-adventures-development-default-rtdb.europe-west1.firebasedatabase.app/';
 
-  const [loading, SetLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [bookedDays, setBookedDays] = useState([]);
+  const [content, setContent] = useState('hellow there');
+
+  // let content = 'hello there';
 
   // add function to take props.checkin.
   // get all bookings from db.
   // add to array and search for checkin.
   // if -1 content = content. usstaete loading falese
 
-  const date = state.headerSearch.checkIn;
+  useEffect(() => {
+    const dateAvaliable = async () => {
+      try {
+        const bookedDays = await fetch(`${database}fulldays.json`);
 
-  const dateAvaliable = async () => {
-    try {
-      // NEEDS LONG LAT FOR SEARCH. GET FROM CURRENTWEATHER.
-      const bookedDays = await fetch(`${database}.fullday.json`);
+        let bookedDaysData = await bookedDays.json();
+        console.log(bookedDaysData);
+        setBookedDays([...bookedDaysData]);
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
-      let bookedDaysData = await bookedDays.json();
-      console.log(bookedDaysData);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+    dateAvaliable();
+  }, []);
 
-  dateAvaliable();
-
-  const submitHandler = async () => {
+  // useCallback(()=>{})
+  const submitHandler = useCallback(async () => {
     const data = { ...state.headerSearch };
-
-    // const ref = `ref${nanoid()}`;
+    let newBookedDays;
     const ref = `ref${nanoid()}`;
+    bookedDays ? (newBookedDays = [...bookedDays]) : (newBookedDays = []);
+    newBookedDays.push(data.checkIn, data.checkOut, ...data.fullDays);
+
     axios
       .patch(
         `${database}booking.json`,
@@ -57,24 +66,32 @@ const BookingSummaryContent = (props) => {
         },
         { timeout: 2000 }
       )
+      // .patch(`${database}fulldays.json`, {
+      //   ...newBookedDays,
+      // })
+      // .then((response) => {
+      //   if (response.status === 200) history.push('/confirmation');
+      // })
+      .catch((error) => {
+        console.error(error);
+      });
+
+    axios
+      .patch(`${database}fulldays.json`, {
+        ...newBookedDays,
+      })
       .then((response) => {
-        console.log(response);
         if (response.status === 200) history.push('/confirmation');
       })
       .catch((error) => {
         console.error(error);
-        console.log('errrrorororororororor');
       });
-  };
+  }, [bookedDays, history, state.headerSearch]);
 
-  let content = 'spinner';
+  // const submitHandler = async () => {};
 
-  if (loading === false) {
-    content = 'be,ow content';
-  }
-
-  return (
-    <main className={`contentGrid`}>
+  const main = (
+    <React.Fragment>
       <h1 className={classes.heading}>Booking Summary</h1>
       <h2 className={classes.headingSecondary}>Your Place:</h2>
       <div className={classes.placeGrid}>
@@ -99,15 +116,15 @@ const BookingSummaryContent = (props) => {
           alt={'img'}
         ></img>
         {/* <img
-          src={caraMed}
-          className={`${classes.imgMed} ${classes.imgMed2}`}
-          alt={'img'}
-        ></img> */}
+      src={caraMed}
+      className={`${classes.imgMed} ${classes.imgMed2}`}
+      alt={'img'}
+    ></img> */}
         {/* <img
-          src={caraBig}
-          className={`${classes.imgBig} ${classes.imgBig3}`}
-          alt={'img'}
-        ></img> */}
+      src={caraBig}
+      className={`${classes.imgBig} ${classes.imgBig3}`}
+      alt={'img'}
+    ></img> */}
         <img src={caraSml} className={classes.imgSml} alt={'img'}></img>
         <img src={caraSml} className={classes.imgSml} alt={'img'}></img>
         <img src={caraSml} className={classes.imgSml} alt={'img'}></img>
@@ -124,8 +141,51 @@ const BookingSummaryContent = (props) => {
           Confirm
         </button>
       </div>
-    </main>
+    </React.Fragment>
   );
+
+  useEffect(() => {
+    if (
+      bookedDays === null ||
+      bookedDays.includes(state.headerSearch.checkIn)
+    ) {
+      setLoading(false);
+      setContent(<BookingUnavailable />);
+      console.log('date unavaliable');
+    } else {
+      setContent(<BookingAvailable submitHandler={submitHandler} />);
+      setLoading(false);
+    }
+  }, [bookedDays, state.headerSearch.checkIn, submitHandler]);
+
+  // const dateAvaliable = async () => {
+  //   try {
+  //     const bookedDays = await fetch(`${database}fulldays.json`);
+
+  //     let bookedDaysData = await bookedDays.json();
+  //     console.log(bookedDaysData);
+  //     if (bookedDaysData === null || bookedDaysData.includes(checkInDate)) {
+  //       content = 'date unavalible please try agin :)';
+  //       setLoading(false);
+  //       console.log('THE DATE IS UNAVALIABLE');
+  //     }
+  //     bookedDaysData
+  //       ? (newBookedDays = [...bookedDaysData])
+  //       : (newBookedDays = []);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
+  // dateAvaliable();
+
+  // let content = 'spinner';
+
+  // if (loading === false) {
+  //   content = 'be,ow content';
+  // }
+
+  return loading ? <p>IS LOADING</p> : content;
 };
 
 export default BookingSummaryContent;
