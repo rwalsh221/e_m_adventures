@@ -29,30 +29,28 @@ const Footer = (props) => {
           <p>&copy; 2021 e &amp; m Adventures. All rights reserved</p>
           <p>
             Website built and designed by{' '}
-            <Link to={'https://github.com/rwalsh221'}>
-              Consultio/Consultius
-            </Link>{' '}
+            <a href={'https://github.com/rwalsh221'}>Consultio/Consultius</a>
           </p>
         </div>
         <div className={classes.footerBtmContentIcon}>
-          <Link to={'https://github.com/rwalsh221'}>
+          <a href={'https://github.com/rwalsh221'}>
             <ion-icon name="logo-github"></ion-icon>
-          </Link>
+          </a>
         </div>
         <div className={classes.footerBtmContentIcon}>
-          <Link to={'https://en-gb.facebook.com/'}>
+          <a href={'https://en-gb.facebook.com/'}>
             <ion-icon name="logo-facebook"></ion-icon>
-          </Link>
+          </a>
         </div>
         <div className={classes.footerBtmContentIcon}>
-          <Link to={'https://twitter.com/'}>
+          <a href={'https://twitter.com/'}>
             <ion-icon name="logo-twitter"></ion-icon>
-          </Link>
+          </a>
         </div>
         <div className={classes.footerBtmContentIcon}>
-          <Link to={'https://www.instagram.com/'}>
+          <a href={'https://www.instagram.com/'}>
             <ion-icon name="logo-instagram"></ion-icon>
-          </Link>
+          </a>
         </div>
       </div>
     </footer>

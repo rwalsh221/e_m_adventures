@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { LoremIpsum } from 'react-lorem-ipsum';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { nanoid } from 'nanoid';
+import { dateToMilliseconds } from '../../../helpers/utilities';
 
 import caraBig from '../../../assets/img/bookingSummary/caraBig.jpg';
 import caraMed from '../../../assets/img/bookingSummary/caraMed.jpg';
@@ -18,31 +19,59 @@ const BookingSummaryContent = (props) => {
   const database =
     'https://e-m-adventures-development-default-rtdb.europe-west1.firebasedatabase.app/';
 
+  const [loading, SetLoading] = useState(true);
+
+  // add function to take props.checkin.
+  // get all bookings from db.
+  // add to array and search for checkin.
+  // if -1 content = content. usstaete loading falese
+
+  const date = state.headerSearch.checkIn;
+
+  const dateAvaliable = async () => {
+    try {
+      // NEEDS LONG LAT FOR SEARCH. GET FROM CURRENTWEATHER.
+      const bookedDays = await fetch(`${database}.fullday.json`);
+
+      let bookedDaysData = await bookedDays.json();
+      console.log(bookedDaysData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  dateAvaliable();
+
   const submitHandler = async () => {
     const data = { ...state.headerSearch };
 
     // const ref = `ref${nanoid()}`;
     const ref = `ref${nanoid()}`;
-    console.log(`ref${nanoid()}`);
-    try {
-      axios.patch(`${database}booking.json`, {
-        [ref]: {
-          ...data,
+    axios
+      .patch(
+        `${database}booking.json`,
+        {
+          [ref]: {
+            ...data,
+          },
         },
+        { timeout: 2000 }
+      )
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) history.push('/confirmation');
+      })
+      .catch((error) => {
+        console.error(error);
+        console.log('errrrorororororororor');
       });
-      await axios
-        .patch(`${database}fullday.json`, {
-          ...data.fullDays,
-        })
-        .then((response) => {
-          console.log(response);
-          if (response.status === 200) history.push('/confirmation');
-        })
-        .catch((error) => console.error(error));
-    } catch {
-      console.error('error');
-    }
   };
+
+  let content = 'spinner';
+
+  if (loading === false) {
+    content = 'be,ow content';
+  }
 
   return (
     <main className={`contentGrid`}>

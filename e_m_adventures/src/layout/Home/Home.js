@@ -13,6 +13,7 @@ import Footer from '../../components/Footer/Footer';
 // TODO: CHANGE ROUTE /home to /
 // TODO: REMOVE INDEX.CSS AND GET FONT
 // TODO: REFACTOR CSS GRIDS FOR EASIER RESPONSIVENESS
+//  TODO: ADD AXIOS CONFIG SEE BURGER BUILDER
 
 const Home = (props) => {
   let database = async () => {

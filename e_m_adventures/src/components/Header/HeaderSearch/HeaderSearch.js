@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { validateDate } from '../../../helpers/validation';
+import { dateToMilliseconds } from '../../../helpers/utilities';
 
 import * as actionTypes from './HeaderSearchSlice';
 
@@ -58,6 +59,7 @@ const HeaderSearch = (props) => {
             console.log(checkIn.current.value);
             console.log(checkOut.current.value);
             console.log();
+
             formIsValid = validateDate(
               checkIn.current.value,
               checkOut.current.value
@@ -65,8 +67,8 @@ const HeaderSearch = (props) => {
             if (formIsValid) {
               dispatch(
                 actionTypes.booking({
-                  checkIn: checkIn.current.value,
-                  checkOut: checkOut.current.value,
+                  checkIn: dateToMilliseconds(checkIn.current.value),
+                  checkOut: dateToMilliseconds(checkOut.current.value),
                 })
               );
               history.push('/summary');
