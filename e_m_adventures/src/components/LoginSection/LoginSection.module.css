@@ -1,20 +1,69 @@
 .login {
   width: 70%;
   min-height: 70vh;
-
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loginCard {
+  background-color: var(--main-color-black);
+  width: 60%;
+  padding: 3rem;
+  margin: 5rem;
+  border-radius: 3rem;
+}
+
+.cardHeader {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 1rem 0;
+}
+
+.cardHeaderLeft,
+.cardHeaderRight {
+  width: 45%;
+  padding: 1rem;
+}
+
+.cardHeaderLeft {
+  border-bottom: 2px solid var(--main-color-gold);
+  border-right: 2px solid var(--main-color-gold);
+}
+
+.cardHeaderRight {
+  border-top: 2px solid var(--main-color-gold);
+  border-right: 2px solid var(--main-color-gold);
+}
+
+.cardHeading {
+  width: max-content;
+  font-size: 3rem;
+  margin: 0 auto;
+  color: var(--main-color-white);
+}
+
+.heading {
+  margin: 5rem;
 }
 
 .loginContainer {
-  background-color: var(--main-color-black);
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  /* background-color: var(--main-color-black);
   width: 50%;
   padding: 5rem;
   border-radius: 2rem;
   border: 5px solid var(--main-color-gold);
-  margin: 4rem;
+  margin: 4rem; */
+}
+
+.loginContainerHeading {
+  color: var(--main-color-white);
 }
 
 .loginForm {
@@ -22,11 +71,23 @@
   flex-direction: column;
   height: max-content;
   font-size: 2rem;
+  width: 50%;
+}
+
+.formInputContainer {
+  display: flex;
+  /* width: 50%; */
+  margin: 2rem 0;
+}
+
+.formInputContainer input {
+  margin-left: auto;
+  margin-right: 0;
 }
 
 .loginForm input,
 .loginForm label {
-  margin: 1rem auto;
+  /* margin: 1rem auto; */
 }
 
 .loginBtn {
@@ -36,4 +97,10 @@
   color: var(--main-color-black) !important;
   font-size: 2rem;
   margin: 2rem auto;
+  width: 20rem;
+}
+
+.forgot {
+  font-size: 2rem;
+  text-decoration: underline;
 }

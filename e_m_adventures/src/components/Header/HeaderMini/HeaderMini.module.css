@@ -1,0 +1,13 @@
+.header {
+  width: 100%;
+  min-height: 10vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: var(--main-color-black);
+}
+
+.logo {
+  width: 15rem;
+  margin: 3rem;
+}

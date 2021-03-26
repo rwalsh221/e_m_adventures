@@ -15,6 +15,7 @@ import Footer from '../../components/Footer/Footer';
 // TODO: REFACTOR CSS GRIDS FOR EASIER RESPONSIVENESS
 //  TODO: ADD AXIOS CONFIG SEE BURGER BUILDER
 // TODO: create mini header
+// TODO: TAKE MARGIN OFF H2 IN APP CSS
 
 const Home = (props) => {
   let database = async () => {
