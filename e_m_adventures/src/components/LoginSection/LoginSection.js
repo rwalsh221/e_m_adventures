@@ -1,11 +1,7 @@
-// WDS COURSE LOGIN COPONent
-// LOOK AT ASOS SIGN IN DESING
-
 import React, { useRef, useState } from 'react';
 import { Form, Button, Card, Alert } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
-// import axios from 'axios';
 
 import classes from './LoginSection.module.css';
 
@@ -114,37 +110,3 @@ const LoginSection = () => {
 };
 
 export default LoginSection;
-
-/*
-MY LOGIN COMOPONENT
-
-
-import React from 'react';
-import { Link } from 'react-router-dom';
-
-import classes from './LoginSection.module.css';
-
-const Login = (props) => {
-  return (
-    <main className={classes.login}>
-      <div className={classes.loginContainer}>
-        <form className={classes.loginForm}>
-          <label>UserName</label>
-          <input></input>
-          <label>Password</label>
-          <input></input>
-          <Link
-            className={classes.loginBtn}
-            role="button"
-            to="/login"
-            // onClick={this.handleClick()}
-          >
-            LOGIN
-          </Link>
-        </form>
-      </div>
-    </main>
-  );
-};
-
-export default Login;*/

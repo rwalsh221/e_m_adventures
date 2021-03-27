@@ -1,13 +1,13 @@
 import React from 'react';
 
-import HeaderSmall from '../../components/Header/HeaderSmall/HeaderSmall';
+import HeaderMini from '../../components/Header/HeaderMini/HeaderMini';
 import SignupContent from '../../components/SignupContent/SignupContent';
 import Footer from '../../components/Footer/Footer';
 
 const Login = (props) => {
   return (
     <div className={'layoutGrid'}>
-      <HeaderSmall />
+      <HeaderMini />
       <SignupContent />
       <Footer />
     </div>

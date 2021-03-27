@@ -16,6 +16,7 @@ import Footer from '../../components/Footer/Footer';
 //  TODO: ADD AXIOS CONFIG SEE BURGER BUILDER
 // TODO: create mini header
 // TODO: TAKE MARGIN OFF H2 IN APP CSS
+// TODO: ADD VALIDATION ERROR POPUP TO LOGIN COMPONENTS
 
 const Home = (props) => {
   let database = async () => {

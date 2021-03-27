@@ -46,7 +46,7 @@
 }
 
 .heading {
-  margin: 5rem;
+  margin: 3rem;
 }
 
 .loginContainer {
@@ -83,11 +83,6 @@
 .formInputContainer input {
   margin-left: auto;
   margin-right: 0;
-}
-
-.loginForm input,
-.loginForm label {
-  /* margin: 1rem auto; */
 }
 
 .loginBtn {

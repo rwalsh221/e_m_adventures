@@ -55,7 +55,62 @@ const Signup = () => {
 
   return (
     <main className={classes.signup}>
-      <Card>
+      <h1 className={classes.heading}>SIGN UP</h1>
+      <div className={classes.loginCard}>
+        <div className={classes.cardHeader}>
+          <div className={classes.cardHeaderLeft}>
+            <h3 className={classes.cardHeading}>New Adventurer?</h3>
+          </div>
+          <div className={classes.cardHeaderRight}>
+            <h3 className={classes.cardHeading}>Already Registered</h3>
+          </div>
+        </div>
+        <div className={classes.loginContainer}>
+          <h2 className={classes.loginContainerHeading}>SIGN UP</h2>
+          <form onSubmit={handleSubmit} className={classes.loginForm}>
+            <div className={classes.formInputContainer}>
+              <label id={'email'}>Email:</label>
+              <input
+                type={'email'}
+                htmlFor={'email'}
+                ref={emailRef}
+                required
+              ></input>
+            </div>
+            <div className={classes.formInputContainer}>
+              <label id={'password'}>Password:</label>
+              <input
+                type={'password'}
+                htmlFor={'password'}
+                ref={passwordRef}
+                required
+              ></input>
+            </div>
+            <div className={classes.formInputContainer}>
+              <label id={'password-confirm'}>Password Confirm:</label>
+              <input
+                type={'password'}
+                htmlFor={'password-confirm'}
+                ref={passwordConfirmRef}
+                required
+              ></input>
+            </div>
+            <button
+              disabled={loading}
+              className={classes.loginBtn}
+              type={'submit'}
+            >
+              Sign Up
+            </button>
+          </form>
+          <div className={classes.forgot}>
+            <Link to={'/login'} className={classes.forgot}>
+              Already have an Account?
+            </Link>
+          </div>
+        </div>
+      </div>
+      {/* <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Sign UP</h2>
           {error && <Alert variant="danger">{error}</Alert>}
@@ -77,7 +132,7 @@ const Signup = () => {
             </Button>
           </Form>
         </Card.Body>
-      </Card>
+      </Card> */}
       <div className="w-100 text-center mt-2">
         already have an account? <Link to={'/login'}>Log in</Link>
       </div>
