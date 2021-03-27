@@ -1,0 +1,90 @@
+.profile {
+  grid-column: 1;
+}
+
+.profile ul {
+  font-size: 2rem;
+  list-style: none;
+}
+
+.profile p {
+  color: var(--main-color-black);
+}
+
+.btnContainer {
+  margin: 5rem 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.logoutBtn,
+.updateBtn {
+  height: 8rem;
+  width: 16rem;
+  background-color: var(--main-color-black);
+  border: 2px solid var(--main-color-gold);
+  transition: all 0.2s;
+  color: var(--main-color-gold);
+  border-radius: 3rem;
+}
+
+.logoutBtn:hover,
+.updateBtn:hover {
+  background-color: var(--main-color-gold);
+  border: 2px solid var(--main-color-black);
+  color: var(--main-color-black);
+}
+
+.logoutBtn {
+  /* border: none; */
+  outline: none;
+}
+
+.updateBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+}
+
+.bookingHeading {
+  grid-row: 1;
+  grid-column: 2;
+}
+
+.bookingCard {
+  margin: 3rem 0;
+  min-height: 20rem;
+  background-color: var(--main-color-black);
+  border-radius: 3rem;
+  grid-row: 2;
+  grid-column: 2;
+  display: flex;
+  align-content: flex-start;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.bookingCardContent {
+  background-color: var(--main-color-gold);
+  flex-basis: 45%;
+  padding: 1rem;
+  border-radius: 2rem;
+  margin: 0.5rem;
+  height: max-content;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.bookingCardContent ul {
+  list-style: none;
+}
+
+.bookingCardContent li {
+  font-size: 1.6rem;
+}

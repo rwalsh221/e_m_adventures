@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { Card, Button, Alert } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
+import { LoremIpsum } from 'react-lorem-ipsum';
 
-// import classes from './DashboardContent.module.css';
+import classes from './DashboardContent.module.css';
 
 const DashboardContent = () => {
   const [error, setError] = useState('');
@@ -24,8 +25,53 @@ const DashboardContent = () => {
   };
 
   return (
-    <main>
-      <React.Fragment>
+    <main className={'contentGrid'}>
+      <h1 className={classes.header}>{currentUser.email}'s DashBoard</h1>
+      <div className={classes.profile}>
+        <h2 className={classes.profileHeading}>Profile</h2>
+        <ul>
+          <li>Name: currentUser Name</li>
+          <li>
+            BIO: <LoremIpsum p={1} />
+          </li>
+        </ul>
+      </div>
+      <div className={classes.btnContainer}>
+        <button onClick={handleLogout} className={classes.logoutBtn}>
+          Logout
+        </button>
+        <Link to={'/update-profile'} className={classes.updateBtn}>
+          Update Profile
+        </Link>
+      </div>
+      <h3 className={classes.bookingHeading}>Your Bookings</h3>
+      <div className={classes.bookingCard}>
+        <div className={classes.bookingCardContent}>
+          <ul>
+            <li>Check In: 08/08/2021</li>
+            <li>Check Out: 08/08/2021</li>
+          </ul>
+        </div>
+        <div className={classes.bookingCardContent}>
+          <ul>
+            <li>Check In: 08/08/2021</li>
+            <li>Check Out: 08/08/2021</li>
+          </ul>
+        </div>
+        <div className={classes.bookingCardContent}>
+          <ul>
+            <li>Check In: 08/08/2021</li>
+            <li>Check Out: 08/08/2021</li>
+          </ul>
+        </div>
+        <div className={classes.bookingCardContent}>
+          <ul>
+            <li>Check In: 08/08/2021</li>
+            <li>Check Out: 08/08/2021</li>
+          </ul>
+        </div>
+      </div>
+      {/* <React.Fragment>
         <Card>
           <Card.Body>
             <h2 className="text-center mb-4">Profile</h2>
@@ -41,7 +87,7 @@ const DashboardContent = () => {
             Log Out
           </Button>
         </div>
-      </React.Fragment>
+      </React.Fragment> */}
     </main>
   );
 };

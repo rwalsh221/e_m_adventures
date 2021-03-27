@@ -17,6 +17,7 @@ import Footer from '../../components/Footer/Footer';
 // TODO: create mini header
 // TODO: TAKE MARGIN OFF H2 IN APP CSS
 // TODO: ADD VALIDATION ERROR POPUP TO LOGIN COMPONENTS
+// TODO: Move all btns into buttons.js for link styling
 
 const Home = (props) => {
   let database = async () => {
