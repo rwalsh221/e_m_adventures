@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import HeaderSearch from '../HeaderSearch/HeaderSearch';
-import { LoginButton } from '../../miniComponents/Buttons/Buttons';
+import DropdownMenu from '../../miniComponents/DropdownMenu/DropdownMenu';
 
 import logoWhite from '../../../assets/img/logo-white.png';
 import classes from './HeaderSmall.module.css';
@@ -16,7 +16,7 @@ const HeaderSmall = () => {
       <HeaderSearch className={classes.search} />
       <div className={classes.loginContainer}>
         <p>manage your ADVENTURE</p>
-        <LoginButton />
+        <DropdownMenu />
       </div>
     </header>
   );

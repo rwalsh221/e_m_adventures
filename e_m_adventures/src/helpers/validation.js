@@ -1,10 +1,7 @@
-import formatDate from './utilities';
-
 export const validateDate = (checkIn, checkOut) => {
   let validated = false;
 
   if (!checkIn || !checkOut) {
-    console.log('null');
     return validated;
   }
   const milliSeconds = 24 * 60 * 60 * 1000;
@@ -14,7 +11,7 @@ export const validateDate = (checkIn, checkOut) => {
 
   const checkInArr = checkIn.split('-');
   const checkOutArr = checkOut.split('-');
-  console.log(checkInArr);
+
   const checkInUtc = Date.UTC(checkInArr[0], checkInArr[1] - 1, checkInArr[2]);
   const checkOutUtc = Date.UTC(
     checkOutArr[0],

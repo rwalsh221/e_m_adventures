@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-import { LoginButton } from '../../miniComponents/Buttons/Buttons';
+import DropdownMenu from '../../miniComponents/DropdownMenu/DropdownMenu';
 
 import logoWhite from '../../../assets/img/logo-white.png';
 import classes from './HeaderNavigation.module.css';
@@ -23,14 +22,8 @@ const HeaderNavigation = () => {
         <button className={classes.navBtn}>Local Eats</button>
       </div>
       <div className={classes.loginContainer}>
-        <Link to={'/dashboard'}>
-          <p>manage your ADVENTURE</p>
-        </Link>
-        <LoginButton />
-        <Link to={'/login'}>
-          <p>manage your ADVENTURE</p>
-        </Link>
-        <LoginButton />
+        <p className={classes.loginPara}>manage your ADVENTURE</p>
+        <DropdownMenu />
       </div>
     </nav>
   );

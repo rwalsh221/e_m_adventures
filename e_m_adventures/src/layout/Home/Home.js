@@ -9,7 +9,7 @@ import ExploreWorld from '../../components/ExploreWorld/ExploreWorld';
 import Footer from '../../components/Footer/Footer';
 
 // TODO: PUT ASYNC WEATHER CALL IN PARENT TO PREVENT MULTIPLE API CALLS
-// TODO: CHANGE <a> to <LINK> https://stackoverflow.com/questions/43087007/react-link-vs-a-tag-and-arrow-function
+// TODO: fix dropdown css
 // TODO: CHANGE ROUTE /home to /
 // TODO: REMOVE INDEX.CSS AND GET FONT
 // TODO: REFACTOR CSS GRIDS FOR EASIER RESPONSIVENESS

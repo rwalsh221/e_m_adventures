@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Form, Button, Card, Alert } from 'react-bootstrap';
+// import { Form, Button, Card, Alert } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 
@@ -38,10 +38,14 @@ const LoginSection = () => {
       <div className={classes.loginCard}>
         <div className={classes.cardHeader}>
           <div className={classes.cardHeaderLeft}>
-            <h3 className={classes.cardHeading}>New Adventurer?</h3>
+            <h3 className={classes.cardHeading}>
+              <Link to={'/signup'}>
+                <h3 className={classes.cardHeading}>New Adventurer?</h3>
+              </Link>
+            </h3>
           </div>
           <div className={classes.cardHeaderRight}>
-            <h3 className={classes.cardHeading}>Already Registered</h3>
+            <h3 className={classes.cardHeading}>Already Registered?</h3>
           </div>
         </div>
         <div className={classes.loginContainer}>

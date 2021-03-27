@@ -17,9 +17,6 @@ const WeatherCard = (props) => {
         );
 
         let futureWeatherData = await futureWeather.json();
-        console.log(futureWeatherData);
-
-        console.log(futureWeatherData);
 
         if (futureWeatherData.cod !== 429)
           setFutureWeatherData({ ...futureWeatherData });

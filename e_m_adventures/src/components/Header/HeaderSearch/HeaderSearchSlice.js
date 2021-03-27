@@ -1,22 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { formatDate } from '../../../helpers/utilities';
-
 const getDays = (checkIn, checkOut) => {
   const milliSeconds = 24 * 60 * 60 * 1000;
-  console.log(milliSeconds);
-  const checkInInit = checkIn;
-  console.log(checkIn);
-  console.log(checkOut);
 
-  let testArr = [];
-  console.log(checkIn);
+  let bookedDaysArr = [];
+
   for (let i = checkIn; i < checkOut; i = i + milliSeconds) {
     console.log('loop');
-    if (i !== checkIn) testArr.push(i);
+    if (i !== checkIn) bookedDaysArr.push(i);
   }
-  console.log(testArr);
-  return testArr;
+
+  return bookedDaysArr;
 };
 
 const HeaderSearchSlice = createSlice({

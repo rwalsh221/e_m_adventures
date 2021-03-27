@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Form, Button, Card, Alert } from 'react-bootstrap';
+// import { Form, Button, Card, Alert } from 'react-bootstrap';
 import { useAuth } from '../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
@@ -62,7 +62,11 @@ const Signup = () => {
             <h3 className={classes.cardHeading}>New Adventurer?</h3>
           </div>
           <div className={classes.cardHeaderRight}>
-            <h3 className={classes.cardHeading}>Already Registered</h3>
+            <h3 className={classes.cardHeading}>
+              <Link to={'/login'}>
+                <h3 className={classes.cardHeading}>Already Registered?</h3>
+              </Link>
+            </h3>
           </div>
         </div>
         <div className={classes.loginContainer}>
@@ -103,11 +107,6 @@ const Signup = () => {
               Sign Up
             </button>
           </form>
-          <div className={classes.forgot}>
-            <Link to={'/login'} className={classes.forgot}>
-              Already have an Account?
-            </Link>
-          </div>
         </div>
       </div>
       {/* <Card>
@@ -133,9 +132,6 @@ const Signup = () => {
           </Form>
         </Card.Body>
       </Card> */}
-      <div className="w-100 text-center mt-2">
-        already have an account? <Link to={'/login'}>Log in</Link>
-      </div>
     </main>
   );
 };
