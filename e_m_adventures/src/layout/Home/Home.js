@@ -18,6 +18,7 @@ import Footer from '../../components/Footer/Footer';
 // TODO: TAKE MARGIN OFF H2 IN APP CSS
 // TODO: ADD VALIDATION ERROR POPUP TO LOGIN COMPONENTS
 // TODO: Move all btns into buttons.js for link styling
+// TODO: STYLE UPDTAE PROFILE PAGE
 
 const Home = (props) => {
   let database = async () => {

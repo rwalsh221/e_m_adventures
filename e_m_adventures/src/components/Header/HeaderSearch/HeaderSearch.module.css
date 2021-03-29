@@ -1,5 +1,6 @@
 .searchContainer {
-  width: 50%;
+  max-width: 50%;
+  min-width: max-content;
   background-color: var(--main-color-white);
   border-radius: 5rem;
   border: 3px solid var(--main-color-gold);
@@ -72,4 +73,23 @@
   background-color: var(--main-color-gold);
   color: var(--main-color-black);
   margin-left: 2rem;
+}
+
+@media (max-width: 975px) {
+  .searchContainer {
+    margin: 2rem 0;
+  }
+
+  .searchForm input,
+  .searchForm select,
+  .searchForm label {
+    width: 100%;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .searchContainer {
+    display: none;
+  }
 }

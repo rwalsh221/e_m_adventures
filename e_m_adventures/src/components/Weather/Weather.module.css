@@ -7,4 +7,18 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .weatherContainer {
+    flex-wrap: nowrap;
+    overflow-y: scroll;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .weatherContainer::-webkit-scrollbar {
+    display: none;
+  }
 }

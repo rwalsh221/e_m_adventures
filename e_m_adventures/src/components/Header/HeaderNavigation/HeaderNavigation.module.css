@@ -56,3 +56,25 @@
 .loginPara {
   margin-right: 2rem;
 }
+
+@media (max-width: 1095px) {
+  .navBtnContainer {
+    margin: 0 3rem;
+  }
+}
+
+@media (max-width: 1015px) {
+  .navBtnContainer {
+    margin: 0 1rem;
+  }
+}
+
+@media (max-width: 860px) {
+  .navigation {
+    width: 100%;
+  }
+
+  .logo {
+    margin: 0;
+  }
+}

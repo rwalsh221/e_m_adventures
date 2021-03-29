@@ -106,3 +106,33 @@ p {
   font-size: 1.8rem;
   color: var(--main-color-white);
 }
+
+@media (max-width: 975px) {
+  html {
+    font-size: 55%;
+  }
+}
+
+@media (max-width: 790px) {
+  html {
+    font-size: 45%;
+  }
+}
+
+@media (max-width: 660px) {
+  html {
+    font-size: 40%;
+  }
+}
+
+@media (max-width: 550px) {
+  html {
+    font-size: 35%;
+  }
+}
+/* 
+@media (max-width: 500px) {
+  html {
+    font-size: 30%;
+  }
+} */

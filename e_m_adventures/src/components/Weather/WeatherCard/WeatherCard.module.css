@@ -14,7 +14,7 @@
     'windspeed sunrise';
   grid-template-rows: 2fr repeat(3, 1fr);
   grid-template-columns: repeat(2, 1fr);
-  width: 25%;
+  flex-basis: 20%;
   margin: 1rem;
   background-color: var(--main-color-black);
   color: var(--main-color-white);
@@ -119,4 +119,17 @@
 
 .sunTime h5 {
   width: 80%;
+}
+
+@media (max-width: 1095px) {
+  .weatherCard {
+    flex-basis: 45%;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .weatherCard {
+    flex-basis: 60rem;
+  }
 }

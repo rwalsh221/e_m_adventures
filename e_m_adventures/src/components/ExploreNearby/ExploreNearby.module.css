@@ -34,3 +34,27 @@
 .exploreCardDistance {
   color: var(--sec-color-grey);
 }
+
+@media (max-width: 1095px) {
+  .exploreCard {
+    /* margin: 0 6rem; */
+    flex-basis: 50%;
+  }
+}
+
+@media (max-width: 600px) {
+  .exploreContainer {
+    flex-wrap: nowrap;
+    overflow-y: scroll;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .exploreContainer::-webkit-scrollbar {
+    display: none;
+  }
+
+  .exploreCard {
+    flex-shrink: 0;
+  }
+}

@@ -29,3 +29,9 @@
   left: 10%;
   color: var(--main-color-gold);
 }
+
+@media (max-width: 1095px) {
+  .foodImg {
+    height: auto;
+  }
+}

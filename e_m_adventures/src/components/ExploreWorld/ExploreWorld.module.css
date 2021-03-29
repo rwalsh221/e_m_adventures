@@ -11,7 +11,7 @@
 }
 
 .exploreWorldCard {
-  width: 30%;
+  flex-basis: 30%;
   position: relative;
 }
 
@@ -24,4 +24,23 @@
   width: 20%;
   left: 6%;
   top: 4%;
+}
+
+@media (max-width: 600px) {
+  .exploreWorldCard {
+    flex-shrink: 0;
+    flex-basis: 50rem;
+    margin-right: 5rem;
+  }
+
+  .exploreWorldContainer {
+    flex-wrap: nowrap;
+    overflow-y: scroll;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .exploreWorldContainer::-webkit-scrollbar {
+    display: none;
+  }
 }
