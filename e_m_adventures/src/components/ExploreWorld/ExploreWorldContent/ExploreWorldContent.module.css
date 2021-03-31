@@ -62,6 +62,11 @@
 }
 
 /* MUST SEE */
+
+.mustSeeCardContainer {
+  display: none;
+}
+
 .mustSeeHeading,
 .mustSeeContent {
   margin: 2rem 0 2rem 4rem;
@@ -113,3 +118,36 @@
 .mustSeeBtm {
   grid-row: 4;
 }
+
+@media (max-width: 480px) {
+  .mustSeeHeading {
+    grid-column: 1;
+    grid-row: 5;
+    justify-self: start;
+    align-self: end;
+    text-decoration: underline;
+  }
+
+  .mustSeeTop,
+  .mustSeeMid,
+  .mustSeeBtm {
+    display: none;
+  }
+
+  .mustSeeCardContainer {
+    display: flex;
+    grid-row: 6;
+    flex-wrap: nowrap;
+    overflow-y: scroll;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .mustSeeCardContainer::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mustSeeContent {
+    min-width: 30rem;
+  }
+} ;

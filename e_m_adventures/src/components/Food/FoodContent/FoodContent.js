@@ -58,7 +58,7 @@ const FoodContent = (props) => {
         <h5>Indian Restaurants</h5>
         <img className={classes.sidebarImg} src={india} alt={'must see'}></img>
         <div className={classes.sidebarCardContainer}>
-          <RestaurantCard
+          {/* <RestaurantCard
             title={'Babar'}
             img={babar}
             website={'babarelephant.co.uk/'}
@@ -69,7 +69,7 @@ const FoodContent = (props) => {
             img={babar}
             website={'babarelephant.co.uk/'}
             phone={+441524388670}
-          />
+          /> */}
           <RestaurantCard
             title={'Babar'}
             img={babar}

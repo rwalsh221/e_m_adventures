@@ -57,6 +57,10 @@
 
 /* MUST SEE STYLE */
 
+.mustSeeCardContainer {
+  display: none;
+}
+
 .mustSeeHeading,
 .mustSeeContent {
   margin: 2rem 0 2rem 4rem;
@@ -73,6 +77,11 @@
 .mustSeeContent {
   background-color: var(--main-color-black);
   border-radius: 2rem;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .mustSeeContent h5 {
@@ -86,7 +95,7 @@
 .mustSeeImg {
   width: 90%;
   margin: 1rem auto;
-  margin-right: 2rem;
+  /* margin-right: 2rem; */
   display: block;
 }
 
@@ -108,3 +117,36 @@
 .mustSeeBtm {
   grid-row: 4;
 }
+
+@media (max-width: 480px) {
+  .mustSeeHeading {
+    grid-column: 1;
+    grid-row: 5;
+    justify-self: start;
+    align-self: end;
+    text-decoration: underline;
+  }
+
+  .mustSeeTop,
+  .mustSeeMid,
+  .mustSeeBtm {
+    display: none;
+  }
+
+  .mustSeeCardContainer {
+    display: flex;
+    grid-row: 6;
+    flex-wrap: nowrap;
+    overflow-y: scroll;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .mustSeeCardContainer::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mustSeeContent {
+    min-width: 30rem;
+  }
+} ;

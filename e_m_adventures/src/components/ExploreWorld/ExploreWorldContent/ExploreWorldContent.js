@@ -82,6 +82,32 @@ const ExploreWorldContent = (props) => {
           alt={'must see'}
         ></img>
       </div>
+      <div className={classes.mustSeeCardContainer}>
+        <div className={`${classes.mustSeeContent} `}>
+          <h5>Visit Placeholder</h5>
+          <img
+            className={classes.mustSeeImg}
+            src={mustSee}
+            alt={'must see'}
+          ></img>
+        </div>
+        <div className={`${classes.mustSeeContent}`}>
+          <h5>Visit Placeholder</h5>
+          <img
+            className={classes.mustSeeImg}
+            src={mustSee}
+            alt={'must see'}
+          ></img>
+        </div>
+        <div className={`${classes.mustSeeContent} `}>
+          <h5>Visit Placeholder</h5>
+          <img
+            className={classes.mustSeeImg}
+            src={mustSee}
+            alt={'must see'}
+          ></img>
+        </div>
+      </div>
     </main>
   );
 };
