@@ -48,8 +48,62 @@ const UpdateProfileContent = () => {
   };
 
   return (
-    <main className={classes.signup}>
-      <Card>
+    <main className={classes.update}>
+      <h1 className={classes.heading}>UPDATE PROFILE</h1>
+      <div className={classes.loginCard}>
+        {/* <div className={classes.cardHeader}>
+          <div className={classes.cardHeaderLeft}>
+            <h3 className={classes.cardHeading}>New Adventurer?</h3>
+          </div>
+          <div className={classes.cardHeaderRight}>
+            <h3 className={classes.cardHeading}>
+              <Link to={'/login'}>
+                <h3 className={classes.cardHeading}>Already Registered?</h3>
+              </Link>
+            </h3>
+          </div>
+        </div> */}
+        <div className={classes.loginContainer}>
+          <h2 className={classes.loginContainerHeading}>UPDATE</h2>
+          <form onSubmit={handleSubmit} className={classes.loginForm}>
+            <div className={classes.formInputContainer}>
+              <label id={'email'}>Email:</label>
+              <input
+                type={'email'}
+                htmlFor={'email'}
+                ref={emailRef}
+                required
+              ></input>
+            </div>
+            <div className={classes.formInputContainer}>
+              <label id={'password'}>Password:</label>
+              <input
+                type={'password'}
+                htmlFor={'password'}
+                ref={passwordRef}
+                placeholder="leave blank to keep the same"
+              ></input>
+            </div>
+            <div className={classes.formInputContainer}>
+              <label id={'password-confirm'}>Password Confirm:</label>
+              <input
+                type={'password'}
+                htmlFor={'password-confirm'}
+                ref={passwordConfirmRef}
+                placeholder="leave blank to keep the same"
+              ></input>
+            </div>
+            <button
+              disabled={loading}
+              className={classes.loginBtn}
+              type={'submit'}
+            >
+              UPDATE
+            </button>
+          </form>
+        </div>
+      </div>
+      {/* <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Update Profile</h2>
           {error && <Alert variant="danger">{error}</Alert>}
@@ -84,7 +138,7 @@ const UpdateProfileContent = () => {
             </Button>
           </Form>
         </Card.Body>
-      </Card>
+      </Card> */}
       <div className="w-100 text-center mt-2">
         <Link to={'/dashboard'}>cancel</Link>
       </div>

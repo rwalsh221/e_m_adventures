@@ -1,0 +1,175 @@
+.update {
+  /* background-color: var(--main-color-gold);
+    height: max-content;
+    width: 70%;
+    margin: 5rem auto; */
+  width: 70%;
+  min-height: 70vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loginCard {
+  background-color: var(--main-color-black);
+  min-width: 70%;
+  padding: 3rem;
+  margin: 5rem;
+  border-radius: 3rem;
+  height: 53rem;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.cardHeaderLeft,
+.cardHeaderRight {
+  width: 45%;
+  padding: 1rem;
+}
+
+.cardHeaderLeft {
+  border-top: 2px solid var(--main-color-gold);
+  border-left: 2px solid var(--main-color-gold);
+}
+
+.cardHeaderRight {
+  border-bottom: 2px solid var(--main-color-gold);
+  border-left: 2px solid var(--main-color-gold);
+}
+
+.cardHeading {
+  width: max-content;
+  font-size: 3rem;
+  margin: 0 auto;
+  color: var(--main-color-white);
+}
+
+.heading {
+  margin: 3rem;
+}
+
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  /* background-color: var(--main-color-black);
+    width: 50%;
+    padding: 5rem;
+    border-radius: 2rem;
+    border: 5px solid var(--main-color-gold);
+    margin: 4rem; */
+}
+
+.loginContainerHeading {
+  color: var(--main-color-white);
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  height: max-content;
+  font-size: 2rem;
+  width: 60%;
+}
+
+.formInputContainer {
+  display: flex;
+  /* width: 50%; */
+  margin: 2rem 0;
+}
+
+.formInputContainer input {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.loginForm input,
+.loginForm label {
+  /* margin: 1rem auto; */
+}
+
+.loginBtn {
+  padding: 2rem;
+  border-radius: 2rem;
+  background-color: var(--main-color-gold);
+  color: var(--main-color-black) !important;
+  font-size: 2rem;
+  margin: 2rem auto;
+  width: 20rem;
+}
+
+.forgot {
+  font-size: 2rem;
+  text-decoration: underline;
+}
+@media (max-width: 1575px) {
+  .loginForm {
+    width: 70%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .loginCard {
+    min-width: 80%;
+  }
+
+  .loginForm {
+    width: 80%;
+  }
+}
+
+@media (max-width: 850px) {
+  .loginCard {
+    min-width: 90%;
+  }
+}
+
+@media (max-width: 690px) {
+  .formInputContainer {
+    flex-wrap: wrap;
+  }
+
+  .formInputContainer label {
+    width: 55%;
+    margin: 1rem auto;
+    text-align: center;
+  }
+
+  .formInputContainer input {
+    margin: 0 auto;
+  }
+  .loginForm {
+    width: 100%;
+  }
+
+  .loginCard {
+    height: max-content;
+  }
+}
+
+@media (max-width: 450px) {
+  .update {
+    width: 90%;
+  }
+
+  .loginCard {
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 370px) {
+  .cardHeading {
+    font-size: 2.5rem;
+  }
+
+  .loginForm {
+    width: 100%;
+  }
+}
