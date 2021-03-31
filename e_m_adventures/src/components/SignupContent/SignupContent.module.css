@@ -11,18 +11,9 @@
   align-items: center;
 }
 
-.login {
-  width: 70%;
-  min-height: 70vh;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .loginCard {
   background-color: var(--main-color-black);
-  width: 60%;
+  min-width: 60%;
   padding: 3rem;
   margin: 5rem;
   border-radius: 3rem;
@@ -117,4 +108,48 @@
 .forgot {
   font-size: 2rem;
   text-decoration: underline;
+}
+@media (max-width: 1575px) {
+  .loginForm {
+    width: 70%;
+  }
+}
+
+@media (max-width: 800px) {
+  .loginForm {
+    width: 80%;
+  }
+}
+
+@media (max-width: 665px) {
+  .formInputContainer {
+    flex-wrap: wrap;
+  }
+
+  .formInputContainer label {
+    width: 55%;
+    margin: 1rem auto;
+    text-align: center;
+  }
+
+  .formInputContainer input {
+    margin: 0 auto;
+  }
+  .loginForm {
+    width: 100%;
+  }
+
+  .loginCard {
+    height: max-content;
+  }
+}
+
+@media (max-width: 370px) {
+  .cardHeading {
+    font-size: 2.5rem;
+  }
+
+  .loginForm {
+    width: 100%;
+  }
 }
