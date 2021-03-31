@@ -22,7 +22,7 @@ const ExploreNearby = (props) => {
     { img: lancaster, heading: 'lancaster', distance: '1-hour Drive' },
     {
       img: whiteLund,
-      heading: 'white lund industrial estate',
+      heading: 'white lund',
       distance: '1-hour Drive',
     },
     { img: glasson, heading: 'glasson dock', distance: '1-hour Drive' },

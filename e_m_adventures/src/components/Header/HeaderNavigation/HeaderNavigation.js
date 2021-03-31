@@ -22,7 +22,7 @@ const HeaderNavigation = () => {
         <button className={classes.navBtn}>Local Eats</button>
       </div>
       <div className={classes.loginContainer}>
-        <p className={classes.loginPara}>manage your ADVENTURE</p>
+        <p className={classes.loginManage}>manage your ADVENTURE</p>
         <DropdownMenu />
       </div>
     </nav>

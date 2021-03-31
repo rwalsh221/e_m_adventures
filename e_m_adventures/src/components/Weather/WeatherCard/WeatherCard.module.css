@@ -133,3 +133,16 @@
     flex-basis: 60rem;
   }
 }
+
+@media (max-width: 500px) {
+  .weatherCard {
+    flex-basis: 50rem;
+    grid-template-rows: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 400px) {
+  .weatherCard {
+    height: 60rem;
+  }
+}

@@ -37,8 +37,8 @@
 
 @media (max-width: 1095px) {
   .exploreCard {
-    /* margin: 0 6rem; */
-    flex-basis: 50%;
+    margin: 0 1rem;
+    flex-basis: 45%;
   }
 }
 
@@ -56,5 +56,13 @@
 
   .exploreCard {
     flex-shrink: 0;
+  }
+}
+
+@media (max-width: 545px) {
+  .exploreCardImg {
+    min-width: 128px;
+    min-height: 128px;
+    margin-right: 1rem;
   }
 }

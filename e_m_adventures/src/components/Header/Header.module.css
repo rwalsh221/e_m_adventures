@@ -18,4 +18,30 @@
   margin-top: 50rem;
   color: var(--main-color-white);
   /* -webkit-text-stroke: 2px var(--main-color-gold); */
+  font-size: 4rem;
+}
+
+.btnPopUp {
+  width: 50%;
+  height: 6rem;
+  border-radius: 3rem;
+  border: none;
+  background-color: var(--main-color-gold);
+  display: none;
+}
+@media (max-width: 600px) {
+  .header {
+    min-height: 40vh;
+  }
+
+  .btnPopUp {
+    display: inline;
+  }
+}
+
+@media (max-width: 390px) {
+  .header {
+    min-height: 50vh;
+    background-size: 80% 50%;
+  }
 }

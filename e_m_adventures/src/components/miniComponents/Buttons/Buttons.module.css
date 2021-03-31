@@ -17,31 +17,8 @@
   color: var(--main-color-gold);
 }
 
-.foodBtn {
-  position: absolute;
-  top: 11%;
-  left: 73%;
-  height: 13rem;
-  width: 23rem;
-  border: 2px solid var(--main-color-black);
-  outline: none;
-  background-color: var(--main-color-gold);
-  border-radius: 2rem;
-  font-size: 4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .foodBtn:hover {
   background-color: var(--main-color-black);
   color: var(--main-color-gold);
   border-color: var(--main-color-gold);
-}
-
-@media (max-width: 600px) {
-  .foodBtn {
-    height: 8rem;
-    width: 18rem;
-  }
 }
