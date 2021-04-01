@@ -1,26 +1,26 @@
 import React, { useRef } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { validateDate } from '../../../helpers/validation';
-import { dateToMilliseconds } from '../../../helpers/utilities';
+import { validateDate } from '../../../../helpers/validation';
+import { dateToMilliseconds } from '../../../../helpers/utilities';
 
-import * as actionTypes from './HeaderSearchSlice';
+import classes from './SearchPopUp.module.css';
 
-import classes from './HeaderSearch.module.css';
+import * as actionTypes from '../HeaderSearchSlice';
 
 const mapDispatch = { ...actionTypes };
 
-const HeaderSearch = (props) => {
+const SearchPopUp = (props) => {
   const dispatch = useDispatch();
 
-  const checkIn = useRef();
-  const checkOut = useRef();
+  const checkInPop = useRef();
+  const checkOutPop = useRef();
   const history = useHistory();
 
   let formIsValid = false;
 
   return (
-    <div className={classes.searchContainer}>
+    <div className={classes.searchPopUp} style={{ display: props.display }}>
       <form className={classes.searchForm}>
         <div className={classes.start}>
           <h6>Start Your Adventure</h6>
@@ -29,13 +29,13 @@ const HeaderSearch = (props) => {
           <label htmlFor="checkIn" className={classes.searchLabel}>
             Check-in
           </label>
-          <input type="date" id="checkIn" ref={checkIn}></input>
+          <input type="date" id="checkIn" ref={checkInPop}></input>
         </div>
         <div className={classes.date}>
           <label htmlFor="checkOut" className={classes.searchLabel}>
             Check-out
           </label>
-          <input type="date" id="checkOut" ref={checkOut}></input>
+          <input type="date" id="checkOut" ref={checkOutPop}></input>
         </div>
         <div className={classes.guests}>
           <label htmlFor="guests" className={classes.searchLabel}>
@@ -53,19 +53,20 @@ const HeaderSearch = (props) => {
           className={classes.btnSubmit}
           onClick={(e) => {
             e.preventDefault();
-            console.log(checkIn.current.value);
-            console.log(checkOut.current.value);
+            console.log(checkInPop.current.value);
+            console.log(checkOutPop.current.value);
             console.log();
 
             formIsValid = validateDate(
-              checkIn.current.value,
-              checkOut.current.value
+              checkInPop.current.value,
+              checkOutPop.current.value
             );
             if (formIsValid) {
+              console.log('valid');
               dispatch(
                 actionTypes.booking({
-                  checkIn: dateToMilliseconds(checkIn.current.value),
-                  checkOut: dateToMilliseconds(checkOut.current.value),
+                  checkIn: dateToMilliseconds(checkInPop.current.value),
+                  checkOut: dateToMilliseconds(checkOutPop.current.value),
                 })
               );
               history.push('/summary');
@@ -81,4 +82,4 @@ const HeaderSearch = (props) => {
   );
 };
 
-export default connect(null, mapDispatch)(HeaderSearch);
+export default connect(null, mapDispatch)(SearchPopUp);
