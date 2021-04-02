@@ -1,6 +1,7 @@
 import React from 'react';
 import { LoremIpsum } from 'react-lorem-ipsum';
 import { useSelector } from 'react-redux';
+import { formatDate } from '../../../../helpers/utilities';
 
 import classes from './BookingAvailable.module.css';
 import caraBig from '../../../../assets/img/bookingSummary/caraBig.jpg';
@@ -53,9 +54,9 @@ const BookingAvailable = (props) => {
       <div className={classes.summaryCard}>
         <h4 className={classes.summaryHeading}>Your Dates</h4>
         <h5 className={classes.summarySubHeading}>CheckIn:</h5>
-        <p>{state.headerSearch.checkIn}</p>
+        <p>{formatDate(state.headerSearch.checkIn / 1000)}</p>
         <h5 className={classes.summarySubHeading}>CheckOut:</h5>
-        <p>{state.headerSearch.checkOut}</p>
+        <p>{formatDate(state.headerSearch.checkOut / 1000)}</p>
         <button className={classes.summaryBtn} onClick={props.submitHandler}>
           Confirm
         </button>

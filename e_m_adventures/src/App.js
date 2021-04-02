@@ -27,8 +27,11 @@ function App() {
       <Router>
         <AuthProvider>
           <Switch>
-            <Route path="/confirmation" component={BookingConfirmation} />
-            <Route path="/summary" component={BookingSummary} />
+            <PrivateRoute
+              path="/confirmation"
+              component={BookingConfirmation}
+            />
+            <PrivateRoute path="/summary" component={BookingSummary} />
             <PrivateRoute path="/update-profile" component={UpdateProfile} />
             <Route path="/forgot-password" component={ForgotPassword} />
             <Route path="/login" component={Login} />
