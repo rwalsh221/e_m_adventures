@@ -4,12 +4,13 @@ import HeaderNavigation from './HeaderNavigation/HeaderNavigation';
 import HeaderSearch from './HeaderSearch/HeaderSearch';
 import classes from './Header.module.css';
 import SearchPopUp from './HeaderSearch/SearchPopUP/SearchPopUp';
+import ErrorComponent from '../miniComponents/ErrorComponent/ErrorComponent';
 
 const Header = (props) => {
   const [popUp, setPopUp] = useState('none');
+  const [error, setError] = useState('');
   console.log('REDEEDEDDDDDDD');
 
-  let test = 'none';
   const setPopUpHandler = (open) => {
     if (open) {
       setPopUp('none');
@@ -18,7 +19,6 @@ const Header = (props) => {
     }
   };
 
-  // let test = 'none';
   return (
     <header className={classes.header}>
       <HeaderNavigation />
@@ -31,6 +31,7 @@ const Header = (props) => {
       >
         START YOUR ADVENTURE
       </button>
+
       <SearchPopUp display={popUp} />
       <button
         className={classes.btnClose}

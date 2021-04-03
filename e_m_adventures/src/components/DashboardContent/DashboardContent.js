@@ -52,9 +52,11 @@ const DashboardContent = () => {
 
   for (let key in bookings) {
     content.push(
-      <div className={classes.bookingCardContent}>
+      <div className={classes.bookingCardContent} key={key}>
         <ul>
-          <li>{`Ref: ${bookings[key].bookingRef} `}</li>
+          <li>
+            Ref:<span className={classes.ref}>{bookings[key].bookingRef}</span>
+          </li>
           <li>{`Check In: ${formatDate(bookings[key].checkIn / 1000)}`}</li>
           <li>{`Check Out: ${formatDate(bookings[key].checkOut / 1000)}`}</li>
         </ul>
@@ -86,7 +88,7 @@ const DashboardContent = () => {
       </div>
       <h3 className={classes.bookingHeading}>Your Bookings</h3>
       <div className={classes.bookingCard}>
-        {content}
+        {content.length === 0 ? null : content}
         {/* <div className={classes.bookingCardContent}>
           <ul>
             <li>Check In: 08/08/2021</li>

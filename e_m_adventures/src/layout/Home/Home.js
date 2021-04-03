@@ -12,13 +12,13 @@ import Footer from '../../components/Footer/Footer';
 // TODO: fix dropdown css
 // TODO: CHANGE ROUTE /home to /
 // TODO: REMOVE INDEX.CSS AND GET FONT
-// TODO: REFACTOR CSS GRIDS FOR EASIER RESPONSIVENESS
+
 //  TODO: ADD AXIOS CONFIG SEE BURGER BUILDER
-// TODO: create mini header
+
 // TODO: TAKE MARGIN OFF H2 IN APP CSS
 // TODO: ADD VALIDATION ERROR POPUP TO LOGIN COMPONENTS
-// TODO: Move all btns into buttons.js for link styling
-// TODO: STYLE UPDTAE PROFILE PAGE
+
+// TODO: dashboard responsiveness
 
 const Home = (props) => {
   let database = async () => {

@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { Form, Button, Card, Alert } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
+import ErrorComponent from '../miniComponents/ErrorComponent/ErrorComponent';
 
 import classes from './UpdateProfileContent.module.css';
 
@@ -65,6 +66,7 @@ const UpdateProfileContent = () => {
         </div> */}
         <div className={classes.loginContainer}>
           <h2 className={classes.loginContainerHeading}>UPDATE</h2>
+          {error && <ErrorComponent message={error} />}
           <form onSubmit={handleSubmit} className={classes.loginForm}>
             <div className={classes.formInputContainer}>
               <label id={'email'}>Email:</label>

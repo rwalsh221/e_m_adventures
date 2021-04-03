@@ -1,4 +1,4 @@
-export const validateDate = (checkIn, checkOut) => {
+export const validateDate = (checkIn, checkOut, setState) => {
   let validated = false;
 
   if (!checkIn || !checkOut) {

@@ -7,7 +7,7 @@ import { nanoid } from 'nanoid';
 
 import BookingUnavailable from './BookingUnavailable/BookingUnavailable';
 import BookingAvailable from './BookingAvailable/BookingAvailable';
-import { current } from 'immer';
+
 import { useAuth } from '../../../contexts/AuthContext';
 
 const BookingSummaryContent = (props) => {

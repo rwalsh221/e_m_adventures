@@ -1,7 +1,8 @@
 import React, { useRef, useState } from 'react';
-// import { Form, Button, Card, Alert } from 'react-bootstrap';
+import { Form, Button, Card, Alert } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
+import ErrorComponent from '../miniComponents/ErrorComponent/ErrorComponent';
 
 import classes from './LoginSection.module.css';
 
@@ -36,6 +37,8 @@ const LoginSection = () => {
     <main className={classes.login}>
       <h1 className={classes.heading}>LOGIN</h1>
       <div className={classes.loginCard}>
+        {/* {error && <Alert variant="danger">{error}</Alert>} */}
+        {error && <ErrorComponent message={error} />}
         <div className={classes.cardHeader}>
           <div className={classes.cardHeaderLeft}>
             <h3 className={classes.cardHeading}>

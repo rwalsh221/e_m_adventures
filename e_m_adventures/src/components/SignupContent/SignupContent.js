@@ -3,6 +3,7 @@ import React, { useRef, useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
+import ErrorComponent from '../miniComponents/ErrorComponent/ErrorComponent';
 
 import classes from './SignupContent.module.css';
 
@@ -38,7 +39,6 @@ const Signup = () => {
               email: newUser.user.email,
               uid: newUser.user.uid,
               role: 'user',
-              booking: { checkin: '1', checkOut: '1' },
             },
           });
         }
@@ -57,6 +57,7 @@ const Signup = () => {
     <main className={classes.signup}>
       <h1 className={classes.heading}>SIGN UP</h1>
       <div className={classes.loginCard}>
+        {error && <ErrorComponent message={error} />}
         <div className={classes.cardHeader}>
           <div className={classes.cardHeaderLeft}>
             <h3 className={classes.cardHeading}>New Adventurer?</h3>
