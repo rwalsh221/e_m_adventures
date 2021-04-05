@@ -7,9 +7,9 @@ import logoWhite from '../../../assets/img/logo-white.png';
 
 const HeaderMini = () => {
   return (
-    <header className={classes.header}>
+    <header className={classes.head}>
       <Link to="/">
-        <img className={classes.logo} src={logoWhite} alt={'logo'}></img>
+        <img className={classes.logoooooo} src={logoWhite} alt={'logo'}></img>
       </Link>
     </header>
   );

@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { connect, useDispatch, useSelector } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { validateDate } from '../../../../helpers/validation';
 import { dateToMilliseconds } from '../../../../helpers/utilities';

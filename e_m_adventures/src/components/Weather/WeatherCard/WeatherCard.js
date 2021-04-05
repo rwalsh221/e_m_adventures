@@ -40,7 +40,7 @@ const WeatherCard = (props) => {
         {/* IMAGE */}
         <div className={classes.weatherImg}>
           <img
-            src={`http://openweathermap.org/img/wn/${
+            src={`https://openweathermap.org/img/wn/${
               futureWeatherData.daily[props.day].weather[0].icon
             }@2x.png`}
             alt="weather icon"

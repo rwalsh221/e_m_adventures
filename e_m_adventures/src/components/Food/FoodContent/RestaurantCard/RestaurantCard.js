@@ -11,7 +11,7 @@ const RestaurantCard = (props) => {
         alt={'babar'}
       ></img>
       <h6>{props.title}</h6>
-      <a href={`http://www.${props.website}`}>{props.website}/</a>
+      <a href={`https://www.${props.website}`}>{props.website}/</a>
       <p>{props.phone}</p>
     </div>
   );

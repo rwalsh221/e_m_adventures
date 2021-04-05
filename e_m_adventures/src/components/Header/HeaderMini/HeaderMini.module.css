@@ -1,4 +1,9 @@
-.header {
+.logoooooo {
+  width: 15rem;
+  margin: 3rem;
+}
+
+.head {
   width: 100%;
   min-height: 10vh;
   display: flex;
@@ -7,7 +12,7 @@
   background-color: var(--main-color-black);
 }
 
-.logo {
+.head img {
   width: 15rem;
   margin: 3rem;
 }

@@ -4,12 +4,11 @@ import HeaderNavigation from './HeaderNavigation/HeaderNavigation';
 import HeaderSearch from './HeaderSearch/HeaderSearch';
 import classes from './Header.module.css';
 import SearchPopUp from './HeaderSearch/SearchPopUP/SearchPopUp';
-import ErrorComponent from '../miniComponents/ErrorComponent/ErrorComponent';
+// import ErrorComponent from '../miniComponents/ErrorComponent/ErrorComponent';
 
 const Header = (props) => {
   const [popUp, setPopUp] = useState('none');
-  const [error, setError] = useState('');
-  console.log('REDEEDEDDDDDDD');
+  // const [error, setError] = useState('');
 
   const setPopUpHandler = (open) => {
     if (open) {
