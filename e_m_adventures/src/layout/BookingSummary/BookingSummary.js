@@ -1,13 +1,13 @@
 import React from 'react';
 
-import HeaderSmall from '../../components/Header/HeaderSmall/HeaderSmall';
+import HeaderMini from '../../components/Header/HeaderMini/HeaderMini';
 import BookingSummaryContent from '../../components/Booking/BookingSummaryContent/BookingSummaryContent';
 import Footer from '../../components/Footer/Footer';
 
 const BookingSummary = (props) => {
   return (
     <div className={'layoutGrid'}>
-      <HeaderSmall />
+      <HeaderMini />
       <BookingSummaryContent />
       <Footer />
     </div>

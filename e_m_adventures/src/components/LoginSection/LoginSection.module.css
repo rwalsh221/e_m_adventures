@@ -106,6 +106,17 @@
   text-decoration: underline;
 }
 
+.forgot a {
+  color: var(--main-color-white);
+  text-decoration: none;
+}
+
+.forgot a:hover,
+.forgot a:focus {
+  color: var(--main-color-gold);
+  text-decoration: underline;
+}
+
 @media (max-width: 1530px) {
   .loginForm {
     width: 60%;

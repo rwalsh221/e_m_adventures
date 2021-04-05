@@ -1,9 +1,5 @@
-.heading {
-}
-
 .headingSecondary {
   grid-row: 2;
-  /* text-decoration: wavy; */
 }
 
 .placeGrid {
@@ -30,9 +26,6 @@
 .imgBig,
 .imgMed {
   grid-row: 2;
-}
-
-.imgBig {
 }
 
 .imgBig1 {
@@ -69,10 +62,20 @@
   margin: 2rem 0;
 }
 
-.summarySubHeading {
-  /* display: inline; */
-}
 .summaryBtn {
   display: block;
-  margin: 6rem auto 0 auto;
+  margin: 2rem auto 0 auto;
+  height: 8rem;
+  width: 16rem;
+  background-color: var(--main-color-black);
+  border: 2px solid var(--main-color-gold);
+  transition: all 0.2s;
+  color: var(--main-color-gold);
+  border-radius: 3rem;
+}
+
+.summaryBtn:hover {
+  background-color: var(--main-color-gold);
+  border: 2px solid var(--main-color-black);
+  color: var(--main-color-black);
 }

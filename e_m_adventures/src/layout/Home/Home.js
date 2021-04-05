@@ -9,14 +9,10 @@ import ExploreWorld from '../../components/ExploreWorld/ExploreWorld';
 import Footer from '../../components/Footer/Footer';
 
 // TODO: PUT ASYNC WEATHER CALL IN PARENT TO PREVENT MULTIPLE API CALLS
-// TODO: fix dropdown css
-// TODO: CHANGE ROUTE /home to /
+
 // TODO: REMOVE INDEX.CSS AND GET FONT
 
 //  TODO: ADD AXIOS CONFIG SEE BURGER BUILDER
-
-// TODO: TAKE MARGIN OFF H2 IN APP CSS
-// TODO: ADD VALIDATION ERROR POPUP TO LOGIN COMPONENTS
 
 // TODO: dashboard responsiveness
 

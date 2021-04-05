@@ -10,7 +10,7 @@ import classes from './HeaderSmall.module.css';
 const HeaderSmall = () => {
   return (
     <header className={classes.headerSmall}>
-      <Link to={'/home'}>
+      <Link to={'/'}>
         <img src={logoWhite} alt="e and m logo" className={classes.logo}></img>
       </Link>
       <HeaderSearch className={classes.search} />

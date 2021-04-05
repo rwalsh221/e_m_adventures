@@ -19,8 +19,14 @@
   color: var(--main-color-white);
 }
 
-.test {
-  color: var(--main-color-black) !important;
+.homeLink {
+  color: var(--main-color-black);
   font-size: 3rem;
   margin-top: 3rem;
+}
+
+.homeLink:hover,
+.homeLink:focus {
+  color: var(--main-color-gold);
+  text-decoration: underline;
 }

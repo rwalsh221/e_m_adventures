@@ -7,6 +7,7 @@ import { nanoid } from 'nanoid';
 
 import BookingUnavailable from './BookingUnavailable/BookingUnavailable';
 import BookingAvailable from './BookingAvailable/BookingAvailable';
+import Spinner from '../../miniComponents/Spinner/Spinner';
 
 import { useAuth } from '../../../contexts/AuthContext';
 
@@ -19,23 +20,19 @@ const BookingSummaryContent = (props) => {
   const database =
     'https://e-m-adventures-development-default-rtdb.europe-west1.firebasedatabase.app/';
 
-  const [loading, setLoading] = useState(true);
-  const [bookedDays, setBookedDays] = useState([]);
-  const [content, setContent] = useState('hellow there');
-
-  // add function to take props.checkin.
-  // get all bookings from db.
-  // add to array and search for checkin.
-  // if -1 content = content. usstaete loading falese
+  const [bookedDays, setBookedDays] = useState();
+  const [content, setContent] = useState(<Spinner />);
 
   useEffect(() => {
     const dateAvaliable = async () => {
       try {
-        const bookedDays = await fetch(`${database}fulldays.json`);
+        const unavaliableDays = await fetch(`${database}fulldays.json`);
 
-        let bookedDaysData = await bookedDays.json();
-        console.log(bookedDaysData);
-        setBookedDays([...bookedDaysData]);
+        let unavaliableDaysData = await unavaliableDays.json();
+
+        unavaliableDaysData
+          ? setBookedDays([...unavaliableDaysData])
+          : setBookedDays([]);
       } catch (error) {
         console.error(error);
       }
@@ -88,20 +85,16 @@ const BookingSummaryContent = (props) => {
   }, [bookedDays, history, state.headerSearch, currentUser.uid]);
 
   useEffect(() => {
-    if (
-      bookedDays === null ||
-      bookedDays.includes(state.headerSearch.checkIn)
-    ) {
-      setLoading(false);
+    if (bookedDays === undefined) {
+      return;
+    } else if (bookedDays.includes(state.headerSearch.checkIn)) {
       setContent(<BookingUnavailable />);
-      console.log('date unavaliable');
     } else {
       setContent(<BookingAvailable submitHandler={submitHandler} />);
-      setLoading(false);
     }
   }, [bookedDays, state.headerSearch.checkIn, submitHandler]);
 
-  return loading ? <p>IS LOADING</p> : content;
+  return content;
 };
 
 export default BookingSummaryContent;

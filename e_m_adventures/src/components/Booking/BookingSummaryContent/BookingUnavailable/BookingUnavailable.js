@@ -13,7 +13,7 @@ const BookingUnavailable = () => {
         </h1>
       </div>
       <HeaderSearch />
-      <Link to={'/home'} className={classes.test}>
+      <Link to={'/'} className={classes.homeLink}>
         Return to Home
       </Link>
     </main>

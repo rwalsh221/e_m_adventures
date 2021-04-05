@@ -18,7 +18,4 @@
 }
 
 .foodBtn:hover {
-  background-color: var(--main-color-black);
-  color: var(--main-color-gold);
-  border-color: var(--main-color-gold);
 }

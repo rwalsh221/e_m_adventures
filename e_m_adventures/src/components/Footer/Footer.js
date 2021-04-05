@@ -9,15 +9,15 @@ const Footer = (props) => {
       <div className={classes.footerTop}>
         <div className={classes.footerTopContent}>
           <Link to={'/ourplace'}>Our Place</Link>
-          <Link to={'/home'}>Home</Link>
+          <Link to={'/'}>Home</Link>
         </div>
         <div className={classes.footerTopContent}>
           <Link to={'/explore'}>Explore</Link>
-          <Link to={'/home'}>Investors</Link>
+          <Link to={'/'}>Investors</Link>
         </div>
         <div className={classes.footerTopContent}>
-          <Link to={'/eat'}>Local Eats</Link>
-          <Link to={'/home'}>Careers</Link>
+          <Link to={'/food'}>Local Eats</Link>
+          <Link to={'/'}>Careers</Link>
         </div>
         <div className={classes.footerTopContent}>
           <Link to={'/login'}>Login</Link>

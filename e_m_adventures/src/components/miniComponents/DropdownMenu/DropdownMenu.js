@@ -7,20 +7,20 @@ import classes from './DropdownMenu.module.css';
 const DropdownMenu = (props) => {
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useState(false);
-  const [error, setError] = useState('');
+  // const [error, setError] = useState('');
 
   const { currentUser, logout } = useAuth();
   const history = useHistory();
 
   const handleLogout = async () => {
-    setError('');
+    // setError('');
 
     try {
       await logout();
       setIsActive(false);
-      history.pushState('/home');
+      history.pushState('/');
     } catch {
-      setError('Failed to logout');
+      console.log('Failed to logout');
     }
   };
 

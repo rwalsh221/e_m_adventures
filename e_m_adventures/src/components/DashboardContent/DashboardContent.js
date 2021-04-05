@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Button, Alert } from 'react-bootstrap';
+// import { Card, Button, Alert } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { LoremIpsum } from 'react-lorem-ipsum';
@@ -8,7 +8,7 @@ import { formatDate } from '../../helpers/utilities';
 import classes from './DashboardContent.module.css';
 
 const DashboardContent = () => {
-  const [error, setError] = useState('');
+  // const [error, setError] = useState('');
   const [bookings, setBookings] = useState(null);
 
   const database =
@@ -19,13 +19,13 @@ const DashboardContent = () => {
   const history = useHistory();
 
   const handleLogout = async () => {
-    setError('');
+    // setError('');
 
     try {
       await logout();
-      history.pushState('/home');
+      history.pushState('/');
     } catch {
-      setError('Failed to logout');
+      console.log('Failed to logout');
     }
   };
 
@@ -64,8 +64,6 @@ const DashboardContent = () => {
     );
   }
 
-  console.log(content);
-
   return (
     <main className={'contentGrid'}>
       <h1 className={classes.header}>{currentUser.email}'s DashBoard</h1>
@@ -89,48 +87,7 @@ const DashboardContent = () => {
       <h3 className={classes.bookingHeading}>Your Bookings</h3>
       <div className={classes.bookingCard}>
         {content.length === 0 ? null : content}
-        {/* <div className={classes.bookingCardContent}>
-          <ul>
-            <li>Check In: 08/08/2021</li>
-            <li>Check Out: 08/08/2021</li>
-          </ul>
-        </div>
-        <div className={classes.bookingCardContent}>
-          <ul>
-            <li>Check In: 08/08/2021</li>
-            <li>Check Out: 08/08/2021</li>
-          </ul>
-        </div>
-        <div className={classes.bookingCardContent}>
-          <ul>
-            <li>Check In: 08/08/2021</li>
-            <li>Check Out: 08/08/2021</li>
-          </ul>
-        </div>
-        <div className={classes.bookingCardContent}>
-          <ul>
-            <li>Check In: 08/08/2021</li>
-            <li>Check Out: 08/08/2021</li>
-          </ul>
-        </div> */}
       </div>
-      {/* <React.Fragment>
-        <Card>
-          <Card.Body>
-            <h2 className="text-center mb-4">Profile</h2>
-            {error && <Alert variant="danger">{error}</Alert>}
-            <strong>Email:</strong> {currentUser.email}
-            <Link to="/update-profile" className={'btn btn-primary w-100 mt-3'}>
-              Update Profile
-            </Link>
-          </Card.Body>
-        </Card>
-        <div className="w-100 text-center mt-2">
-          <Button variant={'link'} onClick={handleLogout}>
-            Log Out
-          </Button>
-        </div>
-      </React.Fragment> */}
     </main>
   );
 };

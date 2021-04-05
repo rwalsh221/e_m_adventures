@@ -27,8 +27,14 @@
   font-size: 2rem;
 }
 
+.footerTopContent a {
+  color: var(--sec-color-grey-light);
+}
+
 .footerTopContent a:hover,
-.footerBtmContent a:hover {
+.footerTopContent a:focus,
+.footerBtmContent a:hover,
+.footerBtmContent a:focus {
   text-decoration: underline;
 }
 
@@ -66,7 +72,11 @@
   font-size: 3rem;
 }
 
-.footerBtmContentIcon a:visited,
 .footerBtmContentIcon a:link {
   color: var(--sec-color-grey-light);
+}
+
+.footerBtmContentIcon a:hover,
+.footerBtmContentIcon a:focus {
+  color: var(--main-color-gold);
 }

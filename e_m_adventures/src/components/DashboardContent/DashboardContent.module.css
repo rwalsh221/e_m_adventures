@@ -64,7 +64,7 @@
   grid-column: 2;
   display: flex;
   align-content: flex-start;
-  justify-content: space-around;
+  justify-content: flex-start;
   flex-wrap: wrap;
   padding: 0.5rem;
   width: 100%;
@@ -72,7 +72,7 @@
 
 .bookingCardContent {
   background-color: var(--main-color-gold);
-  flex-basis: 45%;
+  flex-basis: 47%;
   padding: 1rem;
   border-radius: 2rem;
   margin: 0.5rem;
@@ -91,4 +91,34 @@
 
 .ref {
   font-size: 1rem;
+}
+
+@media (max-width: 480px) {
+  .bookingHeading {
+    grid-row: 3;
+    grid-column: 1;
+    margin-top: 5rem;
+  }
+
+  .bookingCard {
+    grid-row: 4;
+    grid-column: 1;
+    width: 50%;
+    justify-self: center;
+  }
+
+  .bookingCardContent {
+    width: 80%;
+  }
+
+  .btnContainer {
+    grid-row: 5;
+    grid-column: 1;
+  }
+}
+
+@media (max-width: 305px) {
+  .bookingCardContent {
+    width: 98%;
+  }
 }

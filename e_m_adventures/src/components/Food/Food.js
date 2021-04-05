@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { FoodButton } from '../miniComponents/Buttons/Buttons';
-
 import foodHero from '../../assets/img/foodHero2.jpg';
 import classes from './Food.module.css';
 

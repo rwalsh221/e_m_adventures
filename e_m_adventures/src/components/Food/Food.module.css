@@ -44,6 +44,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: var(--main-color-black);
+}
+
+.foodBtn:hover {
+  background-color: var(--main-color-black);
+  color: var(--main-color-gold);
+  border-color: var(--main-color-gold);
 }
 
 @media (max-width: 1095px) {

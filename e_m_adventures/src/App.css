@@ -56,11 +56,11 @@ a {
   cursor: pointer;
 }
 
-a:active,
+/* a:active,
 a:visited {
   color: var(--main-color-white);
   text-decoration: none;
-}
+} */
 
 button {
   font-size: 1.8rem;
