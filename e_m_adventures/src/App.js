@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import ScrollToTop from './helpers/Routes/ScrollToTop';
 
 import Home from './layout/Home/Home';
 import Covid from './layout/Covid/Covid';
@@ -26,6 +27,7 @@ function App() {
     <div className="App">
       <Router>
         <AuthProvider>
+          <ScrollToTop />
           <Switch>
             <PrivateRoute
               path="/confirmation"
