@@ -90,11 +90,6 @@
   margin-right: 0;
 }
 
-.loginForm input,
-.loginForm label {
-  /* margin: 1rem auto; */
-}
-
 .loginBtn {
   padding: 2rem;
   border-radius: 2rem;
@@ -103,6 +98,7 @@
   font-size: 2rem;
   margin: 2rem auto;
   width: 20rem;
+  border: 2px solid var(--main-color-white);
 }
 
 .forgot {

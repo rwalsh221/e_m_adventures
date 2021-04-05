@@ -15,7 +15,6 @@ import Footer from '../../components/Footer/Footer';
 //  TODO: ADD AXIOS CONFIG SEE BURGER BUILDER
 
 // TODO: dashboard responsiveness
-// TODO: scroll to top
 // TODO: login button
 
 const Home = (props) => {

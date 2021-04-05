@@ -67,15 +67,15 @@
   margin: 2rem auto 0 auto;
   height: 8rem;
   width: 16rem;
-  background-color: var(--main-color-black);
-  border: 2px solid var(--main-color-gold);
+  background-color: var(--main-color-gold);
+  border: 2px solid var(--main-color-black);
   transition: all 0.2s;
-  color: var(--main-color-gold);
+  color: var(--main-color-black);
   border-radius: 3rem;
 }
 
 .summaryBtn:hover {
-  background-color: var(--main-color-gold);
-  border: 2px solid var(--main-color-black);
-  color: var(--main-color-black);
+  background-color: var(--main-color-black);
+  border: 2px solid var(--main-color-gold);
+  color: var(--main-color-gold);
 }
