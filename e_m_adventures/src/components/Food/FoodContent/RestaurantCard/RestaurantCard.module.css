@@ -1,5 +1,5 @@
 .sidebarCard {
-  flex-basis: 45%;
+  flex-basis: 80%;
 
   flex-wrap: wrap;
   border: var(--b-2-gold);

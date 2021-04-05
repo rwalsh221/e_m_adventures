@@ -181,6 +181,145 @@ const FoodContent = (props) => {
           />
         </div>
       </div>
+
+      {/* small screen */}
+      <div className={classes.sidebarSmall}>
+        <div className={`${classes.sidebarContent} `}>
+          <h5>Indian Restaurants</h5>
+          <img
+            className={classes.sidebarImg}
+            src={india}
+            alt={'must see'}
+          ></img>
+          <div className={classes.sidebarCardContainer}>
+            {/* <RestaurantCard
+            title={'Babar'}
+            img={babar}
+            website={'babarelephant.co.uk/'}
+            phone={+441524388670}
+          />
+          <RestaurantCard
+            title={'Babar'}
+            img={babar}
+            website={'babarelephant.co.uk/'}
+            phone={+441524388670}
+          /> */}
+            <RestaurantCard
+              title={'Babar'}
+              img={babar}
+              website={'babarelephant.co.uk/'}
+              phone={+441524388670}
+            />
+            <RestaurantCard
+              title={'Babar'}
+              img={babar}
+              website={'babarelephant.co.uk/'}
+              phone={+441524388670}
+            />
+            <RestaurantCard
+              title={'Babar'}
+              img={babar}
+              website={'babarelephant.co.uk/'}
+              phone={+441524388670}
+            />
+            <RestaurantCard
+              title={'Babar'}
+              img={babar}
+              website={'babarelephant.co.uk/'}
+              phone={+441524388670}
+            />
+          </div>
+        </div>
+
+        <div className={`${classes.sidebarContent} `}>
+          <h5>Italien Restaurants</h5>
+          <img
+            className={classes.sidebarImg}
+            src={italy}
+            alt={'must see'}
+          ></img>
+          <div className={classes.sidebarCardContainer}>
+            <RestaurantCard
+              title={'Marcos'}
+              img={marcos}
+              website={'marcosrestaurant.com'}
+              phone={+441524844445}
+            />
+            <RestaurantCard
+              title={'Marcos'}
+              img={marcos}
+              website={'marcosrestaurant.com'}
+              phone={+441524844445}
+            />
+            <RestaurantCard
+              title={'Marcos'}
+              img={marcos}
+              website={'marcosrestaurant.com'}
+              phone={+441524844445}
+            />
+            <RestaurantCard
+              title={'Marcos'}
+              img={marcos}
+              website={'marcosrestaurant.com'}
+              phone={+441524844445}
+            />
+            <RestaurantCard
+              title={'Marcos'}
+              img={marcos}
+              website={'marcosrestaurant.com'}
+              phone={+441524844445}
+            />
+            <RestaurantCard
+              title={'Marcos'}
+              img={marcos}
+              website={'marcosrestaurant.com'}
+              phone={+441524844445}
+            />
+          </div>
+        </div>
+        <div className={`${classes.sidebarContent} `}>
+          <h5>British Restaurants</h5>
+          <img className={classes.sidebarImg} src={uk} alt={'must see'}></img>
+          <div className={classes.sidebarCardContainer}>
+            <RestaurantCard
+              title={'Stone Grill'}
+              img={stone}
+              website={'stonegrill.co.uk'}
+              phone={+4401253595199}
+            />
+            <RestaurantCard
+              title={'Stone Grill'}
+              img={stone}
+              website={'stonegrill.co.uk'}
+              phone={+4401253595199}
+            />
+            <RestaurantCard
+              title={'Stone Grill'}
+              img={stone}
+              website={'stonegrill.co.uk'}
+              phone={+4401253595199}
+            />
+            <RestaurantCard
+              title={'Stone Grill'}
+              img={stone}
+              website={'stonegrill.co.uk'}
+              phone={+4401253595199}
+            />
+            <RestaurantCard
+              title={'Stone Grill'}
+              img={stone}
+              website={'stonegrill.co.uk'}
+              phone={+4401253595199}
+            />
+            <RestaurantCard
+              title={'Stone Grill'}
+              img={stone}
+              website={'stonegrill.co.uk'}
+              phone={+4401253595199}
+            />
+          </div>
+        </div>
+      </div>
     </main>
   );
 };
