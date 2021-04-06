@@ -1,5 +1,7 @@
 import React from 'react';
 
+import axios from 'axios';
+
 import Covid from '../../components/Covid/Covid';
 import Header from '../../components/Header/Header';
 import ExploreNearby from '../../components/ExploreNearby/ExploreNearby';
@@ -8,6 +10,8 @@ import Food from '../../components/Food/Food';
 import ExploreWorld from '../../components/ExploreWorld/ExploreWorld';
 import Footer from '../../components/Footer/Footer';
 
+import app from '../../firebase';
+
 // TODO: PUT ASYNC WEATHER CALL IN PARENT TO PREVENT MULTIPLE API CALLS
 
 // TODO: REMOVE INDEX.CSS AND GET FONT
@@ -15,19 +19,46 @@ import Footer from '../../components/Footer/Footer';
 //  TODO: ADD AXIOS CONFIG SEE BURGER BUILDER
 
 // TODO: dashboard responsiveness
-// TODO: login button
+//TODO: food responsiveness
+// TODO: forgot password section
 
 const Home = (props) => {
-  let database = async () => {
-    let test = await fetch(
-      'https://e-m-adventures-development-default-rtdb.europe-west1.firebasedatabase.app/.json '
-    );
+  // const database2 = async () => {
+  //   const response = await axios.get(
+  //     `https://e-m-adventures-development-default-rtdb.europe-west1.firebasedatabase.app/.json`,
+  //     {
+  //       params: {
+  //         auth: process.env.REACT_APP_FIREBASE_DATABASE_SECRET,
+  //       },
+  //     }
+  //   );
+  //   console.log(response);
+  // };
 
-    let test2 = await test.json();
-    console.log(test2);
-  };
+  // database2();
 
-  database();
+  // axios
+  //   .get(
+  //     `https://e-m-adventures-development-default-rtdb.europe-west1.firebasedatabase.app/.json`
+  //   )
+  //   .then(function (response) {
+  //     let test = response;
+  //     console.log(test);
+  //   });
+
+  // let database = async () => {
+  //   let test = await fetch(
+  //     `https://e-m-adventures-development-default-rtdb.europe-west1.firebasedatabase.app/.json?auth=${process.env.REACT_APP_DATABASE_SECRET}`
+  //   );
+
+  //   // ${
+  //   //   app.auth().currentUser.uid
+  //   // }
+  //   let test2 = await test.json();
+  //   console.log(test2);
+  // };
+  // console.log(app.auth().currentUser.uid);
+  // database();
   return (
     <div className={'layoutGrid'}>
       <Covid />

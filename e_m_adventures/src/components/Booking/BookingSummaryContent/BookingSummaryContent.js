@@ -26,7 +26,9 @@ const BookingSummaryContent = (props) => {
   useEffect(() => {
     const dateAvaliable = async () => {
       try {
-        const unavaliableDays = await fetch(`${database}fulldays.json`);
+        const unavaliableDays = await fetch(
+          `${database}fulldays.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`
+        );
 
         let unavaliableDaysData = await unavaliableDays.json();
 
@@ -56,26 +58,49 @@ const BookingSummaryContent = (props) => {
             ...data,
           },
         },
-        { timeout: 2000 }
+        {
+          timeout: 2000,
+          params: {
+            auth: process.env.REACT_APP_FIREBASE_DATABASE_SECRET,
+          },
+        }
       )
       .catch((error) => {
         console.error(error);
       });
 
     axios
-      .post(`${database}users/${currentUser.uid}/booking.json`, {
-        bookingRef: ref,
-        checkIn: data.checkIn,
-        checkOut: data.checkOut,
-      })
+      .post(
+        `${database}users/${currentUser.uid}/booking.json`,
+        {
+          bookingRef: ref,
+          checkIn: data.checkIn,
+          checkOut: data.checkOut,
+        },
+        {
+          timeout: 2000,
+          params: {
+            auth: process.env.REACT_APP_FIREBASE_DATABASE_SECRET,
+          },
+        }
+      )
       .catch((error) => {
         console.error(error);
       });
 
     axios
-      .patch(`${database}fulldays.json`, {
-        ...newBookedDays,
-      })
+      .patch(
+        `${database}fulldays.json`,
+        {
+          ...newBookedDays,
+        },
+        {
+          timeout: 2000,
+          params: {
+            auth: process.env.REACT_APP_FIREBASE_DATABASE_SECRET,
+          },
+        }
+      )
       .then((response) => {
         if (response.status === 200) history.push('/confirmation');
       })

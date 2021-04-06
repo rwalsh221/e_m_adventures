@@ -33,7 +33,7 @@ const DashboardContent = () => {
     const fetchBookings = async () => {
       try {
         const myBookings = await fetch(
-          `${database}/users/${currentUser.uid}/booking.json`
+          `${database}/users/${currentUser.uid}/booking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`
         );
 
         console.log(myBookings);
@@ -64,6 +64,7 @@ const DashboardContent = () => {
     );
   }
 
+  console.log(currentUser.uid);
   return (
     <main className={'contentGrid'}>
       <h1 className={classes.header}>{currentUser.email}'s DashBoard</h1>
