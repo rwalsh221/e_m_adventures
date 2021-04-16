@@ -21,6 +21,21 @@
   border-radius: 2rem;
 }
 
+.weatherCardError {
+  display: flex;
+  min-height: 20rem;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--main-color-black);
+  border-radius: 2rem;
+}
+
+.error {
+  width: 80%;
+  text-align: center;
+  color: red;
+}
 .weatherCard ion-icon {
   font-size: 3rem;
 }
