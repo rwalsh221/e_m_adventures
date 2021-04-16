@@ -122,11 +122,19 @@
   .loginForm {
     width: 60%;
   }
+
+  .loginCard {
+    min-width: 80%;
+  }
 }
 
 @media (max-width: 800px) {
   .loginForm {
     width: 80%;
+  }
+
+  .loginCard {
+    min-width: 90%;
   }
 }
 

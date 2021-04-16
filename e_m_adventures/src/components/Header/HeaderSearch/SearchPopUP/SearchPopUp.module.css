@@ -65,11 +65,10 @@
   flex-direction: column;
 }
 
-/* .date input,
+.date input,
 .guests select {
-  height: 5rem;
-  width: 2000000rem;
-} */
+  width: 100%;
+}
 
 .btnSubmit {
   border: none;

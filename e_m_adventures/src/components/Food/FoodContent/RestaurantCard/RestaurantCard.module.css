@@ -1,6 +1,17 @@
-.sidebarCard {
-  flex-basis: 80%;
+.test {
+}
 
+.sidebarCard h6 {
+  color: var(--main-color-gold);
+}
+
+.sidebarCardImg {
+  width: 15rem;
+  height: 10rem;
+}
+
+.sidebarCard {
+  width: min-content;
   flex-wrap: wrap;
   border: var(--b-2-gold);
   display: flex;
@@ -11,11 +22,9 @@
   margin: 0.5rem;
 }
 
-.sidebarCard h6 {
-  color: var(--main-color-gold);
-}
-
-.sidebarCardImg {
-  width: 15rem;
-  height: 10rem;
+@media (max-width: 1375px) {
+  .sidebarCardImg {
+    width: 12rem;
+    height: 7rem;
+  }
 }
