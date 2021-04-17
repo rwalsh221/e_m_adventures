@@ -1,8 +1,13 @@
-.test {
-}
+/* .test {
+} */
 
-.sidebarCard h6 {
+.webLink,
+.webLink:visited {
   color: var(--main-color-gold);
+  font-size: 1.6rem;
+}
+.sidebarCard h6 {
+  color: var(--main-color-white);
 }
 
 .sidebarCardImg {
@@ -11,7 +16,7 @@
 }
 
 .sidebarCard {
-  width: min-content;
+  width: 80%;
   flex-wrap: wrap;
   border: var(--b-2-gold);
   display: flex;

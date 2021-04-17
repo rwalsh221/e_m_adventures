@@ -42,7 +42,7 @@
 .subImg {
   width: 25rem;
   height: 25rem;
-  border-radius: 50% !important;
+  border-radius: 50%;
   shape-outside: circle(50%);
   margin: 1rem;
 }
@@ -56,6 +56,14 @@
 }
 
 /* SIDEBAR STYLE */
+
+.sidebarContainer {
+  grid-column: 2;
+  grid-row: 2 / span 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
 
 .sidebarHeading,
 .sidebarContent {
@@ -86,27 +94,7 @@
 .sidebarImg {
   width: 20%;
   margin: 1rem auto;
-
   display: block;
-}
-
-.sidebarTop,
-.sidebarMid,
-.sidebarBtm {
-  grid-column: 2;
-  /* color: hotpink; */
-}
-
-.sidebarTop {
-  grid-row: 2;
-}
-
-.sidebarMid {
-  grid-row: 3;
-}
-
-.sidebarBtm {
-  grid-row: 4;
 }
 
 .sidebarCardContainer {
@@ -119,25 +107,11 @@
   overflow-y: scroll;
   flex-wrap: wrap;
   padding: 0.5rem;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
-.sidebarCard {
-  /* min-width: 48%; */
-
-  /* flex-wrap: wrap; */
-  border: var(--b-2-gold);
-  /* display: flex; */
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-content: flex-start;
-}
-
-.sidebarCard h6 {
-  color: var(--main-color-gold);
-}
-
-.sidebarSmall {
+.sidebarCardContainer::-webkit-scrollbar {
   display: none;
 }
 
@@ -148,26 +122,20 @@
     grid-column: 1;
   }
 
-  .sidebarSmall {
-    display: flex;
+  .sidebarContainer {
+    flex-direction: row;
+    justify-content: flex-start;
+    grid-column: 1;
     grid-row: 6;
     flex-wrap: nowrap;
     overflow-y: scroll;
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
   }
 
   .sidebarContent {
     min-width: 40rem;
   }
 
-  .sidebarTop,
-  .sidebarMid,
-  .sidebarBtm {
-    display: none;
-  }
-
-  .sidebarSmall::-webkit-scrollbar {
+  .sidebarContainer::-webkit-scrollbar {
     display: none;
   }
 

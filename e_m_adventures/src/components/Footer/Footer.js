@@ -21,7 +21,7 @@ const Footer = (props) => {
         </div>
         <div className={classes.footerTopContent}>
           <Link to={'/login'}>Login</Link>
-          <Link to={'/covid'}>Covid 19 Information</Link>
+          <Link to={'/covid'}>Covid 19 </Link>
         </div>
       </div>
       <div className={classes.footerBtm}>
