@@ -40,33 +40,10 @@ const ExploreNearbyContent = (props) => {
         <LoremIpsum p={1} />
       </div>
       {/* MUST SEE SECTION */}
+
       <h3 className={classes.mustSeeHeading}>Must See</h3>
-      <div className={`${classes.mustSeeContent} ${classes.mustSeeTop}`}>
-        <h5>Placeholder</h5>
-        <img
-          className={classes.mustSeeImg}
-          src={mustSee}
-          alt={'must see'}
-        ></img>
-      </div>
-      <div className={`${classes.mustSeeContent} ${classes.mustSeeMid}`}>
-        <h5>Placeholder</h5>
-        <img
-          className={classes.mustSeeImg}
-          src={mustSee}
-          alt={'must see'}
-        ></img>
-      </div>
-      <div className={`${classes.mustSeeContent} ${classes.mustSeeBtm}`}>
-        <h5>Placeholder</h5>
-        <img
-          className={classes.mustSeeImg}
-          src={mustSee}
-          alt={'must see'}
-        ></img>
-      </div>
       <div className={classes.mustSeeCardContainer}>
-        <div className={`${classes.mustSeeContent}`}>
+        <div className={`${classes.mustSeeContent} ${classes.mustSeeTop}`}>
           <h5>Placeholder</h5>
           <img
             className={classes.mustSeeImg}
@@ -74,7 +51,7 @@ const ExploreNearbyContent = (props) => {
             alt={'must see'}
           ></img>
         </div>
-        <div className={`${classes.mustSeeContent}`}>
+        <div className={`${classes.mustSeeContent} ${classes.mustSeeMid}`}>
           <h5>Placeholder</h5>
           <img
             className={classes.mustSeeImg}
@@ -82,7 +59,7 @@ const ExploreNearbyContent = (props) => {
             alt={'must see'}
           ></img>
         </div>
-        <div className={`${classes.mustSeeContent}`}>
+        <div className={`${classes.mustSeeContent} ${classes.mustSeeBtm}`}>
           <h5>Placeholder</h5>
           <img
             className={classes.mustSeeImg}
@@ -91,6 +68,32 @@ const ExploreNearbyContent = (props) => {
           ></img>
         </div>
       </div>
+      {/* <div className={classes.mustSeeCardContainer}>
+        <div className={`${classes.mustSeeContent}`}>
+          <h5>Placeholder</h5>
+          <img
+            className={classes.mustSeeImg}
+            src={mustSee}
+            alt={'must see'}
+          ></img>
+        </div>
+        <div className={`${classes.mustSeeContent}`}>
+          <h5>Placeholder</h5>
+          <img
+            className={classes.mustSeeImg}
+            src={mustSee}
+            alt={'must see'}
+          ></img>
+        </div>
+        <div className={`${classes.mustSeeContent}`}>
+          <h5>Placeholder</h5>
+          <img
+            className={classes.mustSeeImg}
+            src={mustSee}
+            alt={'must see'}
+          ></img>
+        </div>
+      </div> */}
     </main>
   );
 };
