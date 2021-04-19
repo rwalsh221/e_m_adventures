@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import Spinner from '../../miniComponents/Spinner/Spinner';
 import classes from './WeatherCard.module.css';

@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { nanoid } from 'nanoid';
-// import { dateToMilliseconds } from '../../../helpers/utilities';
 
 import BookingUnavailable from './BookingUnavailable/BookingUnavailable';
 import BookingAvailable from './BookingAvailable/BookingAvailable';
@@ -50,63 +48,121 @@ const BookingSummaryContent = (props) => {
     bookedDays ? (newBookedDays = [...bookedDays]) : (newBookedDays = []);
     newBookedDays.push(data.checkIn, data.checkOut, ...data.fullDays);
 
-    axios
-      .patch(
-        `${database}booking.json`,
-        {
-          [ref]: {
-            ...data,
-          },
-        },
-        {
-          timeout: 2000,
-          params: {
-            auth: process.env.REACT_APP_FIREBASE_DATABASE_SECRET,
-          },
-        }
-      )
-      .catch((error) => {
-        console.error(error);
-      });
+    const patchConfig = {
+      method: 'PATCH',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    };
 
-    axios
-      .post(
-        `${database}users/${currentUser.uid}/booking.json`,
-        {
-          bookingRef: ref,
-          checkIn: data.checkIn,
-          checkOut: data.checkOut,
-        },
-        {
-          timeout: 2000,
-          params: {
-            auth: process.env.REACT_APP_FIREBASE_DATABASE_SECRET,
-          },
-        }
-      )
-      .catch((error) => {
-        console.error(error);
-      });
+    const postConfig = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    };
 
-    axios
-      .patch(
-        `${database}fulldays.json`,
+    try {
+      // send booking to booking database key
+      const submitBooking = await fetch(
+        `${database}booking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`,
         {
-          ...newBookedDays,
-        },
-        {
-          timeout: 2000,
-          params: {
-            auth: process.env.REACT_APP_FIREBASE_DATABASE_SECRET,
-          },
+          ...patchConfig,
+          body: JSON.stringify({
+            [ref]: {
+              ...data,
+            },
+          }),
         }
-      )
-      .then((response) => {
-        if (response.status === 200) history.push('/confirmation');
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+      );
+      if (!submitBooking.ok) throw Error(submitBooking.message);
+
+      // send booking to user database key
+      const submitUserBookings = await fetch(
+        `${database}users/${currentUser.uid}/booking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`,
+        {
+          ...postConfig,
+          body: JSON.stringify({
+            bookingRef: ref,
+            checkIn: data.checkIn,
+            checkOut: data.checkOut,
+          }),
+        }
+      );
+
+      if (!submitUserBookings.ok) throw new Error(submitUserBookings.message);
+
+      // update fulldays database key
+      const submitFulldays = await fetch(
+        `${database}fulldays.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`,
+        { ...patchConfig, body: JSON.stringify({ ...newBookedDays }) }
+      );
+
+      if (submitFulldays.ok) history.push('/confirmation');
+      if (!submitFulldays.ok) throw new Error(submitFulldays.message);
+    } catch (err) {
+      console.error(err.message);
+    }
+
+    // axios
+    //   .patch(
+    //     `${database}booking.json`,
+    //     {
+    //       [ref]: {
+    //         ...data,
+    //       },
+    //     },
+    //     {
+    //       timeout: 2000,
+    //       params: {
+    //         auth: process.env.REACT_APP_FIREBASE_DATABASE_SECRET,
+    //       },
+    //     }
+    //   )
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
+
+    // axios
+    //   .post(
+    //     `${database}users/${currentUser.uid}/booking.json`,
+    //     {
+    //       bookingRef: ref,
+    //       checkIn: data.checkIn,
+    //       checkOut: data.checkOut,
+    //     },
+    //     {
+    //       timeout: 2000,
+    //       params: {
+    //         auth: process.env.REACT_APP_FIREBASE_DATABASE_SECRET,
+    //       },
+    //     }
+    //   )
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
+
+    // axios
+    //   .patch(
+    //     `${database}fulldays.json`,
+    //     {
+    //       ...newBookedDays,
+    //     },
+    //     {
+    //       timeout: 2000,
+    //       params: {
+    //         auth: process.env.REACT_APP_FIREBASE_DATABASE_SECRET,
+    //       },
+    //     }
+    //   )
+    //   .then((response) => {
+    //     if (response.status === 200) history.push('/confirmation');
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
   }, [bookedDays, history, state.headerSearch, currentUser.uid]);
 
   useEffect(() => {
