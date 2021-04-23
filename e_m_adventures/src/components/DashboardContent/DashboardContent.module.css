@@ -62,6 +62,7 @@
 .futureDateContainer,
 .pastDateContainer {
   margin: 3rem 0;
+  min-height: 40rem;
   max-height: 40rem;
   overflow-x: scroll;
 

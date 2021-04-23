@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 // import { Card, Button, Alert } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { LoremIpsum } from 'react-lorem-ipsum';
 import { formatDate } from '../../helpers/utilities';
+
+import Backdrop from '../miniComponents/Backdrop/Backdrop';
 
 import classes from './DashboardContent.module.css';
 
@@ -11,11 +13,16 @@ const DashboardContent = () => {
   // const [error, setError] = useState('');
   const [bookingsFuture, setBookingsFuture] = useState(null);
   const [bookingsPast, setBookingsPast] = useState(null);
+  const [showBackdrop, setShowBackdrop] = useState(false);
+  const [backDropContent, setBackdropContent] = useState(null);
+
+  const { currentUser, logout } = useAuth();
+
+  const backdropRef = useRef(null);
+  const bookingRef = useRef(null);
 
   const database =
     'https://e-m-adventures-development-default-rtdb.europe-west1.firebasedatabase.app/';
-
-  const { currentUser, logout } = useAuth();
 
   const history = useHistory();
 
@@ -48,18 +55,12 @@ const DashboardContent = () => {
 
         // PUSH BOOKINGS TOO ARRAY
         for (let key in myBookingsData) {
-          console.log(myBookingsData);
-          console.log(myBookingsData[key].checkIn);
+          // GET TODAYS DATE
           const date = new Date();
-          console.log(date.getTime());
-          if (myBookingsData[key].checkIn > date.getTime()) {
-            console.log(myBookingsData[key].checkIn);
 
-            console.log('if');
+          if (myBookingsData[key].checkIn > date.getTime()) {
             myBookingsDataArrFuture.push(myBookingsData[key]);
           } else if (myBookingsData[key].checkIn < date.getTime()) {
-            console.log(myBookingsData[key].checkIn);
-            console.log('else');
             myBookingsDataArrPast.push(myBookingsData[key]);
           }
         }
@@ -67,9 +68,6 @@ const DashboardContent = () => {
         // SORT ARRAY BY DATE
         sortArray(myBookingsDataArrFuture);
         sortArray(myBookingsDataArrPast);
-        // myBookingsDataArrFuture.sort(
-        //   (a, b) => parseFloat(a.checkIn) - parseFloat(b.checkIn)
-        // );
 
         // SET STATES WITH SORTED ARRAY
         setBookingsFuture(myBookingsDataArrFuture);
@@ -81,12 +79,44 @@ const DashboardContent = () => {
     fetchBookings();
   }, [currentUser.uid]);
 
+  useEffect(() => {
+    const pageClickEvent = (e) => {
+      // If the active element exists and is clicked outside of
+      if (
+        backdropRef.current !== null &&
+        !backdropRef.current.contains(e.target)
+      ) {
+        setShowBackdrop(false);
+      }
+    };
+    // If the item is active (ie open) then listen for clicks
+    if (showBackdrop) {
+      window.addEventListener('click', pageClickEvent);
+    }
+
+    return () => {
+      window.removeEventListener('click', pageClickEvent);
+    };
+  }, [showBackdrop]);
+
   let contentFuture = [];
   let contentPast = [];
 
+  // RENDER FUTURE BOOKING CONTENT
   for (let key in bookingsFuture) {
     contentFuture.push(
-      <div className={classes.bookingCardContent} key={key}>
+      <div
+        className={classes.bookingCardContent}
+        id={key}
+        key={key}
+        onClick={(e) => {
+          if (e.target.tagName === 'LI')
+            setBackdropContent(
+              bookingsFuture[e.target.parentNode.parentNode.id]
+            );
+          setShowBackdrop(true);
+        }}
+      >
         <ul>
           <li>
             Ref:
@@ -105,6 +135,7 @@ const DashboardContent = () => {
     );
   }
 
+  // RENDER PAST BOOKINGS CONTENT
   for (let key in bookingsPast) {
     contentPast.push(
       <div className={classes.bookingCardContent} key={key}>
@@ -124,9 +155,13 @@ const DashboardContent = () => {
     );
   }
 
-  console.log(currentUser.uid);
   return (
     <main className={classes.grid}>
+      <Backdrop
+        show={showBackdrop}
+        content={backDropContent}
+        ref={backdropRef}
+      />
       <h1 className={classes.header}>{currentUser.email}'s DashBoard</h1>
       <div className={classes.profile}>
         <h2 className={classes.profileHeading}>Profile</h2>
