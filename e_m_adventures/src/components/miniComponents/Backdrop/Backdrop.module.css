@@ -1,11 +1,60 @@
-.test {
-  background-color: hotpink;
+.backdrop {
+  background-color: var(--main-color-black);
   position: fixed;
-
+  padding: 10rem;
   top: 50%;
   right: 50%;
   transform: translate(50%, -50%);
   height: 90vh;
   width: 90vw;
   z-index: 1000;
+  border-radius: 3rem;
+  color: var(--main-color-gold);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contentRight img {
+  border-radius: 3rem;
+}
+
+.backdrop h2 {
+  color: var(--main-color-white);
+}
+
+.subHeading {
+  color: var(--main-color-white);
+}
+
+.content {
+  list-style: none;
+  font-size: 2rem;
+}
+
+.content li {
+  margin: 1rem;
+}
+
+.contentBtm {
+  width: 70%;
+  margin: 5rem auto;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.modifyBtn {
+  background-color: var(--main-color-gold);
+  padding: 2rem;
+  border-radius: 3rem;
+}
+
+.modifyBtn,
+.modifyBtn:visited {
+  color: var(--main-color-black);
+}
+
+.modifyBtn:hover {
+  background-color: var(--main-color-white);
 }

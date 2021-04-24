@@ -4,17 +4,24 @@ import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { LoremIpsum } from 'react-lorem-ipsum';
 import { formatDate } from '../../helpers/utilities';
+import { connect, useDispatch } from 'react-redux';
 
 import Backdrop from '../miniComponents/Backdrop/Backdrop';
 
+import * as actionTypes from './DashboardContentSlice';
+
 import classes from './DashboardContent.module.css';
 
+const mapDispatch = { ...actionTypes };
+
 const DashboardContent = () => {
+  const dispatch = useDispatch();
+
   // const [error, setError] = useState('');
   const [bookingsFuture, setBookingsFuture] = useState(null);
   const [bookingsPast, setBookingsPast] = useState(null);
   const [showBackdrop, setShowBackdrop] = useState(false);
-  const [backDropContent, setBackdropContent] = useState(null);
+  const [backdropContent, setBackdropContent] = useState(null);
 
   const { currentUser, logout } = useAuth();
 
@@ -110,11 +117,17 @@ const DashboardContent = () => {
         id={key}
         key={key}
         onClick={(e) => {
-          if (e.target.tagName === 'LI')
+          if (e.target.tagName === 'LI') {
             setBackdropContent(
               bookingsFuture[e.target.parentNode.parentNode.id]
             );
-          setShowBackdrop(true);
+            setShowBackdrop(true);
+            dispatch(
+              actionTypes.modifyBooking(
+                bookingsFuture[e.target.parentNode.parentNode.id]
+              )
+            );
+          }
         }}
       >
         <ul>
@@ -159,7 +172,7 @@ const DashboardContent = () => {
     <main className={classes.grid}>
       <Backdrop
         show={showBackdrop}
-        content={backDropContent}
+        content={backdropContent}
         ref={backdropRef}
       />
       <h1 className={classes.header}>{currentUser.email}'s DashBoard</h1>
@@ -204,4 +217,4 @@ const DashboardContent = () => {
   );
 };
 
-export default DashboardContent;
+export default connect(null, mapDispatch)(DashboardContent);
