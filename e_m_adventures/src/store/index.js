@@ -5,5 +5,5 @@ import DashboardContentSlice from '../components/DashboardContent/DashboardConte
 
 export default combineReducers({
   headerSearch: HeaderSearchReducer,
-  dashboardContent: DashboardContentSlice,
+  modifyBooking: DashboardContentSlice,
 });

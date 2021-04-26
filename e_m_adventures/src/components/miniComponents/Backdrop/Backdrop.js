@@ -50,7 +50,11 @@ const Backdrop = React.forwardRef((props, ref) => {
         <img src={img} alt={'backdrop'}></img>
       </div>
       <div className={classes.contentBtm}>
-        <Link className={classes.modifyBtn} role={'button'} to={'/'}>
+        <Link
+          className={classes.modifyBtn}
+          role={'button'}
+          to={'/modify-booking'}
+        >
           Change Your Booking
         </Link>
       </div>

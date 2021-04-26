@@ -1,0 +1,33 @@
+.main {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  min-height: 70vh;
+  flex-direction: column;
+}
+
+.bookingInfo {
+  width: 80%;
+  margin: 0 auto;
+  background-color: var(--main-color-black);
+  list-style: none;
+  color: var(--main-color-white);
+  font-size: 3rem;
+  padding: 5rem;
+  border-radius: 3rem;
+}
+
+.submitBtn {
+  background-color: var(--main-color-gold);
+  width: max-content;
+  padding: 3rem;
+  border-radius: 3rem;
+  font-size: 2rem;
+  margin: 3rem auto;
+}
+
+.submitBtn,
+.submitBtn:visited {
+  color: var(--main-color-black);
+}

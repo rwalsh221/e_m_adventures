@@ -14,6 +14,7 @@ import ForgotPassword from './layout/ForgotPassword/ForgotPassword';
 import UpdateProfile from './layout/UpdateProfile/UpdateProfile';
 import BookingSummary from './layout/BookingSummary/BookingSummary';
 import BookingConfirmation from './layout/BookingConfirmation/BookingConfirmation';
+import ModifyBooking from './layout/ModifyBooking/ModifyBooking';
 
 import { AuthProvider } from './contexts/AuthContext';
 import PrivateRoute from './helpers/Routes/PrivateRoute';
@@ -35,6 +36,8 @@ function App() {
             />
             <PrivateRoute path="/summary" component={BookingSummary} />
             <PrivateRoute path="/update-profile" component={UpdateProfile} />
+            <PrivateRoute path="/modify-booking" component={ModifyBooking} />
+
             <Route path="/forgot-password" component={ForgotPassword} />
             <Route path="/login" component={Login} />
             <PrivateRoute path="/dashboard" component={Dashboard} />
