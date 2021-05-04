@@ -25,6 +25,14 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const patchConfig = {
+      method: 'PATCH',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    };
+
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
       return setError('Passwords do not match');
     }
@@ -34,16 +42,29 @@ const Signup = () => {
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value).then(
         (newUser) => {
-          axios.patch(`${database}users.json`, {
-            [newUser.user.uid]: {
-              email: newUser.user.email,
-              uid: newUser.user.uid,
-              role: 'user',
-            },
-          });
+          axios.patch(
+            `${database}users.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`,
+            {
+              [newUser.user.uid]: {
+                email: newUser.user.email,
+                uid: newUser.user.uid,
+                role: 'user',
+              },
+            }
+          );
         }
       );
 
+      // const addUser = await fetch(`${database}users.json`, {
+      //   ...patchConfig,
+      //   body: JSON.stringify({
+      //     [newUser.user.uid]: {
+      //       email: newUser.user.email,
+      //       uid: newUser.user.uid,
+      //       role: 'user',
+      //     },
+      //   }),
+      // });
       history.push('./dashboard');
     } catch {
       setError('Failed to create an account');

@@ -7,6 +7,7 @@ import { formatDate } from '../../helpers/utilities';
 import { connect, useDispatch } from 'react-redux';
 
 import Backdrop from '../miniComponents/Backdrop/Backdrop';
+import img from '../../assets/img/morecambe.jpg';
 
 import * as actionTypes from './DashboardContentSlice';
 
@@ -26,7 +27,6 @@ const DashboardContent = () => {
   const { currentUser, logout } = useAuth();
 
   const backdropRef = useRef(null);
-  const bookingRef = useRef(null);
 
   const database =
     'https://e-m-adventures-development-default-rtdb.europe-west1.firebasedatabase.app/';
@@ -170,11 +170,39 @@ const DashboardContent = () => {
 
   return (
     <main className={classes.grid}>
-      <Backdrop
-        show={showBackdrop}
-        content={backdropContent}
-        ref={backdropRef}
-      />
+      <Backdrop show={showBackdrop} content={backdropContent} ref={backdropRef}>
+        <div className={classes.contentLeft}>
+          <h2>Your Going To Capernwray</h2>
+          <ul className={classes.content}>
+            <li>
+              <span className={classes.subHeading}>
+                Booking Reference:&nbsp;
+              </span>
+              {backdropContent ? backdropContent.bookingRef : null}
+            </li>
+            <li>
+              <span className={classes.subHeading}>Check In:&nbsp;</span>
+              {backdropContent ? backdropContent.checkIn : null}
+            </li>
+            <li>
+              <span className={classes.subHeading}>Check Out:&nbsp;</span>
+              {backdropContent ? backdropContent.checkOut : null}
+            </li>
+          </ul>
+        </div>
+        <div className={classes.contentRight}>
+          <img src={img} alt={'backdrop'}></img>
+        </div>
+        <div className={classes.contentBtm}>
+          <Link
+            className={classes.modifyBtn}
+            role={'button'}
+            to={'/modify-booking'}
+          >
+            Change Your Booking
+          </Link>
+        </div>
+      </Backdrop>
       <h1 className={classes.header}>{currentUser.email}'s DashBoard</h1>
       <div className={classes.profile}>
         <h2 className={classes.profileHeading}>Profile</h2>

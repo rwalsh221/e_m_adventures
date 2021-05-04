@@ -29,35 +29,7 @@ const Backdrop = React.forwardRef((props, ref) => {
 
   return props.show ? (
     <div ref={ref} className={`${classes.backdrop}`}>
-      <div className={classes.contentLeft}>
-        <h2>Your Going To Capernwray</h2>
-        <ul className={classes.content}>
-          <li>
-            <span className={classes.subHeading}>Booking Reference:&nbsp;</span>
-            {props.content.bookingRef}
-          </li>
-          <li>
-            <span className={classes.subHeading}>Check In:&nbsp;</span>
-            {props.content.checkIn}
-          </li>
-          <li>
-            <span className={classes.subHeading}>Check Out:&nbsp;</span>
-            {props.content.checkOut}
-          </li>
-        </ul>
-      </div>
-      <div className={classes.contentRight}>
-        <img src={img} alt={'backdrop'}></img>
-      </div>
-      <div className={classes.contentBtm}>
-        <Link
-          className={classes.modifyBtn}
-          role={'button'}
-          to={'/modify-booking'}
-        >
-          Change Your Booking
-        </Link>
-      </div>
+      {props.children}
     </div>
   ) : null;
 });

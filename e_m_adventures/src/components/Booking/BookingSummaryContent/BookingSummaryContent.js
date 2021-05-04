@@ -46,7 +46,7 @@ const BookingSummaryContent = (props) => {
     let newBookedDays;
     const ref = `ref${nanoid()}`;
     bookedDays ? (newBookedDays = [...bookedDays]) : (newBookedDays = []);
-    newBookedDays.push(data.checkIn, data.checkOut, ...data.fullDays);
+    newBookedDays.push(data.checkIn, ...data.fullDays);
 
     const patchConfig = {
       method: 'PATCH',
