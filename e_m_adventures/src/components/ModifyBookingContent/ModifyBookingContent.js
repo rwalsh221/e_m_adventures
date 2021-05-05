@@ -4,6 +4,8 @@ import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 
 import Backdrop from '../miniComponents/Backdrop/Backdrop';
+import { validateDate } from '../../helpers/validation';
+import { dateToMilliseconds } from '../../helpers/utilities';
 
 import classes from './ModifyBookingContent.module.css';
 
@@ -12,6 +14,8 @@ const ModifyBookingContent = () => {
   const [backdropContent, setBackdropContent] = useState('test');
 
   const backdropRef = useRef(null);
+  const newCheckInRef = useRef();
+  const newCheckOutRef = useRef();
 
   const state = useSelector((state) => state.modifyBooking);
   const history = useHistory();
@@ -20,6 +24,22 @@ const ModifyBookingContent = () => {
     'https://e-m-adventures-development-default-rtdb.europe-west1.firebasedatabase.app/';
 
   const { currentUser } = useAuth();
+
+  // TODO: CREATE FUCNTION FOR GETTING DATA
+  const testFunc = () => {
+    let test1 = 1;
+    let test2 = 2;
+    let test3 = 3;
+
+    return { test1, test2, test3 };
+  };
+
+  let { test2 } = testFunc();
+  let { test3 } = testFunc();
+  let { test1 } = testFunc();
+  console.log(test2);
+  console.log(test3);
+  console.log(test1);
 
   useEffect(() => {
     const pageClickEvent = (e) => {
@@ -41,7 +61,7 @@ const ModifyBookingContent = () => {
     };
   }, [showBackdrop]);
 
-  const getBookingObj = async () => {
+  const cancelBooking = async () => {
     const patchConfig = {
       method: 'PUT',
       headers: {
@@ -146,12 +166,75 @@ const ModifyBookingContent = () => {
     }
   };
 
+  // VALIDATE CHANGE BOOKING FORM
+  const validateChangeBookingForm = () => {
+    let formIsValid = false;
+
+    formIsValid = validateDate(
+      newCheckInRef.current.value,
+      newCheckOutRef.current.value
+    );
+
+    if (formIsValid) newBookingAvaliable();
+  };
+
+  const newBookingAvaliable = async () => {
+    // COMPARISON ARRAYS
+    let checkInArr = [];
+    let checkOutArr = [];
+    let fullDayArr = [];
+    try {
+      // GET ALL BOOKINGS
+      const allBookings = await fetch(
+        `${database}/booking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`
+      );
+
+      const allBookingsJson = await allBookings.json();
+
+      const allBookingsJsonKeys = Object.keys(allBookingsJson);
+
+      // ADD VALUES TO COMPARISON ARRAY IF NOT EQUAL TO CURRENT BOOKING
+      allBookingsJsonKeys.forEach((el) => {
+        if (allBookingsJson[el].checkIn !== state.checkIn) {
+          checkInArr.push(allBookingsJson[el].checkIn);
+        }
+        if (allBookingsJson[el].checkOut !== state.checkOut) {
+          checkOutArr.push(allBookingsJson[el].checkOut);
+        }
+        // if (allBookingsJson[el].fullDay !== state.fullDay) {
+        //   fullDayArr.push(allBookingsJson[el].fullDay);
+        // }
+      });
+
+      console.log(checkInArr);
+      console.log(checkOutArr);
+
+      // SEARCH COMPARISON ARRAYS TO SEE IF NEW BOOKING IS AVALIABLE
+      // TODO: GET THE FULLDAYS AND COMPARE
+      if (
+        checkInArr.find(
+          (el) => el === dateToMilliseconds(newCheckInRef.current.value)
+        ) === undefined
+      ) {
+        console.log('PASS');
+      }
+      if (
+        checkOutArr.find(
+          (el) => el === dateToMilliseconds(newCheckOutRef.current.value)
+        ) === undefined
+      ) {
+        console.log('PASS');
+      }
+      console.log(allBookingsJson);
+    } catch {}
+  };
+
   const cancelBookingBackdropContent = () => {
     setBackdropContent(
       <div>
         <h2>Are You Sure You Want To Cancel Your Booking?</h2>
         <div className={classes.backdropBtnContainer}>
-          <button className={classes.submitBtn} onClick={getBookingObj}>
+          <button className={classes.submitBtn} onClick={cancelBooking}>
             YES
           </button>
           <button
@@ -167,7 +250,42 @@ const ModifyBookingContent = () => {
   };
 
   const changeBookingBackdropContent = () => {
-    setBackdropContent(<h2>Change Your Booking</h2>);
+    setBackdropContent(
+      <div>
+        <h2>Change Your Booking</h2>
+        <form className={classes.searchForm}>
+          <div className={classes.start}>
+            <h6>Start Your Adventure</h6>
+          </div>
+          <div className={classes.date}>
+            <label htmlFor="checkIn" className={classes.searchLabel}>
+              Check-in
+            </label>
+            <input type="date" id="checkIn" ref={newCheckInRef}></input>
+          </div>
+          <div className={classes.date}>
+            <label htmlFor="checkOut" className={classes.searchLabel}>
+              Check-out
+            </label>
+            <input type="date" id="checkOut" ref={newCheckOutRef}></input>
+          </div>
+        </form>
+        <div className={classes.backdropBtnContainer}>
+          <button
+            className={classes.submitBtn}
+            onClick={validateChangeBookingForm}
+          >
+            Submit
+          </button>
+          <button
+            className={classes.submitBtn}
+            onClick={() => setShowBackdrop(false)}
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    );
     setShowBackdrop(true);
   };
 
