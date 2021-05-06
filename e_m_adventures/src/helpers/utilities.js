@@ -71,3 +71,16 @@ export const dateToMilliseconds = (date) => {
 
   return Date.UTC(dateArr[0], dateArr[1] - 1, dateArr[2]);
 };
+
+export const getFullDays = (checkIn, checkOut) => {
+  const milliSeconds = 24 * 60 * 60 * 1000;
+
+  let bookedDaysArr = [];
+
+  for (let i = checkIn; i < checkOut; i = i + milliSeconds) {
+    console.log('loop');
+    if (i !== checkIn) bookedDaysArr.push(i);
+  }
+
+  return bookedDaysArr;
+};

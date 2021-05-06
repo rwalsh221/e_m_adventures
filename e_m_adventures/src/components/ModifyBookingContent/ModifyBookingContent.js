@@ -5,7 +5,7 @@ import { useAuth } from '../../contexts/AuthContext';
 
 import Backdrop from '../miniComponents/Backdrop/Backdrop';
 import { validateDate } from '../../helpers/validation';
-import { dateToMilliseconds } from '../../helpers/utilities';
+import { dateToMilliseconds, getFullDays } from '../../helpers/utilities';
 
 import classes from './ModifyBookingContent.module.css';
 
@@ -178,6 +178,17 @@ const ModifyBookingContent = () => {
     if (formIsValid) newBookingAvaliable();
   };
 
+  const checkFullDays = (checkIn, checkOut, arr) => {
+    if (
+      arr.find((el) => el === dateToMilliseconds(checkIn)) === undefined &&
+      arr.find((el) => el === dateToMilliseconds(checkOut)) === undefined
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   const newBookingAvaliable = async () => {
     // COMPARISON ARRAYS
     let checkInArr = [];
@@ -193,11 +204,36 @@ const ModifyBookingContent = () => {
 
       const allBookingsJsonKeys = Object.keys(allBookingsJson);
 
+      // GET FULL DAYS OF MODIFIED BOOKING
+
+      const stateFullDays = getFullDays(state.checkIn, state.checkout);
+      console.log(stateFullDays);
+
       // ADD VALUES TO COMPARISON ARRAY IF NOT EQUAL TO CURRENT BOOKING
       allBookingsJsonKeys.forEach((el) => {
+        console.log(allBookingsJson[el]);
+
+        // FULL DAYS
+        if (allBookingsJson[el].fullDays !== undefined) {
+          allBookingsJson[el].fullDays.forEach((el) => {
+            const bookingFullday = el;
+            console.log(bookingFullday);
+
+            if (
+              stateFullDays.find((el) => el !== bookingFullday) ||
+              stateFullDays.length === 0
+            ) {
+              console.log('PUSH FULL DAY');
+              fullDayArr.push(bookingFullday);
+            }
+          });
+        }
+
+        // CHECKIN
         if (allBookingsJson[el].checkIn !== state.checkIn) {
           checkInArr.push(allBookingsJson[el].checkIn);
         }
+        // CHECKOUT
         if (allBookingsJson[el].checkOut !== state.checkOut) {
           checkOutArr.push(allBookingsJson[el].checkOut);
         }
@@ -208,20 +244,39 @@ const ModifyBookingContent = () => {
 
       console.log(checkInArr);
       console.log(checkOutArr);
+      console.log(fullDayArr);
 
       // SEARCH COMPARISON ARRAYS TO SEE IF NEW BOOKING IS AVALIABLE
       // TODO: GET THE FULLDAYS AND COMPARE
+
+      let passFullDay = false;
+      console.log(dateToMilliseconds(newCheckInRef.current.value));
+      if (
+        fullDayArr.find(
+          (el) => el === dateToMilliseconds(newCheckInRef.current.value)
+        ) === undefined &&
+        fullDayArr.find(
+          (el) => el === dateToMilliseconds(newCheckOutRef.current.value)
+        ) === undefined
+      ) {
+        passFullDay = true;
+      }
+
       if (
         checkInArr.find(
           (el) => el === dateToMilliseconds(newCheckInRef.current.value)
-        ) === undefined
+        ) === undefined &&
+        passFullDay === true
       ) {
         console.log('PASS');
+      } else {
+        console.log(passFullDay);
       }
       if (
         checkOutArr.find(
           (el) => el === dateToMilliseconds(newCheckOutRef.current.value)
-        ) === undefined
+        ) === undefined &&
+        passFullDay === true
       ) {
         console.log('PASS');
       }
