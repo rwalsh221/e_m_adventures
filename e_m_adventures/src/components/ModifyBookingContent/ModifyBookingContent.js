@@ -1,24 +1,33 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { useSelector, useDispatch, connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 
+import ErrorComponent from '../miniComponents/ErrorComponent/ErrorComponent';
 import Backdrop from '../miniComponents/Backdrop/Backdrop';
+
 import { validateDate } from '../../helpers/validation';
 import { dateToMilliseconds, getFullDays } from '../../helpers/utilities';
 
+import * as actionTypes from '../Header/HeaderSearch/HeaderSearchSlice';
+
 import classes from './ModifyBookingContent.module.css';
+
+const mapDispatch = { ...actionTypes };
 
 const ModifyBookingContent = () => {
   const [showBackdrop, setShowBackdrop] = useState(false);
-  const [backdropContent, setBackdropContent] = useState('test');
+  const [backdropContent, setBackdropContent] = useState('');
+  const [error, setError] = useState('');
 
   const backdropRef = useRef(null);
   const newCheckInRef = useRef();
   const newCheckOutRef = useRef();
 
-  const state = useSelector((state) => state.modifyBooking);
+  const dispatch = useDispatch();
   const history = useHistory();
+
+  const state = useSelector((state) => state.modifyBooking);
 
   const database =
     'https://e-m-adventures-development-default-rtdb.europe-west1.firebasedatabase.app/';
@@ -26,20 +35,13 @@ const ModifyBookingContent = () => {
   const { currentUser } = useAuth();
 
   // TODO: CREATE FUCNTION FOR GETTING DATA
-  const testFunc = () => {
-    let test1 = 1;
-    let test2 = 2;
-    let test3 = 3;
+  // const testFunc = () => {
+  //   let test1 = 1;
+  //   let test2 = 2;
+  //   let test3 = 3;
 
-    return { test1, test2, test3 };
-  };
-
-  let { test2 } = testFunc();
-  let { test3 } = testFunc();
-  let { test1 } = testFunc();
-  console.log(test2);
-  console.log(test3);
-  console.log(test1);
+  //   return { test1, test2, test3 };
+  // };
 
   useEffect(() => {
     const pageClickEvent = (e) => {
@@ -48,6 +50,7 @@ const ModifyBookingContent = () => {
         backdropRef.current !== null &&
         !backdropRef.current.contains(e.target)
       ) {
+        setError('');
         setShowBackdrop(false);
       }
     };
@@ -179,9 +182,27 @@ const ModifyBookingContent = () => {
   };
 
   const checkFullDays = (checkIn, checkOut, arr) => {
+    const fullDayUnavailable = [];
+    const checkInMilli = dateToMilliseconds(checkIn);
+    const checkOutMilli = dateToMilliseconds(checkOut);
+
+    const newBookingFullDays = getFullDays(checkInMilli, checkOutMilli);
+
+    arr.forEach((el) => {
+      const element = el;
+      newBookingFullDays.find((el) => {
+        if (el === element) {
+          fullDayUnavailable.push(element);
+        }
+      });
+    });
+    console.log(arr);
+    console.log(newBookingFullDays);
+    console.log(fullDayUnavailable);
     if (
-      arr.find((el) => el === dateToMilliseconds(checkIn)) === undefined &&
-      arr.find((el) => el === dateToMilliseconds(checkOut)) === undefined
+      arr.find((el) => el === checkInMilli) === undefined &&
+      arr.find((el) => el === checkOutMilli) === undefined &&
+      fullDayUnavailable.length === 0
     ) {
       return true;
     } else {
@@ -190,6 +211,7 @@ const ModifyBookingContent = () => {
   };
 
   const newBookingAvaliable = async () => {
+    setError('');
     // COMPARISON ARRAYS
     let checkInArr = [];
     let checkOutArr = [];
@@ -206,7 +228,7 @@ const ModifyBookingContent = () => {
 
       // GET FULL DAYS OF MODIFIED BOOKING
 
-      const stateFullDays = getFullDays(state.checkIn, state.checkout);
+      const stateFullDays = getFullDays(state.checkIn, state.checkOut);
       console.log(stateFullDays);
 
       // ADD VALUES TO COMPARISON ARRAY IF NOT EQUAL TO CURRENT BOOKING
@@ -220,10 +242,14 @@ const ModifyBookingContent = () => {
             console.log(bookingFullday);
 
             if (
-              stateFullDays.find((el) => el !== bookingFullday) ||
+              stateFullDays.find((el) => {
+                console.log(el);
+                return el !== bookingFullday;
+              }) === undefined ||
               stateFullDays.length === 0
             ) {
               console.log('PUSH FULL DAY');
+              console.log(el);
               fullDayArr.push(bookingFullday);
             }
           });
@@ -249,37 +275,57 @@ const ModifyBookingContent = () => {
       // SEARCH COMPARISON ARRAYS TO SEE IF NEW BOOKING IS AVALIABLE
       // TODO: GET THE FULLDAYS AND COMPARE
 
-      let passFullDay = false;
-      console.log(dateToMilliseconds(newCheckInRef.current.value));
-      if (
-        fullDayArr.find(
-          (el) => el === dateToMilliseconds(newCheckInRef.current.value)
-        ) === undefined &&
-        fullDayArr.find(
-          (el) => el === dateToMilliseconds(newCheckOutRef.current.value)
-        ) === undefined
-      ) {
-        passFullDay = true;
-      }
+      const passFullDay = checkFullDays(
+        newCheckInRef.current.value,
+        newCheckOutRef.current.value,
+        fullDayArr
+      );
+      console.log(passFullDay);
+      // console.log(dateToMilliseconds(newCheckInRef.current.value));
+      // if (
+      //   fullDayArr.find(
+      //     (el) => el === dateToMilliseconds(newCheckInRef.current.value)
+      //   ) === undefined &&
+      //   fullDayArr.find(
+      //     (el) => el === dateToMilliseconds(newCheckOutRef.current.value)
+      //   ) === undefined
+      // ) {
+      //   passFullDay = true;
+      // }
 
       if (
         checkInArr.find(
           (el) => el === dateToMilliseconds(newCheckInRef.current.value)
         ) === undefined &&
-        passFullDay === true
-      ) {
-        console.log('PASS');
-      } else {
-        console.log(passFullDay);
-      }
-      if (
         checkOutArr.find(
           (el) => el === dateToMilliseconds(newCheckOutRef.current.value)
         ) === undefined &&
         passFullDay === true
       ) {
         console.log('PASS');
+        dispatch(
+          actionTypes.booking({
+            checkIn: dateToMilliseconds(newCheckInRef.current.value),
+            checkOut: dateToMilliseconds(newCheckOutRef.current.value),
+          })
+        );
+        history.push('/summary');
+      } else {
+        console.log(passFullDay);
+        console.log('FFFFAILLLLLL');
+        setError('Unfortunatley Those Dates Are Unavaliable');
       }
+      // if (
+      //   checkOutArr.find(
+      //     (el) => el === dateToMilliseconds(newCheckOutRef.current.value)
+      //   ) === undefined &&
+      //   passFullDay === true
+      // ) {
+      //   console.log('PASS');
+      // } else {
+      //   console.log('FFFFAILLLLLL');
+      //   setError('Unfortunatley Those Dates Are Unavaliable checkout');
+      // }
       console.log(allBookingsJson);
     } catch {}
   };
@@ -287,6 +333,7 @@ const ModifyBookingContent = () => {
   const cancelBookingBackdropContent = () => {
     setBackdropContent(
       <div>
+        {error && <ErrorComponent message={error} />}
         <h2>Are You Sure You Want To Cancel Your Booking?</h2>
         <div className={classes.backdropBtnContainer}>
           <button className={classes.submitBtn} onClick={cancelBooking}>
@@ -346,6 +393,7 @@ const ModifyBookingContent = () => {
 
   return (
     <main className={classes.main}>
+      {error && <ErrorComponent message={error} />}
       <Backdrop show={showBackdrop} ref={backdropRef}>
         {backdropContent}
       </Backdrop>
@@ -378,4 +426,4 @@ const ModifyBookingContent = () => {
   );
 };
 
-export default ModifyBookingContent;
+export default connect(null, mapDispatch)(ModifyBookingContent);

@@ -1,10 +1,21 @@
 .error {
   background-color: red;
   width: 90%;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   font-size: 2.5rem;
   text-align: center;
   border-radius: 3rem;
   color: var(--main-color-white);
   transition: all 2s ease-in-out;
+  z-index: 10000;
+  height: 10rem;
+  position: fixed;
+  top: 5rem;
+  left: 9.5rem;
+}
+
+.fixed {
+  z-index: 10000;
+  height: 10rem;
+  position: fixed;
 }

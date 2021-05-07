@@ -1,9 +1,9 @@
 import classes from './Backdrop.module.css';
 import React from 'react';
 
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
-import img from '../../../assets/img/morecambe.jpg';
+// import img from '../../../assets/img/morecambe.jpg';
 
 const Backdrop = React.forwardRef((props, ref) => {
   // const database =
