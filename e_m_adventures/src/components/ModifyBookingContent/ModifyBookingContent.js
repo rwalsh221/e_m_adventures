@@ -8,6 +8,7 @@ import Backdrop from '../miniComponents/Backdrop/Backdrop';
 
 import { validateDate } from '../../helpers/validation';
 import { dateToMilliseconds, getFullDays } from '../../helpers/utilities';
+import { cancelBooking } from '../../helpers/cancelBooking';
 
 import * as actionTypes from '../Header/HeaderSearch/HeaderSearchSlice';
 
@@ -80,92 +81,97 @@ const ModifyBookingContent = () => {
     return { userBookingsJson, fullDaysJson, allBookingsJson };
   };
 
-  const cancelBooking = async () => {
-    //TODO: BREAK EACH DELETE STEP INTO SEPERATE FUCTION
-    const patchConfig = {
-      method: 'PUT',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    };
+  const cancelBookingHandler = async () => {
     try {
-      const {
-        userBookingsJson,
-        fullDaysJson,
-        allBookingsJson,
-      } = await getBookingData();
-
-      // DELETE BOOKING FROM USER BOOKING DATABASE
-      const userBookingsKeys = Object.keys(userBookingsJson);
-
-      // TODO: SEE STACKOVERFLOW BOOKMARK
-      userBookingsKeys.filter((bookingKey) => {
-        if (userBookingsJson[bookingKey].bookingRef === state.bookingRef) {
-          delete userBookingsJson[bookingKey];
-        }
-      });
-
-      // DELETE BOOKING FROM FULLDAYS
-
-      // get checkin
-      const bookingFullDaysArr = [];
-      bookingFullDaysArr.push(allBookingsJson[state.bookingRef].checkIn);
-
-      // get fulldays if any
-      if (allBookingsJson[state.bookingRef].fullDays) {
-        allBookingsJson[state.bookingRef].fullDays.forEach((element) => {
-          bookingFullDaysArr.push(element);
-        });
-      }
-
-      // delete from fulldays database
-      for (let i = 0; i < bookingFullDaysArr.length; i++) {
-        let index = fullDaysJson.findIndex((val) => {
-          return val === bookingFullDaysArr[i];
-        });
-
-        if (index !== -1) fullDaysJson.splice(index, 1);
-      }
-
-      // DELETE BOOKING FROM ALL BOOKINGS
-
-      delete allBookingsJson[state.bookingRef];
-
-      // SEND UPDATED BOOKING OBJECT TO DATABASE.
-      const updateUserBookingsDatabase = await fetch(
-        `${database}/users/${currentUser.uid}/booking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`,
-        { ...patchConfig, body: JSON.stringify({ ...userBookingsJson }) }
-      );
-
-      if (!updateUserBookingsDatabase.ok)
-        throw Error(updateUserBookingsDatabase.message);
-
-      const updateFullDaysDatabase = await fetch(
-        `${database}fulldays.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`,
-        { ...patchConfig, body: JSON.stringify({ ...fullDaysJson }) }
-      );
-
-      if (!updateFullDaysDatabase.ok)
-        throw Error(updateFullDaysDatabase.message);
-
-      const updateBookingDatabase = await fetch(
-        `${database}booking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`,
-        {
-          ...patchConfig,
-          body: JSON.stringify({
-            ...allBookingsJson,
-          }),
-        }
-      );
-
-      if (!updateBookingDatabase.ok) throw Error(updateBookingDatabase.message);
-
-      history.push('/dashBoard');
-    } catch (error) {
+      await cancelBooking(state, currentUser, history);
+    } catch (errror) {
       console.error(error);
     }
   };
+
+  // const cancelBooking = async () => {
+  //   //TODO: BREAK EACH DELETE STEP INTO SEPERATE FUCTION
+  //   const patchConfig = {
+  //     method: 'PUT',
+  //     headers: {
+  //       Accept: 'application/json',
+  //       'Content-Type': 'application/json',
+  //     },
+  //   };
+  //   try {
+  //     const { userBookingsJson, fullDaysJson, allBookingsJson } =
+  //       await getBookingData();
+
+  //     // DELETE BOOKING FROM USER BOOKING DATABASE
+  //     const userBookingsKeys = Object.keys(userBookingsJson);
+
+  //     // TODO: SEE STACKOVERFLOW BOOKMARK
+  //     userBookingsKeys.filter((bookingKey) => {
+  //       if (userBookingsJson[bookingKey].bookingRef === state.bookingRef) {
+  //         delete userBookingsJson[bookingKey];
+  //       }
+  //     });
+
+  //     // DELETE BOOKING FROM FULLDAYS
+
+  //     // get checkin
+  //     const bookingFullDaysArr = [];
+  //     bookingFullDaysArr.push(allBookingsJson[state.bookingRef].checkIn);
+
+  //     // get fulldays if any
+  //     if (allBookingsJson[state.bookingRef].fullDays) {
+  //       allBookingsJson[state.bookingRef].fullDays.forEach((element) => {
+  //         bookingFullDaysArr.push(element);
+  //       });
+  //     }
+
+  //     // delete from fulldays database
+  //     for (let i = 0; i < bookingFullDaysArr.length; i++) {
+  //       let index = fullDaysJson.findIndex((val) => {
+  //         return val === bookingFullDaysArr[i];
+  //       });
+
+  //       if (index !== -1) fullDaysJson.splice(index, 1);
+  //     }
+
+  //     // DELETE BOOKING FROM ALL BOOKINGS
+
+  //     delete allBookingsJson[state.bookingRef];
+
+  //     // SEND UPDATED BOOKING OBJECT TO DATABASE.
+  //     const updateUserBookingsDatabase = await fetch(
+  //       `${database}/users/${currentUser.uid}/booking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`,
+  //       { ...patchConfig, body: JSON.stringify({ ...userBookingsJson }) }
+  //     );
+
+  //     if (!updateUserBookingsDatabase.ok)
+  //       throw Error(updateUserBookingsDatabase.message);
+
+  //     const updateFullDaysDatabase = await fetch(
+  //       `${database}fulldays.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`,
+  //       { ...patchConfig, body: JSON.stringify({ ...fullDaysJson }) }
+  //     );
+
+  //     if (!updateFullDaysDatabase.ok)
+  //       throw Error(updateFullDaysDatabase.message);
+
+  //     const updateBookingDatabase = await fetch(
+  //       `${database}booking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`,
+  //       {
+  //         ...patchConfig,
+  //         body: JSON.stringify({
+  //           ...allBookingsJson,
+  //         }),
+  //       }
+  //     );
+
+  //     if (!updateBookingDatabase.ok) throw Error(updateBookingDatabase.message);
+
+  //     history.push('/dashBoard');
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   // VALIDATE CHANGE BOOKING FORM
   const validateChangeBookingForm = () => {
@@ -288,7 +294,7 @@ const ModifyBookingContent = () => {
         {error && <ErrorComponent message={error} />}
         <h2>Are You Sure You Want To Cancel Your Booking?</h2>
         <div className={classes.backdropBtnContainer}>
-          <button className={classes.submitBtn} onClick={cancelBooking}>
+          <button className={classes.submitBtn} onClick={cancelBookingHandler}>
             YES
           </button>
           <button

@@ -3,14 +3,16 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 
+import { useAuth } from '../../../contexts/AuthContext';
+import { cancelBooking } from '../../../helpers/cancelBooking';
+
 import BookingUnavailable from './BookingUnavailable/BookingUnavailable';
 import BookingAvailable from './BookingAvailable/BookingAvailable';
 import Spinner from '../../miniComponents/Spinner/Spinner';
 
-import { useAuth } from '../../../contexts/AuthContext';
-
 const BookingSummaryContent = (props) => {
   const state = useSelector((state) => state);
+
   const history = useHistory();
 
   const { currentUser } = useAuth();
@@ -20,6 +22,8 @@ const BookingSummaryContent = (props) => {
 
   const [bookedDays, setBookedDays] = useState();
   const [content, setContent] = useState(<Spinner />);
+
+  // const bookingData = getBookingData(currentUser);
 
   useEffect(() => {
     const dateAvaliable = async () => {
@@ -100,70 +104,28 @@ const BookingSummaryContent = (props) => {
         { ...patchConfig, body: JSON.stringify({ ...newBookedDays }) }
       );
 
-      if (submitFulldays.ok) history.push('/confirmation');
+      // if (submitFulldays.ok) history.push('/confirmation');
+      console.log(submitFulldays.ok);
       if (!submitFulldays.ok) throw new Error(submitFulldays.message);
+
+      await cancelBooking(
+        state.modifyBooking,
+
+        currentUser,
+        history
+      );
+      console.log(cancelBooking.ok);
+      history.push('/confirmation');
     } catch (err) {
       console.error(err.message);
     }
-
-    // axios
-    //   .patch(
-    //     `${database}booking.json`,
-    //     {
-    //       [ref]: {
-    //         ...data,
-    //       },
-    //     },
-    //     {
-    //       timeout: 2000,
-    //       params: {
-    //         auth: process.env.REACT_APP_FIREBASE_DATABASE_SECRET,
-    //       },
-    //     }
-    //   )
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
-
-    // axios
-    //   .post(
-    //     `${database}users/${currentUser.uid}/booking.json`,
-    //     {
-    //       bookingRef: ref,
-    //       checkIn: data.checkIn,
-    //       checkOut: data.checkOut,
-    //     },
-    //     {
-    //       timeout: 2000,
-    //       params: {
-    //         auth: process.env.REACT_APP_FIREBASE_DATABASE_SECRET,
-    //       },
-    //     }
-    //   )
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
-
-    // axios
-    //   .patch(
-    //     `${database}fulldays.json`,
-    //     {
-    //       ...newBookedDays,
-    //     },
-    //     {
-    //       timeout: 2000,
-    //       params: {
-    //         auth: process.env.REACT_APP_FIREBASE_DATABASE_SECRET,
-    //       },
-    //     }
-    //   )
-    //   .then((response) => {
-    //     if (response.status === 200) history.push('/confirmation');
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
-  }, [bookedDays, history, state.headerSearch, currentUser.uid]);
+  }, [
+    bookedDays,
+    history,
+    state.headerSearch,
+    state.modifyBooking,
+    currentUser,
+  ]);
 
   useEffect(() => {
     if (bookedDays === undefined) {
