@@ -81,6 +81,7 @@ const BookingSummaryContent = (props) => {
           }),
         }
       );
+      console.log(submitBooking);
       if (!submitBooking.ok) throw Error(submitBooking.message);
 
       // send booking to user database key

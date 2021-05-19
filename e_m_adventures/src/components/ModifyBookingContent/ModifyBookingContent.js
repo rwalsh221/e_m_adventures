@@ -265,7 +265,6 @@ const ModifyBookingContent = () => {
         fullDayArr
       );
 
-      // TODO: MOVE FIND INTO CHECKFULLDAY
       if (
         checkInArr.find(
           (el) => el === dateToMilliseconds(newCheckInRef.current.value)
