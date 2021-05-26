@@ -174,7 +174,7 @@ const ModifyBookingContent = () => {
   // };
 
   // VALIDATE CHANGE BOOKING FORM
-  const validateChangeBookingForm = () => {
+  const validateChangeBookingForm = async () => {
     let formIsValid = false;
 
     formIsValid = validateDate(
@@ -182,7 +182,22 @@ const ModifyBookingContent = () => {
       newCheckOutRef.current.value
     );
 
-    if (formIsValid) newBookingAvaliable();
+    if (formIsValid) {
+      try {
+        const { allBookingsJson } = await getBookingData();
+
+        const allBookingsJsonKeys = Object.keys(allBookingsJson);
+
+        const currentBooking = {
+          checkIn: dateToMilliseconds(newCheckInRef.current.value),
+          checkOut: newCheckOutRef.current.value,
+        };
+
+        newBookingAvaliable();
+      } catch (error) {
+        console.error(error);
+      }
+    }
   };
 
   const checkFullDays = (checkIn, checkOut, arr) => {

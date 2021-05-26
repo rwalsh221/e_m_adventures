@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { nanoid } from 'nanoid';
+import { useLocation } from 'react-router-dom';
 
 import { useAuth } from '../../../contexts/AuthContext';
 import { cancelBooking } from '../../../helpers/cancelBooking';
@@ -22,6 +23,8 @@ const BookingSummaryContent = (props) => {
 
   const [bookedDays, setBookedDays] = useState();
   const [content, setContent] = useState(<Spinner />);
+
+  const location = useLocation();
 
   // const bookingData = getBookingData(currentUser);
 
@@ -105,8 +108,6 @@ const BookingSummaryContent = (props) => {
         { ...patchConfig, body: JSON.stringify({ ...newBookedDays }) }
       );
 
-      // if (submitFulldays.ok) history.push('/confirmation');
-      console.log(submitFulldays.ok);
       if (!submitFulldays.ok) throw new Error(submitFulldays.message);
 
       await cancelBooking(
@@ -115,7 +116,7 @@ const BookingSummaryContent = (props) => {
         currentUser,
         history
       );
-      console.log(cancelBooking.ok);
+
       history.push('/confirmation');
     } catch (err) {
       console.error(err.message);
@@ -133,10 +134,17 @@ const BookingSummaryContent = (props) => {
       return;
     } else if (bookedDays.includes(state.headerSearch.checkIn)) {
       setContent(<BookingUnavailable />);
+    } else if (location.state.holdStatus) {
+      setContent(<BookingUnavailable holdBooking={true} />);
     } else {
       setContent(<BookingAvailable submitHandler={submitHandler} />);
     }
-  }, [bookedDays, state.headerSearch.checkIn, submitHandler]);
+  }, [
+    bookedDays,
+    state.headerSearch.checkIn,
+    submitHandler,
+    location.state.holdStatus,
+  ]);
 
   return content;
 };
