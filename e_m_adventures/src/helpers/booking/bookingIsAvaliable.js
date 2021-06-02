@@ -1,5 +1,4 @@
 import { checkFullDays } from './checkFullDays';
-// import { getFullDays } from '../utilities';
 
 export const bookingIsAvaliable = (
   allBookings,
@@ -14,32 +13,25 @@ export const bookingIsAvaliable = (
   let checkOutArr = [];
   let fullDayArr = [];
 
-  const allHoldBookingsKeys = Object.keys(allBookings);
+  const allBookingsKeys = Object.keys(allBookings);
 
-  // ADD VALUES TO COMPARISON ARRAY IF NOT EQUAL TO CURRENT BOOKING
-  allHoldBookingsKeys.forEach((el) => {
+  // ADD CHECKIN, CHECKOUT, FULLDAY TO COMPARISON ARRAYS
+  allBookingsKeys.forEach((el) => {
     // FULL DAYS
     if (allBookings[el].fullDays !== undefined) {
       allBookings[el].fullDays.forEach((el) => {
         const bookingFullday = el;
 
-        if (
-          currentBooking.fullDays.indexOf(bookingFullday) !== -1 ||
-          currentBooking.fullDays.length === 0
-        ) {
-          fullDayArr.push(bookingFullday);
-        }
+        fullDayArr.push(bookingFullday);
       });
     }
 
     // CHECKIN
-    if (allBookings[el].checkIn !== currentBooking.checkIn) {
-      checkInArr.push(allBookings[el].checkIn);
-    }
+
+    checkInArr.push(allBookings[el].checkIn);
     // CHECKOUT
-    if (allBookings[el].checkOut !== currentBooking.checkOut) {
-      checkOutArr.push(allBookings[el].checkOut);
-    }
+
+    checkOutArr.push(allBookings[el].checkOut);
   });
 
   // SEARCH COMPARISON ARRAYS TO SEE IF NEW BOOKING IS AVALIABLE

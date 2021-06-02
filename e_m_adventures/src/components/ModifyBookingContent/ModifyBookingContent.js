@@ -10,6 +10,9 @@ import { validateDate } from '../../helpers/validation';
 import { dateToMilliseconds, getFullDays } from '../../helpers/utilities';
 import { cancelBooking } from '../../helpers/cancelBooking';
 
+import { bookingIsAvaliable } from '../../helpers/booking/bookingIsAvaliable';
+import holdCurrentBooking from '../../helpers/booking/holdCurrentBooking';
+
 import * as actionTypes from '../Header/HeaderSearch/HeaderSearchSlice';
 
 import classes from './ModifyBookingContent.module.css';
@@ -89,90 +92,6 @@ const ModifyBookingContent = () => {
     }
   };
 
-  // const cancelBooking = async () => {
-  //   //TODO: BREAK EACH DELETE STEP INTO SEPERATE FUCTION
-  //   const patchConfig = {
-  //     method: 'PUT',
-  //     headers: {
-  //       Accept: 'application/json',
-  //       'Content-Type': 'application/json',
-  //     },
-  //   };
-  //   try {
-  //     const { userBookingsJson, fullDaysJson, allBookingsJson } =
-  //       await getBookingData();
-
-  //     // DELETE BOOKING FROM USER BOOKING DATABASE
-  //     const userBookingsKeys = Object.keys(userBookingsJson);
-
-  //     // TODO: SEE STACKOVERFLOW BOOKMARK
-  //     userBookingsKeys.filter((bookingKey) => {
-  //       if (userBookingsJson[bookingKey].bookingRef === state.bookingRef) {
-  //         delete userBookingsJson[bookingKey];
-  //       }
-  //     });
-
-  //     // DELETE BOOKING FROM FULLDAYS
-
-  //     // get checkin
-  //     const bookingFullDaysArr = [];
-  //     bookingFullDaysArr.push(allBookingsJson[state.bookingRef].checkIn);
-
-  //     // get fulldays if any
-  //     if (allBookingsJson[state.bookingRef].fullDays) {
-  //       allBookingsJson[state.bookingRef].fullDays.forEach((element) => {
-  //         bookingFullDaysArr.push(element);
-  //       });
-  //     }
-
-  //     // delete from fulldays database
-  //     for (let i = 0; i < bookingFullDaysArr.length; i++) {
-  //       let index = fullDaysJson.findIndex((val) => {
-  //         return val === bookingFullDaysArr[i];
-  //       });
-
-  //       if (index !== -1) fullDaysJson.splice(index, 1);
-  //     }
-
-  //     // DELETE BOOKING FROM ALL BOOKINGS
-
-  //     delete allBookingsJson[state.bookingRef];
-
-  //     // SEND UPDATED BOOKING OBJECT TO DATABASE.
-  //     const updateUserBookingsDatabase = await fetch(
-  //       `${database}/users/${currentUser.uid}/booking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`,
-  //       { ...patchConfig, body: JSON.stringify({ ...userBookingsJson }) }
-  //     );
-
-  //     if (!updateUserBookingsDatabase.ok)
-  //       throw Error(updateUserBookingsDatabase.message);
-
-  //     const updateFullDaysDatabase = await fetch(
-  //       `${database}fulldays.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`,
-  //       { ...patchConfig, body: JSON.stringify({ ...fullDaysJson }) }
-  //     );
-
-  //     if (!updateFullDaysDatabase.ok)
-  //       throw Error(updateFullDaysDatabase.message);
-
-  //     const updateBookingDatabase = await fetch(
-  //       `${database}booking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`,
-  //       {
-  //         ...patchConfig,
-  //         body: JSON.stringify({
-  //           ...allBookingsJson,
-  //         }),
-  //       }
-  //     );
-
-  //     if (!updateBookingDatabase.ok) throw Error(updateBookingDatabase.message);
-
-  //     history.push('/dashBoard');
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
   // VALIDATE CHANGE BOOKING FORM
   const validateChangeBookingForm = async () => {
     let formIsValid = false;
@@ -183,123 +102,62 @@ const ModifyBookingContent = () => {
     );
 
     if (formIsValid) {
-      try {
-        const { allBookingsJson } = await getBookingData();
-
-        const allBookingsJsonKeys = Object.keys(allBookingsJson);
-
-        const currentBooking = {
-          checkIn: dateToMilliseconds(newCheckInRef.current.value),
-          checkOut: newCheckOutRef.current.value,
-        };
-
-        newBookingAvaliable();
-      } catch (error) {
-        console.error(error);
-      }
+      submitHandler();
     }
   };
 
-  const checkFullDays = (checkIn, checkOut, arr) => {
-    const fullDayUnavailable = [];
-    const checkInMilli = dateToMilliseconds(checkIn);
-    const checkOutMilli = dateToMilliseconds(checkOut);
+  const submitHandler = async () => {
+    // TODO: NOT WORKING SEE NOTES BELOW IN BOKINGAVLIABLE FUNCTION: NOW WORKING
+    // TODO: EXPORT HOLDBOOKING FROM HEADERSEARCH
+    const checkIn = dateToMilliseconds(newCheckInRef.current.value);
+    const checkOut = dateToMilliseconds(newCheckOutRef.current.value);
 
-    const newBookingFullDays = getFullDays(checkInMilli, checkOutMilli);
+    const fullDays = getFullDays(checkIn, checkOut);
 
-    arr.forEach((el) => {
-      const element = el;
-      newBookingFullDays.find((el) => {
-        if (el === element) {
-          fullDayUnavailable.push(element);
-        }
-      });
-    });
+    const currentBooking = {
+      checkIn: checkIn,
+      checkOut: checkOut,
+      fullDays: fullDays,
+    };
 
-    if (
-      arr.find((el) => el === checkInMilli) === undefined &&
-      arr.find((el) => el === checkOutMilli) === undefined &&
-      fullDayUnavailable.length === 0
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
-  const newBookingAvaliable = async () => {
-    setError('');
-    // COMPARISON ARRAYS
-    let checkInArr = [];
-    let checkOutArr = [];
-    let fullDayArr = [];
     try {
       const { allBookingsJson } = await getBookingData();
 
-      const allBookingsJsonKeys = Object.keys(allBookingsJson);
-
-      // GET FULL DAYS OF MODIFIED BOOKING
-
-      const stateFullDays = getFullDays(state.checkIn, state.checkOut);
-
-      // ADD VALUES TO COMPARISON ARRAY IF NOT EQUAL TO CURRENT BOOKING
-      allBookingsJsonKeys.forEach((el) => {
-        console.log(allBookingsJson[el]);
-
-        // FULL DAYS
-        if (allBookingsJson[el].fullDays !== undefined) {
-          allBookingsJson[el].fullDays.forEach((el) => {
-            const bookingFullday = el;
-
-            if (
-              stateFullDays.find((el) => {
-                return el !== bookingFullday;
-              }) === undefined ||
-              stateFullDays.length === 0
-            ) {
-              fullDayArr.push(bookingFullday);
-            }
-          });
-        }
-
-        // CHECKIN
-        if (allBookingsJson[el].checkIn !== state.checkIn) {
-          checkInArr.push(allBookingsJson[el].checkIn);
-        }
-        // CHECKOUT
-        if (allBookingsJson[el].checkOut !== state.checkOut) {
-          checkOutArr.push(allBookingsJson[el].checkOut);
-        }
-      });
-
-      // SEARCH COMPARISON ARRAYS TO SEE IF NEW BOOKING IS AVALIABLE
-
-      const passFullDay = checkFullDays(
-        newCheckInRef.current.value,
-        newCheckOutRef.current.value,
-        fullDayArr
-      );
+      delete allBookingsJson[state.bookingRef];
 
       if (
-        checkInArr.find(
-          (el) => el === dateToMilliseconds(newCheckInRef.current.value)
-        ) === undefined &&
-        checkOutArr.find(
-          (el) => el === dateToMilliseconds(newCheckOutRef.current.value)
-        ) === undefined &&
-        passFullDay === true
+        bookingIsAvaliable(allBookingsJson, currentBooking, setError) === true
       ) {
-        dispatch(
-          actionTypes.booking({
-            checkIn: dateToMilliseconds(newCheckInRef.current.value),
-            checkOut: dateToMilliseconds(newCheckOutRef.current.value),
-          })
-        );
-        history.push('/summary');
+        if (
+          await holdCurrentBooking(
+            dateToMilliseconds(newCheckInRef.current.value),
+            dateToMilliseconds(newCheckOutRef.current.value),
+            setError
+          )
+        ) {
+          dispatch(
+            actionTypes.booking({
+              checkIn: dateToMilliseconds(newCheckInRef.current.value),
+              checkOut: dateToMilliseconds(newCheckOutRef.current.value),
+            })
+          );
+          // history.push('/summary');
+          history.push({
+            pathname: 'summary',
+            state: { holdStatus: false, deleteBooking: true },
+          });
+        } else {
+          history.push({
+            pathname: 'summary',
+            state: { holdStatus: true },
+          });
+        }
       } else {
         setError('Unfortunatley Those Dates Are Unavaliable');
       }
-    } catch {}
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const cancelBookingBackdropContent = () => {
