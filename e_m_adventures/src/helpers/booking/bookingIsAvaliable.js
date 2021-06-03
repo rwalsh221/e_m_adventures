@@ -35,21 +35,15 @@ export const bookingIsAvaliable = (
   });
 
   // SEARCH COMPARISON ARRAYS TO SEE IF NEW BOOKING IS AVALIABLE
-  const passFullDay = checkFullDays(
-    currentBooking.checkIn,
-    currentBooking.checkOut,
-    fullDayArr
-  );
+  const passFullDay = checkFullDays(currentBooking, fullDayArr);
 
   if (
     checkInArr.indexOf(currentBooking.checkIn) === -1 &&
     checkOutArr.indexOf(currentBooking.checkOut) === -1 &&
     passFullDay === true
   ) {
-    console.log('tiss true');
     return true;
   } else {
-    console.log('/bookingUnavaliable');
     return false;
   }
 };

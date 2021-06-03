@@ -1,24 +1,16 @@
-import { getFullDays } from '../utilities';
-
-export const checkFullDays = (checkIn, checkOut, allBookingsFullDay) => {
+export const checkFullDays = (currentBooking, allBookingsFullDay) => {
   const fullDayUnavailable = [];
 
-  // TODO: NOT NEEDED SEND FULL DAYS TO FUNCTION
-  const newBookingFullDays = getFullDays(checkIn, checkOut);
-
-  console.log(newBookingFullDays);
-  console.log(allBookingsFullDay);
   allBookingsFullDay.forEach((el) => {
     const element = el;
-    if (newBookingFullDays.indexOf(element) !== -1) {
-      console.log(element);
+    if (currentBooking.fullDays.indexOf(element) !== -1) {
       fullDayUnavailable.push(element);
     }
   });
 
   if (
-    allBookingsFullDay.indexOf(checkIn) === -1 &&
-    allBookingsFullDay.indexOf(checkOut) === -1 &&
+    allBookingsFullDay.indexOf(currentBooking.checkIn) === -1 &&
+    allBookingsFullDay.indexOf(currentBooking.checkOut) === -1 &&
     fullDayUnavailable.length === 0
   ) {
     return true;
