@@ -31,6 +31,7 @@ export const cancelBooking = async (
   currentUser,
   history
 ) => {
+  console.log('BOOKING CANCELLED');
   //TODO: BREAK EACH DELETE STEP INTO SEPERATE FUCTION
   const patchConfig = {
     method: 'PUT',

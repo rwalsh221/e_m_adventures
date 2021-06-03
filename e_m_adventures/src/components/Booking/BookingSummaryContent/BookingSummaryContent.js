@@ -110,12 +110,9 @@ const BookingSummaryContent = (props) => {
 
       if (!submitFulldays.ok) throw new Error(submitFulldays.message);
 
-      await cancelBooking(
-        state.modifyBooking,
-
-        currentUser,
-        history
-      );
+      if (location.state.modify) {
+        await cancelBooking(state.modifyBooking, currentUser, history);
+      }
 
       history.push('/confirmation');
     } catch (err) {
@@ -127,6 +124,7 @@ const BookingSummaryContent = (props) => {
     state.headerSearch,
     state.modifyBooking,
     currentUser,
+    location.state.modify,
   ]);
 
   useEffect(() => {

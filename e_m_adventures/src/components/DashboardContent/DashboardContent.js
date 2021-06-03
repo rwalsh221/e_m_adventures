@@ -168,6 +168,8 @@ const DashboardContent = () => {
     );
   }
 
+  console.log(contentFuture);
+
   return (
     <main className={classes.grid}>
       <Backdrop show={showBackdrop} content={backdropContent} ref={backdropRef}>

@@ -141,10 +141,10 @@ const ModifyBookingContent = () => {
               checkOut: dateToMilliseconds(newCheckOutRef.current.value),
             })
           );
-          // history.push('/summary');
+
           history.push({
             pathname: 'summary',
-            state: { holdStatus: false, deleteBooking: true },
+            state: { holdStatus: false, modify: true },
           });
         } else {
           history.push({

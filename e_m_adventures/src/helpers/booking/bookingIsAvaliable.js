@@ -20,17 +20,13 @@ export const bookingIsAvaliable = (
     // FULL DAYS
     if (allBookings[el].fullDays !== undefined) {
       allBookings[el].fullDays.forEach((el) => {
-        const bookingFullday = el;
-
-        fullDayArr.push(bookingFullday);
+        fullDayArr.push(el);
       });
     }
 
     // CHECKIN
-
     checkInArr.push(allBookings[el].checkIn);
     // CHECKOUT
-
     checkOutArr.push(allBookings[el].checkOut);
   });
 
