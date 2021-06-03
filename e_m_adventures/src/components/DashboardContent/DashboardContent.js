@@ -108,9 +108,14 @@ const DashboardContent = () => {
 
   let contentFuture = [];
   let contentPast = [];
+  console.log(bookingsFuture);
+  console.log(bookingsPast);
 
   // RENDER FUTURE BOOKING CONTENT
+
   for (let key in bookingsFuture) {
+    console.log('he;;p');
+    console.log(bookingsFuture[key]);
     contentFuture.push(
       <div
         className={classes.bookingCardContent}
@@ -155,9 +160,7 @@ const DashboardContent = () => {
         <ul>
           <li>
             Ref:
-            <span className={classes.ref}>
-              {bookingsFuture[key].bookingRef}
-            </span>
+            <span className={classes.ref}>{bookingsPast[key].bookingRef}</span>
           </li>
           <li>{`Check In: ${formatDate(bookingsPast[key].checkIn / 1000)}`}</li>
           <li>{`Check Out: ${formatDate(
