@@ -108,8 +108,7 @@ const ModifyBookingContent = () => {
   };
 
   const submitHandler = async () => {
-    // TODO: NOT WORKING SEE NOTES BELOW IN BOKINGAVLIABLE FUNCTION: NOW WORKING
-    // TODO: EXPORT HOLDBOOKING FROM HEADERSEARCH
+    
     const checkIn = dateToMilliseconds(newCheckInRef.current.value);
     const checkOut = dateToMilliseconds(newCheckOutRef.current.value);
 

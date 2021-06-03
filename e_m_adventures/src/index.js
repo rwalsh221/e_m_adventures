@@ -5,8 +5,6 @@ import App from './App';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import rootReducer from './store/index';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// TODO: REMOVE BOOTSTRAP
 
 const store = configureStore({
   reducer: rootReducer,

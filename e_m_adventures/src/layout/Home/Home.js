@@ -11,8 +11,8 @@ import Footer from '../../components/Footer/Footer';
 // TODO: REMOVE INDEX.CSS AND GET FONT
 
 // TODO: dashboard responsiveness
-// TODO: format bookings - past and future arrange by date
-// TODO: look at images too big
+
+// TODO: look at images too big. have reduced size. try further
 
 const Home = (props) => {
   return (
