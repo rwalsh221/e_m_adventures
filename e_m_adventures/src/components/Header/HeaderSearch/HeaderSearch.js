@@ -56,7 +56,10 @@ const HeaderSearch = (props) => {
         });
       }
     } else {
-      setError('Please try again');
+      setError('Please check your dates and try again');
+      setTimeout(() => {
+        setError('');
+      }, 2000);
     }
   };
 

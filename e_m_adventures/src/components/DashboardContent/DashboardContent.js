@@ -187,11 +187,15 @@ const DashboardContent = () => {
             </li>
             <li>
               <span className={classes.subHeading}>Check In:&nbsp;</span>
-              {backdropContent ? backdropContent.checkIn : null}
+              {backdropContent
+                ? formatDate(backdropContent.checkIn / 1000)
+                : null}
             </li>
             <li>
               <span className={classes.subHeading}>Check Out:&nbsp;</span>
-              {backdropContent ? backdropContent.checkOut : null}
+              {backdropContent
+                ? formatDate(backdropContent.checkOut / 1000)
+                : null}
             </li>
           </ul>
         </div>

@@ -9,6 +9,7 @@ import Backdrop from '../miniComponents/Backdrop/Backdrop';
 import { validateDate } from '../../helpers/validation';
 import { dateToMilliseconds, getFullDays } from '../../helpers/utilities';
 import { cancelBooking } from '../../helpers/cancelBooking';
+import { formatDate } from '../../helpers/utilities';
 
 import { bookingIsAvaliable } from '../../helpers/booking/bookingIsAvaliable';
 import holdCurrentBooking from '../../helpers/booking/holdCurrentBooking';
@@ -234,10 +235,10 @@ const ModifyBookingContent = () => {
           Booking Reference:&nbsp;<span>{state.bookingRef}</span>
         </li>
         <li>
-          Check In:&nbsp;<span>{state.checkIn}</span>
+          Check In:&nbsp;<span>{formatDate(state.checkIn / 1000)}</span>
         </li>
         <li>
-          Check Out:&nbsp;<span>{state.checkOut}</span>
+          Check Out:&nbsp;<span>{formatDate(state.checkOut / 1000)}</span>
         </li>
       </ul>
       <button
