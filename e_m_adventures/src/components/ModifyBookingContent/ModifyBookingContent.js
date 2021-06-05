@@ -8,7 +8,7 @@ import Backdrop from '../miniComponents/Backdrop/Backdrop';
 
 import { validateDate } from '../../helpers/validation';
 import { dateToMilliseconds, getFullDays } from '../../helpers/utilities';
-import { cancelBooking } from '../../helpers/cancelBooking';
+import { cancelBooking } from '../../helpers/booking/cancelBooking';
 import { formatDate } from '../../helpers/utilities';
 
 import { bookingIsAvaliable } from '../../helpers/booking/bookingIsAvaliable';
@@ -108,7 +108,6 @@ const ModifyBookingContent = () => {
   };
 
   const submitHandler = async () => {
-    
     const checkIn = dateToMilliseconds(newCheckInRef.current.value);
     const checkOut = dateToMilliseconds(newCheckOutRef.current.value);
 

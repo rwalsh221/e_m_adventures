@@ -53,16 +53,12 @@ const SearchPopUp = (props) => {
           className={classes.btnSubmit}
           onClick={(e) => {
             e.preventDefault();
-            console.log(checkInPop.current.value);
-            console.log(checkOutPop.current.value);
-            console.log();
 
             formIsValid = validateDate(
               checkInPop.current.value,
               checkOutPop.current.value
             );
             if (formIsValid) {
-              console.log('valid');
               dispatch(
                 actionTypes.booking({
                   checkIn: dateToMilliseconds(checkInPop.current.value),

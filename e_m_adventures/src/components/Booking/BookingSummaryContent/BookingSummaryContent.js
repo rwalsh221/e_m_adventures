@@ -5,7 +5,7 @@ import { nanoid } from 'nanoid';
 import { useLocation } from 'react-router-dom';
 
 import { useAuth } from '../../../contexts/AuthContext';
-import { cancelBooking } from '../../../helpers/cancelBooking';
+import { cancelBooking } from '../../../helpers/booking/cancelBooking';
 
 import BookingUnavailable from './BookingUnavailable/BookingUnavailable';
 import BookingAvailable from './BookingAvailable/BookingAvailable';
@@ -84,7 +84,7 @@ const BookingSummaryContent = (props) => {
           }),
         }
       );
-      console.log(submitBooking);
+     
       if (!submitBooking.ok) throw Error(submitBooking.message);
 
       // send booking to user database key

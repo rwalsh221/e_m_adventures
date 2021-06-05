@@ -78,7 +78,6 @@ export const getFullDays = (checkIn, checkOut) => {
   let bookedDaysArr = [];
 
   for (let i = checkIn; i < checkOut; i = i + milliSeconds) {
-    console.log('loop');
     if (i !== checkIn) bookedDaysArr.push(i);
   }
 

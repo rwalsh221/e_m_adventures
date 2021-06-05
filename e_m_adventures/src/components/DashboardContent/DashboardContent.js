@@ -108,14 +108,10 @@ const DashboardContent = () => {
 
   let contentFuture = [];
   let contentPast = [];
-  console.log(bookingsFuture);
-  console.log(bookingsPast);
 
   // RENDER FUTURE BOOKING CONTENT
 
   for (let key in bookingsFuture) {
-    console.log('he;;p');
-    console.log(bookingsFuture[key]);
     contentFuture.push(
       <div
         className={classes.bookingCardContent}
@@ -170,8 +166,6 @@ const DashboardContent = () => {
       </div>
     );
   }
-
-  console.log(contentFuture);
 
   return (
     <main className={classes.grid}>

@@ -3,7 +3,6 @@ import React from 'react';
 import classes from './RestaurantCard.module.css';
 
 const RestaurantCard = (props) => {
-  console.log(classes);
   return (
     <div className={classes.sidebarCard}>
       <img

@@ -6,7 +6,7 @@ import classes from './BookingConfirmationContent.module.css';
 
 const BookingConfirmationContent = (props) => {
   const state = useSelector((state) => state);
-  console.log(state);
+
   return (
     <main className={classes.main}>
       <h1 className={classes.heading}>Your Going To Carnforth</h1>

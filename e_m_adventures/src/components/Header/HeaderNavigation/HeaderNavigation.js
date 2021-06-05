@@ -12,9 +12,7 @@ const HeaderNavigation = () => {
         src={logoWhite}
         alt="e and m logo"
         className={classes.logo}
-        onClick={() => {
-          console.log('clclclcl');
-        }}
+        onClick={() => {}}
       ></img>
       <div className={classes.navBtnContainer}>
         <button className={classes.navBtn}>Our Place</button>
