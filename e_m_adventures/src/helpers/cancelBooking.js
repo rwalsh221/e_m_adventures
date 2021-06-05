@@ -25,40 +25,49 @@ const getBookingData = async (currentUser) => {
   return { userBookingsJson, fullDaysJson, allBookingsJson };
 };
 
-export const cancelBooking = async (
+const cancelBookingUserDB = async (
+  userBookingsJson,
   modifyBookingState,
-
   currentUser,
-  history
+  putConfig
 ) => {
-  console.log('BOOKING CANCELLED');
-  //TODO: BREAK EACH DELETE STEP INTO SEPERATE FUCTION
-  const patchConfig = {
-    method: 'PUT',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-  };
   try {
-    const { userBookingsJson, fullDaysJson, allBookingsJson } =
-      await getBookingData(currentUser);
-
-    // DELETE BOOKING FROM USER BOOKING DATABASE
     const userBookingsKeys = Object.keys(userBookingsJson);
 
-    // TODO: SEE STACKOVERFLOW BOOKMARK
-    userBookingsKeys.filter((bookingKey) => {
+    const userBookingKey = userBookingsKeys.filter((bookingKey) => {
+      let deleteKey;
       if (
         userBookingsJson[bookingKey].bookingRef ===
         modifyBookingState.bookingRef
       ) {
-        delete userBookingsJson[bookingKey];
+        deleteKey = bookingKey;
       }
+
+      return deleteKey;
     });
 
-    // DELETE BOOKING FROM FULLDAYS
+    delete userBookingsJson[userBookingKey];
 
+    // SEND UPDATED BOOKING OBJECT TO DATABASE.
+    const updateUserBookingsDatabase = await fetch(
+      `${database}/users/${currentUser.uid}/booking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`,
+      { ...putConfig, body: JSON.stringify({ ...userBookingsJson }) }
+    );
+
+    if (!updateUserBookingsDatabase.ok)
+      throw Error(updateUserBookingsDatabase.message);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const cancelBookingFullDaysDB = async (
+  allBookingsJson,
+  fullDaysJson,
+  modifyBookingState,
+  putConfig
+) => {
+  try {
     // get checkin
     const bookingFullDaysArr = [];
     bookingFullDaysArr.push(
@@ -80,33 +89,33 @@ export const cancelBooking = async (
         return val === bookingFullDaysArr[i];
       });
 
+      // if remove cancelled booking full day from allFulldays array be searching for index
       if (index !== -1) fullDaysJson.splice(index, 1);
     }
 
-    // DELETE BOOKING FROM ALL BOOKINGS
-
-    delete allBookingsJson[modifyBookingState.bookingRef];
-
-    // SEND UPDATED BOOKING OBJECT TO DATABASE.
-    const updateUserBookingsDatabase = await fetch(
-      `${database}/users/${currentUser.uid}/booking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`,
-      { ...patchConfig, body: JSON.stringify({ ...userBookingsJson }) }
-    );
-
-    if (!updateUserBookingsDatabase.ok)
-      throw Error(updateUserBookingsDatabase.message);
-
     const updateFullDaysDatabase = await fetch(
       `${database}fulldays.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`,
-      { ...patchConfig, body: JSON.stringify({ ...fullDaysJson }) }
+      { ...putConfig, body: JSON.stringify({ ...fullDaysJson }) }
     );
 
     if (!updateFullDaysDatabase.ok) throw Error(updateFullDaysDatabase.message);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const cancelBookingAllBookingsDB = async (
+  allBookingsJson,
+  modifyBookingState,
+  putConfig
+) => {
+  try {
+    delete allBookingsJson[modifyBookingState.bookingRef];
 
     const updateBookingDatabase = await fetch(
       `${database}booking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`,
       {
-        ...patchConfig,
+        ...putConfig,
         body: JSON.stringify({
           ...allBookingsJson,
         }),
@@ -114,6 +123,49 @@ export const cancelBooking = async (
     );
 
     if (!updateBookingDatabase.ok) throw Error(updateBookingDatabase.message);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const cancelBooking = async (
+  modifyBookingState,
+  currentUser,
+  history
+) => {
+  const putConfig = {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  };
+  try {
+    const { userBookingsJson, fullDaysJson, allBookingsJson } =
+      await getBookingData(currentUser);
+
+    // DELETE BOOKING FROM USER BOOKING DATABASE
+    await cancelBookingUserDB(
+      userBookingsJson,
+      modifyBookingState,
+      currentUser,
+      putConfig
+    );
+
+    // DELETE BOOKING FROM FULLDAYS
+    await cancelBookingFullDaysDB(
+      allBookingsJson,
+      fullDaysJson,
+      modifyBookingState,
+      putConfig
+    );
+
+    // DELETE BOOKING FROM ALL BOOKINGS
+    await cancelBookingAllBookingsDB(
+      allBookingsJson,
+      modifyBookingState,
+      putConfig
+    );
 
     history.push('/dashBoard');
   } catch (error) {
