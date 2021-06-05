@@ -224,7 +224,7 @@ const DashboardContent = () => {
           Update Profile
         </Link>
       </div>
-      <h3 className={classes.bookingHeading}>Your Upcoming Bookings</h3>
+      <h3 className={classes.upcomingBookingHeading}>Your Upcoming Bookings</h3>
       <div className={classes.futureDateContainer}>
         {contentFuture.length === 0 ? (
           <div className={classes.bookingCardContent}>
@@ -234,7 +234,7 @@ const DashboardContent = () => {
           contentFuture
         )}
       </div>
-      <h3 className={classes.bookingHeading}>Your past Bookings</h3>
+      <h3 className={classes.pastBookingHeading}>Your past Bookings</h3>
       <div className={classes.pastDateContainer}>
         {contentPast.length === 0 ? (
           <div className={classes.bookingCardContent}>

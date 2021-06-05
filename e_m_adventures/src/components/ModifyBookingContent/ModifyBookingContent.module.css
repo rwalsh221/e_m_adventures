@@ -31,3 +31,25 @@
 .submitBtn:visited {
   color: var(--main-color-black);
 }
+
+@media (max-width: 905px) {
+  .main {
+    width: 80%;
+  }
+  .mainHeading {
+    font-size: 4.5rem;
+  }
+  .secHeading {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 460px) {
+  .main {
+    width: 90%;
+  }
+
+  .bookingInfo {
+    font-size: 2rem;
+  }
+}

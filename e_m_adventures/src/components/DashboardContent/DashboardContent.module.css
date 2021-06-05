@@ -55,7 +55,8 @@
   font-size: 1.8rem;
 }
 
-.bookingHeading {
+.upcomingBookingHeading,
+.pastBookingHeading {
   margin-top: 5rem;
 }
 
@@ -162,10 +163,9 @@
 }
 
 @media (max-width: 480px) {
-  .bookingHeading {
-    grid-row: 3;
-    grid-column: 1;
-    margin-top: 5rem;
+  .upcomingBookingHeading,
+  .pastBookingHeading {
+    font-size: 3.5rem;
   }
 
   .bookingCard {

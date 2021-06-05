@@ -226,8 +226,10 @@ const ModifyBookingContent = () => {
       <Backdrop show={showBackdrop} ref={backdropRef}>
         {backdropContent}
       </Backdrop>
-      <h1>Change Your Booking</h1>
-      <h2>Your Going to Carnforth Forest Lodge</h2>
+      <h1 className={classes.mainHeading}>Change Your Booking</h1>
+      <h2 className={classes.secHeading}>
+        Your Going to Carnforth Forest Lodge
+      </h2>
       <ul className={classes.bookingInfo}>
         <li>
           Booking Reference:&nbsp;<span>{state.bookingRef}</span>

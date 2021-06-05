@@ -12,6 +12,8 @@ import Footer from '../../components/Footer/Footer';
 
 // TODO: dashboard responsiveness
 
+// need to look at search handler in mobile popup. DOESTt HAVE THE HOLDBOONIG FUCTION SO THROWING ERROR. EXPORT SUBMIT SEARCH HANDLER FROM MAIN SERCH FUNCTION
+
 // TODO: look at images too big. have reduced size. try further
 
 const Home = (props) => {
