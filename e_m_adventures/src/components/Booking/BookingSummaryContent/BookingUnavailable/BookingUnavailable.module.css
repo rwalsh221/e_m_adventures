@@ -13,6 +13,7 @@
   background-color: black;
   padding: 5rem;
   border-radius: 2rem;
+  width: 90%;
 }
 
 .header {
@@ -29,4 +30,10 @@
 .homeLink:focus {
   color: var(--main-color-gold);
   text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .header {
+    font-size: 4rem;
+  }
 }
