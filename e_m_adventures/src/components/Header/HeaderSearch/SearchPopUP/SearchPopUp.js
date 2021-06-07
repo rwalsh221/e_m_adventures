@@ -1,8 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { validateDate } from '../../../../helpers/validation';
 import { dateToMilliseconds } from '../../../../helpers/utilities';
+import holdCurrentBooking from '../../../../helpers/booking/holdCurrentBooking';
 
 import classes from './SearchPopUp.module.css';
 
@@ -13,11 +14,50 @@ const mapDispatch = { ...actionTypes };
 const SearchPopUp = (props) => {
   const dispatch = useDispatch();
 
+  const [error, setError] = useState();
+
   const checkInPop = useRef();
   const checkOutPop = useRef();
   const history = useHistory();
 
   let formIsValid = false;
+
+  const submitSearchHandler = async () => {
+    formIsValid = validateDate(
+      checkInPop.current.value,
+      checkOutPop.current.value
+    );
+    if (formIsValid) {
+      if (
+        await holdCurrentBooking(
+          dateToMilliseconds(checkInPop.current.value),
+          dateToMilliseconds(checkOutPop.current.value),
+          setError
+        )
+      ) {
+        dispatch(
+          actionTypes.booking({
+            checkIn: dateToMilliseconds(checkInPop.current.value),
+            checkOut: dateToMilliseconds(checkOutPop.current.value),
+          })
+        );
+        history.push('/summary', {
+          pathname: 'summary',
+          state: { holdStatus: false },
+        });
+      } else {
+        history.push({
+          pathname: 'summary',
+          state: { holdStatus: true },
+        });
+      }
+    } else {
+      setError('Please check your dates and try again');
+      setTimeout(() => {
+        setError('');
+      }, 2000);
+    }
+  };
 
   return (
     <div className={classes.searchPopUp} style={{ display: props.display }}>
@@ -53,22 +93,7 @@ const SearchPopUp = (props) => {
           className={classes.btnSubmit}
           onClick={(e) => {
             e.preventDefault();
-
-            formIsValid = validateDate(
-              checkInPop.current.value,
-              checkOutPop.current.value
-            );
-            if (formIsValid) {
-              dispatch(
-                actionTypes.booking({
-                  checkIn: dateToMilliseconds(checkInPop.current.value),
-                  checkOut: dateToMilliseconds(checkOutPop.current.value),
-                })
-              );
-              history.push('/summary');
-            } else {
-              console.log('invalid form');
-            }
+            submitSearchHandler();
           }}
         >
           SUBMIT
