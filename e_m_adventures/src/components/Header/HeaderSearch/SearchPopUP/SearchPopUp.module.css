@@ -67,7 +67,7 @@
 
 .date input,
 .guests select {
-  width: 100%;
+  width: 40rem;
 }
 
 .btnSubmit {

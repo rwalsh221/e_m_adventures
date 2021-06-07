@@ -79,3 +79,14 @@
   border: 2px solid var(--main-color-gold);
   color: var(--main-color-gold);
 }
+
+@media (max-width: 480px) {
+  .summaryCard {
+    margin: 3rem 0 0 0;
+    grid-row: 4;
+    grid-column: 1;
+    height: max-content;
+    width: 70%;
+    justify-self: center;
+  }
+}
