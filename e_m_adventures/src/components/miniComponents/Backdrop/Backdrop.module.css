@@ -2,7 +2,7 @@
   background-color: var(--main-color-black);
   border: 2px solid var(--main-color-gold);
   position: fixed;
-  padding: 10rem;
+  padding: 5rem;
   top: 50%;
   right: 50%;
   transform: translate(50%, -50%);

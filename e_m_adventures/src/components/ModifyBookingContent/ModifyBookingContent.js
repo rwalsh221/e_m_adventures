@@ -189,13 +189,13 @@ const ModifyBookingContent = () => {
             <h6>Start Your Adventure</h6>
           </div>
           <div className={classes.date}>
-            <label htmlFor="checkIn" className={classes.searchLabel}>
+            <label htmlFor="checkIn" className={classes.dateCheckin}>
               Check-in
             </label>
             <input type="date" id="checkIn" ref={newCheckInRef}></input>
           </div>
           <div className={classes.date}>
-            <label htmlFor="checkOut" className={classes.searchLabel}>
+            <label htmlFor="checkOut" className={classes.dateCheckout}>
               Check-out
             </label>
             <input type="date" id="checkOut" ref={newCheckOutRef}></input>

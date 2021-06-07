@@ -20,16 +20,35 @@
 
 .submitBtn {
   background-color: var(--main-color-gold);
-  width: max-content;
+  width: 16rem;
+  min-width: max-content;
   padding: 3rem;
   border-radius: 3rem;
   font-size: 2rem;
   margin: 3rem auto;
+  border: none;
 }
 
 .submitBtn,
 .submitBtn:visited {
   color: var(--main-color-black);
+}
+
+.backdropBtnContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.date {
+  margin-top: 2rem;
+}
+
+.dateCheckin {
+  margin-right: 3rem;
+}
+
+.dateCheckout {
+  margin-right: 2.3rem;
 }
 
 @media (max-width: 905px) {
@@ -51,5 +70,6 @@
 
   .bookingInfo {
     font-size: 2rem;
+    padding: 4rem 2rem;
   }
 }
