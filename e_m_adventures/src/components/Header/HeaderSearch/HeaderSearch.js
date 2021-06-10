@@ -10,11 +10,11 @@ import holdCurrentBooking from '../../../helpers/booking/holdCurrentBooking';
 import * as actionTypes from './HeaderSearchSlice';
 
 import classes from './HeaderSearch.module.css';
+import { nanoid } from 'nanoid';
 
-// TODO: LOOK AT HAVING CURRENT HOLD BOOKING STATE SO IF USER HAS HOLD BOOKING THEY CAN GO BACK IF THEY MESS UP
+// TODO: LOOK AT HAVING CURRENT HOLD BOOKING STATE SO IF USER HAS HOLD BOOKING THEY CAN GO BACK IF THEY MESS UP/// want to delete hold booking if move away from summary
 // TODO: TIMEOUT FUNCTION TO CANCEL SUMMARY AFTER 5MIN
 // TODO: REFACTOR CANCEL AND MODIFY WITH BOOKING HELPERS
-
 
 const mapDispatch = { ...actionTypes };
 
@@ -32,17 +32,20 @@ const HeaderSearch = (props) => {
   const submitSearchHandler = async () => {
     formIsValid = validateDate(checkIn.current.value, checkOut.current.value);
     if (formIsValid) {
+      const ref = `ref${nanoid()}`;
       if (
         await holdCurrentBooking(
           dateToMilliseconds(checkIn.current.value),
           dateToMilliseconds(checkOut.current.value),
-          setError
+          setError,
+          ref
         )
       ) {
         dispatch(
           actionTypes.booking({
             checkIn: dateToMilliseconds(checkIn.current.value),
             checkOut: dateToMilliseconds(checkOut.current.value),
+            holdRef: ref,
           })
         );
         history.push('/summary', {

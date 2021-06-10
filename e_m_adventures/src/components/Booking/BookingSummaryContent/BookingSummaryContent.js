@@ -26,6 +26,8 @@ const BookingSummaryContent = (props) => {
 
   const location = useLocation();
 
+  console.log(location.state.state);
+
   // const bookingData = getBookingData(currentUser);
 
   useEffect(() => {
@@ -84,7 +86,7 @@ const BookingSummaryContent = (props) => {
           }),
         }
       );
-     
+
       if (!submitBooking.ok) throw Error(submitBooking.message);
 
       // send booking to user database key
@@ -135,13 +137,19 @@ const BookingSummaryContent = (props) => {
     } else if (location.state.holdStatus) {
       setContent(<BookingUnavailable holdBooking={true} />);
     } else {
-      setContent(<BookingAvailable submitHandler={submitHandler} />);
+      setContent(
+        <BookingAvailable
+          submitHandler={submitHandler}
+          ref={location.state.ref}
+        />
+      );
     }
   }, [
     bookedDays,
     state.headerSearch.checkIn,
     submitHandler,
     location.state.holdStatus,
+    location.state.ref,
   ]);
 
   return content;

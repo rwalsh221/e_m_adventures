@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { nanoid } from 'nanoid';
 import { validateDate } from '../../../../helpers/validation';
 import { dateToMilliseconds } from '../../../../helpers/utilities';
 import holdCurrentBooking from '../../../../helpers/booking/holdCurrentBooking';
@@ -28,24 +29,29 @@ const SearchPopUp = (props) => {
       checkOutPop.current.value
     );
     if (formIsValid) {
+      const ref = `ref${nanoid()}`;
       if (
         await holdCurrentBooking(
           dateToMilliseconds(checkInPop.current.value),
           dateToMilliseconds(checkOutPop.current.value),
-          setError
+          setError,
+          ref
         )
       ) {
+        // CURRENT BOOKING IS NOT BEING HELD/RESERVED
         dispatch(
           actionTypes.booking({
             checkIn: dateToMilliseconds(checkInPop.current.value),
             checkOut: dateToMilliseconds(checkOutPop.current.value),
           })
         );
-        history.push('/summary', {
+        console.log(ref);
+        history.push({
           pathname: 'summary',
           state: { holdStatus: false },
         });
       } else {
+        // CURRENT BOOKING IS HELD/RESERVED
         history.push({
           pathname: 'summary',
           state: { holdStatus: true },

@@ -1,10 +1,10 @@
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 
 import { getFullDays } from '../utilities';
 import { deleteTimeout } from './deleteTimeout';
 import { bookingIsAvaliable } from './bookingIsAvaliable';
 
-const holdCurrentBooking = async (checkIn, checkOut, setError) => {
+const holdCurrentBooking = async (checkIn, checkOut, setError, ref) => {
   const database =
     'https://e-m-adventures-development-default-rtdb.europe-west1.firebasedatabase.app/';
 
@@ -33,7 +33,7 @@ const holdCurrentBooking = async (checkIn, checkOut, setError) => {
     timeStamp: Date.now(),
   };
 
-  const ref = `ref${nanoid()}`;
+  // const ref = `ref${nanoid()}`;
 
   try {
     // ADD CURRENT BOOKING TO DATABASE
@@ -57,7 +57,7 @@ const holdCurrentBooking = async (checkIn, checkOut, setError) => {
 
     if (!getHoldBookings.ok) throw new Error('get hold bookign failed');
 
-    // DELETE CURRENT BOOKING FROM DATABASE FOR SEARCH
+    // DELETE CURRENT BOOKING FROM HOLDBOOKING OBJECT FOR SEARCH
     delete getHoldBookingsJson[ref];
 
     let getHoldBookingsJsonTimeout = deleteTimeout(getHoldBookingsJson);
@@ -71,7 +71,7 @@ const holdCurrentBooking = async (checkIn, checkOut, setError) => {
         [ref]: currentBooking,
       };
 
-      const patchHoldBookings = await fetch(
+      const putHoldBookings = await fetch(
         `${database}holdCurrentBooking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`,
         {
           ...putConfig,
@@ -80,11 +80,11 @@ const holdCurrentBooking = async (checkIn, checkOut, setError) => {
           }),
         }
       );
-      if (!patchHoldBookings.ok) throw new Error('patch hold bookign failed');
+      if (!putHoldBookings.ok) throw new Error('patch hold bookign failed');
 
       return true;
     } else {
-      const patchHoldBookings = await fetch(
+      const putHoldBookings = await fetch(
         `${database}holdCurrentBooking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`,
         {
           ...putConfig,
@@ -93,7 +93,7 @@ const holdCurrentBooking = async (checkIn, checkOut, setError) => {
           }),
         }
       );
-      if (!patchHoldBookings.ok) throw new Error('patch hold bookign failed');
+      if (!putHoldBookings.ok) throw new Error('patch hold bookign failed');
       return false;
     }
   } catch (error) {
