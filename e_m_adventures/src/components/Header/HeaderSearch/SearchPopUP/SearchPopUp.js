@@ -43,6 +43,7 @@ const SearchPopUp = (props) => {
           actionTypes.booking({
             checkIn: dateToMilliseconds(checkInPop.current.value),
             checkOut: dateToMilliseconds(checkOutPop.current.value),
+            holdRef: ref,
           })
         );
         console.log(ref);
