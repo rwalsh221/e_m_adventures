@@ -12,8 +12,6 @@ import * as actionTypes from './HeaderSearchSlice';
 import classes from './HeaderSearch.module.css';
 import { nanoid } from 'nanoid';
 
-// TODO: LOOK AT HAVING CURRENT HOLD BOOKING STATE SO IF USER HAS HOLD BOOKING THEY CAN GO BACK IF THEY MESS UP/// want to delete hold booking if move away from summary
-// TODO: TIMEOUT FUNCTION TO CANCEL SUMMARY AFTER 5MIN
 // TODO: REFACTOR CANCEL AND MODIFY WITH BOOKING HELPERS
 
 const mapDispatch = { ...actionTypes };

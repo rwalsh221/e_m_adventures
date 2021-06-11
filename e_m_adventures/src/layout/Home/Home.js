@@ -12,8 +12,6 @@ import Footer from '../../components/Footer/Footer';
 
 // TODO: look at images too big. have reduced size. try further
 
-// TODO: ADD BOOKING TIMEOUT PAGE.
-
 const Home = (props) => {
   return (
     <div className={'layoutGrid'}>
