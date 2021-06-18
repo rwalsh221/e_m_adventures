@@ -18,7 +18,7 @@ const mapDispatch = { ...actionTypes };
 const SearchPopUp = (props) => {
   const dispatch = useDispatch();
 
-  const [error, setError] = useState();
+  const [error, setError] = useState('');
 
   const checkInPop = useRef();
   const checkOutPop = useRef();
@@ -67,47 +67,48 @@ const SearchPopUp = (props) => {
   };
 
   return (
-    <div className={classes.searchPopUp} style={{ display: props.display }}>
-      {error && <ErrorComponent />}
-      <form className={classes.searchForm}>
-        <div className={classes.start}>
-          <h6>Start Your Adventure</h6>
-        </div>
-        <div className={classes.date}>
-          <label htmlFor="checkIn" className={classes.searchLabel}>
-            Check-in
-          </label>
-          <input type="date" id="checkIn" ref={checkInPop}></input>
-        </div>
-        <div className={classes.date}>
-          <label htmlFor="checkOut" className={classes.searchLabel}>
-            Check-out
-          </label>
-          <input type="date" id="checkOut" ref={checkOutPop}></input>
-        </div>
-        <div className={classes.guests}>
-          <label htmlFor="guests" className={classes.searchLabel}>
-            Guests
-          </label>
-          <select id="guests">
-            <option value="one">One</option>
-            <option value="two">Two</option>
-            <option value="three">Three</option>
-            <option value="four">Four</option>
-          </select>
-        </div>
-
-        <button
-          className={classes.btnSubmit}
-          onClick={(e) => {
-            e.preventDefault();
-            submitSearchHandler();
-          }}
-        >
-          SUBMIT
-        </button>
-      </form>
-    </div>
+    <React.Fragment>
+      {error && <ErrorComponent message={error} />}
+      <div className={classes.searchPopUp} style={{ display: props.display }}>
+        <form className={classes.searchForm}>
+          <div className={classes.start}>
+            <h6>Start Your Adventure</h6>
+          </div>
+          <div className={classes.date}>
+            <label htmlFor="checkIn" className={classes.searchLabel}>
+              Check-in
+            </label>
+            <input type="date" id="checkIn" ref={checkInPop}></input>
+          </div>
+          <div className={classes.date}>
+            <label htmlFor="checkOut" className={classes.searchLabel}>
+              Check-out
+            </label>
+            <input type="date" id="checkOut" ref={checkOutPop}></input>
+          </div>
+          <div className={classes.guests}>
+            <label htmlFor="guests" className={classes.searchLabel}>
+              Guests
+            </label>
+            <select id="guests">
+              <option value="one">One</option>
+              <option value="two">Two</option>
+              <option value="three">Three</option>
+              <option value="four">Four</option>
+            </select>
+          </div>
+          <button
+            className={classes.btnSubmit}
+            onClick={(e) => {
+              e.preventDefault();
+              submitSearchHandler();
+            }}
+          >
+            SUBMIT
+          </button>
+        </form>
+      </div>
+    </React.Fragment>
   );
 };
 

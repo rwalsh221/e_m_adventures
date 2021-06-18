@@ -17,8 +17,14 @@
   border: 2px solid var(--main-color-gold);
 }
 
-.fixed {
-  z-index: 10000;
-  height: 10rem;
-  position: fixed;
+@media (max-width: 414px) {
+  .error {
+    left: 4rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .error {
+    left: 3rem;
+  }
 }
