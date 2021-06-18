@@ -26,7 +26,7 @@ const BookingSummaryContent = (props) => {
 
   const location = useLocation();
 
-  console.log(location.state.state);
+ 
 
   // const bookingData = getBookingData(currentUser);
 

@@ -6,6 +6,7 @@ import { dateToMilliseconds } from '../../../helpers/utilities';
 import ErrorComponent from '../../miniComponents/ErrorComponent/ErrorComponent';
 
 import holdCurrentBooking from '../../../helpers/booking/holdCurrentBooking';
+import { errorTimeout } from '../../../helpers/error/errorTimeout';
 
 import * as actionTypes from './HeaderSearchSlice';
 
@@ -57,10 +58,7 @@ const HeaderSearch = (props) => {
         });
       }
     } else {
-      setError('Please check your dates and try again');
-      setTimeout(() => {
-        setError('');
-      }, 2000);
+      errorTimeout(setError, 'Please check your dates and try again');
     }
   };
 

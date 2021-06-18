@@ -6,6 +6,9 @@ import { validateDate } from '../../../../helpers/validation';
 import { dateToMilliseconds } from '../../../../helpers/utilities';
 import holdCurrentBooking from '../../../../helpers/booking/holdCurrentBooking';
 
+import ErrorComponent from '../../../miniComponents/ErrorComponent/ErrorComponent';
+import { errorTimeout } from '../../../../helpers/error/errorTimeout';
+
 import classes from './SearchPopUp.module.css';
 
 import * as actionTypes from '../HeaderSearchSlice';
@@ -46,7 +49,7 @@ const SearchPopUp = (props) => {
             holdRef: ref,
           })
         );
-        console.log(ref);
+
         history.push({
           pathname: 'summary',
           state: { holdStatus: false },
@@ -59,15 +62,13 @@ const SearchPopUp = (props) => {
         });
       }
     } else {
-      setError('Please check your dates and try again');
-      setTimeout(() => {
-        setError('');
-      }, 2000);
+      errorTimeout(setError, 'Please check your dates and try again');
     }
   };
 
   return (
     <div className={classes.searchPopUp} style={{ display: props.display }}>
+      {error && <ErrorComponent />}
       <form className={classes.searchForm}>
         <div className={classes.start}>
           <h6>Start Your Adventure</h6>

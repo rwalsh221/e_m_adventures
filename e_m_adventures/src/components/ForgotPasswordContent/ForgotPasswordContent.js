@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import ErrorComponent from '../miniComponents/ErrorComponent/ErrorComponent';
+import { errorTimeout } from '../../helpers/error/errorTimeout';
 
 import classes from './ForgotPasswordContent.module.css';
 
@@ -24,7 +25,7 @@ const ForgotPasswordContent = () => {
       await resetPassword(emailRef.current.value);
       setMessage('Check your inbox for the password reset Email');
     } catch {
-      setError('Failed to Reset Password');
+      errorTimeout(setError, 'Failed to reset password');
     }
 
     setLoading(false);

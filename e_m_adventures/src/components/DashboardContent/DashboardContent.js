@@ -6,8 +6,10 @@ import { LoremIpsum } from 'react-lorem-ipsum';
 import { formatDate } from '../../helpers/utilities';
 import { connect, useDispatch } from 'react-redux';
 
+import ErrorComponent from '../miniComponents/ErrorComponent/ErrorComponent';
 import Backdrop from '../miniComponents/Backdrop/Backdrop';
 import img from '../../assets/img/morecambe.jpg';
+import { errorTimeout } from '../../helpers/error/errorTimeout';
 
 import * as actionTypes from './DashboardContentSlice';
 
@@ -23,6 +25,7 @@ const DashboardContent = () => {
   const [bookingsPast, setBookingsPast] = useState(null);
   const [showBackdrop, setShowBackdrop] = useState(false);
   const [backdropContent, setBackdropContent] = useState(null);
+  const [error, setError] = useState('');
 
   const { currentUser, logout } = useAuth();
 
@@ -41,10 +44,11 @@ const DashboardContent = () => {
     // setError('');
 
     try {
+      setError('');
       await logout();
       history.pushState('/');
     } catch {
-      console.log('Failed to logout');
+      errorTimeout(setError);
     }
   };
 
@@ -216,6 +220,7 @@ const DashboardContent = () => {
           </li>
         </ul>
       </div>
+      {error && <ErrorComponent message={error} />}
       <div className={classes.btnContainer}>
         <button onClick={handleLogout} className={classes.logoutBtn}>
           Logout

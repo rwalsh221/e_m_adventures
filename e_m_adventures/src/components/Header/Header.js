@@ -8,7 +8,6 @@ import SearchPopUp from './HeaderSearch/SearchPopUP/SearchPopUp';
 
 const Header = (props) => {
   const [popUp, setPopUp] = useState('none');
-  // const [error, setError] = useState('');
 
   const setPopUpHandler = (open) => {
     if (open) {

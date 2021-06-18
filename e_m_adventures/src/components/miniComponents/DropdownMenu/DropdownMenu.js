@@ -2,12 +2,15 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../../contexts/AuthContext';
 
+import ErrorComponent from '../../miniComponents/ErrorComponent/ErrorComponent';
+import { errorTimeout } from '../../../helpers/error/errorTimeout';
+
 import classes from './DropdownMenu.module.css';
 
 const DropdownMenu = (props) => {
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useState(false);
-  // const [error, setError] = useState('');
+  const [error, setError] = useState('');
 
   const { currentUser, logout } = useAuth();
   const history = useHistory();
@@ -20,7 +23,7 @@ const DropdownMenu = (props) => {
       setIsActive(false);
       history.pushState('/');
     } catch {
-      console.log('Failed to logout');
+      errorTimeout(setError);
     }
   };
 
@@ -72,6 +75,7 @@ const DropdownMenu = (props) => {
 
   return (
     <div className={classes.menuContainer}>
+      {error && <ErrorComponent message={error} />}
       <button onClick={onClick} className={classes.menuTrigger}>
         <ion-icon name="menu-outline"></ion-icon>
         <ion-icon name="people-circle-outline"></ion-icon>

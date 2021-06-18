@@ -3,6 +3,7 @@ import React, { useRef, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import ErrorComponent from '../miniComponents/ErrorComponent/ErrorComponent';
+import { errorTimeout } from '../../helpers/error/errorTimeout';
 
 import classes from './UpdateProfileContent.module.css';
 
@@ -21,7 +22,7 @@ const UpdateProfileContent = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-      return setError('Passwords do not match');
+      return errorTimeout(setError, 'Passwords do not match');
     }
 
     const promises = [];
@@ -41,7 +42,7 @@ const UpdateProfileContent = () => {
         history.push('./dashboard');
       })
       .catch(() => {
-        setError('failed to update account');
+        errorTimeout(setError, 'failed to update account');
       })
       .finally(() => {
         setLoading(false);

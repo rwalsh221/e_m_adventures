@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 
 import ErrorComponent from '../miniComponents/ErrorComponent/ErrorComponent';
+import { errorTimeout } from '../../helpers/error/errorTimeout';
 import Backdrop from '../miniComponents/Backdrop/Backdrop';
 
 import { validateDate } from '../../helpers/validation';
@@ -152,7 +153,7 @@ const ModifyBookingContent = () => {
           });
         }
       } else {
-        setError('Unfortunatley Those Dates Are Unavaliable');
+        errorTimeout(setError, 'Unfortunatley Those Dates Are Unavaliable');
       }
     } catch (error) {
       console.error(error);

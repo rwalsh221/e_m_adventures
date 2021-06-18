@@ -4,6 +4,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import ErrorComponent from '../miniComponents/ErrorComponent/ErrorComponent';
+import { errorTimeout } from '../../helpers/error/errorTimeout';
 
 import classes from './SignupContent.module.css';
 
@@ -34,7 +35,7 @@ const Signup = () => {
     // };
 
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-      return setError('Passwords do not match');
+      return errorTimeout(setError, 'Passwords do not match');
     }
 
     try {
@@ -67,8 +68,7 @@ const Signup = () => {
       // });
       history.push('./dashboard');
     } catch {
-      setError('Failed to create an account');
-      console.error(error);
+      errorTimeout(setError, 'Failed to create an account');
     }
 
     setLoading(false);
