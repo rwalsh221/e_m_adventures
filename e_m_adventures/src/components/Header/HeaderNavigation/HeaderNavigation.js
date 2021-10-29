@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import DropdownMenu from '../../miniComponents/DropdownMenu/DropdownMenu';
 
@@ -15,7 +16,15 @@ const HeaderNavigation = () => {
         onClick={() => {}}
       ></img>
       <div className={classes.navBtnContainer}>
-        <button className={classes.navBtn}>Our Place</button>
+        {/* <button className={classes.navBtn}>Our Accommodation</button> */}
+        <Link
+          className={classes.foodBtn}
+          role="button"
+          to={'/accommodation'}
+          // onClick={props.clicked}
+        >
+          Our Accommodation
+        </Link>
         <button className={classes.navBtn}>Experiences</button>
         <button className={classes.navBtn}>Local Eats</button>
       </div>

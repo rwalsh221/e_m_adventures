@@ -10,7 +10,6 @@ import Footer from '../../components/Footer/Footer';
 
 // TODO: look at images too big. have reduced size. try further
 
-// TODO: SET ERROE FOR LOGOut/LOGIN. seacrch console.log -- AND SERACH ERROR ON POPUP
 // TODO: INFO BOX ON SUMMARY FOR HOLD BOOKING
 
 const Home = (props) => {
