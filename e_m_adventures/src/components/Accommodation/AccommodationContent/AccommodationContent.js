@@ -1,5 +1,6 @@
 import React from 'react';
 import { LoremIpsum } from 'react-lorem-ipsum';
+import { Link } from 'react-router-dom';
 import classes from './AccommodationContent.module.css';
 
 // import * from '../../../assets/img/accommodation/acc0001/hero.jpg'
@@ -32,6 +33,7 @@ const AccommodationContent = () => {
       <h1 className={classes.accommodationHeading}>
         Find the perfect base for your adventure
       </h1>
+      <Link to={'/accommodationInformation'}>INFO</Link>
       <div
         className={classes.accommodationCard}
         onClick={() => console.log('clclclclclclcc')}

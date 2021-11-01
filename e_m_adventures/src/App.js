@@ -17,6 +17,7 @@ import BookingConfirmation from './layout/BookingConfirmation/BookingConfirmatio
 import ModifyBooking from './layout/ModifyBooking/ModifyBooking';
 import Timeout from './layout/Timeout/Timeout';
 import Accommodation from './layout/Accommodation/Accommodation';
+import AccommodationInformation from './layout/AccommodationInformation/AccommodationInformation';
 
 import { AuthProvider } from './contexts/AuthContext';
 import PrivateRoute from './helpers/Routes/PrivateRoute';
@@ -32,6 +33,10 @@ function App() {
         <AuthProvider>
           <ScrollToTop />
           <Switch>
+            <Route
+              path="/accommodationInformation"
+              component={AccommodationInformation}
+            />
             <Route path="/accommodation" component={Accommodation} />
             <PrivateRoute
               path="/confirmation"
