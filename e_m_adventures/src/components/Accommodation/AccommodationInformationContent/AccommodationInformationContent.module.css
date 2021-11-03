@@ -11,14 +11,23 @@
   margin-right: 0.5rem;
 }
 
+.main section {
+  margin: 2rem 0;
+}
+
 .main p {
   color: black;
+}
+
+.main h2 {
+  font-size: 3rem;
+  margin: 0 0 1rem 0;
 }
 
 /* HEADING SECTION */
 
 .sectionHeading {
-  margin: 1rem 0;
+  /* margin: 1rem 0; */
 }
 
 .headingInformation {
@@ -91,4 +100,57 @@
 .imageGridBr {
   grid-area: br;
   border-bottom-right-radius: 2rem;
+}
+
+/* ACCOMMODATION INFORMATION SECTION */
+.infoHeadingContainer {
+  display: flex;
+  width: 70%;
+  align-items: center;
+  padding: 1rem 0 2rem 0;
+  border-bottom: 1px solid var(--sec-color-grey-light);
+  margin: 0 0 2rem 0;
+}
+
+.infoHeading {
+}
+
+.infoHeading ul {
+  list-style: none;
+  font-size: 1.8rem;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  /* background-color: yellow; */
+}
+
+.infoHeading ul li {
+  display: inline-block;
+  position: relative;
+  /* width: 22%; */
+  /* background-color: aqua; */
+}
+
+.infoHeading ul li:not(:first-child) {
+  margin-left: 1rem;
+}
+
+.infoHeading ul li:not(:first-child)::before {
+  content: '';
+  height: 5px;
+  width: 5px;
+  position: absolute;
+  background-color: var(--sec-color-grey-light);
+  top: 45.7%;
+  left: -8.3%;
+  border-radius: 50%;
+}
+.infoHeadingLogoContainer {
+  margin-left: auto;
+}
+
+.infoHeadingLogo {
+  height: 100%;
+  width: 12rem;
+  margin-left: auto;
 }

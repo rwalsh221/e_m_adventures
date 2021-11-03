@@ -57,19 +57,24 @@ const AccommodationInformationContent = () => {
       </section>
       {/* ACCOMMODATION INFORMATION SECTION */}
       <section className={classes.sectionAccommodationInfo}>
-        <div className={classes.infoHeading}>
-          <h2>Propety type hosted by e &amp; m</h2>
-          <img
-            src={logoBlack}
-            alt={'e & m logo'}
-            className={classes.imgLogo}
-          ></img>
-          <ul>
-            <li>2 guests</li>
-            <li>1 bedroom</li>
-            <li>1 bed</li>
-            <li>1 bathroom</li>
-          </ul>
+        <div className={classes.infoHeadingContainer}>
+          <div className={classes.infoHeading}>
+            <h2>Propety type hosted by e &amp; m</h2>
+
+            <ul>
+              <li>2 guests</li>
+              <li>1 bedroom</li>
+              <li>1 bed</li>
+              <li>1 bathroom</li>
+            </ul>
+          </div>
+          <div className={classes.infoHeadingLogoContainer}>
+            <img
+              src={logoBlack}
+              alt={'e & m logo'}
+              className={classes.infoHeadingLogo}
+            ></img>
+          </div>
         </div>
         {/* FEATURES */}
         <div className={classes.accommodationFeatures}>
