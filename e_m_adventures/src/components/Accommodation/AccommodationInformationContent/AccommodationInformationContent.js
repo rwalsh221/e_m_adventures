@@ -4,18 +4,19 @@ import classes from './AccommodationInformationContent.module.css';
 import logoBlack from '../../../assets/img/logo-black.png';
 
 const AccommodationInformationContent = () => {
+  const accomIdProps = 'acc0001';
   return (
-    <main>
+    <main className={classes.main}>
       {/* HEADING SECTION */}
       <section className={classes.sectionHeading}>
         <h1 className={classes.mainHeading}>Accommodation Name</h1>
-        <ul className={classes.headingInformaion}>
+        <ul className={classes.headingInformation}>
           <li>
-            <ion-icon name="star-outline" />
+            <ion-icon name="star" />
             4.99 (100 reviews)
           </li>
           <li>
-            <ion-icon name="location-outline" />
+            <ion-icon name="location" />
             City, Country
           </li>
           <li>
@@ -25,7 +26,35 @@ const AccommodationInformationContent = () => {
         </ul>
       </section>
       {/* IMAGE GRID SECTION */}
-      <section className={classes.sectionImageGrid}></section>
+      <section className={classes.sectionImageGrid}>
+        <div className={classes.imageGrid}>
+          <img
+            src={`img/accommodation/${accomIdProps}/hero.jpg`}
+            alt={'accommodation'}
+            className={classes.imageGridHero}
+          />
+          <img
+            src={`img/accommodation/${accomIdProps}/hero.jpg`}
+            alt={'accommodation'}
+            className={classes.imageGridTc}
+          />
+          <img
+            src={`img/accommodation/${accomIdProps}/hero.jpg`}
+            alt={'accommodation'}
+            className={classes.imageGridTr}
+          />
+          <img
+            src={`img/accommodation/${accomIdProps}/hero.jpg`}
+            alt={'accommodation'}
+            className={classes.imageGridBc}
+          />
+          <img
+            src={`img/accommodation/${accomIdProps}/hero.jpg`}
+            alt={'accommodation'}
+            className={classes.imageGridBr}
+          />
+        </div>
+      </section>
       {/* ACCOMMODATION INFORMATION SECTION */}
       <section className={classes.sectionAccommodationInfo}>
         <div className={classes.infoHeading}>
