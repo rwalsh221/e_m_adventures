@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './AccommodationInformationContent.module.css';
 
 import logoBlack from '../../../assets/img/logo-black.png';
+import reviewPortrait from '../../../assets/img/accommodation/outline.png';
 
 const AccommodationInformationContent = () => {
   const accomIdProps = 'acc0001';
@@ -187,9 +188,91 @@ const AccommodationInformationContent = () => {
       {/* REVIEW SECTION */}
       <section className={classes.sectionReviews}>
         <h2>
-          <ion-icon name="star-outline" /> 2 reviews
+          <ion-icon name="star" />
+          4.99 <span className={classes.dot} /> 5 reviews
         </h2>
-        <p>GENERTAE REIEVWS FROM PROPS MAX 5</p>
+        <div className={classes.reviewCardContainer}>
+          <div className={classes.reviewCard}>
+            <div className={classes.reviewCardHeading}>
+              <img src={reviewPortrait} alt={'portrait'}></img>
+              <div className={classes.reviewCardHeading__name}>
+                <p className={classes.bold}>John Matrix</p>
+                <p className={classes.lightText}>October 2021</p>
+              </div>
+            </div>
+            <div className={classes.reviewCardContent}>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Massa sed elementum tempus egestas sed sed.
+              </p>
+            </div>
+          </div>
+          <div className={classes.reviewCard}>
+            <div className={classes.reviewCardHeading}>
+              <img src={reviewPortrait} alt={'portrait'}></img>
+              <div className={classes.reviewCardHeading__name}>
+                <p className={classes.bold}>John Matrix</p>
+                <p className={classes.lightText}>October 2021</p>
+              </div>
+            </div>
+            <div className={classes.reviewCardContent}>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Massa sed elementum tempus egestas sed sed.
+              </p>
+            </div>
+          </div>
+          <div className={classes.reviewCard}>
+            <div className={classes.reviewCardHeading}>
+              <img src={reviewPortrait} alt={'portrait'}></img>
+              <div className={classes.reviewCardHeading__name}>
+                <p className={classes.bold}>John Matrix</p>
+                <p className={classes.lightText}>October 2021</p>
+              </div>
+            </div>
+            <div className={classes.reviewCardContent}>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Massa sed elementum tempus egestas sed sed.
+              </p>
+            </div>
+          </div>
+          <div className={classes.reviewCard}>
+            <div className={classes.reviewCardHeading}>
+              <img src={reviewPortrait} alt={'portrait'}></img>
+              <div className={classes.reviewCardHeading__name}>
+                <p className={classes.bold}>John Matrix</p>
+                <p className={classes.lightText}>October 2021</p>
+              </div>
+            </div>
+            <div className={classes.reviewCardContent}>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Massa sed elementum tempus egestas sed sed.
+              </p>
+            </div>
+          </div>
+          <div className={classes.reviewCard}>
+            <div className={classes.reviewCardHeading}>
+              <img src={reviewPortrait} alt={'portrait'}></img>
+              <div className={classes.reviewCardHeading__name}>
+                <p className={classes.bold}>John Matrix</p>
+                <p className={classes.lightText}>October 2021</p>
+              </div>
+            </div>
+            <div className={classes.reviewCardContent}>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Massa sed elementum tempus egestas sed sed.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
       {/* MAP SECTION */}
       <section className={classes.sectionMap}>
