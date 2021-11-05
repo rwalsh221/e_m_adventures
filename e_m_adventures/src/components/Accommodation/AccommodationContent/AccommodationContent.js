@@ -11,7 +11,8 @@ const AccommodationContent = () => {
       id: 'acc0001',
       name: 'Carnforth Forest Lodge',
       shortDescription: <LoremIpsum p={1} avgSentencesPerParagraph={2} />,
-      longDescription: 'blah blah blah blah',
+      longDescription:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa sed elementum tempus egestas sed sed. Sed velit dignissim sodales ut eu sem integer vitae. Cursus sit amet dictum sit amet justo. Sollicitudin tempor id eu nisl nunc mi ipsum. Turpis egestas integer eget aliquet nibh. Elit ut aliquam purus sit amet luctus venenatis lectus magna. Massa enim nec dui nunc mattis enim ut. Amet est placerat in egestas erat imperdiet. Egestas sed tempus urna et pharetra pharetra massa massa.',
       city: 'Carnforth',
       accommodationType: 'lodge',
       accommodationSetting: 'forest',

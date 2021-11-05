@@ -5,6 +5,8 @@ import logoBlack from '../../../assets/img/logo-black.png';
 
 const AccommodationInformationContent = () => {
   const accomIdProps = 'acc0001';
+
+  const ionIconRef = { iconBed: <ion-icon name="bed-outline" /> };
   return (
     <main className={classes.main}>
       {/* HEADING SECTION */}
@@ -80,42 +82,54 @@ const AccommodationInformationContent = () => {
         <div className={classes.accommodationFeatures}>
           <ul>
             <li>
-              <ion-icon name="home-outline" />
-              <p>
-                <span className={classes.bold}>Entire Home</span>
-                <br />
-                You'll have the LOCATIONTYPE to yourself
-              </p>
+              <div>
+                <ion-icon name="home-outline" />
+                <p className={classes.bold}>Entire Home</p>
+              </div>
+              <p>You'll have the LOCATIONTYPE to yourself</p>
             </li>
             <li>
-              <ion-icon name="happy-outline" />
-              <p>
-                <span className={classes.bold}>Enhanced Clean</span>
-                <br />
-                Covid 5-step enhanced cleaning process
-              </p>
+              <div>
+                <ion-icon name="happy-outline" />
+                <p>
+                  <span className={classes.bold}>Enhanced Clean</span>
+                </p>
+              </div>
+              <p>Covid 5-step enhanced cleaning process</p>
             </li>
             <li>
-              <ion-icon name="bookmark-outline" />
-              <p>
-                <span className={classes.bold}>Toilet</span>
-                <br />
-                Guests often search for this amenity
-              </p>
+              <div>
+                <ion-icon name="bookmark-outline" />
+                <p>
+                  <span className={classes.bold}>Toilet</span>
+                </p>
+              </div>
+              <p>Guests often search for this amenity</p>
             </li>
             <li>
-              <ion-icon name="star-outline" />
-              <p>
-                <span className={classes.bold}>Experienced hosts</span>
-                <br />
-                Years of experience welcoming guests
-              </p>
+              <div>
+                <ion-icon name="star-outline" />
+                <p>
+                  <span className={classes.bold}>Experienced hosts</span>
+                </p>
+              </div>
+              <p>Years of experience welcoming guests</p>
             </li>
           </ul>
         </div>
         {/* DESCRIPTION */}
         <div className={classes.longDescription}>
-          <p>LONG DESCRIPTION</p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa
+            sed elementum tempus egestas sed sed. Sed velit dignissim sodales ut
+            eu sem integer vitae. Cursus sit amet dictum sit amet justo.
+            Sollicitudin tempor id eu nisl nunc mi ipsum. Turpis egestas integer
+            eget aliquet nibh. Elit ut aliquam purus sit amet luctus venenatis
+            lectus magna. Massa enim nec dui nunc mattis enim ut. Amet est
+            placerat in egestas erat imperdiet. Egestas sed tempus urna et
+            pharetra pharetra massa massa.
+          </p>
         </div>
         {/* SLEEP */}
         <div className={classes.sleep}>
@@ -123,8 +137,23 @@ const AccommodationInformationContent = () => {
           <div className={classes.sleepCard}>
             <ion-icon name="bed-outline" />
             <p>
-              <span className={classes.bold}>Bedroom</span>
+              <span className={classes.bold}>Bedroom 1</span>
               <br />1 king bed
+            </p>
+          </div>
+          <div className={classes.sleepCard}>
+            <ion-icon name="bed-outline" />
+            <ion-icon name="bed-outline" />
+            <p>
+              <span className={classes.bold}>Bedroom 2</span>
+              <br />2 single bed
+            </p>
+          </div>
+          <div className={classes.sleepCard}>
+            {ionIconRef.iconBed}
+            <p>
+              <span className={classes.bold}>Living room</span>
+              <br />1 sofa bed
             </p>
           </div>
         </div>
@@ -133,16 +162,24 @@ const AccommodationInformationContent = () => {
           <h2>What this place offers</h2>
           <ul>
             <li>
-              <ion-icon name="leaf-outline" /> Forest view
+              <p>
+                <ion-icon name="leaf-outline" /> Forest view
+              </p>
             </li>
             <li>
-              <ion-icon name="pizza-outline" /> Kitchen
+              <p>
+                <ion-icon name="pizza-outline" /> Kitchen
+              </p>
             </li>
             <li>
-              <ion-icon name="car-sport-outline" /> Free Parking
+              <p>
+                <ion-icon name="car-sport-outline" /> Free Parking
+              </p>
             </li>
             <li>
-              <ion-icon name="home-outline" /> Patio or balcony
+              <p>
+                <ion-icon name="home-outline" /> Patio or balcony
+              </p>
             </li>
           </ul>
         </div>

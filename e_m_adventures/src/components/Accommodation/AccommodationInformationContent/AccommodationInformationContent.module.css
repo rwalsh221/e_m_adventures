@@ -1,3 +1,7 @@
+main {
+  --grey-border-1px: 1px solid var(--sec-color-grey-light);
+}
+
 .main {
   color: black;
   padding: 2rem;
@@ -24,6 +28,9 @@
   margin: 0 0 1rem 0;
 }
 
+.bold {
+  font-weight: bold;
+}
 /* HEADING SECTION */
 
 .sectionHeading {
@@ -103,13 +110,21 @@
 }
 
 /* ACCOMMODATION INFORMATION SECTION */
+.infoHeadingContainer,
+.accommodationFeatures,
+.longDescription,
+.sleep,
+.locationFeatures {
+  width: 70%;
+  padding: 1rem 0 3rem 0;
+  border-bottom: var(--grey-border-1px);
+  margin-bottom: 2rem;
+}
+
 .infoHeadingContainer {
   display: flex;
-  width: 70%;
+
   align-items: center;
-  padding: 1rem 0 2rem 0;
-  border-bottom: 1px solid var(--sec-color-grey-light);
-  margin: 0 0 2rem 0;
 }
 
 .infoHeading {
@@ -153,4 +168,49 @@
   height: 100%;
   width: 12rem;
   margin-left: auto;
+}
+
+.accommodationFeatures ul {
+  list-style: none;
+}
+
+.accommodationFeatures ul li div {
+  display: flex;
+  margin: 1rem 0 0.5rem 0;
+}
+
+.accommodationFeatures ul li > p {
+  margin-left: 2.5rem;
+  color: var(--sec-color-grey);
+}
+.accommodationFeatures {
+  padding: 1rem 0 3rem 0;
+  border-bottom: var(--grey-border-1px);
+}
+
+.sleep {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sleep h2 {
+  width: 100%;
+}
+
+.sleepCard {
+  padding: 2rem;
+  border: var(--grey-border-1px);
+  border-radius: 1rem;
+}
+
+.sleepCard:not(:last-of-type) {
+  margin-right: 2rem;
+}
+
+.locationFeatures ul {
+  list-style: none;
+}
+
+.locationFeatures ul li {
+  margin-bottom: 1rem;
 }
