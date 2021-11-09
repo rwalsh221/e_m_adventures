@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './AccommodationInformationContent.module.css';
 
+import MapBoxContainer from '../../miniComponents/MapboxContainer/MapBoxContainer';
 import logoBlack from '../../../assets/img/logo-black.png';
 import reviewPortrait from '../../../assets/img/accommodation/outline.png';
 
@@ -277,7 +278,7 @@ const AccommodationInformationContent = () => {
       {/* MAP SECTION */}
       <section className={classes.sectionMap}>
         <h2>Where you'll be</h2>
-        {/* ADD MAPBOX */}
+        <MapBoxContainer />
         <h3>city,country</h3>
         <p>city description</p>
       </section>
