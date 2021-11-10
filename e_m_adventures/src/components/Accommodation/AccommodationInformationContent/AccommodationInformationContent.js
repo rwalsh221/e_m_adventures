@@ -279,9 +279,39 @@ const AccommodationInformationContent = () => {
       <section className={classes.sectionMap}>
         <h2>Where you'll be</h2>
         <MapBoxContainer />
-        <h3>city,country</h3>
-        <p>city description</p>
+        <h3>Carnforth, United Kingdom</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Condimentum lacinia quis vel eros donec ac odio tempor. Mauris rhoncus
+          aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque.
+          Gravida dictum fusce ut placerat orci nulla. Pellentesque habitant
+          morbi tristique senectus et netus. Felis eget velit aliquet sagittis.
+          Odio pellentesque diam volutpat commodo sed egestas egestas fringilla.
+          Proin fermentum leo vel orci porta non. Bibendum enim facilisis
+          gravida neque convallis. Volutpat odio facilisis mauris sit. Netus et
+          malesuada fames ac. Eget mi proin sed libero enim. Vel orci porta non
+          pulvinar neque laoreet suspendisse. Risus in hendrerit gravida rutrum
+          quisque non tellus orci ac. Erat pellentesque adipiscing commodo elit
+          at imperdiet.
+        </p>
       </section>
+      {/* ABOUT HOST SECTION */}
+      <section className={classes.sectionAboutHost}>
+        <div className={classes.aboutHostHeading}>
+          <img
+            src={logoBlack}
+            alt={'e & m logo'}
+            className={classes.aboutHostHeadingLogo}
+          ></img>
+          <div>
+            <h3>Hosted by e &amp; m</h3>
+            <p>Planning adventures since 2020</p>
+          </div>
+        </div>
+      </section>
+      {/* RULES SECTION */}
+      <section className={classes.sectionRules}></section>
     </main>
   );
 };
