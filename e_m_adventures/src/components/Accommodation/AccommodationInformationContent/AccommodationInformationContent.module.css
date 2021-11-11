@@ -13,6 +13,7 @@ main {
   color: var(--main-color-gold);
   font-size: 2rem;
   margin-right: 0.5rem;
+  /* font-weight: bold; */
 }
 
 .main section {
@@ -30,6 +31,11 @@ main {
 
 .main h3 {
   font-size: 2.5rem;
+}
+
+.main h4 {
+  font-size: 2.2rem;
+  font-weight: bold;
 }
 
 .bold {
@@ -58,6 +64,20 @@ main {
   padding: 1rem 0 3rem 0;
   border-bottom: var(--grey-border-1px);
   margin-bottom: 2rem;
+}
+
+.showModal {
+  text-decoration: underline;
+  font-weight: bold;
+  color: var(--main-color-gold);
+}
+
+.testIon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hotpink !important;
+  width: 20rem;
 }
 
 /* HEADING SECTION */
@@ -290,6 +310,7 @@ main {
   display: flex;
   justify-content: flex-start;
   grid-column: 1 / span 2;
+  margin: 1rem 0;
 }
 
 .aboutHostHeading img {
@@ -301,18 +322,23 @@ main {
 .aboutHostHeading h3 {
   font-weight: bold;
 }
+
 .aboutHostHeading p {
   color: var(--sec-color-grey);
 }
+
 .aboutHostContent {
   grid-column: 1;
+  margin: 1rem 0;
+}
+
+.aboutHostContent h4 {
+  margin-bottom: 1rem;
 }
 
 .aboutHostInfo {
-  /* margin-left: auto; */
   grid-row: 2 / span 2;
   grid-column: 2;
-  /* width: 50%; */
   padding: 0 5rem;
 }
 
@@ -320,7 +346,6 @@ main {
   list-style: none;
   font-size: 2rem;
   margin-bottom: 2rem;
-  /* width: max-content; */
 }
 
 .aboutHostInfo li:not(:last-child) {
@@ -333,8 +358,10 @@ main {
   padding: 2rem;
   border-radius: 2rem;
   outline: none;
-  border: 2px solid grey;
+
+  border: none;
   cursor: pointer;
+  background-color: var(--main-color-gold);
 }
 
 .aboutHostSecurity {
@@ -349,4 +376,33 @@ main {
 
 .aboutHostSecurity ion-icon {
   font-size: 8rem;
+}
+
+/* KNOW SECTION */
+.knowContentContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.knowContent {
+  flex-basis: 30%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.knowContent h4 {
+  margin-bottom: 1rem;
+}
+
+.knowContent > p {
+  margin: 1rem 0;
+}
+
+.knowContent ul li {
+  display: flex;
+  align-items: center;
+}
+
+.knowContent ul li:not(:last-child) {
+  margin-bottom: 0.5rem;
 }

@@ -362,8 +362,108 @@ const AccommodationInformationContent = () => {
           </div>
         </div>
       </section>
-      {/* RULES SECTION */}
-      <section className={classes.sectionRules}></section>
+      {/* KNOW SECTION */}
+      <section className={classes.sectionKnow}>
+        <h2>Things to Know</h2>
+        <div className={classes.knowContentContainer}>
+          <div className={classes.knowContent}>
+            <h4>House Rules</h4>
+            <ul>
+              <li>
+                <div classname={classes.ionIconContainer}>
+                  <ion-icon name="checkmark-circle" />
+                </div>
+                <p>Check-in: 15:00 - 21:00</p>
+              </li>
+              <li>
+                <div classname={classes.ionIconContainer}>
+                  <ion-icon name="checkmark-circle" />
+                </div>
+                <p>Check-out: 11:00</p>
+              </li>
+              <li>
+                <div classname={classes.ionIconContainer}>
+                  <ion-icon name="checkmark-circle" />
+                </div>
+                <p>quis nostrud exercitation ullamco</p>
+              </li>
+              <li>
+                <div classname={classes.testIon}>
+                  <ion-icon name="checkmark-circle" />
+                </div>
+                <p>quis nostrud exercitation ullamco</p>
+              </li>
+              <li>
+                <div classname={classes.ionIconContainer}>
+                  <ion-icon name="checkmark-circle" />
+                </div>
+                <p>quis nostrud exercitation ullamco</p>
+              </li>
+              <li>
+                <div classname={classes.ionIconContainer}>
+                  <ion-icon name="checkmark-circle" />
+                </div>
+                <p>quis nostrud exercitation ullamco</p>
+              </li>
+            </ul>
+            <p className={classes.showModal}>
+              Show more <ion-icon name="chevron-forward" />
+            </p>
+          </div>
+          <div className={classes.knowContent}>
+            <h4>Health &amp; safety</h4>
+            <ul>
+              <li>
+                <div>
+                  <ion-icon name="checkmark-circle" />
+                </div>
+                <p>
+                  Commited to an enhanced covid-19 cleaning process.
+                  <span className={classes.showModal}>Show More</span>
+                </p>
+              </li>
+              <li>
+                <div>
+                  <ion-icon name="checkmark-circle" />
+                </div>
+                <p>
+                  e &amp; m adventures social distancing and other
+                  COVID-19-related guidelines apply
+                </p>
+              </li>
+              <li>
+                <div>
+                  <ion-icon name="checkmark-circle" />
+                </div>
+                <p>quis nostrud exercitation ullamco</p>
+              </li>
+              <li>
+                <div>
+                  <ion-icon name="checkmark-circle" />
+                </div>
+                <p>quis nostrud exercitation ullamco</p>
+              </li>
+            </ul>
+            <p className={classes.showModal}>
+              Show more <ion-icon name="chevron-forward" />
+            </p>
+          </div>
+          <div className={classes.knowContent}>
+            <h4>Cancellation Policy</h4>
+            <ul>
+              <li>
+                <div>
+                  <ion-icon name="checkmark-circle" />
+                </div>
+                <p>Free cancellation for 48 hours</p>
+              </li>
+            </ul>
+            <p className={classes.showModal}>
+              Show more <ion-icon name="chevron-forward" />
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
   );
 };
