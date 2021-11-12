@@ -6,6 +6,7 @@ import classes from './Footer.module.css';
 const Footer = (props) => {
   return (
     <footer className={classes.footer}>
+      {props.children}
       <div className={classes.footerTop}>
         <div className={classes.footerTopContent}>
           <Link to={'/ourplace'}>Our Place</Link>

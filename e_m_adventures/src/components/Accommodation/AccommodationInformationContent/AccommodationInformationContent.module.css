@@ -1,3 +1,5 @@
+/* GLOBAL STYLES */
+
 main {
   --grey-border-1px: 1px solid var(--sec-color-grey-light);
 }
@@ -70,21 +72,10 @@ main {
   text-decoration: underline;
   font-weight: bold;
   color: var(--main-color-gold);
-}
-
-.testIon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: hotpink !important;
-  width: 20rem;
+  cursor: pointer;
 }
 
 /* HEADING SECTION */
-
-.sectionHeading {
-  /* margin: 1rem 0; */
-}
 
 .headingInformation {
   list-style: none;
@@ -175,14 +166,11 @@ main {
   width: 80%;
   display: flex;
   justify-content: space-between;
-  /* background-color: yellow; */
 }
 
 .infoHeading ul li {
   display: inline-block;
   position: relative;
-  /* width: 22%; */
-  /* background-color: aqua; */
 }
 
 .infoHeading ul li:not(:first-child) {
@@ -405,4 +393,15 @@ main {
 
 .knowContent ul li:not(:last-child) {
   margin-bottom: 0.5rem;
+}
+
+.ionIconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* FOOTER SECTION */
+.accommInfoFooter {
+  background-color: var(--sec-color-grey);
 }

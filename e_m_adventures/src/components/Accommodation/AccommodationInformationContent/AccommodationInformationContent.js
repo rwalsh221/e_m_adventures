@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './AccommodationInformationContent.module.css';
 
+import AccommodationFooter from '../../Footer/AccommodationFooter.js/AccommodationFooter';
 import MapBoxContainer from '../../miniComponents/MapboxContainer/MapBoxContainer';
 import logoBlack from '../../../assets/img/logo-black.png';
 import reviewPortrait from '../../../assets/img/accommodation/outline.png';
@@ -321,7 +322,7 @@ const AccommodationInformationContent = () => {
             egestas egestas fringilla. Proin fermentum leo vel orci porta non.
             Bibendum enim facilisis gravida neque convallis. Volutpat odio
             facilisis mauris sit. Netus et malesuada fames ac. Eget mi proin sed
-            libero enim.{' '}
+            libero enim.
           </p>
         </div>
         <div className={classes.aboutHostContent}>
@@ -370,37 +371,37 @@ const AccommodationInformationContent = () => {
             <h4>House Rules</h4>
             <ul>
               <li>
-                <div classname={classes.ionIconContainer}>
+                <div className={classes.ionIconContainer}>
                   <ion-icon name="checkmark-circle" />
                 </div>
                 <p>Check-in: 15:00 - 21:00</p>
               </li>
               <li>
-                <div classname={classes.ionIconContainer}>
+                <div className={classes.ionIconContainer}>
                   <ion-icon name="checkmark-circle" />
                 </div>
                 <p>Check-out: 11:00</p>
               </li>
               <li>
-                <div classname={classes.ionIconContainer}>
+                <div className={classes.ionIconContainer}>
                   <ion-icon name="checkmark-circle" />
                 </div>
                 <p>quis nostrud exercitation ullamco</p>
               </li>
               <li>
-                <div classname={classes.testIon}>
+                <div className={classes.ionIconContainer}>
                   <ion-icon name="checkmark-circle" />
                 </div>
                 <p>quis nostrud exercitation ullamco</p>
               </li>
               <li>
-                <div classname={classes.ionIconContainer}>
+                <div className={classes.ionIconContainer}>
                   <ion-icon name="checkmark-circle" />
                 </div>
                 <p>quis nostrud exercitation ullamco</p>
               </li>
               <li>
-                <div classname={classes.ionIconContainer}>
+                <div className={classes.ionIconContainer}>
                   <ion-icon name="checkmark-circle" />
                 </div>
                 <p>quis nostrud exercitation ullamco</p>
@@ -464,6 +465,8 @@ const AccommodationInformationContent = () => {
           </div>
         </div>
       </section>
+      {/* FOOTER SECTION */}
+      <AccommodationFooter />
     </main>
   );
 };
