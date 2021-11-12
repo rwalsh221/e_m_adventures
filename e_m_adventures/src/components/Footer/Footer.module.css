@@ -38,9 +38,6 @@
   text-decoration: underline;
 }
 
-.footerBtm {
-}
-
 .footerBtmContent {
   flex-basis: max-content;
   font-size: 2rem;

@@ -1,4 +1,37 @@
 .accommodationFooter {
   background-color: var(--sec-color-grey);
   width: 100%;
+  border-bottom: 2px solid var(--main-color-gold);
+}
+
+.accommodationFooterTop {
+  width: 100%;
+  background-color: var(--sec-color-grey);
+  height: 5rem;
+  border-bottom: 2px solid var(--main-color-gold);
+}
+
+.accommodationFooter h2 {
+  width: 80%;
+  margin: 2rem auto 2rem auto;
+}
+
+.footerLocationContainer {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+
+.footerLocationContainer ul {
+  list-style: none;
+  font-size: 2rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footerLocationContainer ul li {
+  display: inline-block;
+  flex-basis: 25%;
+  margin-bottom: 1rem;
 }

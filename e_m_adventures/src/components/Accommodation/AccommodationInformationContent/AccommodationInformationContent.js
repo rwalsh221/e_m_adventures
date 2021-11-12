@@ -1,7 +1,6 @@
 import React from 'react';
 import classes from './AccommodationInformationContent.module.css';
 
-import AccommodationFooter from '../../Footer/AccommodationFooter.js/AccommodationFooter';
 import MapBoxContainer from '../../miniComponents/MapboxContainer/MapBoxContainer';
 import logoBlack from '../../../assets/img/logo-black.png';
 import reviewPortrait from '../../../assets/img/accommodation/outline.png';
@@ -415,7 +414,7 @@ const AccommodationInformationContent = () => {
             <h4>Health &amp; safety</h4>
             <ul>
               <li>
-                <div>
+                <div className={classes.ionIconContainer}>
                   <ion-icon name="checkmark-circle" />
                 </div>
                 <p>
@@ -424,7 +423,7 @@ const AccommodationInformationContent = () => {
                 </p>
               </li>
               <li>
-                <div>
+                <div className={classes.ionIconContainer}>
                   <ion-icon name="checkmark-circle" />
                 </div>
                 <p>
@@ -433,13 +432,13 @@ const AccommodationInformationContent = () => {
                 </p>
               </li>
               <li>
-                <div>
+                <div className={classes.ionIconContainer}>
                   <ion-icon name="checkmark-circle" />
                 </div>
                 <p>quis nostrud exercitation ullamco</p>
               </li>
               <li>
-                <div>
+                <div className={classes.ionIconContainer}>
                   <ion-icon name="checkmark-circle" />
                 </div>
                 <p>quis nostrud exercitation ullamco</p>
@@ -453,7 +452,7 @@ const AccommodationInformationContent = () => {
             <h4>Cancellation Policy</h4>
             <ul>
               <li>
-                <div>
+                <div className={classes.ionIconContainer}>
                   <ion-icon name="checkmark-circle" />
                 </div>
                 <p>Free cancellation for 48 hours</p>
@@ -465,8 +464,6 @@ const AccommodationInformationContent = () => {
           </div>
         </div>
       </section>
-      {/* FOOTER SECTION */}
-      <AccommodationFooter />
     </main>
   );
 };
