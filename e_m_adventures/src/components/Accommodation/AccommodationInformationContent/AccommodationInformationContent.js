@@ -17,7 +17,9 @@ const AccommodationInformationContent = () => {
       <ShowMoreModal
         showModalProps={showModal}
         setShowModalParent={setShowModal}
-      />
+      >
+        <div>hello</div>
+      </ShowMoreModal>
       {/* HEADING SECTION */}
       <section className={classes.sectionHeading}>
         <h1 className={classes.mainHeading}>Accommodation Name</h1>
