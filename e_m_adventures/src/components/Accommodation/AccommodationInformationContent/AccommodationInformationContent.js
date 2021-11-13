@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classes from './AccommodationInformationContent.module.css';
 
+import ShowMoreModal from '../../Modal/AccommodationIformationModal/ShowMoreModal/ShowMoreModal';
 import MapBoxContainer from '../../miniComponents/MapboxContainer/MapBoxContainer';
 import logoBlack from '../../../assets/img/logo-black.png';
 import reviewPortrait from '../../../assets/img/accommodation/outline.png';
@@ -8,9 +9,15 @@ import reviewPortrait from '../../../assets/img/accommodation/outline.png';
 const AccommodationInformationContent = () => {
   const accomIdProps = 'acc0001';
 
+  const [showModal, setShowModal] = useState(false);
+
   const ionIconRef = { iconBed: <ion-icon name="bed-outline" /> };
   return (
     <main className={classes.main}>
+      <ShowMoreModal
+        showModalProps={showModal}
+        setShowModalParent={setShowModal}
+      />
       {/* HEADING SECTION */}
       <section className={classes.sectionHeading}>
         <h1 className={classes.mainHeading}>Accommodation Name</h1>
@@ -458,7 +465,7 @@ const AccommodationInformationContent = () => {
                 <p>Free cancellation for 48 hours</p>
               </li>
             </ul>
-            <p className={classes.showModal}>
+            <p className={classes.showModal} onClick={() => setShowModal(true)}>
               Show more <ion-icon name="chevron-forward" />
             </p>
           </div>
