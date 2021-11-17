@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import classes from './AccommodationInformationContent.module.css';
 
 import ShowMoreModal from '../../Modal/AccommodationIformationModal/ShowMoreModal/ShowMoreModal';
@@ -9,7 +9,16 @@ import reviewPortrait from '../../../assets/img/accommodation/outline.png';
 const AccommodationInformationContent = () => {
   const accomIdProps = 'acc0001';
 
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState({
+    showModal: false,
+    content: '',
+  });
+
+  // let mapBoxContent;
+
+  // useEffect(() => {
+  //   return (mapBoxContent = <MapBoxContainer />);
+  // });
 
   const ionIconRef = { iconBed: <ion-icon name="bed-outline" /> };
   return (
@@ -453,7 +462,15 @@ const AccommodationInformationContent = () => {
                 <p>quis nostrud exercitation ullamco</p>
               </li>
             </ul>
-            <p className={classes.showModal}>
+            <p
+              className={classes.showModal}
+              onClick={() =>
+                setShowModal({
+                  showModal: true,
+                  content: 'health',
+                })
+              }
+            >
               Show more <ion-icon name="chevron-forward" />
             </p>
           </div>
@@ -467,7 +484,15 @@ const AccommodationInformationContent = () => {
                 <p>Free cancellation for 48 hours</p>
               </li>
             </ul>
-            <p className={classes.showModal} onClick={() => setShowModal(true)}>
+            <p
+              className={classes.showModal}
+              onClick={() =>
+                setShowModal({
+                  showModal: true,
+                  content: 'cancellation',
+                })
+              }
+            >
               Show more <ion-icon name="chevron-forward" />
             </p>
           </div>

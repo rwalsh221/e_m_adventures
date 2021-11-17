@@ -7,7 +7,7 @@ import { style } from 'dom-helpers';
 mapboxgl.accessToken =
   'pk.eyJ1Ijoicmlja3lyaWNhcmRpbmhvIiwiYSI6ImNrdnJsczBsNTA5ODIyb2x5bGExbDlscHMifQ.UA26VXh63_0G21WVA8d_Ug';
 
-const MapBoxContainer = () => {
+const MapBoxContainer = React.memo(() => {
   const mapContainer = useRef(null);
   const map = useRef(null);
   const [longitude, setLongitude] = useState(-2.767456);
@@ -29,6 +29,6 @@ const MapBoxContainer = () => {
       <div ref={mapContainer} className={classes.mapContainer}></div>
     </div>
   );
-};
+});
 
 export default MapBoxContainer;

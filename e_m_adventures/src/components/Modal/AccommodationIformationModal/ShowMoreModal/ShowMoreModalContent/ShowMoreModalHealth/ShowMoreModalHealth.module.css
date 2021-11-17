@@ -1,0 +1,35 @@
+.showMoreModalHealth {
+}
+
+.showMoreModalHealth ul {
+  list-style: none;
+  width: 100%;
+}
+
+.healthSafety {
+  /* display: flex; */
+  flex-grow: 0;
+}
+
+.showMoreModalHealth ion-icon {
+  color: var(--main-color-black);
+  /* width: max-content; */
+}
+
+.showMoreModalHealth li {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.showMoreModalHealth h2 {
+  margin: 2rem 0;
+}
+
+.showMoreModalHealth h3 {
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.ionIconContainer {
+  margin-top: 0.3rem;
+}
