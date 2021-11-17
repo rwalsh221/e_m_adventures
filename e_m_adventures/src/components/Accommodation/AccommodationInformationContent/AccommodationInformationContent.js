@@ -16,7 +16,7 @@ const AccommodationInformationContent = () => {
     <main className={classes.main}>
       <ShowMoreModal
         showModalProps={showModal}
-        setShowModalParent={setShowModal}
+        setShowModalParentProps={setShowModal}
       >
         <div>hello</div>
       </ShowMoreModal>

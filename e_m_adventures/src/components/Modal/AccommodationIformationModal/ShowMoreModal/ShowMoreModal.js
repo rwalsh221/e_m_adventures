@@ -11,10 +11,23 @@ const ShowMoreModal = ({
   const initStyle = showModalProps ? 'block' : 'none';
 
   return (
-    <div style={{ display: initStyle }} className={classes.showMoreModal}>
-      <button onClick={() => setShowModalParentProps(false)}>click</button>
-      {/* {children} */}
-      <ShowMoreModalCancellation />
+    <div
+      style={{ display: initStyle }}
+      className={classes.showMoreModalBg}
+      onClick={() => {
+        setShowModalParentProps(false);
+      }}
+    >
+      <div className={classes.showMoreModalContent}>
+        <button
+          onClick={() => setShowModalParentProps(false)}
+          className={classes.closeBtn}
+        >
+          X
+        </button>
+        {/* {children} */}
+        <ShowMoreModalCancellation />
+      </div>
     </div>
   );
 };

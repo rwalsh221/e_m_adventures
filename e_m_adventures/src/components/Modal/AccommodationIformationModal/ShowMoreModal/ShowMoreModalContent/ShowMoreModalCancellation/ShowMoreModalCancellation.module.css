@@ -1,0 +1,27 @@
+.showMoreModalCancellation h2 {
+  margin: 2rem 0;
+}
+
+.cancellationCard {
+  display: flex;
+  border-bottom: 2px solid var(--sec-color-grey-light);
+  /* align-items: center; */
+  padding: 2rem 0;
+}
+
+.cancellationCardLeft {
+  width: 30%;
+}
+
+.cancellationCardLeft p:not(:last-child) {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.cancellationCardLeft p:last-child {
+  font-size: 1rem;
+}
+
+.cancellationCardRight {
+  margin-left: 3rem;
+}
