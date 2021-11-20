@@ -1,4 +1,3 @@
-// TESTSTSTSTSTSTSTSTSTSTSTSTSTSTSTSTSTTS
 import React, { useState, useEffect } from 'react';
 import classes from './AccommodationInformationContent.module.css';
 
