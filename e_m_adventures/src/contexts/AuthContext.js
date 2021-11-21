@@ -3,37 +3,26 @@ import { auth } from '../firebase';
 
 const AuthContext = React.createContext();
 
-export const useAuth = () => {
-  return useContext(AuthContext);
-};
+export const useAuth = () => useContext(AuthContext);
 
+// TODO: ADD PROPS VALIDATION. CHANGED ESLINT TO WARN
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
 
-  const signup = (email, password) => {
-    return auth.createUserWithEmailAndPassword(email, password);
-  };
+  const signup = (email, password) =>
+    auth.createUserWithEmailAndPassword(email, password);
 
-  const login = (email, password) => {
-    return auth.signInWithEmailAndPassword(email, password);
-  };
+  const login = (email, password) =>
+    auth.signInWithEmailAndPassword(email, password);
 
-  const logout = () => {
-    return auth.signOut();
-  };
+  const logout = () => auth.signOut();
 
-  const resetPassword = (email) => {
-    return auth.sendPasswordResetEmail(email);
-  };
+  const resetPassword = (email) => auth.sendPasswordResetEmail(email);
 
-  const updateEmail = (email) => {
-    return currentUser.updateEmail(email);
-  };
+  const updateEmail = (email) => currentUser.updateEmail(email);
 
-  const updatePassword = (password) => {
-    return currentUser.updatePassword(password);
-  };
+  const updatePassword = (password) => currentUser.updatePassword(password);
 
   //   see minute 19 webdevsimpleified firbase setup
   useEffect(() => {
@@ -48,6 +37,7 @@ export const AuthProvider = ({ children }) => {
     // };
   }, []);
 
+  // TODO: USEMEMO ADDED ESLINT WARN Prevent react contexts from taking non-stable values (react/jsx-no-constructed-context-values)
   const value = {
     currentUser,
     login,
