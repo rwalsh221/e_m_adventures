@@ -5,16 +5,14 @@ import AccommodationInformationContent from '../../components/Accommodation/Acco
 import AccommodationFooter from '../../components/Footer/AccommodationFooter.js/AccommodationFooter';
 import Footer from '../../components/Footer/Footer';
 
-const AccommodationInformation = () => {
-  return (
-    <div className={'layoutGrid'}>
-      <HeaderSmall />
-      <AccommodationInformationContent />
-      <Footer>
-        <AccommodationFooter />
-      </Footer>
-    </div>
-  );
-};
+const AccommodationInformation = () => (
+  <div className="layoutGrid">
+    <HeaderSmall />
+    <AccommodationInformationContent />
+    <Footer>
+      <AccommodationFooter />
+    </Footer>
+  </div>
+);
 
 export default AccommodationInformation;

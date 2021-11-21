@@ -12,18 +12,16 @@ import Footer from '../../components/Footer/Footer';
 
 // TODO: INFO BOX ON SUMMARY FOR HOLD BOOKING
 
-const Home = (props) => {
-  return (
-    <div className={'layoutGrid'}>
-      <Covid />
-      <Header />
-      <ExploreNearby />
-      <Weather />
-      <Food />
-      <ExploreWorld />
-      <Footer />
-    </div>
-  );
-};
+const Home = () => (
+  <div className="layoutGrid">
+    <Covid />
+    <Header />
+    <ExploreNearby />
+    <Weather />
+    <Food />
+    <ExploreWorld />
+    <Footer />
+  </div>
+);
 
 export default Home;

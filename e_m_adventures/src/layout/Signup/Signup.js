@@ -4,14 +4,12 @@ import HeaderMini from '../../components/Header/HeaderMini/HeaderMini';
 import SignupContent from '../../components/SignupContent/SignupContent';
 import Footer from '../../components/Footer/Footer';
 
-const Login = (props) => {
-  return (
-    <div className={'layoutGrid'}>
-      <HeaderMini />
-      <SignupContent />
-      <Footer />
-    </div>
-  );
-};
+const Login = () => (
+  <div className="layoutGrid">
+    <HeaderMini />
+    <SignupContent />
+    <Footer />
+  </div>
+);
 
 export default Login;

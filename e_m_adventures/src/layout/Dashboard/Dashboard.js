@@ -6,14 +6,12 @@ import Footer from '../../components/Footer/Footer';
 
 // import classes from './Dashboard.module.css';
 
-const Dashboard = () => {
-  return (
-    <div className={'layoutGrid'}>
-      <HeaderSmall />
-      <DashboardContent />
-      <Footer />
-    </div>
-  );
-};
+const Dashboard = () => (
+  <div className="layoutGrid">
+    <HeaderSmall />
+    <DashboardContent />
+    <Footer />
+  </div>
+);
 
 export default Dashboard;
