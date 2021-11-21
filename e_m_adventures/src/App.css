@@ -58,12 +58,6 @@ a {
   cursor: pointer;
 }
 
-/* a:active,
-a:visited {
-  color: var(--main-color-white);
-  text-decoration: none;
-} */
-
 button {
   font-size: 1.8rem;
 }
@@ -132,9 +126,3 @@ p {
     font-size: 35%;
   }
 }
-/* 
-@media (max-width: 500px) {
-  html {
-    font-size: 30%;
-  }
-} */
