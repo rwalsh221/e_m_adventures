@@ -53,7 +53,7 @@ const BookingAvailable = (props) => {
   // USER HAS 5 MINUTES TO CONFIRM BOOKING
   setTimeout(async () => {
     history.replace('/timeout');
-  }, 10000);
+  }, 300000); // TIMEOUT IN 5 MINUTES
 
   useEffect(() => {
     // IF USER NAVIGATES AWAY FROM SUMMARY
