@@ -7,8 +7,8 @@ const Weather = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [weatherDataError, setWeatherDataError] = useState('');
 
-  const apikey = 'b0ea585de7608342c1947e606b266dd4';
-
+  // const apikey = 'b0ea585de7608342c1947e606b266dd4';
+  const apikey = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -17,7 +17,7 @@ const Weather = () => {
         );
         if (!data.ok) throw new Error('Problem getting weather data');
 
-        let jsonData = await data.json();
+        const jsonData = await data.json();
 
         setWeatherData({ ...jsonData });
       } catch (error) {
@@ -26,31 +26,31 @@ const Weather = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [apikey]);
 
   return (
     <div className={classes.weather}>
       <h2>Weather</h2>
       <div className={classes.weatherContainer}>
         <WeatherCard
-          day={0}
-          weatherData={weatherData}
-          error={weatherDataError}
+          dayProps={0}
+          weatherDataProps={weatherData}
+          errorProps={weatherDataError}
         />
         <WeatherCard
-          day={1}
-          weatherData={weatherData}
-          error={weatherDataError}
+          dayProps={1}
+          weatherDataProps={weatherData}
+          errorProps={weatherDataError}
         />
         <WeatherCard
-          day={2}
-          weatherData={weatherData}
-          error={weatherDataError}
+          dayProps={2}
+          weatherDataProps={weatherData}
+          errorProps={weatherDataError}
         />
         <WeatherCard
-          day={3}
-          weatherData={weatherData}
-          error={weatherDataError}
+          dayProps={3}
+          weatherDataProps={weatherData}
+          errorProps={weatherDataError}
         />
       </div>
     </div>
