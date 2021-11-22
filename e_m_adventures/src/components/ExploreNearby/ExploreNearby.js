@@ -12,7 +12,7 @@ import lancaster from '../../assets/img/lancaster.jpg';
 import whiteLund from '../../assets/img/white_lund.jpg';
 import glasson from '../../assets/img/glasson.jpg';
 
-const ExploreNearby = (props) => {
+const ExploreNearby = () => {
   const locations = [
     { img: windermere, heading: 'windermere', distance: '30-min Drive' },
     { img: bowland, heading: 'forest of bowland', distance: '1-hour Drive' },
@@ -28,24 +28,22 @@ const ExploreNearby = (props) => {
     { img: glasson, heading: 'glasson dock', distance: '1-hour Drive' },
   ];
 
-  const content = locations.map((element) => {
-    return (
-      <div className={classes.exploreCard} key={element.heading}>
-        <Link to={'/explore'}>
-          <img
-            className={classes.exploreCardImg}
-            alt="location"
-            src={element.img}
-          ></img>
-        </Link>
+  const content = locations.map((element) => (
+    <div className={classes.exploreCard} key={element.heading}>
+      <Link to="/explore">
+        <img
+          className={classes.exploreCardImg}
+          alt="location"
+          src={element.img}
+        />
+      </Link>
 
-        <div className={classes.exploreCardContent}>
-          <h5 className={classes.exploreCardHeading}>{element.heading}</h5>
-          <p className={classes.exploreCardDistance}>{element.distance}</p>
-        </div>
+      <div className={classes.exploreCardContent}>
+        <h5 className={classes.exploreCardHeading}>{element.heading}</h5>
+        <p className={classes.exploreCardDistance}>{element.distance}</p>
       </div>
-    );
-  });
+    </div>
+  ));
 
   return (
     <div className={classes.exploreNearby}>

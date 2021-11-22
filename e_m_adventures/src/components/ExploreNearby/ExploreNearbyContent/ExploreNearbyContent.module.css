@@ -99,7 +99,6 @@
 .mustSeeImg {
   width: 90%;
   margin: 1rem auto;
-  /* margin-right: 2rem; */
   display: block;
 }
 
@@ -107,20 +106,7 @@
 .mustSeeMid,
 .mustSeeBtm {
   grid-column: 2;
-  /* color: hotpink; */
 }
-
-/* .mustSeeTop {
-  grid-row: 2;
-}
-
-.mustSeeMid {
-  grid-row: 3;
-}
-
-.mustSeeBtm {
-  grid-row: 4;
-} */
 
 @media (max-width: 480px) {
   .mustSeeHeading {
@@ -130,12 +116,6 @@
     align-self: end;
     text-decoration: underline;
   }
-
-  /* .mustSeeTop,
-  .mustSeeMid,
-  .mustSeeBtm {
-    display: none;
-  } */
 
   .mustSeeCardContainer {
     flex-direction: row;
