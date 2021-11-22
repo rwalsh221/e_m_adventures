@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import classes from './AccommodationInformationContent.module.css';
 
 import ShowMoreModal from '../../Modal/AccommodationIformationModal/ShowMoreModal/ShowMoreModal';
@@ -13,12 +13,6 @@ const AccommodationInformationContent = () => {
     showModal: false,
     content: '',
   });
-
-  // let mapBoxContent;
-
-  // useEffect(() => {
-  //   return (mapBoxContent = <MapBoxContainer />);
-  // });
 
   const ionIconRef = { iconBed: <ion-icon name="bed-outline" /> };
   return (
@@ -52,27 +46,27 @@ const AccommodationInformationContent = () => {
         <div className={classes.imageGrid}>
           <img
             src={`img/accommodation/${accomIdProps}/hero.jpg`}
-            alt={'accommodation'}
+            alt="accommodation"
             className={classes.imageGridHero}
           />
           <img
             src={`img/accommodation/${accomIdProps}/hero.jpg`}
-            alt={'accommodation'}
+            alt="accommodation"
             className={classes.imageGridTc}
           />
           <img
             src={`img/accommodation/${accomIdProps}/hero.jpg`}
-            alt={'accommodation'}
+            alt="accommodation"
             className={classes.imageGridTr}
           />
           <img
             src={`img/accommodation/${accomIdProps}/hero.jpg`}
-            alt={'accommodation'}
+            alt="accommodation"
             className={classes.imageGridBc}
           />
           <img
             src={`img/accommodation/${accomIdProps}/hero.jpg`}
-            alt={'accommodation'}
+            alt="accommodation"
             className={classes.imageGridBr}
           />
         </div>
@@ -93,9 +87,9 @@ const AccommodationInformationContent = () => {
           <div className={classes.infoHeadingLogoContainer}>
             <img
               src={logoBlack}
-              alt={'e & m logo'}
+              alt="e & m logo"
               className={classes.infoHeadingLogo}
-            ></img>
+            />
           </div>
         </div>
         {/* FEATURES */}
@@ -106,7 +100,7 @@ const AccommodationInformationContent = () => {
                 <ion-icon name="home-outline" />
                 <p className={classes.bold}>Entire Home</p>
               </div>
-              <p>You'll have the LOCATIONTYPE to yourself</p>
+              <p>You&apos;ll have the LOCATIONTYPE to yourself</p>
             </li>
             <li>
               <div>
@@ -153,7 +147,7 @@ const AccommodationInformationContent = () => {
         </div>
         {/* SLEEP */}
         <div className={classes.sleep}>
-          <h2>Where you'll sleep</h2>
+          <h2>Where you&apos;ll sleep</h2>
           <div className={classes.sleepCard}>
             <ion-icon name="bed-outline" />
             <p>
@@ -213,7 +207,7 @@ const AccommodationInformationContent = () => {
         <div className={classes.reviewCardContainer}>
           <div className={classes.reviewCard}>
             <div className={classes.reviewCardHeading}>
-              <img src={reviewPortrait} alt={'portrait'}></img>
+              <img src={reviewPortrait} alt="portrait" />
               <div className={classes.reviewCardHeading__name}>
                 <p className={classes.bold}>John Matrix</p>
                 <p className={classes.lightText}>October 2021</p>
@@ -229,7 +223,7 @@ const AccommodationInformationContent = () => {
           </div>
           <div className={classes.reviewCard}>
             <div className={classes.reviewCardHeading}>
-              <img src={reviewPortrait} alt={'portrait'}></img>
+              <img src={reviewPortrait} alt="portrait" />
               <div className={classes.reviewCardHeading__name}>
                 <p className={classes.bold}>John Matrix</p>
                 <p className={classes.lightText}>October 2021</p>
@@ -245,7 +239,7 @@ const AccommodationInformationContent = () => {
           </div>
           <div className={classes.reviewCard}>
             <div className={classes.reviewCardHeading}>
-              <img src={reviewPortrait} alt={'portrait'}></img>
+              <img src={reviewPortrait} alt="portrait" />
               <div className={classes.reviewCardHeading__name}>
                 <p className={classes.bold}>John Matrix</p>
                 <p className={classes.lightText}>October 2021</p>
@@ -261,7 +255,7 @@ const AccommodationInformationContent = () => {
           </div>
           <div className={classes.reviewCard}>
             <div className={classes.reviewCardHeading}>
-              <img src={reviewPortrait} alt={'portrait'}></img>
+              <img src={reviewPortrait} alt="portrait" />
               <div className={classes.reviewCardHeading__name}>
                 <p className={classes.bold}>John Matrix</p>
                 <p className={classes.lightText}>October 2021</p>
@@ -277,7 +271,7 @@ const AccommodationInformationContent = () => {
           </div>
           <div className={classes.reviewCard}>
             <div className={classes.reviewCardHeading}>
-              <img src={reviewPortrait} alt={'portrait'}></img>
+              <img src={reviewPortrait} alt="portrait" />
               <div className={classes.reviewCardHeading__name}>
                 <p className={classes.bold}>John Matrix</p>
                 <p className={classes.lightText}>October 2021</p>
@@ -295,7 +289,7 @@ const AccommodationInformationContent = () => {
       </section>
       {/* MAP SECTION */}
       <section className={classes.sectionMap}>
-        <h2>Where you'll be</h2>
+        <h2>Where you&apos;ll be</h2>
         <MapBoxContainer />
         <h3>Carnforth, United Kingdom</h3>
         <p>
@@ -319,9 +313,9 @@ const AccommodationInformationContent = () => {
         <div className={classes.aboutHostHeading}>
           <img
             src={logoBlack}
-            alt={'e & m logo'}
+            alt="e & m logo"
             className={classes.aboutHostHeadingLogo}
-          ></img>
+          />
           <div>
             <h3>Hosted by e &amp; m</h3>
             <p>Planning adventures since 2020</p>
@@ -370,9 +364,9 @@ const AccommodationInformationContent = () => {
             <li>Response Time: within an hour</li>
             <li>Avaliable: 24/7</li>
           </ul>
-          <button>Contact Us</button>
+          <button type="button">Contact Us</button>
           <div className={classes.aboutHostSecurity}>
-            <ion-icon name={'heart'}></ion-icon>
+            <ion-icon name="heart" />
             <p>
               To protect your payment, never transfer money or communicate
               outside of the e &amp; m adventures website or app.
@@ -462,7 +456,8 @@ const AccommodationInformationContent = () => {
                 <p>quis nostrud exercitation ullamco</p>
               </li>
             </ul>
-            <p
+            <button
+              type="button"
               className={classes.showModal}
               onClick={() =>
                 setShowModal({
@@ -472,7 +467,7 @@ const AccommodationInformationContent = () => {
               }
             >
               Show more <ion-icon name="chevron-forward" />
-            </p>
+            </button>
           </div>
           <div className={classes.knowContent}>
             <h4>Cancellation Policy</h4>
@@ -484,7 +479,8 @@ const AccommodationInformationContent = () => {
                 <p>Free cancellation for 48 hours</p>
               </li>
             </ul>
-            <p
+            <button
+              type="button"
               className={classes.showModal}
               onClick={() =>
                 setShowModal({
@@ -494,7 +490,7 @@ const AccommodationInformationContent = () => {
               }
             >
               Show more <ion-icon name="chevron-forward" />
-            </p>
+            </button>
           </div>
         </div>
       </section>

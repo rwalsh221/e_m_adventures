@@ -3,8 +3,6 @@ import { LoremIpsum } from 'react-lorem-ipsum';
 import { Link } from 'react-router-dom';
 import classes from './AccommodationContent.module.css';
 
-// import * from '../../../assets/img/accommodation/acc0001/hero.jpg'
-
 const AccommodationContent = () => {
   const accommodation = [
     {
@@ -34,10 +32,10 @@ const AccommodationContent = () => {
       <h1 className={classes.accommodationHeading}>
         Find the perfect base for your adventure
       </h1>
-      <Link to={'/accommodationInformation'}>INFO</Link>
+      <Link to="/accommodationInformation">INFO</Link>
       <div
         className={classes.accommodationCard}
-        onClick={() => console.log('clclclclclclcc')}
+        // onClick={() => console.log('clclclclclclcc')}
       >
         <h2 className={classes.accommodationCard__heading}>
           {accommodation[0].name}
@@ -46,7 +44,7 @@ const AccommodationContent = () => {
           className={classes.accommodationCard__img}
           src={`img/accommodation/${accommodation[0].id}/hero.jpg`}
           alt={accommodation[0].name}
-        ></img>
+        />
         <p className={classes.accommodationCard__description}>
           {accommodation[0].shortDescription}
         </p>
@@ -65,7 +63,7 @@ const AccommodationContent = () => {
           className={classes.accommodationCard__img}
           src={`img/accommodation/${accommodation[0].id}/hero.jpg`}
           alt={accommodation[0].name}
-        ></img>
+        />
         <p className={classes.accommodationCard__description}>
           {accommodation[0].shortDescription}
         </p>
@@ -78,7 +76,7 @@ const AccommodationContent = () => {
       </div>
       <div
         className={classes.accommodationCard}
-        onClick={() => console.log('clclclclclclcc')}
+        // onClick={() => console.log('clclclclclclcc')}
       >
         <h2 className={classes.accommodationCard__heading}>
           {accommodation[0].name}
@@ -87,7 +85,7 @@ const AccommodationContent = () => {
           className={classes.accommodationCard__img}
           src={`img/accommodation/${accommodation[0].id}/hero.jpg`}
           alt={accommodation[0].name}
-        ></img>
+        />
         <p className={classes.accommodationCard__description}>
           {accommodation[0].shortDescription}
         </p>
@@ -106,7 +104,7 @@ const AccommodationContent = () => {
           className={classes.accommodationCard__img}
           src={`img/accommodation/${accommodation[0].id}/hero.jpg`}
           alt={accommodation[0].name}
-        ></img>
+        />
         <p className={classes.accommodationCard__description}>
           {accommodation[0].shortDescription}
         </p>
