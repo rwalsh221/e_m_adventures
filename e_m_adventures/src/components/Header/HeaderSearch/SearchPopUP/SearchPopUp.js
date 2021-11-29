@@ -7,7 +7,7 @@ import { dateToMilliseconds } from '../../../../helpers/utilities';
 import holdCurrentBooking from '../../../../helpers/booking/holdCurrentBooking';
 
 import ErrorComponent from '../../../miniComponents/ErrorComponent/ErrorComponent';
-import { errorTimeout } from '../../../../helpers/error/errorTimeout';
+import errorTimeout from '../../../../helpers/error/errorTimeout';
 
 import classes from './SearchPopUp.module.css';
 

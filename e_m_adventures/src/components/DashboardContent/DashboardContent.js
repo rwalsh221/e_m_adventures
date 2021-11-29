@@ -10,7 +10,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import ErrorComponent from '../miniComponents/ErrorComponent/ErrorComponent';
 import Backdrop from '../miniComponents/Backdrop/Backdrop';
 import img from '../../assets/img/morecambe.jpg';
-import { errorTimeout } from '../../helpers/error/errorTimeout';
+import errorTimeout from '../../helpers/error/errorTimeout';
 
 import * as actionTypes from './DashboardContentSlice';
 

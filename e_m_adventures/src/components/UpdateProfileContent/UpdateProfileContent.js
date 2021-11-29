@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import ErrorComponent from '../miniComponents/ErrorComponent/ErrorComponent';
-import { errorTimeout } from '../../helpers/error/errorTimeout';
+import errorTimeout from '../../helpers/error/errorTimeout';
 
 import classes from './UpdateProfileContent.module.css';
 
