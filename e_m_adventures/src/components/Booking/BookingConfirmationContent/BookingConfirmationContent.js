@@ -4,7 +4,7 @@ import { formatDate } from '../../../helpers/utilities';
 
 import classes from './BookingConfirmationContent.module.css';
 
-const BookingConfirmationContent = (props) => {
+const BookingConfirmationContent = () => {
   const state = useSelector((state) => state);
 
   return (

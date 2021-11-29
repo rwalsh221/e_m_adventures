@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { nanoid } from 'nanoid';
-import { useLocation } from 'react-router-dom';
 
 import { useAuth } from '../../../contexts/AuthContext';
 import { cancelBooking } from '../../../helpers/booking/cancelBooking';
@@ -11,7 +10,7 @@ import BookingUnavailable from './BookingUnavailable/BookingUnavailable';
 import BookingAvailable from './BookingAvailable/BookingAvailable';
 import Spinner from '../../miniComponents/Spinner/Spinner';
 
-const BookingSummaryContent = (props) => {
+const BookingSummaryContent = () => {
   const state = useSelector((state) => state);
 
   const history = useHistory();
@@ -21,12 +20,10 @@ const BookingSummaryContent = (props) => {
   const database =
     'https://e-m-adventures-development-default-rtdb.europe-west1.firebasedatabase.app/';
 
-  const [bookedDays, setBookedDays] = useState();
+  const [bookedDays, setBookedDays] = useState([]);
   const [content, setContent] = useState(<Spinner />);
 
   const location = useLocation();
-
- 
 
   // const bookingData = getBookingData(currentUser);
 
@@ -37,11 +34,14 @@ const BookingSummaryContent = (props) => {
           `${database}fulldays.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`
         );
 
-        let unavaliableDaysData = await unavaliableDays.json();
+        const unavaliableDaysData = await unavaliableDays.json();
 
-        unavaliableDaysData
-          ? setBookedDays([...unavaliableDaysData])
-          : setBookedDays([]);
+        if (unavaliableDaysData) {
+          setBookedDays([...unavaliableDaysData]);
+        }
+        // unavaliableDaysData
+        //   ? setBookedDays([...unavaliableDaysData])
+        //   : setBookedDays([]);
       } catch (error) {
         console.error(error);
       }
@@ -52,9 +52,10 @@ const BookingSummaryContent = (props) => {
 
   const submitHandler = useCallback(async () => {
     const data = { ...state.headerSearch };
-    let newBookedDays;
+    let newBookedDays = [];
     const ref = `ref${nanoid()}`;
-    bookedDays ? (newBookedDays = [...bookedDays]) : (newBookedDays = []);
+    if (bookedDays) newBookedDays = [...bookedDays];
+    // bookedDays ? (newBookedDays = [...bookedDays]) : (newBookedDays = []);
     newBookedDays.push(data.checkIn, ...data.fullDays);
 
     const patchConfig = {
@@ -131,15 +132,15 @@ const BookingSummaryContent = (props) => {
 
   useEffect(() => {
     if (bookedDays === undefined) {
-      return;
+      // return;
     } else if (bookedDays.includes(state.headerSearch.checkIn)) {
       setContent(<BookingUnavailable />);
     } else if (location.state.holdStatus) {
-      setContent(<BookingUnavailable holdBooking={true} />);
+      setContent(<BookingUnavailable holdBooking />);
     } else {
       setContent(
         <BookingAvailable
-          submitHandler={submitHandler}
+          submitHandlerProps={submitHandler}
           ref={location.state.ref}
         />
       );
