@@ -1,7 +1,7 @@
 import React from 'react';
 import LoremIpsum from 'react-lorem-ipsum';
 
-import { ContentPara } from '../../miniComponents/Content/ContentPara/ContentPara';
+import ContentPara from '../../miniComponents/Content/ContentPara/ContentPara';
 
 import scotNature from '../../../assets/img/exploreWorld/nature.jpg';
 import scotCity from '../../../assets/img/exploreWorld/city.jpg';
@@ -18,12 +18,12 @@ const ExploreWorldContent = () => (
     </div>
 
     <ContentPara
-      position="left"
-      imgPosition="imgLeft"
-      heading="Explore Scotish Nature"
-      loremTop={1}
-      loremBtm={2}
-      img={scotNature}
+      positionProps="left"
+      imgPositionProps="imgLeft"
+      headingProps="Explore Scotish Nature"
+      loremTopProps={1}
+      loremBtmProps={2}
+      imgProps={scotNature}
     />
     <div className={classes.paraSubR}>
       <h4 className={classes.paraHeading}>Explore Scotish Cities</h4>

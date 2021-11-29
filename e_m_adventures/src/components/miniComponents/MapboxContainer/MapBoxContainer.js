@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import classes from './MapBoxContainer.module.css';
 
 import mapboxgl from '!mapbox-gl';
-import { style } from 'dom-helpers';
 
 mapboxgl.accessToken =
   'pk.eyJ1Ijoicmlja3lyaWNhcmRpbmhvIiwiYSI6ImNrdnJsczBsNTA5ODIyb2x5bGExbDlscHMifQ.UA26VXh63_0G21WVA8d_Ug';
