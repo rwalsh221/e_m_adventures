@@ -234,7 +234,7 @@ const ModifyBookingContent = () => {
   return (
     <main className={classes.main}>
       {error && <ErrorComponent message={error} />}
-      <Backdrop show={showBackdrop} ref={backdropRef}>
+      <Backdrop showProps={showBackdrop} ref={backdropRef}>
         {backdropContent}
       </Backdrop>
       <h1 className={classes.mainHeading}>Change Your Booking</h1>

@@ -1,12 +1,18 @@
-import classes from './Backdrop.module.css';
 import React from 'react';
+import PropTypes from 'prop-types';
+import classes from './Backdrop.module.css';
 
-const Backdrop = React.forwardRef((props, ref) => {
-  return props.show ? (
+const Backdrop = React.forwardRef(({ showProps, children }, ref) =>
+  showProps ? (
     <div ref={ref} className={`${classes.backdrop}`}>
-      {props.children}
+      {children}
     </div>
-  ) : null;
-});
+  ) : null
+);
+
+Backdrop.propTypes = {
+  showProps: PropTypes.bool.isRequired,
+  children: PropTypes.node.isRequired,
+};
 
 export default Backdrop;

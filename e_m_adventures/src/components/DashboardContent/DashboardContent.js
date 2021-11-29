@@ -189,7 +189,7 @@ const DashboardContent = () => {
 
   return (
     <main className={classes.grid}>
-      <Backdrop show={showBackdrop} content={backdropContent} ref={backdropRef}>
+      <Backdrop showProps={showBackdrop} ref={backdropRef}>
         <div className={classes.contentLeft}>
           <h2>Your Going To Capernwray</h2>
           <ul className={classes.content}>
