@@ -3,9 +3,9 @@ import { createSlice } from '@reduxjs/toolkit';
 const getDays = (checkIn, checkOut) => {
   const milliSeconds = 24 * 60 * 60 * 1000;
 
-  let bookedDaysArr = [];
+  const bookedDaysArr = [];
 
-  for (let i = checkIn; i < checkOut; i = i + milliSeconds) {
+  for (let i = checkIn; i < checkOut; i += milliSeconds) {
     if (i !== checkIn) bookedDaysArr.push(i);
   }
 
@@ -18,7 +18,7 @@ const HeaderSearchSlice = createSlice({
   reducers: {
     booking: (state, action) => {
       const fullDays = getDays(action.payload.checkIn, action.payload.checkOut);
-      return (state = { ...action.payload, fullDays: fullDays });
+      return (state = { ...action.payload, fullDays });
     },
   },
 });

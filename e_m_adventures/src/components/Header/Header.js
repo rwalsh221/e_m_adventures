@@ -4,9 +4,8 @@ import HeaderNavigation from './HeaderNavigation/HeaderNavigation';
 import HeaderSearch from './HeaderSearch/HeaderSearch';
 import classes from './Header.module.css';
 import SearchPopUp from './HeaderSearch/SearchPopUP/SearchPopUp';
-// import ErrorComponent from '../miniComponents/ErrorComponent/ErrorComponent';
 
-const Header = (props) => {
+const Header = () => {
   const [popUp, setPopUp] = useState('none');
 
   const setPopUpHandler = (open) => {
@@ -22,6 +21,7 @@ const Header = (props) => {
       <HeaderNavigation />
       <HeaderSearch />
       <button
+        type="button"
         className={classes.btnPopUp}
         onClick={() => {
           setPopUpHandler(false);
@@ -30,8 +30,9 @@ const Header = (props) => {
         START YOUR ADVENTURE
       </button>
 
-      <SearchPopUp display={popUp} />
+      <SearchPopUp displayProps={popUp} />
       <button
+        type="button"
         className={classes.btnClose}
         onClick={() => {
           setPopUpHandler(true);

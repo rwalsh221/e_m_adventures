@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { nanoid } from 'nanoid';
 import { validateDate } from '../../../helpers/validation';
 import { dateToMilliseconds } from '../../../helpers/utilities';
 import ErrorComponent from '../../miniComponents/ErrorComponent/ErrorComponent';
@@ -11,13 +12,12 @@ import { errorTimeout } from '../../../helpers/error/errorTimeout';
 import * as actionTypes from './HeaderSearchSlice';
 
 import classes from './HeaderSearch.module.css';
-import { nanoid } from 'nanoid';
 
 // TODO: REFACTOR CANCEL AND MODIFY WITH BOOKING HELPERS
 
 const mapDispatch = { ...actionTypes };
 
-const HeaderSearch = (props) => {
+const HeaderSearch = () => {
   const dispatch = useDispatch();
 
   const [error, setError] = useState();
@@ -73,13 +73,13 @@ const HeaderSearch = (props) => {
             <label htmlFor="checkIn" className={classes.searchLabel}>
               Check-in
             </label>
-            <input type="date" id="checkIn" ref={checkIn}></input>
+            <input type="date" id="checkIn" ref={checkIn} />
           </div>
           <div className={classes.date}>
             <label htmlFor="checkOut" className={classes.searchLabel}>
               Check-out
             </label>
-            <input type="date" id="checkOut" ref={checkOut}></input>
+            <input type="date" id="checkOut" ref={checkOut} />
           </div>
           <div className={classes.guests}>
             <label htmlFor="guests" className={classes.searchLabel}>
@@ -94,6 +94,7 @@ const HeaderSearch = (props) => {
           </div>
 
           <button
+            type="button"
             className={classes.btnSubmit}
             onClick={async (e) => {
               e.preventDefault();

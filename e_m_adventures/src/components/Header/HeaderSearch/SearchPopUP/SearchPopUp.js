@@ -15,7 +15,7 @@ import * as actionTypes from '../HeaderSearchSlice';
 
 const mapDispatch = { ...actionTypes };
 
-const SearchPopUp = (props) => {
+const SearchPopUp = ({ displayProps }) => {
   const dispatch = useDispatch();
 
   const [error, setError] = useState('');
@@ -67,9 +67,9 @@ const SearchPopUp = (props) => {
   };
 
   return (
-    <React.Fragment>
+    <>
       {error && <ErrorComponent message={error} />}
-      <div className={classes.searchPopUp} style={{ display: props.display }}>
+      <div className={classes.searchPopUp} style={{ display: displayProps }}>
         <form className={classes.searchForm}>
           <div className={classes.start}>
             <h6>Start Your Adventure</h6>
@@ -78,13 +78,13 @@ const SearchPopUp = (props) => {
             <label htmlFor="checkIn" className={classes.searchLabel}>
               Check-in
             </label>
-            <input type="date" id="checkIn" ref={checkInPop}></input>
+            <input type="date" id="checkIn" ref={checkInPop} />
           </div>
           <div className={classes.date}>
             <label htmlFor="checkOut" className={classes.searchLabel}>
               Check-out
             </label>
-            <input type="date" id="checkOut" ref={checkOutPop}></input>
+            <input type="date" id="checkOut" ref={checkOutPop} />
           </div>
           <div className={classes.guests}>
             <label htmlFor="guests" className={classes.searchLabel}>
@@ -98,6 +98,7 @@ const SearchPopUp = (props) => {
             </select>
           </div>
           <button
+            type="button"
             className={classes.btnSubmit}
             onClick={(e) => {
               e.preventDefault();
@@ -108,7 +109,7 @@ const SearchPopUp = (props) => {
           </button>
         </form>
       </div>
-    </React.Fragment>
+    </>
   );
 };
 
