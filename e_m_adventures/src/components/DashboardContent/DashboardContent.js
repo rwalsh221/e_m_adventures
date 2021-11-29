@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
-// import { Card, Button, Alert } from 'react-bootstrap';
-import { Link, useHistory } from 'react-router-dom';
-import { useAuth } from '../../contexts/AuthContext';
-import { LoremIpsum } from 'react-lorem-ipsum';
-import { formatDate } from '../../helpers/utilities';
 import { connect, useDispatch } from 'react-redux';
 
+import { Link, useHistory } from 'react-router-dom';
+
+import { LoremIpsum } from 'react-lorem-ipsum';
+import { formatDate } from '../../helpers/utilities';
+
+import { useAuth } from '../../contexts/AuthContext';
 import ErrorComponent from '../miniComponents/ErrorComponent/ErrorComponent';
 import Backdrop from '../miniComponents/Backdrop/Backdrop';
 import img from '../../assets/img/morecambe.jpg';
@@ -20,9 +21,11 @@ const mapDispatch = { ...actionTypes };
 const DashboardContent = () => {
   const dispatch = useDispatch();
 
-  // const [error, setError] = useState('');
-  const [bookingsFuture, setBookingsFuture] = useState(null);
-  const [bookingsPast, setBookingsPast] = useState(null);
+  const [myBookingsState, setMyBookingsState] = useState({
+    bookingsPast: null,
+    bookingsFuture: null,
+  });
+
   const [showBackdrop, setShowBackdrop] = useState(false);
   const [backdropContent, setBackdropContent] = useState(null);
   const [error, setError] = useState('');
@@ -41,8 +44,6 @@ const DashboardContent = () => {
   };
 
   const handleLogout = async () => {
-    // setError('');
-
     try {
       setError('');
       await logout();
@@ -60,29 +61,32 @@ const DashboardContent = () => {
           `${database}/users/${currentUser.uid}/booking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`
         );
 
-        let myBookingsData = await myBookings.json();
-        let myBookingsDataArrFuture = [];
-        let myBookingsDataArrPast = [];
+        const myBookingsData = await myBookings.json();
+        const myBookingsDataArrFuture = [];
+        const myBookingsDataArrPast = [];
 
         // PUSH BOOKINGS TOO ARRAY
-        for (let key in myBookingsData) {
-          // GET TODAYS DATE
-          const date = new Date();
+        // GET TODAYS DATE
+        // TODO: check past booking
+        const date = new Date().getTime();
 
-          if (myBookingsData[key].checkIn > date.getTime()) {
+        Object.keys(myBookingsData).forEach((key) => {
+          if (myBookingsData[key].checkIn > date) {
             myBookingsDataArrFuture.push(myBookingsData[key]);
-          } else if (myBookingsData[key].checkIn < date.getTime()) {
+          } else if (myBookingsData[key].checkIn < date) {
             myBookingsDataArrPast.push(myBookingsData[key]);
           }
-        }
+        });
 
         // SORT ARRAY BY DATE
         sortArray(myBookingsDataArrFuture);
         sortArray(myBookingsDataArrPast);
 
         // SET STATES WITH SORTED ARRAY
-        setBookingsFuture(myBookingsDataArrFuture);
-        setBookingsPast(myBookingsDataArrPast);
+        setMyBookingsState({
+          bookingsPast: [...myBookingsDataArrPast],
+          bookingsFuture: [...myBookingsDataArrFuture],
+        });
       } catch (error) {
         console.error(error);
       }
@@ -110,65 +114,77 @@ const DashboardContent = () => {
     };
   }, [showBackdrop]);
 
-  let contentFuture = [];
-  let contentPast = [];
+  const contentFuture = [];
+  const contentPast = [];
 
   // RENDER FUTURE BOOKING CONTENT
-
-  for (let key in bookingsFuture) {
-    contentFuture.push(
-      <div
-        className={classes.bookingCardContent}
-        id={key}
-        key={key}
-        onClick={(e) => {
-          if (e.target.tagName === 'LI') {
-            setBackdropContent(
-              bookingsFuture[e.target.parentNode.parentNode.id]
-            );
-            setShowBackdrop(true);
-            dispatch(
-              actionTypes.modifyBooking(
-                bookingsFuture[e.target.parentNode.parentNode.id]
-              )
-            );
-          }
-        }}
-      >
-        <ul>
-          <li>
-            Ref:
-            <span className={classes.ref}>
-              {bookingsFuture[key].bookingRef}
-            </span>
-          </li>
-          <li>{`Check In: ${formatDate(
-            bookingsFuture[key].checkIn / 1000
-          )}`}</li>
-          <li>{`Check Out: ${formatDate(
-            bookingsFuture[key].checkOut / 1000
-          )}`}</li>
-        </ul>
-      </div>
-    );
+  if (myBookingsState.bookingsFuture) {
+    Object.keys(myBookingsState.bookingsFuture).forEach((key) => {
+      contentFuture.push(
+        <div
+          aria-hidden
+          className={classes.bookingCardContent}
+          id={key}
+          key={key}
+          onClick={(e) => {
+            if (e.target.tagName === 'LI') {
+              setBackdropContent(
+                myBookingsState.bookingsFuture[
+                  e.target.parentNode.parentNode.id
+                ]
+              );
+              setShowBackdrop(true);
+              dispatch(
+                actionTypes.modifyBooking(
+                  myBookingsState.bookingsFuture[
+                    e.target.parentNode.parentNode.id
+                  ]
+                )
+              );
+            }
+          }}
+        >
+          <ul>
+            <li>
+              Ref:
+              <span className={classes.ref}>
+                {myBookingsState.bookingsFuture[key].bookingRef}
+              </span>
+            </li>
+            <li>{`Check In: ${formatDate(
+              myBookingsState.bookingsFuture[key].checkIn / 1000
+            )}`}</li>
+            <li>{`Check Out: ${formatDate(
+              myBookingsState.bookingsFuture[key].checkOut / 1000
+            )}`}</li>
+          </ul>
+        </div>
+      );
+    });
   }
 
   // RENDER PAST BOOKINGS CONTENT
-  for (let key in bookingsPast) {
-    contentPast.push(
-      <div className={classes.bookingCardContent} key={key}>
-        <ul>
-          <li>
-            Ref:
-            <span className={classes.ref}>{bookingsPast[key].bookingRef}</span>
-          </li>
-          <li>{`Check In: ${formatDate(bookingsPast[key].checkIn / 1000)}`}</li>
-          <li>{`Check Out: ${formatDate(
-            bookingsPast[key].checkOut / 1000
-          )}`}</li>
-        </ul>
-      </div>
-    );
+  if (myBookingsState.bookingsPast) {
+    Object.keys(myBookingsState.bookingsPast).forEach((key) => {
+      contentPast.push(
+        <div className={classes.bookingCardContent} key={key}>
+          <ul>
+            <li>
+              Ref:
+              <span className={classes.ref}>
+                {myBookingsState.bookingsPast[key].bookingRef}
+              </span>
+            </li>
+            <li>{`Check In: ${formatDate(
+              myBookingsState.bookingsPast[key].checkIn / 1000
+            )}`}</li>
+            <li>{`Check Out: ${formatDate(
+              myBookingsState.bookingsPast[key].checkOut / 1000
+            )}`}</li>
+          </ul>
+        </div>
+      );
+    });
   }
 
   return (
@@ -198,19 +214,19 @@ const DashboardContent = () => {
           </ul>
         </div>
         <div className={classes.contentRight}>
-          <img src={img} alt={'backdrop'}></img>
+          <img src={img} alt="backdrop" />
         </div>
         <div className={classes.contentBtm}>
           <Link
             className={classes.modifyBtn}
-            role={'button'}
-            to={'/modify-booking'}
+            role="button"
+            to="/modify-booking"
           >
             Change Your Booking
           </Link>
         </div>
       </Backdrop>
-      <h1 className={classes.header}>{currentUser.email}'s DashBoard</h1>
+      <h1 className={classes.header}>{currentUser.email}&apos;s DashBoard</h1>
       <div className={classes.profile}>
         <h2 className={classes.profileHeading}>Profile</h2>
         <ul>
@@ -222,10 +238,14 @@ const DashboardContent = () => {
       </div>
       {error && <ErrorComponent message={error} />}
       <div className={classes.btnContainer}>
-        <button onClick={handleLogout} className={classes.logoutBtn}>
+        <button
+          onClick={handleLogout}
+          className={classes.logoutBtn}
+          type="button"
+        >
           Logout
         </button>
-        <Link to={'/update-profile'} className={classes.updateBtn}>
+        <Link to="/update-profile" className={classes.updateBtn}>
           Update Profile
         </Link>
       </div>

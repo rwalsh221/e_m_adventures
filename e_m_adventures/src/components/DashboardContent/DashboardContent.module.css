@@ -66,11 +66,8 @@
   min-height: 40rem;
   max-height: 40rem;
   overflow-x: scroll;
-
   background-color: var(--main-color-black);
   border-radius: 3rem;
-  /* grid-row: 2;
-  grid-column: 2; */
   display: flex;
   align-items: center;
   align-content: flex-start;

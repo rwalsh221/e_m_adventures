@@ -4,9 +4,7 @@ const DashboardContentSlice = createSlice({
   name: 'modifyBooking',
   initialState: {},
   reducers: {
-    modifyBooking: (state, action) => {
-      return (state = { ...action.payload });
-    },
+    modifyBooking: (state, action) => (state = { ...action.payload }),
   },
 });
 
