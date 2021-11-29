@@ -38,12 +38,11 @@ const LoginSection = () => {
     <main className={classes.login}>
       <h1 className={classes.heading}>LOGIN</h1>
       <div className={classes.loginCard}>
-        {/* {error && <Alert variant="danger">{error}</Alert>} */}
         {error && <ErrorComponent message={error} />}
         <div className={classes.cardHeader}>
           <div className={classes.cardHeaderLeft}>
             <h3 className={classes.cardHeading}>
-              <Link to={'/signup'}>
+              <Link to="/signup">
                 <h3 className={classes.cardHeading}>New Adventurer?</h3>
               </Link>
             </h3>
@@ -56,33 +55,23 @@ const LoginSection = () => {
           <h2 className={classes.loginContainerHeading}>Login with EMAIL</h2>
           <form onSubmit={handleSubmit} className={classes.loginForm}>
             <div className={classes.formInputContainer}>
-              <label id={'email'}>Email:</label>
-              <input
-                type={'email'}
-                htmlFor={'email'}
-                ref={emailRef}
-                required
-              ></input>
+              <label htmlFor="email">Email:</label>
+              <input type="email" id="email" ref={emailRef} required />
             </div>
             <div className={classes.formInputContainer}>
-              <label id={'password'}>Password:</label>
-              <input
-                type={'password'}
-                htmlFor={'password'}
-                ref={passwordRef}
-                required
-              ></input>
+              <label htmlFor="password">Password:</label>
+              <input type="password" id="password" ref={passwordRef} required />
             </div>
             <button
               disabled={loading}
               className={classes.loginBtn}
-              type={'submit'}
+              type="submit"
             >
               Login
             </button>
           </form>
           <div className={classes.forgot}>
-            <Link to={'/forgot-password'} className={classes.forgot}>
+            <Link to="/forgot-password" className={classes.forgot}>
               Forgot Password?
             </Link>
           </div>
