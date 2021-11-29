@@ -1,4 +1,4 @@
-export const checkFullDays = (currentBooking, allBookingsFullDay) => {
+const checkFullDays = (currentBooking, allBookingsFullDay) => {
   const fullDayUnavailable = [];
 
   allBookingsFullDay.forEach((el) => {
@@ -14,7 +14,8 @@ export const checkFullDays = (currentBooking, allBookingsFullDay) => {
     fullDayUnavailable.length === 0
   ) {
     return true;
-  } else {
-    return false;
   }
+  return false;
 };
+
+export default checkFullDays;

@@ -1,4 +1,4 @@
-export const deleteTimeout = (allBookings) => {
+const deleteTimeout = (allBookings) => {
   const bookings = allBookings;
 
   const allHoldBookingsKeys = Object.keys(bookings);
@@ -21,3 +21,5 @@ export const deleteTimeout = (allBookings) => {
 
   return bookings;
 };
+
+export default deleteTimeout;

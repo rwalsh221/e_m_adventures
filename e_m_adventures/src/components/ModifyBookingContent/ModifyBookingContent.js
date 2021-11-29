@@ -13,9 +13,9 @@ import {
   getFullDays,
   formatDate,
 } from '../../helpers/utilities';
-import { cancelBooking } from '../../helpers/booking/cancelBooking';
+import cancelBooking from '../../helpers/booking/cancelBooking';
 
-import { bookingIsAvaliable } from '../../helpers/booking/bookingIsAvaliable';
+import bookingIsAvaliable from '../../helpers/booking/bookingIsAvaliable';
 import holdCurrentBooking from '../../helpers/booking/holdCurrentBooking';
 
 import * as actionTypes from '../Header/HeaderSearch/HeaderSearchSlice';

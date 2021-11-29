@@ -1,17 +1,13 @@
-import { checkFullDays } from './checkFullDays';
+import checkFullDays from './checkFullDays';
 
-export const bookingIsAvaliable = (
-  allBookings,
-  currentBooking,
-  setErrorState
-) => {
+const bookingIsAvaliable = (allBookings, currentBooking, setErrorState) => {
   if (allBookings === {}) return true;
 
   setErrorState('');
   // COMPARISON ARRAYS
-  let checkInArr = [];
-  let checkOutArr = [];
-  let fullDayArr = [];
+  const checkInArr = [];
+  const checkOutArr = [];
+  const fullDayArr = [];
 
   const allBookingsKeys = Object.keys(allBookings);
 
@@ -39,7 +35,8 @@ export const bookingIsAvaliable = (
     passFullDay === true
   ) {
     return true;
-  } else {
-    return false;
   }
+  return false;
 };
+
+export default bookingIsAvaliable;

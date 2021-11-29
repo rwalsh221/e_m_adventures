@@ -1,8 +1,6 @@
-// import { nanoid } from 'nanoid';
-
 import { getFullDays } from '../utilities';
-import { deleteTimeout } from './deleteTimeout';
-import { bookingIsAvaliable } from './bookingIsAvaliable';
+import deleteTimeout from './deleteTimeout';
+import bookingIsAvaliable from './bookingIsAvaliable';
 
 const holdCurrentBooking = async (checkIn, checkOut, setError, ref) => {
   const database =
@@ -27,9 +25,9 @@ const holdCurrentBooking = async (checkIn, checkOut, setError, ref) => {
   const fullDays = getFullDays(checkIn, checkOut);
 
   const currentBooking = {
-    checkIn: checkIn,
-    checkOut: checkOut,
-    fullDays: fullDays,
+    checkIn,
+    checkOut,
+    fullDays,
     timeStamp: Date.now(),
   };
 
@@ -83,19 +81,18 @@ const holdCurrentBooking = async (checkIn, checkOut, setError, ref) => {
       if (!putHoldBookings.ok) throw new Error('patch hold bookign failed');
 
       return true;
-    } else {
-      const putHoldBookings = await fetch(
-        `${database}holdCurrentBooking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`,
-        {
-          ...putConfig,
-          body: JSON.stringify({
-            ...getHoldBookingsJsonTimeout,
-          }),
-        }
-      );
-      if (!putHoldBookings.ok) throw new Error('patch hold bookign failed');
-      return false;
     }
+    const putHoldBookings = await fetch(
+      `${database}holdCurrentBooking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`,
+      {
+        ...putConfig,
+        body: JSON.stringify({
+          ...getHoldBookingsJsonTimeout,
+        }),
+      }
+    );
+    if (!putHoldBookings.ok) throw new Error('patch hold bookign failed');
+    return false;
   } catch (error) {
     console.error(error);
   }

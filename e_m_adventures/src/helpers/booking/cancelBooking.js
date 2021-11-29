@@ -2,7 +2,7 @@ const database =
   'https://e-m-adventures-development-default-rtdb.europe-west1.firebasedatabase.app/';
 
 const getBookingData = async (currentUser) => {
-  //GET CURENT USERS BOOKINGS
+  // GET CURENT USERS BOOKINGS
   const userBookings = await fetch(
     `${database}/users/${currentUser.uid}/booking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`
   );
@@ -13,7 +13,7 @@ const getBookingData = async (currentUser) => {
     `${database}/fulldays.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`
   );
 
-  let fullDaysJson = await fullDays.json();
+  const fullDaysJson = await fullDays.json();
 
   // GET ALL BOOKINGS
   const allBookings = await fetch(
@@ -84,10 +84,10 @@ const cancelBookingFullDaysDB = async (
     }
 
     // delete from fulldays database
-    for (let i = 0; i < bookingFullDaysArr.length; i++) {
-      let index = fullDaysJson.findIndex((val) => {
-        return val === bookingFullDaysArr[i];
-      });
+    for (let i = 0; i < bookingFullDaysArr.length; i += 1) {
+      const index = fullDaysJson.findIndex(
+        (val) => val === bookingFullDaysArr[i]
+      );
 
       // if remove cancelled booking full day from allFulldays array be searching for index
       if (index !== -1) fullDaysJson.splice(index, 1);
@@ -128,11 +128,7 @@ const cancelBookingAllBookingsDB = async (
   }
 };
 
-export const cancelBooking = async (
-  modifyBookingState,
-  currentUser,
-  history
-) => {
+const cancelBooking = async (modifyBookingState, currentUser, history) => {
   const putConfig = {
     method: 'PUT',
     headers: {
@@ -172,3 +168,5 @@ export const cancelBooking = async (
     console.error(error);
   }
 };
+
+export default cancelBooking;

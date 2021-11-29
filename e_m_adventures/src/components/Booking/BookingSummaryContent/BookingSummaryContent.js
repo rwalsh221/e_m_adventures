@@ -4,7 +4,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 
 import { useAuth } from '../../../contexts/AuthContext';
-import { cancelBooking } from '../../../helpers/booking/cancelBooking';
+import cancelBooking from '../../../helpers/booking/cancelBooking';
 
 import BookingUnavailable from './BookingUnavailable/BookingUnavailable';
 import BookingAvailable from './BookingAvailable/BookingAvailable';
