@@ -8,9 +8,12 @@ import { errorTimeout } from '../../helpers/error/errorTimeout';
 import Backdrop from '../miniComponents/Backdrop/Backdrop';
 
 import { validateDate } from '../../helpers/validation';
-import { dateToMilliseconds, getFullDays } from '../../helpers/utilities';
+import {
+  dateToMilliseconds,
+  getFullDays,
+  formatDate,
+} from '../../helpers/utilities';
 import { cancelBooking } from '../../helpers/booking/cancelBooking';
-import { formatDate } from '../../helpers/utilities';
 
 import { bookingIsAvaliable } from '../../helpers/booking/bookingIsAvaliable';
 import holdCurrentBooking from '../../helpers/booking/holdCurrentBooking';
@@ -63,7 +66,7 @@ const ModifyBookingContent = () => {
   }, [showBackdrop]);
 
   const getBookingData = async () => {
-    //GET CURENT USERS BOOKINGS
+    // GET CURENT USERS BOOKINGS
     const userBookings = await fetch(
       `${database}/users/${currentUser.uid}/booking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`
     );
@@ -74,7 +77,7 @@ const ModifyBookingContent = () => {
       `${database}/fulldays.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`
     );
 
-    let fullDaysJson = await fullDays.json();
+    const fullDaysJson = await fullDays.json();
 
     // GET ALL BOOKINGS
     const allBookings = await fetch(
@@ -94,20 +97,6 @@ const ModifyBookingContent = () => {
     }
   };
 
-  // VALIDATE CHANGE BOOKING FORM
-  const validateChangeBookingForm = async () => {
-    let formIsValid = false;
-
-    formIsValid = validateDate(
-      newCheckInRef.current.value,
-      newCheckOutRef.current.value
-    );
-
-    if (formIsValid) {
-      submitHandler();
-    }
-  };
-
   const submitHandler = async () => {
     const checkIn = dateToMilliseconds(newCheckInRef.current.value);
     const checkOut = dateToMilliseconds(newCheckOutRef.current.value);
@@ -115,9 +104,9 @@ const ModifyBookingContent = () => {
     const fullDays = getFullDays(checkIn, checkOut);
 
     const currentBooking = {
-      checkIn: checkIn,
-      checkOut: checkOut,
-      fullDays: fullDays,
+      checkIn,
+      checkOut,
+      fullDays,
     };
 
     try {
@@ -160,16 +149,35 @@ const ModifyBookingContent = () => {
     }
   };
 
+  // VALIDATE CHANGE BOOKING FORM
+  const validateChangeBookingForm = async () => {
+    let formIsValid = false;
+
+    formIsValid = validateDate(
+      newCheckInRef.current.value,
+      newCheckOutRef.current.value
+    );
+
+    if (formIsValid) {
+      submitHandler();
+    }
+  };
+
   const cancelBookingBackdropContent = () => {
     setBackdropContent(
       <div>
         {error && <ErrorComponent message={error} />}
         <h2>Are You Sure You Want To Cancel Your Booking?</h2>
         <div className={classes.backdropBtnContainer}>
-          <button className={classes.submitBtn} onClick={cancelBookingHandler}>
+          <button
+            type="button"
+            className={classes.submitBtn}
+            onClick={cancelBookingHandler}
+          >
             YES
           </button>
           <button
+            type="button"
             className={classes.submitBtn}
             onClick={() => setShowBackdrop(false)}
           >
@@ -193,23 +201,25 @@ const ModifyBookingContent = () => {
             <label htmlFor="checkIn" className={classes.dateCheckin}>
               Check-in
             </label>
-            <input type="date" id="checkIn" ref={newCheckInRef}></input>
+            <input type="date" id="checkIn" ref={newCheckInRef} />
           </div>
           <div className={classes.date}>
             <label htmlFor="checkOut" className={classes.dateCheckout}>
               Check-out
             </label>
-            <input type="date" id="checkOut" ref={newCheckOutRef}></input>
+            <input type="date" id="checkOut" ref={newCheckOutRef} />
           </div>
         </form>
         <div className={classes.backdropBtnContainer}>
           <button
+            type="button"
             className={classes.submitBtn}
             onClick={validateChangeBookingForm}
           >
             Submit
           </button>
           <button
+            type="button"
             className={classes.submitBtn}
             onClick={() => setShowBackdrop(false)}
           >
@@ -243,12 +253,14 @@ const ModifyBookingContent = () => {
         </li>
       </ul>
       <button
+        type="button"
         className={classes.submitBtn}
         onClick={cancelBookingBackdropContent}
       >
         Cancel Your Booking
       </button>
       <button
+        type="button"
         onClick={changeBookingBackdropContent}
         className={classes.submitBtn}
       >
