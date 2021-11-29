@@ -136,7 +136,7 @@ const BookingSummaryContent = () => {
     } else if (bookedDays.includes(state.headerSearch.checkIn)) {
       setContent(<BookingUnavailable />);
     } else if (location.state.holdStatus) {
-      setContent(<BookingUnavailable holdBooking />);
+      setContent(<BookingUnavailable holdBookingProps />);
     } else {
       setContent(
         <BookingAvailable

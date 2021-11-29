@@ -1,13 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import HeaderSearch from '../../../Header/HeaderSearch/HeaderSearch';
 import classes from './BookingUnavailable.module.css';
 
-const BookingUnavailable = (props) => {
+const BookingUnavailable = ({ holdBookingProps }) => {
   let content = 'Unfortunatley those dates are unavaliable. Please try again';
 
-  if (props.holdBooking) {
+  if (holdBookingProps) {
     content =
       'Unfortunatley those dates are temporally unavaliable. Please try again in a few minutes';
   }
@@ -18,11 +19,15 @@ const BookingUnavailable = (props) => {
         <h1 className={classes.header}>{content}</h1>
       </div>
       <HeaderSearch />
-      <Link to={'/'} className={classes.homeLink}>
+      <Link to="/" className={classes.homeLink}>
         Return to Home
       </Link>
     </main>
   );
+};
+
+BookingUnavailable.propTypes = {
+  holdBookingProps: PropTypes.bool.isRequired,
 };
 
 export default BookingUnavailable;
