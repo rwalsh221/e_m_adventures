@@ -36,6 +36,7 @@
     "jsx-a11y/no-onchange": "off",
     "react/function-component-definition": "off",
     "react/prop-types": "warn",
-    "react/jsx-no-constructed-context-values": "warn"
+    "react/jsx-no-constructed-context-values": "warn",
+    "react/jsx-props-no-spreading": "warn"
   }
 }
