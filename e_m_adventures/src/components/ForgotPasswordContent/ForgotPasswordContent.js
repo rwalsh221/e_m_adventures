@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
-import { useAuth } from '../../contexts/AuthContext';
 import { Link } from 'react-router-dom';
+
+import { useAuth } from '../../contexts/AuthContext';
 import ErrorComponent from '../miniComponents/ErrorComponent/ErrorComponent';
 import { errorTimeout } from '../../helpers/error/errorTimeout';
 
@@ -42,24 +43,19 @@ const ForgotPasswordContent = () => {
           <h2 className={classes.loginContainerHeading}>Reset Password</h2>
           <form onSubmit={handleSubmit} className={classes.loginForm}>
             <div className={classes.formInputContainer}>
-              <label id={'email'}>Email:</label>
-              <input
-                type={'email'}
-                htmlFor={'email'}
-                ref={emailRef}
-                required
-              ></input>
+              <label htmlFor="email">Email:</label>
+              <input type="email" id="email" ref={emailRef} required />
             </div>
             <button
               disabled={loading}
               className={classes.loginBtn}
-              type={'submit'}
+              type="submit"
             >
               submit
             </button>
           </form>
           <div className={classes.forgot}>
-            <Link to={'/signup'} className={classes.forgot}>
+            <Link to="/signup" className={classes.forgot}>
               Need an account? Sign up
             </Link>
           </div>
