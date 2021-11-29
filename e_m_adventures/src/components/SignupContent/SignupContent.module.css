@@ -1,8 +1,4 @@
 .signup {
-  /* background-color: var(--main-color-gold);
-  height: max-content;
-  width: 70%;
-  margin: 5rem auto; */
   width: 70%;
   min-height: 70vh;
   margin: 0 auto;
@@ -57,14 +53,8 @@
 .loginContainer {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
+
   align-items: center;
-  /* background-color: var(--main-color-black);
-  width: 50%;
-  padding: 5rem;
-  border-radius: 2rem;
-  border: 5px solid var(--main-color-gold);
-  margin: 4rem; */
 }
 
 .loginContainerHeading {
@@ -81,7 +71,7 @@
 
 .formInputContainer {
   display: flex;
-  /* width: 50%; */
+
   margin: 2rem 0;
 }
 
