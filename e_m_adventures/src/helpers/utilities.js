@@ -5,12 +5,12 @@ export const formatTime = (unixTimeStamp) => {
   // Hours part from the timestamp
   const hours = date.getHours();
   // Minutes part from the timestamp
-  const minutes = '0' + date.getMinutes();
+  const minutes = `0 ${date.getMinutes()}`;
   // Seconds part from the timestamp
-  const seconds = '0' + date.getSeconds();
+  const seconds = `0 ${date.getSeconds()}`;
 
   // Will display time in 10:30:23 format
-  return hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+  return `${hours} : ${minutes.substr(-2)} : ${seconds.substr(-2)}`;
 };
 
 export const formatDate = (unixTimeStamp) => {
@@ -75,9 +75,9 @@ export const dateToMilliseconds = (date) => {
 export const getFullDays = (checkIn, checkOut) => {
   const milliSeconds = 24 * 60 * 60 * 1000;
 
-  let bookedDaysArr = [];
+  const bookedDaysArr = [];
 
-  for (let i = checkIn; i < checkOut; i = i + milliSeconds) {
+  for (let i = checkIn; i < checkOut; i += milliSeconds) {
     if (i !== checkIn) bookedDaysArr.push(i);
   }
 

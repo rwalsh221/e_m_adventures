@@ -2,12 +2,12 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../../contexts/AuthContext';
 
-import ErrorComponent from '../../miniComponents/ErrorComponent/ErrorComponent';
+import ErrorComponent from '../ErrorComponent/ErrorComponent';
 import errorTimeout from '../../../helpers/error/errorTimeout';
 
 import classes from './DropdownMenu.module.css';
 
-const DropdownMenu = (props) => {
+const DropdownMenu = () => {
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useState(false);
   const [error, setError] = useState('');
@@ -33,7 +33,11 @@ const DropdownMenu = (props) => {
         <Link to="/dashboard">My Account</Link>
       </li>
       <li className={classes.listItem}>
-        <button className={classes.linkBtn} onClick={handleLogout}>
+        <button
+          type="button"
+          className={classes.linkBtn}
+          onClick={handleLogout}
+        >
           Logout
         </button>
       </li>
@@ -76,9 +80,9 @@ const DropdownMenu = (props) => {
   return (
     <div className={classes.menuContainer}>
       {error && <ErrorComponent message={error} />}
-      <button onClick={onClick} className={classes.menuTrigger}>
-        <ion-icon name="menu-outline"></ion-icon>
-        <ion-icon name="people-circle-outline"></ion-icon>
+      <button type="button" onClick={onClick} className={classes.menuTrigger}>
+        <ion-icon name="menu-outline" />
+        <ion-icon name="people-circle-outline" />
       </button>
       <nav
         ref={dropdownRef}

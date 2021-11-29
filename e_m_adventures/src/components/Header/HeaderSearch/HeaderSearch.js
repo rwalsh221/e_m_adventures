@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { nanoid } from 'nanoid';
-import { validateDate } from '../../../helpers/validation';
+import validateDate from '../../../helpers/validation';
 import { dateToMilliseconds } from '../../../helpers/utilities';
 import ErrorComponent from '../../miniComponents/ErrorComponent/ErrorComponent';
 
