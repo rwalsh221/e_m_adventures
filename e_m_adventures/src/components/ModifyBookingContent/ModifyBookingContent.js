@@ -166,7 +166,7 @@ const ModifyBookingContent = () => {
   const cancelBookingBackdropContent = () => {
     setBackdropContent(
       <div>
-        {error && <ErrorComponent message={error} />}
+        {error && <ErrorComponent messageProps={error} />}
         <h2>Are You Sure You Want To Cancel Your Booking?</h2>
         <div className={classes.backdropBtnContainer}>
           <button
@@ -233,7 +233,7 @@ const ModifyBookingContent = () => {
 
   return (
     <main className={classes.main}>
-      {error && <ErrorComponent message={error} />}
+      {error && <ErrorComponent messageProps={error} />}
       <Backdrop showProps={showBackdrop} ref={backdropRef}>
         {backdropContent}
       </Backdrop>

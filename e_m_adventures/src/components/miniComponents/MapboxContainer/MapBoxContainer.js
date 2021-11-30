@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
+import mapboxgl from 'mapbox-gl';
 import classes from './MapBoxContainer.module.css';
-
-import mapboxgl from '!mapbox-gl';
 
 mapboxgl.accessToken =
   'pk.eyJ1Ijoicmlja3lyaWNhcmRpbmhvIiwiYSI6ImNrdnJsczBsNTA5ODIyb2x5bGExbDlscHMifQ.UA26VXh63_0G21WVA8d_Ug';
@@ -9,9 +8,9 @@ mapboxgl.accessToken =
 const MapBoxContainer = React.memo(() => {
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const [longitude, setLongitude] = useState(-2.767456);
-  const [latitude, setlatitude] = useState(54.128879);
-  const [zoom, setZoom] = useState(13);
+  const longitude = -2.767456;
+  const latitude = 54.128879;
+  const zoom = 13;
 
   useEffect(() => {
     if (mapboxgl.current) return;
@@ -19,13 +18,13 @@ const MapBoxContainer = React.memo(() => {
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/streets-v11',
       center: [longitude, latitude],
-      zoom: zoom,
+      zoom,
     });
   });
 
   return (
     <div>
-      <div ref={mapContainer} className={classes.mapContainer}></div>
+      <div ref={mapContainer} className={classes.mapContainer} />
     </div>
   );
 });

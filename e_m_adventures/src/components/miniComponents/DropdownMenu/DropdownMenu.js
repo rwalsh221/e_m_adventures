@@ -79,7 +79,7 @@ const DropdownMenu = () => {
 
   return (
     <div className={classes.menuContainer}>
-      {error && <ErrorComponent message={error} />}
+      {error && <ErrorComponent messageProps={error} />}
       <button type="button" onClick={onClick} className={classes.menuTrigger}>
         <ion-icon name="menu-outline" />
         <ion-icon name="people-circle-outline" />

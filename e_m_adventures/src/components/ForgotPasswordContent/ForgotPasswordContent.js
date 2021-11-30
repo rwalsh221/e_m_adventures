@@ -36,8 +36,8 @@ const ForgotPasswordContent = () => {
     <main className={classes.login}>
       <h1 className={classes.heading}>Forgot Password</h1>
       <div className={classes.loginCard}>
-        {error && <ErrorComponent message={error} />}
-        {message && <ErrorComponent message={message} />}
+        {error && <ErrorComponent messageProps={error} />}
+        {message && <ErrorComponent messageProps={message} />}
 
         <div className={classes.loginContainer}>
           <h2 className={classes.loginContainerHeading}>Reset Password</h2>

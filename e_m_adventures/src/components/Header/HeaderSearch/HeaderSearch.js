@@ -105,7 +105,7 @@ const HeaderSearch = () => {
           </button>
         </form>
       </div>
-      {error && <ErrorComponent message={error} />}
+      {error && <ErrorComponent messageProps={error} />}
     </div>
   );
 };

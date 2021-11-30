@@ -236,7 +236,7 @@ const DashboardContent = () => {
           </li>
         </ul>
       </div>
-      {error && <ErrorComponent message={error} />}
+      {error && <ErrorComponent messageProps={error} />}
       <div className={classes.btnContainer}>
         <button
           onClick={handleLogout}

@@ -68,7 +68,7 @@ const SearchPopUp = ({ displayProps }) => {
 
   return (
     <>
-      {error && <ErrorComponent message={error} />}
+      {error && <ErrorComponent messageProps={error} />}
       <div className={classes.searchPopUp} style={{ display: displayProps }}>
         <form className={classes.searchForm}>
           <div className={classes.start}>

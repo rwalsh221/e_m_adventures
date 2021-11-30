@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { LoremIpsum } from 'react-lorem-ipsum';
 
 import classes from './ContentPara.module.css';
@@ -22,5 +23,14 @@ const ContentPara = ({
     <LoremIpsum p={loremBtmProps} />
   </div>
 );
+
+ContentPara.propTypes = {
+  positionProps: PropTypes.string.isRequired,
+  imgPositionProps: PropTypes.string.isRequired,
+  headingProps: PropTypes.string.isRequired,
+  imgProps: PropTypes.string.isRequired,
+  loremTopProps: PropTypes.number.isRequired,
+  loremBtmProps: PropTypes.number.isRequired,
+};
 
 export default ContentPara;

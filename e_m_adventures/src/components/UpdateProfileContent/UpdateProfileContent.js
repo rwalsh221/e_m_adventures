@@ -55,7 +55,7 @@ const UpdateProfileContent = () => {
       <div className={classes.loginCard}>
         <div className={classes.loginContainer}>
           <h2 className={classes.loginContainerHeading}>UPDATE</h2>
-          {error && <ErrorComponent message={error} />}
+          {error && <ErrorComponent messageProps={error} />}
           <form onSubmit={handleSubmit} className={classes.loginForm}>
             <div className={classes.formInputContainer}>
               <label htmlFor="email">Email:</label>

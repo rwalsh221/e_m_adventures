@@ -59,7 +59,7 @@ const Signup = () => {
     <main className={classes.signup}>
       <h1 className={classes.heading}>SIGN UP</h1>
       <div className={classes.loginCard}>
-        {error && <ErrorComponent message={error} />}
+        {error && <ErrorComponent messageProps={error} />}
         <div className={classes.cardHeader}>
           <div className={classes.cardHeaderLeft}>
             <h3 className={classes.cardHeading}>New Adventurer?</h3>

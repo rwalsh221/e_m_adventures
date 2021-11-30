@@ -58,7 +58,11 @@ const Footer = ({ children }) => (
 );
 
 Footer.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
+};
+
+Footer.defaultProps = {
+  children: undefined,
 };
 
 export default Footer;
