@@ -16,3 +16,11 @@ export const putConfig = {
     'Content-Type': 'application/json',
   },
 };
+
+export const postConfig = {
+  method: 'POST',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
+};

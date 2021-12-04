@@ -3,6 +3,12 @@ import { useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 
+import deleteHoldCurrentBooking from '../../../helpers/booking/deleteHoldCurrentBooking';
+import {
+  database,
+  patchConfig,
+  postConfig,
+} from '../../../helpers/AsyncHelpers/AsyncConfig';
 import { useAuth } from '../../../contexts/AuthContext';
 import cancelBooking from '../../../helpers/booking/cancelBooking';
 
@@ -11,24 +17,19 @@ import BookingAvailable from './BookingAvailable/BookingAvailable';
 import Spinner from '../../miniComponents/Spinner/Spinner';
 
 const BookingSummaryContent = () => {
-  const state = useSelector((state) => state);
+  const reduxState = useSelector((state) => state);
 
   const history = useHistory();
 
   const { currentUser } = useAuth();
 
-  const database =
-    'https://e-m-adventures-development-default-rtdb.europe-west1.firebasedatabase.app/';
-
-  const [bookedDays, setBookedDays] = useState([]);
+  const [unavaliableDaysState, setUnavaliableDaysState] = useState([]);
   const [content, setContent] = useState(<Spinner />);
 
   const location = useLocation();
 
-  // const bookingData = getBookingData(currentUser);
-
   useEffect(() => {
-    const dateAvaliable = async () => {
+    const setBookedDaysState = async () => {
       try {
         const unavaliableDays = await fetch(
           `${database}fulldays.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`
@@ -37,48 +38,30 @@ const BookingSummaryContent = () => {
         const unavaliableDaysData = await unavaliableDays.json();
 
         if (unavaliableDaysData) {
-          setBookedDays([...unavaliableDaysData]);
+          setUnavaliableDaysState([...unavaliableDaysData]);
         }
-        // unavaliableDaysData
-        //   ? setBookedDays([...unavaliableDaysData])
-        //   : setBookedDays([]);
       } catch (error) {
         console.error(error);
       }
     };
 
-    dateAvaliable();
+    setBookedDaysState();
     return () => {
-      console.log('UNMOUNT SUMMARY');
+      deleteHoldCurrentBooking(reduxState.headerSearch.holdRef);
     };
   }, []);
 
   const submitHandler = useCallback(async () => {
-    const data = { ...state.headerSearch };
-    let newBookedDays = [];
+    const data = { ...reduxState.headerSearch };
+
+    let newUnavaliableDays = [];
+    if (unavaliableDaysState) newUnavaliableDays = [...unavaliableDaysState];
     const ref = `ref${nanoid()}`;
-    if (bookedDays) newBookedDays = [...bookedDays];
-    // bookedDays ? (newBookedDays = [...bookedDays]) : (newBookedDays = []);
-    newBookedDays.push(data.checkIn, ...data.fullDays);
 
-    const patchConfig = {
-      method: 'PATCH',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    };
-
-    const postConfig = {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    };
+    newUnavaliableDays.push(data.checkIn, ...data.fullDays);
 
     try {
-      // send booking to booking database key
+      // SEND BOOKING TO BOOKING DATABASE
       const submitBooking = await fetch(
         `${database}booking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`,
         {
@@ -93,7 +76,7 @@ const BookingSummaryContent = () => {
 
       if (!submitBooking.ok) throw Error(submitBooking.message);
 
-      // send booking to user database key
+      // SEND BOOKING TO USER DATABASE
       const submitUserBookings = await fetch(
         `${database}users/${currentUser.uid}/booking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`,
         {
@@ -108,16 +91,17 @@ const BookingSummaryContent = () => {
 
       if (!submitUserBookings.ok) throw new Error(submitUserBookings.message);
 
-      // update fulldays database key
+      // UPDATE FULLDAYS DATABASE WITH NEW BOOKING
       const submitFulldays = await fetch(
         `${database}fulldays.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`,
-        { ...patchConfig, body: JSON.stringify({ ...newBookedDays }) }
+        { ...patchConfig, body: JSON.stringify({ ...newUnavaliableDays }) }
       );
 
       if (!submitFulldays.ok) throw new Error(submitFulldays.message);
 
+      // IF USER IS MODIFYING A CURRENT BOOKING
       if (location.state.modify) {
-        await cancelBooking(state.modifyBooking, currentUser, history);
+        await cancelBooking(reduxState.modifyBooking, currentUser, history);
       }
 
       history.push('/confirmation');
@@ -125,18 +109,15 @@ const BookingSummaryContent = () => {
       console.error(err.message);
     }
   }, [
-    bookedDays,
+    reduxState,
+    unavaliableDaysState,
     history,
-    state.headerSearch,
-    state.modifyBooking,
     currentUser,
     location.state.modify,
   ]);
 
   useEffect(() => {
-    if (bookedDays === undefined) {
-      return;
-    } else if (bookedDays.includes(state.headerSearch.checkIn)) {
+    if (unavaliableDaysState.includes(reduxState.headerSearch.checkIn)) {
       setContent(<BookingUnavailable />);
     } else if (location.state.holdStatus) {
       setContent(<BookingUnavailable holdBookingProps />);
@@ -149,8 +130,8 @@ const BookingSummaryContent = () => {
       );
     }
   }, [
-    bookedDays,
-    state.headerSearch.checkIn,
+    unavaliableDaysState,
+    reduxState.headerSearch.checkIn,
     submitHandler,
     location.state.holdStatus,
     location.state.ref,
