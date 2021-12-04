@@ -23,17 +23,23 @@ const BookingSummaryContent = () => {
 
   const { currentUser } = useAuth();
 
-  const [unavaliableDaysState, setUnavaliableDaysState] = useState([]);
+  const [unavaliableDaysState, setUnavaliableDaysState] = useState({
+    loading: true,
+    data: [],
+  });
   const [content, setContent] = useState(<Spinner />);
 
   const location = useLocation();
 
   let bookingTimeout;
 
-  // const setBookingTimeOut = () => {};
-  // (bookingTimeout = setTimeout(async () => {
-  //   history.replace('/timeout');
-  // }, 300000)); // TIMEOUT IN 5 MINUTES
+  // TODO: check google
+  const setBookingTimeOut = useCallback(() => {
+    console.log('BOOKING TIMEOUT START');
+    bookingTimeout = setTimeout(async () => {
+      history.replace('/timeout');
+    }, 300000); // TIMEOUT IN 5 MINUTES
+  }, [bookingTimeout]);
 
   useEffect(() => {
     const setBookedDaysState = async () => {
@@ -45,25 +51,28 @@ const BookingSummaryContent = () => {
         const unavaliableDaysData = await unavaliableDays.json();
 
         if (unavaliableDaysData) {
-          setUnavaliableDaysState([...unavaliableDaysData]);
+          setUnavaliableDaysState({
+            loading: false,
+            data: [...unavaliableDaysData],
+          });
         }
       } catch (error) {
         console.error(error);
       }
     };
-
     setBookedDaysState();
     return () => {
       clearTimeout(bookingTimeout);
       deleteHoldCurrentBooking(reduxState.headerSearch.holdRef);
     };
-  }, [reduxState.headerSearch.holdRef]);
+  }, [reduxState.headerSearch.holdRef, bookingTimeout]);
 
   const submitHandler = useCallback(async () => {
     const data = { ...reduxState.headerSearch };
 
     let newUnavaliableDays = [];
-    if (unavaliableDaysState) newUnavaliableDays = [...unavaliableDaysState];
+    if (!unavaliableDaysState.loading)
+      newUnavaliableDays = [...unavaliableDaysState.data];
     const ref = `ref${nanoid()}`;
 
     newUnavaliableDays.push(data.checkIn, ...data.fullDays);
@@ -125,17 +134,20 @@ const BookingSummaryContent = () => {
   ]);
 
   useEffect(() => {
-    if (unavaliableDaysState.includes(reduxState.headerSearch.checkIn)) {
-      setContent(<BookingUnavailable />);
-    } else if (location.state.holdStatus) {
-      setContent(<BookingUnavailable holdBookingProps />);
-    } else {
-      setContent(
-        <BookingAvailable
-          submitHandlerProps={submitHandler}
-          // setBookingTimeOutProps={setBookingTimeOut}
-        />
-      );
+    if (!unavaliableDaysState.loading) {
+      if (unavaliableDaysState.data.includes(reduxState.headerSearch.checkIn)) {
+        setContent(<BookingUnavailable />);
+      } else if (location.state.holdStatus) {
+        setContent(<BookingUnavailable holdBookingProps />);
+      } else {
+        setBookingTimeOut();
+        setContent(
+          <BookingAvailable
+            submitHandlerProps={submitHandler}
+            setBookingTimeOutProps={setBookingTimeOut}
+          />
+        );
+      }
     }
   }, [
     unavaliableDaysState,
@@ -143,7 +155,7 @@ const BookingSummaryContent = () => {
     submitHandler,
     location.state.holdStatus,
     location.state.ref,
-    // setBookingTimeOut,
+    setBookingTimeOut,
   ]);
 
   return content;

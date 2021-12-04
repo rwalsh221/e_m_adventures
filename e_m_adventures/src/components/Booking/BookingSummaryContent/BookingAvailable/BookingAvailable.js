@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
+
 import { LoremIpsum } from 'react-lorem-ipsum';
 import { useSelector } from 'react-redux';
 
@@ -12,17 +12,6 @@ import caraSml from '../../../../assets/img/bookingSummary/caraSml.jpg';
 
 const BookingAvailable = ({ submitHandlerProps }) => {
   const reduxState = useSelector((state) => state);
-
-  const history = useHistory();
-  // setBookingTimeOutProps();
-  // USER HAS 5 MINUTES TO CONFIRM BOOKING
-  // confirmTimeOut = setTimeout(async () => {
-  //   history.replace('/timeout');
-  // }, 300000); // TIMEOUT IN 5 MINUTES
-
-  // const confirmTimeOut = setTimeout(async () => {
-  //   history.replace('/timeout');
-  // }, 300000); // TIMEOUT IN 5 MINUTES
 
   return (
     <main className="contentGrid">
