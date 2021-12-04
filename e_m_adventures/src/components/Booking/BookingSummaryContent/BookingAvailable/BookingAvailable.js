@@ -17,6 +17,7 @@ const BookingAvailable = ({ submitHandlerProps }) => {
   const history = useHistory();
 
   const deleteHold = async () => {
+    console.log('DELETE HOLD?????');
     const database =
       'https://e-m-adventures-development-default-rtdb.europe-west1.firebasedatabase.app/';
 
@@ -56,13 +57,15 @@ const BookingAvailable = ({ submitHandlerProps }) => {
   setTimeout(async () => {
     history.replace('/timeout');
   }, 300000); // TIMEOUT IN 5 MINUTES
-
-  useEffect(() =>
+  // TODO: FIX UNMOUNT DELETE HOLD BOOKING MOVE TO PARENT
+  useEffect(() => {
     // IF USER NAVIGATES AWAY FROM SUMMARY
-    async () => {
+    console.log();
+    return async () => {
+      console.log('unmount');
       await deleteHold();
-    }
-  );
+    };
+  });
   return (
     <main className="contentGrid">
       <h1 className={classes.heading}>Booking Summary</h1>

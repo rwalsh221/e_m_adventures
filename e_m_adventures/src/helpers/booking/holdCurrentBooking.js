@@ -68,7 +68,7 @@ const holdCurrentBooking = async (checkIn, checkOut, setError, ref) => {
         ...getHoldBookingsJsonTimeout,
         [ref]: currentBooking,
       };
-
+      console.log(getHoldBookingsJsonTimeout);
       const putHoldBookings = await fetch(
         `${database}holdCurrentBooking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`,
         {

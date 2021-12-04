@@ -1,6 +1,6 @@
 const deleteTimeout = (allBookings) => {
   const bookings = allBookings;
-
+  console.log(allBookings);
   const allHoldBookingsKeys = Object.keys(bookings);
 
   // 5 MINUTES IN MILLI
@@ -18,7 +18,7 @@ const deleteTimeout = (allBookings) => {
   deleteArr.forEach((el) => {
     delete bookings[el];
   });
-
+  console.log(bookings);
   return bookings;
 };
 

@@ -48,6 +48,9 @@ const BookingSummaryContent = () => {
     };
 
     dateAvaliable();
+    return () => {
+      console.log('UNMOUNT SUMMARY');
+    };
   }, []);
 
   const submitHandler = useCallback(async () => {
@@ -132,7 +135,7 @@ const BookingSummaryContent = () => {
 
   useEffect(() => {
     if (bookedDays === undefined) {
-      // return;
+      return;
     } else if (bookedDays.includes(state.headerSearch.checkIn)) {
       setContent(<BookingUnavailable />);
     } else if (location.state.holdStatus) {
