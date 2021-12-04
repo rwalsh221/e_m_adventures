@@ -4,24 +4,16 @@ import deleteTimeout from './deleteTimeout';
 import bookingIsAvaliable from './bookingIsAvaliable';
 
 const holdCurrentBooking = async (checkIn, checkOut, setError, ref) => {
-  // const database =
-  //   'https://e-m-adventures-development-default-rtdb.europe-west1.firebasedatabase.app/';
-
-  // const patchConfig = {
-  //   method: 'PATCH',
-  //   headers: {
-  //     Accept: 'application/json',
-  //     'Content-Type': 'application/json',
-  //   },
-  // };
-
-  // const putConfig = {
-  //   method: 'PUT',
-  //   headers: {
-  //     Accept: 'application/json',
-  //     'Content-Type': 'application/json',
-  //   },
-  // };
+  const sendHoldBookings = async (updatedHoldBooking) =>
+    await fetch(
+      `${database}holdCurrentBooking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`,
+      {
+        ...putConfig,
+        body: JSON.stringify({
+          ...updatedHoldBooking,
+        }),
+      }
+    );
 
   const fullDays = getFullDays(checkIn, checkOut);
 
@@ -31,8 +23,6 @@ const holdCurrentBooking = async (checkIn, checkOut, setError, ref) => {
     fullDays,
     timeStamp: Date.now(),
   };
-
-  // const ref = `ref${nanoid()}`;
 
   try {
     // ADD CURRENT BOOKING TO DATABASE
@@ -64,35 +54,24 @@ const holdCurrentBooking = async (checkIn, checkOut, setError, ref) => {
     if (
       bookingIsAvaliable(getHoldBookingsJsonTimeout, currentBooking, setError)
     ) {
-      // ADD CURRENT BOOKING BACK TO HOLDBOOKING DB
+      // BOOKING IS AVALIABLE ADD CURRENT BOOKING BACK TO HOLDBOOKING DB AND SEND UPDATED HOLDBOOKINGS WITH TIMEDOUT BOOKINGS REMOVED
       getHoldBookingsJsonTimeout = {
         ...getHoldBookingsJsonTimeout,
         [ref]: currentBooking,
       };
-      console.log(getHoldBookingsJsonTimeout);
-      const putHoldBookings = await fetch(
-        `${database}holdCurrentBooking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`,
-        {
-          ...putConfig,
-          body: JSON.stringify({
-            ...getHoldBookingsJsonTimeout,
-          }),
-        }
+
+      const putHoldBookings = await sendHoldBookings(
+        getHoldBookingsJsonTimeout
       );
+
       if (!putHoldBookings.ok) throw new Error('patch hold bookign failed');
 
       return true;
     }
-    const putHoldBookings = await fetch(
-      `${database}holdCurrentBooking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`,
-      {
-        ...putConfig,
-        body: JSON.stringify({
-          ...getHoldBookingsJsonTimeout,
-        }),
-      }
-    );
+    // BOOKING NOT AVALIABLE SEND UPDATED HOLDBOOKINGS WITH TIMEDOUT AND CURRENT BOOKINGS REMOVED
+    const putHoldBookings = await sendHoldBookings(getHoldBookingsJsonTimeout);
     if (!putHoldBookings.ok) throw new Error('patch hold bookign failed');
+
     return false;
   } catch (error) {
     console.error(error);

@@ -58,14 +58,14 @@ const BookingAvailable = ({ submitHandlerProps }) => {
     history.replace('/timeout');
   }, 300000); // TIMEOUT IN 5 MINUTES
   // TODO: FIX UNMOUNT DELETE HOLD BOOKING MOVE TO PARENT
-  useEffect(() => {
-    // IF USER NAVIGATES AWAY FROM SUMMARY
-    console.log();
-    return async () => {
-      console.log('unmount');
-      await deleteHold();
-    };
-  });
+  // useEffect(() => {
+  //   // IF USER NAVIGATES AWAY FROM SUMMARY
+  //   console.log();
+  //   return async () => {
+  //     console.log('unmount');
+  //     await deleteHold();
+  //   };
+  // });
   return (
     <main className="contentGrid">
       <h1 className={classes.heading}>Booking Summary</h1>
