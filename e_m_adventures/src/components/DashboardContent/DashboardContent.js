@@ -67,7 +67,6 @@ const DashboardContent = () => {
 
         // PUSH BOOKINGS TOO ARRAY
         // GET TODAYS DATE
-        // TODO: check past booking
         const date = new Date().getTime();
 
         Object.keys(myBookingsData).forEach((key) => {

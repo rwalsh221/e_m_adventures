@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useSelector, useDispatch, connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { nanoid } from 'nanoid';
+import getBookingData from '../../helpers/booking/getBookingData';
 import { useAuth } from '../../contexts/AuthContext';
 
 import ErrorComponent from '../miniComponents/ErrorComponent/ErrorComponent';
@@ -36,10 +38,10 @@ const ModifyBookingContent = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const state = useSelector((state) => state.modifyBooking);
+  const reduxState = useSelector((state) => state.modifyBooking);
 
-  const database =
-    'https://e-m-adventures-development-default-rtdb.europe-west1.firebasedatabase.app/';
+  // const database =
+  //   'https://e-m-adventures-development-default-rtdb.europe-west1.firebasedatabase.app/';
 
   const { currentUser } = useAuth();
 
@@ -65,33 +67,33 @@ const ModifyBookingContent = () => {
     };
   }, [showBackdrop]);
 
-  const getBookingData = async () => {
-    // GET CURENT USERS BOOKINGS
-    const userBookings = await fetch(
-      `${database}/users/${currentUser.uid}/booking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`
-    );
+  // const getBookingData = async () => {
+  //   // GET CURENT USERS BOOKINGS
+  //   const userBookings = await fetch(
+  //     `${database}/users/${currentUser.uid}/booking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`
+  //   );
 
-    const userBookingsJson = await userBookings.json();
-    // GET FULLDAYS
-    const fullDays = await fetch(
-      `${database}/fulldays.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`
-    );
+  //   const userBookingsJson = await userBookings.json();
+  //   // GET FULLDAYS
+  //   const fullDays = await fetch(
+  //     `${database}/fulldays.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`
+  //   );
 
-    const fullDaysJson = await fullDays.json();
+  //   const fullDaysJson = await fullDays.json();
 
-    // GET ALL BOOKINGS
-    const allBookings = await fetch(
-      `${database}/booking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`
-    );
+  //   // GET ALL BOOKINGS
+  //   const allBookings = await fetch(
+  //     `${database}/booking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`
+  //   );
 
-    const allBookingsJson = await allBookings.json();
+  //   const allBookingsJson = await allBookings.json();
 
-    return { userBookingsJson, fullDaysJson, allBookingsJson };
-  };
+  //   return { userBookingsJson, fullDaysJson, allBookingsJson };
+  // };
 
   const cancelBookingHandler = async () => {
     try {
-      await cancelBooking(state, currentUser, history);
+      await cancelBooking(reduxState, currentUser, history);
     } catch (errror) {
       console.error(error);
     }
@@ -110,24 +112,27 @@ const ModifyBookingContent = () => {
     };
 
     try {
-      const { allBookingsJson } = await getBookingData();
+      const { allBookingsJson } = await getBookingData(currentUser);
 
-      delete allBookingsJson[state.bookingRef];
+      delete allBookingsJson[reduxState.bookingRef];
 
       if (
         bookingIsAvaliable(allBookingsJson, currentBooking, setError) === true
       ) {
+        const ref = `ref${nanoid()}`;
         if (
           await holdCurrentBooking(
             dateToMilliseconds(newCheckInRef.current.value),
             dateToMilliseconds(newCheckOutRef.current.value),
-            setError
+            setError,
+            ref
           )
         ) {
           dispatch(
             actionTypes.booking({
               checkIn: dateToMilliseconds(newCheckInRef.current.value),
               checkOut: dateToMilliseconds(newCheckOutRef.current.value),
+              holdRef: ref,
             })
           );
 
@@ -243,13 +248,13 @@ const ModifyBookingContent = () => {
       </h2>
       <ul className={classes.bookingInfo}>
         <li>
-          Booking Reference:&nbsp;<span>{state.bookingRef}</span>
+          Booking Reference:&nbsp;<span>{reduxState.bookingRef}</span>
         </li>
         <li>
-          Check In:&nbsp;<span>{formatDate(state.checkIn / 1000)}</span>
+          Check In:&nbsp;<span>{formatDate(reduxState.checkIn / 1000)}</span>
         </li>
         <li>
-          Check Out:&nbsp;<span>{formatDate(state.checkOut / 1000)}</span>
+          Check Out:&nbsp;<span>{formatDate(reduxState.checkOut / 1000)}</span>
         </li>
       </ul>
       <button

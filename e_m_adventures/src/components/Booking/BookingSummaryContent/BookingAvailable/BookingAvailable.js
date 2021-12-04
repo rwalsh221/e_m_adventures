@@ -11,15 +11,18 @@ import caraMed from '../../../../assets/img/bookingSummary/caraMed.jpg';
 import caraSml from '../../../../assets/img/bookingSummary/caraSml.jpg';
 
 const BookingAvailable = ({ submitHandlerProps }) => {
-  // TODO: CHECK DELETE HOLD IN CHROME CONSOLE
   const reduxState = useSelector((state) => state);
 
   const history = useHistory();
-
+  // setBookingTimeOutProps();
   // USER HAS 5 MINUTES TO CONFIRM BOOKING
-  setTimeout(async () => {
-    history.replace('/timeout');
-  }, 300000); // TIMEOUT IN 5 MINUTES
+  // confirmTimeOut = setTimeout(async () => {
+  //   history.replace('/timeout');
+  // }, 300000); // TIMEOUT IN 5 MINUTES
+
+  // const confirmTimeOut = setTimeout(async () => {
+  //   history.replace('/timeout');
+  // }, 300000); // TIMEOUT IN 5 MINUTES
 
   return (
     <main className="contentGrid">

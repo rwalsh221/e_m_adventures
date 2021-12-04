@@ -28,6 +28,13 @@ const BookingSummaryContent = () => {
 
   const location = useLocation();
 
+  let bookingTimeout;
+
+  // const setBookingTimeOut = () => {};
+  // (bookingTimeout = setTimeout(async () => {
+  //   history.replace('/timeout');
+  // }, 300000)); // TIMEOUT IN 5 MINUTES
+
   useEffect(() => {
     const setBookedDaysState = async () => {
       try {
@@ -47,9 +54,10 @@ const BookingSummaryContent = () => {
 
     setBookedDaysState();
     return () => {
+      clearTimeout(bookingTimeout);
       deleteHoldCurrentBooking(reduxState.headerSearch.holdRef);
     };
-  }, []);
+  }, [reduxState.headerSearch.holdRef]);
 
   const submitHandler = useCallback(async () => {
     const data = { ...reduxState.headerSearch };
@@ -125,7 +133,7 @@ const BookingSummaryContent = () => {
       setContent(
         <BookingAvailable
           submitHandlerProps={submitHandler}
-          ref={location.state.ref}
+          // setBookingTimeOutProps={setBookingTimeOut}
         />
       );
     }
@@ -135,6 +143,7 @@ const BookingSummaryContent = () => {
     submitHandler,
     location.state.holdStatus,
     location.state.ref,
+    // setBookingTimeOut,
   ]);
 
   return content;
