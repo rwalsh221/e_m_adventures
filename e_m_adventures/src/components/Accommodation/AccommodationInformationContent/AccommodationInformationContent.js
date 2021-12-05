@@ -442,7 +442,7 @@ const AccommodationInformationContent = () => {
                     onClick={() =>
                       setShowModal({
                         showModal: true,
-                        content: 'rules',
+                        content: 'covid',
                       })
                     }
                     className={classes.showModal}

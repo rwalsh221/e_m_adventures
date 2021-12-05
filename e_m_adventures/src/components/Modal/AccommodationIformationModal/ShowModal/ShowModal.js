@@ -26,10 +26,12 @@ const ShowModal = ({ showModalProps, setShowModalParentProps }) => {
                 'Carbon monoxide detector',
               ],
             }}
-            secondaryContent={{
-              heading: 'You must acknowledge',
-              additional: ['You must Climb Stairs'],
-            }}
+            secondaryContent={[
+              {
+                heading: 'You must acknowledge',
+                additional: ['You must Climb Stairs'],
+              },
+            ]}
           />
         );
         break;
@@ -40,10 +42,12 @@ const ShowModal = ({ showModalProps, setShowModalParentProps }) => {
               heading: 'House Rules',
               additional: ['Check-in: 3pm', 'Check-out: 11am'],
             }}
-            secondaryContent={{
-              heading: 'Additional Rules',
-              additional: ['No parties or events'],
-            }}
+            secondaryContent={[
+              {
+                heading: 'Additional Rules',
+                additional: ['No parties or events'],
+              },
+            ]}
           />
         );
         break;
@@ -61,7 +65,14 @@ const ShowModal = ({ showModalProps, setShowModalParentProps }) => {
         );
         break;
       case 'contact':
-        content = <ModalContent />;
+        content = (
+          <ModalContent
+            primaryContent={{
+              heading: 'Contact us',
+              additional: ['Email: em@em.com', 'Phone: 123456789'],
+            }}
+          />
+        );
         break;
       default:
         content = null;
