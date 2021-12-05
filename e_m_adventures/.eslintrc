@@ -38,6 +38,7 @@
     "react/prop-types": "warn",
     "react/jsx-no-constructed-context-values": "warn",
     "react/jsx-props-no-spreading": "warn",
-    "no-return-await": "warn"
+    "no-return-await": "warn",
+    "react/no-array-index-key": "warn"
   }
 }
