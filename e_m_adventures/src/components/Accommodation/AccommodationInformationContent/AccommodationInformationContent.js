@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import classes from './AccommodationInformationContent.module.css';
 
 import ShowMoreModalBtn from '../../miniComponents/Buttons/ShowMoreModalBtn/ShowMoreModalBtn';
-import ShowMoreModal from '../../Modal/AccommodationIformationModal/ShowMoreModal/ShowMoreModal';
+import ShowModal from '../../Modal/AccommodationIformationModal/ShowModal/ShowModal';
 import MapBoxContainer from '../../miniComponents/MapboxContainer/MapBoxContainer';
 import logoBlack from '../../../assets/img/logo-black.png';
 import reviewPortrait from '../../../assets/img/accommodation/outline.png';
@@ -22,12 +22,10 @@ const AccommodationInformationContent = () => {
   const ionIconRef = { iconBed: <ion-icon name="bed-outline" /> };
   return (
     <main className={classes.main}>
-      <ShowMoreModal
+      <ShowModal
         showModalProps={showModal}
         setShowModalParentProps={setShowModal}
-      >
-        <div>hello</div>
-      </ShowMoreModal>
+      />
       {/* HEADING SECTION */}
       <section className={classes.sectionHeading}>
         <h1 className={classes.mainHeading}>Accommodation Name</h1>
@@ -369,7 +367,9 @@ const AccommodationInformationContent = () => {
             <li>Response Time: within an hour</li>
             <li>Avaliable: 24/7</li>
           </ul>
-          <button type="button">Contact Us</button>
+          <button type="button" onClick={() => setShowModalHandler('contact')}>
+            Contact Us
+          </button>
           <div className={classes.aboutHostSecurity}>
             <ion-icon name="heart" />
             <p>

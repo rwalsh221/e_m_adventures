@@ -1,6 +1,6 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
-import classes from './ShowMoreModal.module.css';
+import classes from './ModalContent.module.css';
 
 const ShowMoreModal = ({ primaryContent, secondaryContent = null }) => {
   const primaryContentUl = primaryContent.additional.map((el) => (

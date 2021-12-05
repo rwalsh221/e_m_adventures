@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classes from './ShowMoreModal.module.css';
+import classes from './ShowModal.module.css';
 
-import ShowMoreModalCancellation from './ShowMoreModalContent/ShowMoreModalCancellation/ShowMoreModalCancellation';
-import ShowMoreModalContent from './ShowMoreModalContent/ShowMoreModelContent';
+import ShowMoreModalCancellation from './ModalContent/ShowMoreModalCancellation/ShowMoreModalCancellation';
+import ModalContent from './ModalContent/ModelContent';
 
-const ShowMoreModal = ({ showModalProps, setShowModalParentProps }) => {
+const ShowModal = ({ showModalProps, setShowModalParentProps }) => {
   const initStyle = showModalProps.showModal ? 'block' : 'none';
 
-  const showMoreModalContent = (input) => {
+  const setModalContent = (input) => {
     let content;
     switch (input) {
       case 'cancellation':
@@ -16,7 +16,7 @@ const ShowMoreModal = ({ showModalProps, setShowModalParentProps }) => {
         break;
       case 'health':
         content = (
-          <ShowMoreModalContent
+          <ModalContent
             primaryContent={{
               heading: 'Health & Safety',
               additional: [
@@ -35,7 +35,7 @@ const ShowMoreModal = ({ showModalProps, setShowModalParentProps }) => {
         break;
       case 'rules':
         content = (
-          <ShowMoreModalContent
+          <ModalContent
             primaryContent={{
               heading: 'House Rules',
               additional: ['Check-in: 3pm', 'Check-out: 11am'],
@@ -49,7 +49,7 @@ const ShowMoreModal = ({ showModalProps, setShowModalParentProps }) => {
         break;
       case 'covid':
         content = (
-          <ShowMoreModalContent
+          <ModalContent
             primaryContent={{
               heading: 'Covid',
               additional: [
@@ -59,6 +59,9 @@ const ShowMoreModal = ({ showModalProps, setShowModalParentProps }) => {
             }}
           />
         );
+        break;
+      case 'contact':
+        content = <ModalContent />;
         break;
       default:
         content = null;
@@ -81,15 +84,15 @@ const ShowMoreModal = ({ showModalProps, setShowModalParentProps }) => {
         <button type="button" onClick={closeModal} className={classes.closeBtn}>
           X
         </button>
-        {showMoreModalContent(showModalProps.content)}
+        {setModalContent(showModalProps.content)}
       </div>
     </div>
   );
 };
 
-ShowMoreModal.propTypes = {
+ShowModal.propTypes = {
   showModalProps: PropTypes.objectOf(PropTypes.any).isRequired,
   setShowModalParentProps: PropTypes.func.isRequired,
 };
 
-export default ShowMoreModal;
+export default ShowModal;
