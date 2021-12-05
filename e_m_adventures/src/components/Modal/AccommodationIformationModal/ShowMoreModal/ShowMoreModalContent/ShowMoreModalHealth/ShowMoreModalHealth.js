@@ -1,8 +1,8 @@
 import React from 'react';
-import classes from './ShowMoreModalHealth.module.css';
+import classes from '../showMoreModal.module.css';
 
 const ShowMoreModalHealth = () => (
-  <div className={classes.showMoreModalHealth}>
+  <div className={classes.showMoreModal}>
     <h2>Health &amp; Safety</h2>
     <ul className={classes.healthSafety}>
       <li>

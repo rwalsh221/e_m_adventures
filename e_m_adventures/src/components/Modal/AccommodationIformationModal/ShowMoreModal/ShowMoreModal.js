@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classes from './ShowMoreModal.module.css';
 
 import ShowMoreModalCancellation from './ShowMoreModalContent/ShowMoreModalCancellation/ShowMoreModalCancellation';
-import ShowMoreModalHealth from './ShowMoreModalContent/ShowMoreModalHealth/ShowMoreModalHealth';
+import ShowMoreModalContent from './ShowMoreModalContent/ShowMoreModelContent';
 
 const ShowMoreModal = ({ showModalProps, setShowModalParentProps }) => {
   const initStyle = showModalProps.showModal ? 'block' : 'none';
@@ -15,7 +15,50 @@ const ShowMoreModal = ({ showModalProps, setShowModalParentProps }) => {
         content = <ShowMoreModalCancellation />;
         break;
       case 'health':
-        content = <ShowMoreModalHealth />;
+        content = (
+          <ShowMoreModalContent
+            primaryContent={{
+              heading: 'Health & Safety',
+              additional: [
+                'Committed to e & m&apos;s enhanced cleaning process.',
+                "During the COVID-19 pandemic, all hosts and guests must review and follow e & m's social distancing and other COVID-19-related guidelines",
+                'Smoke alarm',
+                'Carbon monoxide detector',
+              ],
+            }}
+            secondaryContent={{
+              heading: 'You must acknowledge',
+              additional: ['You must Climb Stairs'],
+            }}
+          />
+        );
+        break;
+      case 'rules':
+        content = (
+          <ShowMoreModalContent
+            primaryContent={{
+              heading: 'House Rules',
+              additional: ['Check-in: 3pm', 'Check-out: 11am'],
+            }}
+            secondaryContent={{
+              heading: 'Additional Rules',
+              additional: ['No parties or events'],
+            }}
+          />
+        );
+        break;
+      case 'covid':
+        content = (
+          <ShowMoreModalContent
+            primaryContent={{
+              heading: 'Covid',
+              additional: [
+                'Committed to e & m&apos;s enhanced cleaning process.',
+                "During the COVID-19 pandemic, all hosts and guests must review and follow e & m's social distancing and other COVID-19-related guidelines",
+              ],
+            }}
+          />
+        );
         break;
       default:
         content = null;

@@ -418,9 +418,18 @@ const AccommodationInformationContent = () => {
                 <p>quis nostrud exercitation ullamco</p>
               </li>
             </ul>
-            <p className={classes.showModal}>
+            <button
+              type="button"
+              onClick={() =>
+                setShowModal({
+                  showModal: true,
+                  content: 'rules',
+                })
+              }
+              className={classes.showModal}
+            >
               Show more <ion-icon name="chevron-forward" />
-            </p>
+            </button>
           </div>
           <div className={classes.knowContent}>
             <h4>Health &amp; safety</h4>
@@ -431,7 +440,18 @@ const AccommodationInformationContent = () => {
                 </div>
                 <p>
                   Commited to an enhanced covid-19 cleaning process.
-                  <span className={classes.showModal}>Show More</span>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setShowModal({
+                        showModal: true,
+                        content: 'covid',
+                      })
+                    }
+                    className={classes.showModal}
+                  >
+                    Show More
+                  </button>
                 </p>
               </li>
               <li>
