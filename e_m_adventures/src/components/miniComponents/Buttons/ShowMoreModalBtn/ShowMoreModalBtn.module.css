@@ -1,0 +1,10 @@
+.showModalBtn {
+  text-decoration: underline;
+  font-weight: bold;
+  color: var(--main-color-gold);
+  cursor: pointer;
+  border: none;
+  background-color: inherit;
+  display: flex;
+  margin-top: 1rem;
+}

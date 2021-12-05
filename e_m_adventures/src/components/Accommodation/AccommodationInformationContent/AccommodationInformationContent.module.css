@@ -374,6 +374,10 @@ main {
   flex-grow: 0;
 }
 
+.knowContentCovid {
+  display: inline;
+}
+
 .knowContent h4 {
   margin-bottom: 1rem;
 }

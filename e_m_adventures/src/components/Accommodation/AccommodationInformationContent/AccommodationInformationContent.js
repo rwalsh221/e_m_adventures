@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import classes from './AccommodationInformationContent.module.css';
 
+import ShowMoreModalBtn from '../../miniComponents/Buttons/ShowMoreModalBtn/ShowMoreModalBtn';
 import ShowMoreModal from '../../Modal/AccommodationIformationModal/ShowMoreModal/ShowMoreModal';
 import MapBoxContainer from '../../miniComponents/MapboxContainer/MapBoxContainer';
 import logoBlack from '../../../assets/img/logo-black.png';
@@ -13,6 +14,10 @@ const AccommodationInformationContent = () => {
     showModal: false,
     content: '',
   });
+
+  const setShowModalHandler = (content) => {
+    setShowModal({ showModal: true, content });
+  };
 
   const ionIconRef = { iconBed: <ion-icon name="bed-outline" /> };
   return (
@@ -418,18 +423,9 @@ const AccommodationInformationContent = () => {
                 <p>quis nostrud exercitation ullamco</p>
               </li>
             </ul>
-            <button
-              type="button"
-              onClick={() =>
-                setShowModal({
-                  showModal: true,
-                  content: 'rules',
-                })
-              }
-              className={classes.showModal}
-            >
-              Show more <ion-icon name="chevron-forward" />
-            </button>
+            <ShowMoreModalBtn
+              clickHandler={() => setShowModalHandler('rules')}
+            />
           </div>
           <div className={classes.knowContent}>
             <h4>Health &amp; safety</h4>
@@ -440,18 +436,19 @@ const AccommodationInformationContent = () => {
                 </div>
                 <p>
                   Commited to an enhanced covid-19 cleaning process.
-                  <button
+                  <span
+                    aria-hidden
                     type="button"
                     onClick={() =>
                       setShowModal({
                         showModal: true,
-                        content: 'covid',
+                        content: 'rules',
                       })
                     }
                     className={classes.showModal}
                   >
-                    Show More
-                  </button>
+                    Show more
+                  </span>
                 </p>
               </li>
               <li>
@@ -476,18 +473,9 @@ const AccommodationInformationContent = () => {
                 <p>quis nostrud exercitation ullamco</p>
               </li>
             </ul>
-            <button
-              type="button"
-              className={classes.showModal}
-              onClick={() =>
-                setShowModal({
-                  showModal: true,
-                  content: 'health',
-                })
-              }
-            >
-              Show more <ion-icon name="chevron-forward" />
-            </button>
+            <ShowMoreModalBtn
+              clickHandler={() => setShowModalHandler('health')}
+            />
           </div>
           <div className={classes.knowContent}>
             <h4>Cancellation Policy</h4>
@@ -499,18 +487,9 @@ const AccommodationInformationContent = () => {
                 <p>Free cancellation for 48 hours</p>
               </li>
             </ul>
-            <button
-              type="button"
-              className={classes.showModal}
-              onClick={() =>
-                setShowModal({
-                  showModal: true,
-                  content: 'cancellation',
-                })
-              }
-            >
-              Show more <ion-icon name="chevron-forward" />
-            </button>
+            <ShowMoreModalBtn
+              clickHandler={() => setShowModalHandler('cancellation')}
+            />
           </div>
         </div>
       </section>
