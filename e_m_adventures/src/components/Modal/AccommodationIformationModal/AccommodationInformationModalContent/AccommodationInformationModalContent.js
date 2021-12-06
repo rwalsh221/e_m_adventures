@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
-import classes from './ModalContent.module.css';
+import classes from './AccommodationInformationModalContent.module.css';
 
-const ModalContent = ({ primaryContent, secondaryContent = null }) => {
+const AccommodationInformationModalContent = ({
+  primaryContent,
+  secondaryContent = null,
+}) => {
   let primaryContentUl;
   const secondaryContentArr = [];
 
@@ -43,7 +46,7 @@ const ModalContent = ({ primaryContent, secondaryContent = null }) => {
   }
 
   return (
-    <div className={classes.showMoreModal}>
+    <div className={classes.accomInfoContentModal}>
       <div>
         <h2>{primaryContent.heading}</h2>
         {primaryContentUl}
@@ -53,13 +56,13 @@ const ModalContent = ({ primaryContent, secondaryContent = null }) => {
   );
 };
 
-ModalContent.propTypes = {
+AccommodationInformationModalContent.propTypes = {
   primaryContent: PropTypes.instanceOf(Object).isRequired,
   secondaryContent: PropTypes.instanceOf(Object),
 };
 
-ModalContent.defaultProps = {
+AccommodationInformationModalContent.defaultProps = {
   secondaryContent: PropTypes.null,
 };
 
-export default ModalContent;
+export default AccommodationInformationModalContent;

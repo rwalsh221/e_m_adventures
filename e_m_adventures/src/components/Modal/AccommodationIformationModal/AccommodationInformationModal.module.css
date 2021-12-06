@@ -1,4 +1,4 @@
-.showMoreModalBg {
+.accomInfoModalBg {
   position: fixed;
   z-index: 100;
   background-color: rgba(72, 72, 77, 0.5);
@@ -9,7 +9,7 @@
   transform: translate(-50%, -50%);
 }
 
-.showMoreModalContent {
+.accomInfoModalContent {
   width: 35%;
   background-color: var(--main-color-gold);
   position: fixed;

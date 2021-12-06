@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classes from './ShowModal.module.css';
+import classes from './AccommodationInformationModal.module.css';
 
-import ShowMoreModalCancellation from './ModalContent/ShowMoreModalCancellation/ShowMoreModalCancellation';
-import ModalContent from './ModalContent/ModelContent';
+import AccommodationInformationModalCancellation from './AccommodationInformationModalContent/AccommodationInformationModalCancellation/AccommodationInformationModalCancellation';
+import AccommodationInformationModalContent from './AccommodationInformationModalContent/AccommodationInformationModalContent';
 
-const ShowModal = ({ showModalProps, setShowModalParentProps }) => {
+const AccommodationIformationModal = ({
+  showModalProps,
+  setShowModalParentProps,
+}) => {
   const initStyle = showModalProps.showModal ? 'block' : 'none';
 
   const features = {
@@ -54,11 +57,11 @@ const ShowModal = ({ showModalProps, setShowModalParentProps }) => {
     let content;
     switch (input) {
       case 'cancellation':
-        content = <ShowMoreModalCancellation />;
+        content = <AccommodationInformationModalCancellation />;
         break;
       case 'health':
         content = (
-          <ModalContent
+          <AccommodationInformationModalContent
             primaryContent={{
               heading: 'Health & Safety',
               additional: [
@@ -79,7 +82,7 @@ const ShowModal = ({ showModalProps, setShowModalParentProps }) => {
         break;
       case 'rules':
         content = (
-          <ModalContent
+          <AccommodationInformationModalContent
             primaryContent={{
               heading: 'House Rules',
               additional: ['Check-in: 3pm', 'Check-out: 11am'],
@@ -95,7 +98,7 @@ const ShowModal = ({ showModalProps, setShowModalParentProps }) => {
         break;
       case 'covid':
         content = (
-          <ModalContent
+          <AccommodationInformationModalContent
             primaryContent={{
               heading: 'Covid',
               additional: [
@@ -108,7 +111,7 @@ const ShowModal = ({ showModalProps, setShowModalParentProps }) => {
         break;
       case 'contact':
         content = (
-          <ModalContent
+          <AccommodationInformationModalContent
             primaryContent={{
               heading: 'Contact us',
               additional: ['Email: em@em.com', 'Phone: 123456789'],
@@ -118,7 +121,7 @@ const ShowModal = ({ showModalProps, setShowModalParentProps }) => {
         break;
       case 'features':
         content = (
-          <ModalContent
+          <AccommodationInformationModalContent
             primaryContent={features.primaryContent}
             secondaryContent={features.secondaryContent}
           />
@@ -138,10 +141,10 @@ const ShowModal = ({ showModalProps, setShowModalParentProps }) => {
     <div
       aria-hidden
       style={{ display: initStyle }}
-      className={classes.showMoreModalBg}
+      className={classes.accomInfoModalBg}
       onClick={closeModal}
     >
-      <div className={classes.showMoreModalContent}>
+      <div className={classes.accomInfoModalContent}>
         <button type="button" onClick={closeModal} className={classes.closeBtn}>
           X
         </button>
@@ -151,9 +154,9 @@ const ShowModal = ({ showModalProps, setShowModalParentProps }) => {
   );
 };
 
-ShowModal.propTypes = {
+AccommodationIformationModal.propTypes = {
   showModalProps: PropTypes.objectOf(PropTypes.any).isRequired,
   setShowModalParentProps: PropTypes.func.isRequired,
 };
 
-export default ShowModal;
+export default AccommodationIformationModal;

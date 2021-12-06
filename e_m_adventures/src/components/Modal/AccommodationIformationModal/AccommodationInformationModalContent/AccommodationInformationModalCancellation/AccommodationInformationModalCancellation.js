@@ -1,8 +1,8 @@
 import React from 'react';
-import classes from './ShowMoreModalCancellation.module.css';
+import classes from './AccommodationInformationModalCancellation.module.css';
 
-const ShowMoreModalCancellation = () => (
-  <div className={classes.showMoreModalCancellation}>
+const AccommodationInformationModalCancellation = () => (
+  <div className={classes.ModalCancellation}>
     <h2>Cancellation Policy</h2>
     <div className={classes.cancellationCard}>
       <div className={classes.cancellationCardLeft}>
@@ -34,4 +34,4 @@ const ShowMoreModalCancellation = () => (
   </div>
 );
 
-export default ShowMoreModalCancellation;
+export default AccommodationInformationModalCancellation;

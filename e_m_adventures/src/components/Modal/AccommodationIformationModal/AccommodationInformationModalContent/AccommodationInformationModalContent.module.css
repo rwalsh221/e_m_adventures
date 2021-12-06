@@ -1,11 +1,11 @@
-.showMoreModal {
+.accomInfoContentModal {
   height: max-content;
   max-height: 70rem;
   overflow: hidden;
   overflow-y: auto;
 }
 
-.showMoreModal ul {
+.accomInfoContentModal ul {
   list-style: none;
   width: 100%;
   flex-grow: 0;
@@ -15,20 +15,20 @@
   border-left: 3px solid var(--main-color-black);
 }
 
-.showMoreModal ion-icon {
+.accomInfoContentModal ion-icon {
   color: var(--main-color-black);
 }
 
-.showMoreModal li {
+.accomInfoContentModal li {
   display: flex;
   margin-bottom: 1rem;
 }
 
-.showMoreModal h2 {
+.accomInfoContentModal h2 {
   margin: 2rem 0;
 }
 
-.showMoreModal h3 {
+.accomInfoContentModal h3 {
   font-weight: bold;
   margin-bottom: 2rem;
   border-radius: 50px;

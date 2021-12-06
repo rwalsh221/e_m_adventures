@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import classes from './AccommodationInformationContent.module.css';
 
 import ShowMoreModalBtn from '../../miniComponents/Buttons/ShowMoreModalBtn/ShowMoreModalBtn';
-import ShowModal from '../../Modal/AccommodationIformationModal/ShowModal/ShowModal';
+import AccommodationInformationModal from '../../Modal/AccommodationIformationModal/AccommodationInformationModal';
 import MapBoxContainer from '../../miniComponents/MapboxContainer/MapBoxContainer';
 import logoBlack from '../../../assets/img/logo-black.png';
 import reviewPortrait from '../../../assets/img/accommodation/outline.png';
@@ -22,7 +22,7 @@ const AccommodationInformationContent = () => {
   const ionIconRef = { iconBed: <ion-icon name="bed-outline" /> };
   return (
     <main className={classes.main}>
-      <ShowModal
+      <AccommodationInformationModal
         showModalProps={showModal}
         setShowModalParentProps={setShowModal}
       />
