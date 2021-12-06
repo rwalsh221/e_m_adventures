@@ -90,7 +90,7 @@ const AccommodationInformationContent = () => {
           <div className={classes.infoHeadingLogoContainer}>
             <img
               src={logoBlack}
-              alt="e & m logo"
+              alt="e &amp; m logo"
               className={classes.infoHeadingLogo}
             />
           </div>
@@ -313,6 +313,7 @@ const AccommodationInformationContent = () => {
           quisque non tellus orci ac. Erat pellentesque adipiscing commodo elit
           at imperdiet.
         </p>
+        <ShowMoreModalBtn clickHandler={() => setShowModalHandler('map')} />
       </section>
       {/* ABOUT HOST SECTION */}
       <section className={classes.sectionAboutHost}>

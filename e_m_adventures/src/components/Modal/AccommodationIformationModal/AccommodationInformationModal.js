@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classes from './AccommodationInformationModal.module.css';
 
-import AccommodationInformationModalCancellation from './AccommodationInformationModalContent/AccommodationInformationModalCancellation/AccommodationInformationModalCancellation';
+import AccommodationInformationModalCancellation from './AccommodationInformationModalCancellation/AccommodationInformationModalCancellation';
 import AccommodationInformationModalContent from './AccommodationInformationModalContent/AccommodationInformationModalContent';
+import AccommodationInformationModalMap from './AccommodationInformationModalMap/AccommodationInformationModalMap';
 
 const AccommodationIformationModal = ({
   showModalProps,
@@ -51,6 +52,13 @@ const AccommodationIformationModal = ({
         ],
       },
     ],
+  };
+
+  const map = {
+    locationDescription:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    gettingAroundDescription:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
   };
 
   const setModalContent = (input) => {
@@ -124,6 +132,17 @@ const AccommodationIformationModal = ({
           <AccommodationInformationModalContent
             primaryContent={features.primaryContent}
             secondaryContent={features.secondaryContent}
+          />
+        );
+        break;
+      case 'map':
+        content = (
+          <AccommodationInformationModalMap
+            primaryContentProps={{
+              location: 'Carnforth, United Kingdom',
+              locationDescription: map.locationDescription,
+              gettingAroundDescription: map.gettingAroundDescription,
+            }}
           />
         );
         break;

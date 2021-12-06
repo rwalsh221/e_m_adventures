@@ -1,0 +1,58 @@
+.accommInfoMapModal {
+  display: flex;
+  height: 80vh;
+  width: 80vw;
+}
+
+.contentContainer {
+  padding: 0 2rem;
+  flex-basis: 25%;
+  overflow-y: auto;
+}
+
+.mapContainer {
+  background-color: hotpink;
+  height: 100%;
+  flex: 1 0 50%;
+}
+
+.location {
+  font-weight: bold;
+  margin: 1rem 0;
+  border-left: 2px solid var(--main-color-black);
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.accommInfoMapModal ul {
+  list-style: none;
+  width: 100%;
+  flex-grow: 0;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  border-left: 3px solid var(--main-color-black);
+}
+
+.accommInfoMapModal ion-icon {
+  color: var(--main-color-black);
+}
+
+.accommInfoMapModal li {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.accommInfoMapModal h2 {
+  margin: 2rem 0;
+}
+
+.accommInfoMapModal h3 {
+  font-weight: bold;
+  margin: 2rem 0;
+  border-radius: 50px;
+}
+
+.ionIconContainer {
+  margin-top: 0.3rem;
+}

@@ -10,7 +10,8 @@
 }
 
 .accomInfoModalContent {
-  width: 35%;
+  height: max-content;
+  width: max-content;
   background-color: var(--main-color-gold);
   position: fixed;
   left: 50%;
