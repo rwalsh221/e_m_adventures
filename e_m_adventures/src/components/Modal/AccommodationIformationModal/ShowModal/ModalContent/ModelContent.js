@@ -8,28 +8,35 @@ const ModalContent = ({ primaryContent, secondaryContent = null }) => {
   const secondaryContentArr = [];
 
   if (primaryContent.additional)
-    primaryContentUl = primaryContent.additional.map((el) => (
-      <li key={nanoid()}>
-        <div className={classes.ionIconContainer}>
-          <ion-icon name="checkmark-circle" />
-        </div>
-        <p>{el}</p>
-      </li>
-    ));
+    primaryContentUl =
+      primaryContent.additional.length > 0 ? (
+        <ul>
+          {primaryContent.additional.map((el) => (
+            <li key={nanoid()}>
+              <div className={classes.ionIconContainer}>
+                <ion-icon name="checkmark-circle" />
+              </div>
+              <p>{el}</p>
+            </li>
+          ))}
+        </ul>
+      ) : null;
 
   if (secondaryContent) {
     secondaryContent.forEach((el) => {
       secondaryContentArr.push(
         <div key={nanoid()}>
           <h3>{el.heading}</h3>
-          {el.additional.map((additionalContent) => (
-            <li key={nanoid()}>
-              <div className={classes.ionIconContainer}>
-                <ion-icon name="checkmark-circle" />
-              </div>
-              <p>{additionalContent}</p>
-            </li>
-          ))}
+          <ul>
+            {el.additional.map((additionalContent) => (
+              <li key={nanoid()}>
+                <div className={classes.ionIconContainer}>
+                  <ion-icon name="checkmark-circle" />
+                </div>
+                <p>{additionalContent}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       );
     });
@@ -39,7 +46,7 @@ const ModalContent = ({ primaryContent, secondaryContent = null }) => {
     <div className={classes.showMoreModal}>
       <div>
         <h2>{primaryContent.heading}</h2>
-        <ul>{primaryContentUl}</ul>
+        {primaryContentUl}
       </div>
       {secondaryContentArr}
     </div>

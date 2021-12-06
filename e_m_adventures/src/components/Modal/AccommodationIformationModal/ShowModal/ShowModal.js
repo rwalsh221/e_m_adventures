@@ -8,6 +8,48 @@ import ModalContent from './ModalContent/ModelContent';
 const ShowModal = ({ showModalProps, setShowModalParentProps }) => {
   const initStyle = showModalProps.showModal ? 'block' : 'none';
 
+  const features = {
+    primaryContent: { heading: 'What this place offers' },
+    secondaryContent: [
+      {
+        heading: 'Bathroom',
+        additional: [
+          'dolor sit amet',
+          'dolor sit amet',
+          'dolor sit amet',
+          'dolor sit amet',
+        ],
+      },
+      {
+        heading: 'Bedroom and laundry',
+        additional: [
+          'dolor sit amet',
+          'dolor sit amet',
+          'dolor sit amet',
+          'dolor sit amet',
+        ],
+      },
+      {
+        heading: 'Entertainment',
+        additional: [
+          'dolor sit amet',
+          'dolor sit amet',
+          'dolor sit amet',
+          'dolor sit amet',
+        ],
+      },
+      {
+        heading: 'Family',
+        additional: [
+          'dolor sit amet',
+          'dolor sit amet',
+          'dolor sit amet',
+          'dolor sit amet',
+        ],
+      },
+    ],
+  };
+
   const setModalContent = (input) => {
     let content;
     switch (input) {
@@ -21,7 +63,7 @@ const ShowModal = ({ showModalProps, setShowModalParentProps }) => {
               heading: 'Health & Safety',
               additional: [
                 'Committed to e & m&apos;s enhanced cleaning process.',
-                "During the COVID-19 pandemic, all hosts and guests must review and follow e & m's social distancing and other COVID-19-related guidelines",
+                `During the COVID-19 pandemic, all hosts and guests must review and follow e & m's social distancing and other COVID-19-related guidelines`,
                 'Smoke alarm',
                 'Carbon monoxide detector',
               ],
@@ -58,7 +100,7 @@ const ShowModal = ({ showModalProps, setShowModalParentProps }) => {
               heading: 'Covid',
               additional: [
                 'Committed to e & m&apos;s enhanced cleaning process.',
-                "During the COVID-19 pandemic, all hosts and guests must review and follow e & m's social distancing and other COVID-19-related guidelines",
+                `During the COVID-19 pandemic, all hosts and guests must review and follow e & m's social distancing and other COVID-19-related guidelines`,
               ],
             }}
           />
@@ -71,6 +113,14 @@ const ShowModal = ({ showModalProps, setShowModalParentProps }) => {
               heading: 'Contact us',
               additional: ['Email: em@em.com', 'Phone: 123456789'],
             }}
+          />
+        );
+        break;
+      case 'features':
+        content = (
+          <ModalContent
+            primaryContent={features.primaryContent}
+            secondaryContent={features.secondaryContent}
           />
         );
         break;

@@ -1,12 +1,22 @@
+.showMoreModal {
+  height: max-content;
+  max-height: 70rem;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
 .showMoreModal ul {
   list-style: none;
   width: 100%;
   flex-grow: 0;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  border-left: 3px solid var(--main-color-black);
 }
 
 .showMoreModal ion-icon {
   color: var(--main-color-black);
-  /* width: max-content; */
 }
 
 .showMoreModal li {
@@ -21,6 +31,7 @@
 .showMoreModal h3 {
   font-weight: bold;
   margin-bottom: 2rem;
+  border-radius: 50px;
 }
 
 .ionIconContainer {

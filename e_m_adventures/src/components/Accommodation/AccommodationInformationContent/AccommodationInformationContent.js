@@ -199,6 +199,9 @@ const AccommodationInformationContent = () => {
               </p>
             </li>
           </ul>
+          <ShowMoreModalBtn
+            clickHandler={() => setShowModalHandler('features')}
+          />
         </div>
       </section>
       {/* REVIEW SECTION */}
