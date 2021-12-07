@@ -296,7 +296,9 @@ const AccommodationInformationContent = () => {
       {/* MAP SECTION */}
       <section className={classes.sectionMap}>
         <h2>Where you&apos;ll be</h2>
-        <MapBoxContainer />
+        <div className={classes.mapBoxContainer}>
+          <MapBoxContainer />
+        </div>
         <h3>Carnforth, United Kingdom</h3>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

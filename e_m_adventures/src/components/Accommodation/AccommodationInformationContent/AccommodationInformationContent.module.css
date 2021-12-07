@@ -284,6 +284,10 @@ main {
   margin: 1rem 0;
 }
 
+.mapBoxContainer {
+  height: 40rem;
+}
+
 /* ABOUT HOST SECTION */
 .sectionAboutHost {
   display: grid;

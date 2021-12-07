@@ -11,7 +11,6 @@
 }
 
 .mapContainer {
-  background-color: hotpink;
   height: 100%;
   flex: 1 0 50%;
 }
@@ -55,4 +54,24 @@
 
 .ionIconContainer {
   margin-top: 0.3rem;
+}
+
+.accommInfoMapDesc {
+  height: max-content;
+}
+
+.readMoreBtn {
+  background-color: inherit;
+  border: none;
+  text-decoration: underline;
+  padding: 0;
+  display: flex;
+  padding: 0.5rem 0;
+  text-underline-position: under;
+  cursor: pointer;
+}
+
+.readMoreBtn ion-icon {
+  position: relative;
+  top: 4px;
 }

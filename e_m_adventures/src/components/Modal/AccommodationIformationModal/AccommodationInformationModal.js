@@ -138,7 +138,7 @@ const AccommodationIformationModal = ({
       case 'map':
         content = (
           <AccommodationInformationModalMap
-            primaryContentProps={{
+            contentProps={{
               location: 'Carnforth, United Kingdom',
               locationDescription: map.locationDescription,
               gettingAroundDescription: map.gettingAroundDescription,
@@ -152,19 +152,27 @@ const AccommodationIformationModal = ({
     return content;
   };
 
-  const closeModal = () => {
-    setShowModalParentProps({ showModal: false, content: '' });
+  const closeModal = (e) => {
+    if (e.target.id === 'modalBackground' || e.target.id === 'modalCloseBtn') {
+      setShowModalParentProps({ showModal: false, content: '' });
+    }
   };
 
   return (
     <div
+      id="modalBackground"
       aria-hidden
       style={{ display: initStyle }}
       className={classes.accomInfoModalBg}
-      onClick={closeModal}
+      onClick={(e) => closeModal(e)}
     >
       <div className={classes.accomInfoModalContent}>
-        <button type="button" onClick={closeModal} className={classes.closeBtn}>
+        <button
+          id="modalCloseBtn"
+          type="button"
+          onClick={(e) => closeModal(e)}
+          className={classes.closeBtn}
+        >
           X
         </button>
         {setModalContent(showModalProps.content)}

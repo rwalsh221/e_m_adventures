@@ -23,7 +23,7 @@ const MapBoxContainer = React.memo(() => {
   });
 
   return (
-    <div>
+    <div className={classes.mapContainer}>
       <div ref={mapContainer} className={classes.mapContainer} />
     </div>
   );
