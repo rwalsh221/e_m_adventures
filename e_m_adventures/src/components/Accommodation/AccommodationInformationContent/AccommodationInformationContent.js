@@ -112,7 +112,22 @@ const AccommodationInformationContent = () => {
                   <span className={classes.bold}>Enhanced Clean</span>
                 </p>
               </div>
-              <p>Covid 5-step enhanced cleaning process</p>
+              <p>
+                Covid 5-step enhanced cleaning process
+                <span
+                  aria-hidden
+                  type="button"
+                  onClick={() =>
+                    setShowModal({
+                      showModal: true,
+                      content: 'covid',
+                    })
+                  }
+                  className={classes.showModal}
+                >
+                  . Show more
+                </span>
+              </p>
             </li>
             <li>
               <div>
@@ -147,6 +162,7 @@ const AccommodationInformationContent = () => {
             placerat in egestas erat imperdiet. Egestas sed tempus urna et
             pharetra pharetra massa massa.
           </p>
+          <ShowMoreModalBtn />
         </div>
         {/* SLEEP */}
         <div className={classes.sleep}>
@@ -441,7 +457,7 @@ const AccommodationInformationContent = () => {
                   <ion-icon name="checkmark-circle" />
                 </div>
                 <p>
-                  Commited to an enhanced covid-19 cleaning process.
+                  Commited to an enhanced covid-19 cleaning process
                   <span
                     aria-hidden
                     type="button"
@@ -453,7 +469,7 @@ const AccommodationInformationContent = () => {
                     }
                     className={classes.showModal}
                   >
-                    Show more
+                    . Show more
                   </span>
                 </p>
               </li>
