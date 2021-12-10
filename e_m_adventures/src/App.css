@@ -103,6 +103,10 @@ p {
   color: var(--main-color-white);
 }
 
+[data-boldFont] {
+  font-weight: bold;
+}
+
 @media (max-width: 975px) {
   html {
     font-size: 55%;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import classes from './AccommodationInformationContent.module.css';
 
 import ShowMoreModalBtn from '../../miniComponents/Buttons/ShowMoreModalBtn/ShowMoreModalBtn';
-import AccommodationInformationModal from '../../Modal/AccommodationIformationModal/AccommodationInformationModal';
+import AccommodationInformationModal from '../../Modal/AccommodationInformationModal/AccommodationInformationModal';
 import MapBoxContainer from '../../miniComponents/MapboxContainer/MapBoxContainer';
 import logoBlack from '../../../assets/img/logo-black.png';
 import reviewPortrait from '../../../assets/img/accommodation/outline.png';
@@ -162,7 +162,9 @@ const AccommodationInformationContent = () => {
             placerat in egestas erat imperdiet. Egestas sed tempus urna et
             pharetra pharetra massa massa.
           </p>
-          <ShowMoreModalBtn />
+          <ShowMoreModalBtn
+            clickHandler={() => setShowModalHandler('accommodationDescription')}
+          />
         </div>
         {/* SLEEP */}
         <div className={classes.sleep}>

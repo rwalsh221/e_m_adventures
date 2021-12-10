@@ -5,7 +5,9 @@ import classes from './AccommodationInformationModal.module.css';
 import AccommodationInformationModalCancellation from './AccommodationInformationModalCancellation/AccommodationInformationModalCancellation';
 import AccommodationInformationModalContent from './AccommodationInformationModalContent/AccommodationInformationModalContent';
 import AccommodationInformationModalMap from './AccommodationInformationModalMap/AccommodationInformationModalMap';
+import AccommodationInformationModalDescription from './AccommodationInformationModalDescription/AccommodationInformationModalDescription';
 
+// TODO: TEST OBJECTS FOR MODAL. TO BE DELETED
 const AccommodationIformationModal = ({
   showModalProps,
   setShowModalParentProps,
@@ -60,6 +62,16 @@ const AccommodationIformationModal = ({
     gettingAroundDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
   };
+
+  const accomDesc = {
+    mainDescription:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    accessDescription:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    otherDescription:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+  };
+  // END OF TEST OBJECTS
 
   const setModalContent = (input) => {
     let content;
@@ -144,6 +156,11 @@ const AccommodationIformationModal = ({
               gettingAroundDescription: map.gettingAroundDescription,
             }}
           />
+        );
+        break;
+      case 'accommodationDescription':
+        content = (
+          <AccommodationInformationModalDescription contentProps={accomDesc} />
         );
         break;
       default:
