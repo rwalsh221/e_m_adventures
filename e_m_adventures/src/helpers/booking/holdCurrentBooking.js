@@ -1,4 +1,4 @@
-import { patchConfig, putConfig, database } from '../AsyncHelpers/AsyncConfig';
+import { patchConfig, putConfig, database } from '../asyncHelpers/asyncConfig';
 import { getFullDays } from '../utilities';
 import deleteTimeout from './deleteTimeout';
 import bookingIsAvaliable from './bookingIsAvaliable';

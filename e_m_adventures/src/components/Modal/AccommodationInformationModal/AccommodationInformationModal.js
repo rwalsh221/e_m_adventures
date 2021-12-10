@@ -6,6 +6,7 @@ import AccommodationInformationModalCancellation from './AccommodationInformatio
 import AccommodationInformationModalContent from './AccommodationInformationModalContent/AccommodationInformationModalContent';
 import AccommodationInformationModalMap from './AccommodationInformationModalMap/AccommodationInformationModalMap';
 import AccommodationInformationModalDescription from './AccommodationInformationModalDescription/AccommodationInformationModalDescription';
+import AccommodationInformationModalImage from './AccommodationInformationModalImage/AccommodationInformationModalImage';
 
 // TODO: TEST OBJECTS FOR MODAL. TO BE DELETED
 const AccommodationIformationModal = ({
@@ -161,6 +162,13 @@ const AccommodationIformationModal = ({
       case 'accommodationDescription':
         content = (
           <AccommodationInformationModalDescription contentProps={accomDesc} />
+        );
+        break;
+      case 'imageModal':
+        content = (
+          <AccommodationInformationModalImage
+            imageProps={showModalProps.image}
+          />
         );
         break;
       default:

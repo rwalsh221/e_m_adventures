@@ -126,6 +126,7 @@ main {
 
 .imageGrid img {
   height: 100%;
+  cursor: pointer;
 }
 
 .imageGridHero {

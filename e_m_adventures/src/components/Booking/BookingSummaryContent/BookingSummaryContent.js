@@ -8,7 +8,7 @@ import {
   database,
   patchConfig,
   postConfig,
-} from '../../../helpers/AsyncHelpers/AsyncConfig';
+} from '../../../helpers/asyncHelpers/asyncConfig';
 import { useAuth } from '../../../contexts/AuthContext';
 import cancelBooking from '../../../helpers/booking/cancelBooking';
 

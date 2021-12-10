@@ -1,4 +1,4 @@
-import { database, putConfig } from '../AsyncHelpers/AsyncConfig';
+import { database, putConfig } from '../asyncHelpers/asyncConfig';
 
 const deleteHoldCurrentBooking = async (currentBookingRef) => {
   try {

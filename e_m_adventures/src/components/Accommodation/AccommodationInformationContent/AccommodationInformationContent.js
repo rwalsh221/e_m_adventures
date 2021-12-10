@@ -13,10 +13,15 @@ const AccommodationInformationContent = () => {
   const [showModal, setShowModal] = useState({
     showModal: false,
     content: '',
+    image: {},
   });
 
-  const setShowModalHandler = (content) => {
-    setShowModal({ showModal: true, content });
+  const setShowModalHandler = (content, imageName) => {
+    setShowModal({
+      showModal: true,
+      content,
+      image: { imageName, accomId: accomIdProps },
+    });
   };
 
   const ionIconRef = { iconBed: <ion-icon name="bed-outline" /> };
@@ -48,6 +53,8 @@ const AccommodationInformationContent = () => {
       <section className={classes.sectionImageGrid}>
         <div className={classes.imageGrid}>
           <img
+            aria-hidden
+            onClick={() => setShowModalHandler('imageModal', 'hero')}
             src={`img/accommodation/${accomIdProps}/hero.jpg`}
             alt="accommodation"
             className={classes.imageGridHero}

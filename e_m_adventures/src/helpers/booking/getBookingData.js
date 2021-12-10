@@ -1,4 +1,4 @@
-import { database } from '../AsyncHelpers/AsyncConfig';
+import { database } from '../asyncHelpers/asyncConfig';
 
 const getBookingData = async (currentUser) => {
   // GET CURENT USERS BOOKINGS
