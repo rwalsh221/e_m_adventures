@@ -5,28 +5,43 @@ import classes from './AccommodationInformationModalImage.module.css';
 // import img from '../../../../../public/img/accommodation/acc0001';
 
 const AccommodationInformationModalImage = ({ imageProps }) => {
-  const templates = require.context(
-    '../../../../../public/img/accommodation/acc0001',
-    true,
-    /\.(jpg|jpeg)$/
-  );
-  console.log(templates.keys());
-  console.log(templates('./1.jpg').default);
-  const images = templates
-    .keys()
-    .map((elem) => <img key={elem} src={templates(elem).default} />);
+  // TODO: TEST PROPS OBJECT
+  const imgProps = {
+    hero: ['hero'],
+    additional: [''],
+    kitchen: [''],
+    living: [''],
+    exterior: { heading: 'exterior', img: [''] },
+    bathroom: [''],
+  };
 
-  console.log(images);
-  console.log(
-    `img/accommodation/${imageProps.accomId}/${imageProps.imageName}.jpg`
-  );
+  const imgKeys = Object.keys(imgProps);
+
+  const imgSrc = (propKey, name, accomId) => {
+    // return array
+    const src = `${process.env.PUBLIC_URL}/img/accommodation/${accomId}/${propKey}/${name}.jpg`;
+    return src;
+  };
+
+  // 1 take imput obj from api
+  // 2 get keys and forEach to generate card
+  // 3 pass imgSrc array into helper function to generate img grid
+  // 4 use helper function with switch that returns a grid layout depending on number of imgSrc inputs
+
+  <div flexed>
+    <h2>header</h2>
+    <div>returned image grid</div>
+  </div>;
+
   return (
     <div className={classes.image}>
       <img
-        alt="focus"
-        src={`img/accommodation/${imageProps.accomId}/${imageProps.imageName}.jpg`}
-      />
-      {images}
+        onClick={(e) => {
+          console.log(e);
+          console.log(e.target.currentSrc.split('img_'));
+        }}
+        src={imgSrc('additional', 'add_1', 'acc0001')}
+      ></img>
     </div>
   );
 };

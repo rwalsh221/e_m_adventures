@@ -59,6 +59,7 @@ const AccommodationInformationContent = () => {
             alt="accommodation"
             className={classes.imageGridHero}
           />
+
           <img
             src={`img/accommodation/${accomIdProps}/hero.jpg`}
             alt="accommodation"
