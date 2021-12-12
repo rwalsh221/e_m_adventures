@@ -35,13 +35,11 @@ const AccommodationInformationModalImage = ({ imageProps }) => {
 
   return (
     <div className={classes.image}>
-      <img
-        onClick={(e) => {
-          console.log(e);
-          console.log(e.target.currentSrc.split('img_'));
-        }}
-        src={imgSrc('additional', 'add_1', 'acc0001')}
-      ></img>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
   );
 };

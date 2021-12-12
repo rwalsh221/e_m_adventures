@@ -2,4 +2,18 @@
   height: calc(100vh - 6rem);
   width: calc((100vw - 6rem));
   overflow-y: scroll;
+  display: grid;
+  grid-template-areas:
+    'tl tr'
+    'middle middle'
+    'bl br';
+
+  gap: 1rem;
+  background-color: indigo;
+}
+
+.image div {
+  background-color: hotpink;
+  height: 10px;
+  width: 10px;
 }
