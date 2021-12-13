@@ -107,7 +107,7 @@ p {
   color: var(--main-color-white);
 }
 
-[data-boldFont] {
+[data-boldfont] {
   font-weight: bold;
 }
 

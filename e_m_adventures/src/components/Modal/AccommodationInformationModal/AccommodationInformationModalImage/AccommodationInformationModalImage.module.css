@@ -1,19 +1,42 @@
-.image {
+.modalImageContainer {
   height: calc(100vh - 6rem);
   width: calc((100vw - 6rem));
   overflow-y: scroll;
-  display: grid;
-  grid-template-areas:
-    'tl tr'
-    'middle middle'
-    'bl br';
-
-  gap: 1rem;
-  background-color: indigo;
 }
 
-.image div {
-  background-color: hotpink;
-  height: 10px;
-  width: 10px;
+.modalImageContent {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.modalImageCard {
+  display: flex;
+  justify-content: space-between;
+  text-transform: capitalize;
+  margin-bottom: 4rem;
+}
+
+.modalImageCard h3 {
+  height: max-content;
+  position: sticky;
+  top: 0;
+}
+
+.modalImageNav {
+  display: flex;
+  margin-bottom: 4rem;
+}
+.modalImageNavCard {
+  margin: 0.5rem;
+  flex: 1 1 20%;
+}
+
+.modalImageNavCard img {
+  opacity: 1;
+  background-color: black;
+  height: 80%;
+}
+
+.modalImageNavCard img:hover {
+  opacity: 0.9;
 }

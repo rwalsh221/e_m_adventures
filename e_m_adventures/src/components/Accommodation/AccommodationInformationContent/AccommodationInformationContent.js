@@ -9,7 +9,7 @@ import reviewPortrait from '../../../assets/img/accommodation/outline.png';
 
 const AccommodationInformationContent = () => {
   const accomIdProps = 'acc0001';
-
+  // document.body.style.overflow = 'hidden';
   const [showModal, setShowModal] = useState({
     showModal: false,
     content: '',

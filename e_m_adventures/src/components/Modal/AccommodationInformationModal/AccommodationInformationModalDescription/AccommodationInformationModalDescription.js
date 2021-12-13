@@ -9,11 +9,11 @@ const AccommodationInformationModalDescription = ({ contentProps }) => (
       <p>{contentProps.mainDescription}</p>
     </div>
     <div className={classes.accessDescription}>
-      <h3 data-boldFont>Guest Access</h3>
+      <h3 data-boldfont>Guest Access</h3>
       <p>{contentProps.accessDescription}</p>
     </div>
     <div className={classes.otherDescription}>
-      <h3 data-boldFont>Other things to note</h3>
+      <h3 data-boldfont>Other things to note</h3>
       <p>{contentProps.otherDescription}</p>
     </div>
   </div>
