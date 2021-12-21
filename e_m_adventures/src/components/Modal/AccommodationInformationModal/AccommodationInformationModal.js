@@ -183,6 +183,13 @@ const AccommodationIformationModal = ({
     }
   };
 
+  const shareContent = (
+    <div className={classes.accomInfoModalContentShare}>
+      <ion-icon name="share-outline" />
+      <p data-boldfont>Share</p>
+    </div>
+  );
+
   return (
     <div
       id="modalBackground"
@@ -192,14 +199,17 @@ const AccommodationIformationModal = ({
       onClick={(e) => closeModal(e)}
     >
       <div className={classes.accomInfoModalContent}>
-        <button
-          id="modalCloseBtn"
-          type="button"
-          onClick={(e) => closeModal(e)}
-          className={classes.closeBtn}
-        >
-          X
-        </button>
+        <div className={classes.accomInfoModalContentHeader}>
+          <button
+            id="modalCloseBtn"
+            type="button"
+            onClick={(e) => closeModal(e)}
+            className={classes.closeBtn}
+          >
+            X
+          </button>
+          {showModalProps.share && shareContent}
+        </div>
         {setModalContent(showModalProps.content)}
       </div>
     </div>

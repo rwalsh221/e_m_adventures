@@ -25,6 +25,28 @@
   padding: 3rem;
 }
 
+.accomInfoModalContentHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 4rem;
+  font-size: 2rem;
+}
+
+.accomInfoModalContentShare {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.accomInfoModalContentShare p {
+  text-decoration: underline;
+  text-underline-offset: 1px;
+}
+
+.accomInfoModalContentShare ion-icon {
+  color: var(--main-color-black);
+}
+
 .closeBtn {
   background-color: inherit;
   border-radius: 50%;

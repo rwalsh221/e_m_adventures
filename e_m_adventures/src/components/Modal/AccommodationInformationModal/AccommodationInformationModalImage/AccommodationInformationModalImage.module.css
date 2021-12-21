@@ -13,7 +13,8 @@
   display: flex;
   justify-content: space-between;
   text-transform: capitalize;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
+  padding: 2rem 0;
 }
 
 .modalImageCard h3 {

@@ -64,7 +64,13 @@ const AccommodationInformationModalImage = ({ imageProps }) => {
   // 4 use helper function with switch that returns a grid layout depending on number of imgSrc inputs
   const imgPropsKeys = Object.keys(imgProps);
   const navContent = imgPropsKeys.map((element) => (
-    <div className={classes.modalImageNavCard}>
+    <div
+      aria-hidden
+      className={classes.modalImageNavCard}
+      onClick={() =>
+        window.location.replace(`/accommodationInformation#${element}`)
+      }
+    >
       <img
         src={imgSrc(element, imgProps[element].img[0], accomId)}
         alt="img nav"
@@ -74,7 +80,7 @@ const AccommodationInformationModalImage = ({ imageProps }) => {
   ));
 
   const imageCardContent = imgPropsKeys.map((element) => (
-    <div className={classes.modalImageCard}>
+    <div className={classes.modalImageCard} id={element}>
       <h3 data-boldfont>{imgProps[element].heading}</h3>
       <ModalImageGrid imageProps={imgProps[element]} accomIdProps={accomId} />
     </div>

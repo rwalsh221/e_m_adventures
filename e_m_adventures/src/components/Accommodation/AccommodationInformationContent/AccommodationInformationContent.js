@@ -14,13 +14,15 @@ const AccommodationInformationContent = () => {
     showModal: false,
     content: '',
     image: {},
+    share: false,
   });
 
-  const setShowModalHandler = (content, imageName) => {
+  const setShowModalHandler = (content, imageName, share) => {
     setShowModal({
       showModal: true,
       content,
       image: { imageName, accomId: accomIdProps },
+      share,
     });
   };
 
@@ -54,7 +56,7 @@ const AccommodationInformationContent = () => {
         <div className={classes.imageGrid}>
           <img
             aria-hidden
-            onClick={() => setShowModalHandler('imageModal', 'hero')}
+            onClick={() => setShowModalHandler('imageModal', 'hero', true)}
             src={`img/accommodation/${accomIdProps}/hero.jpg`}
             alt="accommodation"
             className={classes.imageGridHero}
