@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes, { element } from 'prop-types';
 
+import ModalImageCarousel from './ModalImageCarousel/ModalImageCarousel';
 import ModalImageGrid from './ModalImageGrid/ModalImageGrid';
 import classes from './AccommodationInformationModalImage.module.css';
 
@@ -79,6 +80,8 @@ const AccommodationInformationModalImage = ({ imageProps }) => {
     </div>
   ));
 
+  const [showCarousel, setShowCarousel] = useState(true);
+
   const imageCardContent = imgPropsKeys.map((element) => (
     <div className={classes.modalImageCard} id={element}>
       <h3 data-boldfont>{imgProps[element].heading}</h3>
@@ -88,6 +91,7 @@ const AccommodationInformationModalImage = ({ imageProps }) => {
 
   return (
     <div className={classes.modalImageContainer}>
+      {showCarousel && <ModalImageCarousel />}
       <div className={classes.modalImageContent}>
         <div className={classes.modalImageOverview}>
           <h2>Property Overview</h2>

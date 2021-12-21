@@ -23,6 +23,10 @@
   top: 0;
 }
 
+.modalImageCard img {
+  border: 3px solid var(--main-color-gold);
+}
+
 .modalImageNav {
   display: flex;
   margin-bottom: 4rem;
