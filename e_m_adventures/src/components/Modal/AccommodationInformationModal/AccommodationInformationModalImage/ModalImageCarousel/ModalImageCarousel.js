@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classes from './ModalImageCarousel.module.css';
 
 import hero from '../../../../../assets/img/caravan.jpg';
 
-const ModalImageCarousel = ({ showCarousel }) => {
+const ModalImageCarousel = ({ showCarouselProps }) => {
   const showCarouselHandler = () => {
-    showCarousel(false);
+    showCarouselProps(false);
   };
   return (
     <div className={classes.imageCarousel}>
@@ -38,6 +39,10 @@ const ModalImageCarousel = ({ showCarousel }) => {
       </div>
     </div>
   );
+};
+
+ModalImageCarousel.propTypes = {
+  showCarouselProps: PropTypes.func.isRequired,
 };
 
 export default ModalImageCarousel;

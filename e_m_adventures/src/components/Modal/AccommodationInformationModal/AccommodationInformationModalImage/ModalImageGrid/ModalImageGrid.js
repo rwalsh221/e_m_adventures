@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classes from './ModalImageGrid.module.css';
 
-const ModalImageGrid = ({ imageProps, accomIdProps, showCarousel }) => {
+const ModalImageGrid = ({ imageProps, accomIdProps, showCarouselProps }) => {
   let content;
 
   const showCarouselHandler = () => {
-    showCarousel(true);
+    showCarouselProps(true);
   };
 
   const imgSrc = (propKey, name, accomId) => {
@@ -66,6 +66,7 @@ const ModalImageGrid = ({ imageProps, accomIdProps, showCarousel }) => {
 
 ModalImageGrid.propTypes = {
   imageProps: PropTypes.objectOf(PropTypes.object).isRequired,
+  showCarouselProps: PropTypes.func.isRequired,
 };
 
 export default ModalImageGrid;

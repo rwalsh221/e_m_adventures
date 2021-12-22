@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes, { element } from 'prop-types';
+import PropTypes from 'prop-types';
 
 import ModalImageCarousel from './ModalImageCarousel/ModalImageCarousel';
 import ModalImageGrid from './ModalImageGrid/ModalImageGrid';
@@ -88,7 +88,7 @@ const AccommodationInformationModalImage = ({ imageProps }) => {
       <ModalImageGrid
         imageProps={imgProps[element]}
         accomIdProps={accomId}
-        showCarousel={setShowCarousel}
+        showCarouselProps={setShowCarousel}
       />
     </div>
   ));
