@@ -1,10 +1,70 @@
 .imageCarousel {
-  height: 90vh;
-  width: 90vw;
+  height: 100%;
+  width: 100%;
   z-index: 1000;
   background-color: black;
   position: fixed;
-  padding: 5rem;
-  border-radius: 5rem;
+  padding: 8rem;
+  /* border-radius: 5rem; */
+  top: 0;
+  left: 0;
+  animation: slideIn 0.5s;
+}
+
+.imageCarousel button {
+  height: max-content;
+  background-color: inherit;
+  border: none;
+  display: flex;
+  cursor: pointer;
+}
+
+.imageCarousel button ion-icon {
+  font-size: 5rem;
+}
+
+.imageCarouselNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.imageCarouselNav p {
+  color: var(--main-color-gold);
+}
+.share {
+  display: flex;
+  padding: 1rem;
+  justify-content: center;
+}
+
+.share p {
+  color: var(--main-color-gold);
+}
+
+.imageCarouselContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  /* background-color: hotpink; */
   margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+.imageCarouselContent img {
+  height: 50rem;
+}
+
+@keyframes slideIn {
+  0% {
+    left: 150%;
+  }
+  100% {
+    left: 0%;
+  }
 }

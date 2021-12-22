@@ -2,8 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classes from './ModalImageGrid.module.css';
 
-const ModalImageGrid = ({ imageProps, accomIdProps }) => {
+const ModalImageGrid = ({ imageProps, accomIdProps, showCarousel }) => {
   let content;
+
+  const showCarouselHandler = () => {
+    showCarousel(true);
+  };
 
   const imgSrc = (propKey, name, accomId) => {
     // return array
@@ -24,6 +28,8 @@ const ModalImageGrid = ({ imageProps, accomIdProps }) => {
     <div className={classes.imgGrid}>
       {imageProps.img.map((element, index) => (
         <img
+          aria-hidden
+          onClick={showCarouselHandler}
           className={`${classes[imageClass[index]]}`}
           src={imgSrc(imageProps.key, element, accomIdProps)}
           alt="Grid img"

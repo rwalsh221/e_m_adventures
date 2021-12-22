@@ -80,18 +80,22 @@ const AccommodationInformationModalImage = ({ imageProps }) => {
     </div>
   ));
 
-  const [showCarousel, setShowCarousel] = useState(true);
+  const [showCarousel, setShowCarousel] = useState(false);
 
   const imageCardContent = imgPropsKeys.map((element) => (
     <div className={classes.modalImageCard} id={element}>
       <h3 data-boldfont>{imgProps[element].heading}</h3>
-      <ModalImageGrid imageProps={imgProps[element]} accomIdProps={accomId} />
+      <ModalImageGrid
+        imageProps={imgProps[element]}
+        accomIdProps={accomId}
+        showCarousel={setShowCarousel}
+      />
     </div>
   ));
 
   return (
     <div className={classes.modalImageContainer}>
-      {showCarousel && <ModalImageCarousel />}
+      {showCarousel && <ModalImageCarousel showCarousel={setShowCarousel} />}
       <div className={classes.modalImageContent}>
         <div className={classes.modalImageOverview}>
           <h2>Property Overview</h2>
