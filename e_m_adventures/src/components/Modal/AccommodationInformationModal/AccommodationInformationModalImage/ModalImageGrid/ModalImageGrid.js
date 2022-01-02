@@ -28,6 +28,7 @@ const ModalImageGrid = ({ imageProps, accomIdProps, showCarouselProps }) => {
     <div className={classes.imgGrid}>
       {imageProps.img.map((element, index) => (
         <img
+          id={`id-${element}`}
           aria-hidden
           onClick={showCarouselHandler}
           className={`${classes[imageClass[index]]}`}

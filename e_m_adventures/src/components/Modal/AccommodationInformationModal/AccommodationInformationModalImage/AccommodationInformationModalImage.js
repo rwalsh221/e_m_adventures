@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { element } from 'prop-types';
 
 import ModalImageCarousel from './ModalImageCarousel/ModalImageCarousel';
 import ModalImageGrid from './ModalImageGrid/ModalImageGrid';
@@ -93,9 +93,17 @@ const AccommodationInformationModalImage = ({ imageProps }) => {
     </div>
   ));
 
+  console.log(imgPropsKeys);
+
   return (
     <div className={classes.modalImageContainer}>
-      {showCarousel && <ModalImageCarousel showCarousel={setShowCarousel} />}
+      {showCarousel && (
+        <ModalImageCarousel
+          showCarouselProps={setShowCarousel}
+          imgKeysProps={imgPropsKeys}
+          imgProps={imgProps}
+        />
+      )}
       <div className={classes.modalImageContent}>
         <div className={classes.modalImageOverview}>
           <h2>Property Overview</h2>

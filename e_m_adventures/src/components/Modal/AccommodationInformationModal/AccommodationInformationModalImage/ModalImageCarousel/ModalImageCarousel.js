@@ -1,13 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classes from './ModalImageCarousel.module.css';
 
 import hero from '../../../../../assets/img/caravan.jpg';
 
-const ModalImageCarousel = ({ showCarouselProps }) => {
+// 1, get clicked image.
+// 2, find clicked image in array of all images,
+// 3, start carousel at the position in img array
+// 4, foward bcak will move along array and rerender
+
+const ModalImageCarousel = ({
+  showCarouselProps,
+  imgKeysProps,
+  imgProps,
+  currentImageProps,
+}) => {
   const showCarouselHandler = () => {
     showCarouselProps(false);
   };
+
+  // `${process.env.PUBLIC_URL}/img/accommodation/${accomId}/${propKey}/${name}.jpg`;
+
+  const imgSrc = (propKey, name, accomId) => {
+    // return array
+    const src = `${process.env.PUBLIC_URL}/img/accommodation/${accomId}/${propKey}/${name}.jpg`;
+    return src;
+  };
+
+  const imgArr = [];
+
+  imgKeysProps.forEach((element) => {
+    imgProps[element].img.forEach((element) => imgArr.push(element));
+  });
+
+  const initImg = imgArr.findIndex(currentImageProps);
+
+  console.log(imgArr);
+
+  const [currentImage, setCurrentImage] = useState(imgArr[initImg]);
+
   return (
     <div className={classes.imageCarousel}>
       <nav className={classes.imageCarouselNav}>
