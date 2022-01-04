@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { nanoid } from 'nanoid';
 import classes from './ModalImageGrid.module.css';
 
 const ModalImageGrid = ({
@@ -28,6 +29,7 @@ const ModalImageGrid = ({
     <div className={classes.imgGrid}>
       {imageProps.img.map((element, index) => (
         <img
+          key={nanoid()}
           id={`id#${element}`}
           aria-hidden
           onClick={(e) => showCarouselHandler(e)}
@@ -66,8 +68,14 @@ const ModalImageGrid = ({
 };
 
 ModalImageGrid.propTypes = {
-  imageProps: PropTypes.objectOf(PropTypes.object).isRequired,
+  imageProps: PropTypes.shape({
+    img: PropTypes.arrayOf(PropTypes.string),
+    header: PropTypes.string,
+  }).isRequired,
+  accomIdProps: PropTypes.string.isRequired,
   showCarouselProps: PropTypes.func.isRequired,
+  imgSrcProps: PropTypes.func.isRequired,
+  imgKeyProps: PropTypes.string.isRequired,
 };
 
 export default ModalImageGrid;

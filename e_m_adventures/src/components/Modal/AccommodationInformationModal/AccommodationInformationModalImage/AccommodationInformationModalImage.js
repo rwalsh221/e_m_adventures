@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { nanoid } from 'nanoid';
 
 import ModalImageCarousel from './ModalImageCarousel/ModalImageCarousel';
 import ModalImageGrid from './ModalImageGrid/ModalImageGrid';
@@ -67,6 +68,7 @@ const AccommodationInformationModalImage = ({ imageProps }) => {
 
   const navContent = imgPropsKeys.map((element) => (
     <div
+      key={nanoid()}
       aria-hidden
       className={classes.modalImageNavCard}
       onClick={() =>
@@ -81,9 +83,8 @@ const AccommodationInformationModalImage = ({ imageProps }) => {
     </div>
   ));
 
-  // TODO: REMOVE KEY FROM IMG OBJECT AND USE ELEMENT INSTEAD
   const imageCardContent = imgPropsKeys.map((element) => (
-    <div className={classes.modalImageCard} id={element}>
+    <div key={nanoid()} className={classes.modalImageCard} id={element}>
       <h3 data-boldfont>{imgProps[element].heading}</h3>
       <ModalImageGrid
         imageProps={imgProps[element]}
