@@ -7,15 +7,13 @@ const ModalImageGrid = ({
   accomIdProps,
   showCarouselProps,
   imgSrcProps,
+  imgKeyProps,
 }) => {
   let content;
 
   const showCarouselHandler = (e) => {
-    console.log(e.target.id);
     showCarouselProps({ show: true, initImg: e.target.id.split('#')[1] });
   };
-
-  console.log(imageProps);
 
   const imageGrid = {
     oneImageClass: ['big'],
@@ -34,7 +32,7 @@ const ModalImageGrid = ({
           aria-hidden
           onClick={(e) => showCarouselHandler(e)}
           className={`${classes[imageClass[index]]}`}
-          src={imgSrcProps(imageProps.key, element, accomIdProps)}
+          src={imgSrcProps(imgKeyProps, element, accomIdProps)}
           alt="Grid img"
         />
       ))}

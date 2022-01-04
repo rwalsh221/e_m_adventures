@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes, { element } from 'prop-types';
+import PropTypes from 'prop-types';
 
 import ModalImageCarousel from './ModalImageCarousel/ModalImageCarousel';
 import ModalImageGrid from './ModalImageGrid/ModalImageGrid';
@@ -14,7 +14,6 @@ const AccommodationInformationModalImage = ({ imageProps }) => {
   });
 
   const imgSrc = (propKey, name, accomId) => {
-    // return array
     const src = `${process.env.PUBLIC_URL}/img/accommodation/${accomId}/${propKey}/${name}.jpg`;
     return src;
   };
@@ -23,12 +22,10 @@ const AccommodationInformationModalImage = ({ imageProps }) => {
   // TODO: TEST PROPS OBJECT
   const imgProps = {
     kitchen: {
-      key: 'kitchen',
       heading: 'kitchen',
       img: ['kitchen_0', 'kitchen_1', 'kitchen_2', 'kitchen_3'],
     },
     living: {
-      key: 'living',
       heading: 'living room',
       img: [
         'living_0',
@@ -40,17 +37,14 @@ const AccommodationInformationModalImage = ({ imageProps }) => {
       ],
     },
     exterior: {
-      key: 'exterior',
       heading: 'exterior',
       img: ['exterior_0', 'exterior_1', 'exterior_2'],
     },
     bathroom: {
-      key: 'bathroom',
       heading: 'bathroom',
       img: ['bathroom_0', 'bathroom_1'],
     },
     additional: {
-      key: 'additional',
       heading: 'additional',
       img: [
         'additional_0',
@@ -62,18 +56,12 @@ const AccommodationInformationModalImage = ({ imageProps }) => {
     },
   };
 
-  // const imgKeys = Object.keys(imgProps);
-
-  // 1 take imput obj from api
-  // 2 get keys and forEach to generate card
-  // 3 pass imgSrc array into helper function to generate img grid
-  // 4 use helper function with switch that returns a grid layout depending on number of imgSrc inputs
   const imgPropsKeys = Object.keys(imgProps);
 
   const imgFileNameArr = [];
-  imgPropsKeys.forEach((element) => {
-    imgProps[element].img.forEach((element) => {
-      imgFileNameArr.push(element);
+  imgPropsKeys.forEach((keyElement) => {
+    imgProps[keyElement].img.forEach((imgElement) => {
+      imgFileNameArr.push(imgElement);
     });
   });
 
@@ -102,11 +90,10 @@ const AccommodationInformationModalImage = ({ imageProps }) => {
         accomIdProps={accomId}
         showCarouselProps={setShowCarousel}
         imgSrcProps={imgSrc}
+        imgKeyProps={element}
       />
     </div>
   ));
-
-  console.log(imgPropsKeys);
 
   return (
     <div className={classes.modalImageContainer}>
