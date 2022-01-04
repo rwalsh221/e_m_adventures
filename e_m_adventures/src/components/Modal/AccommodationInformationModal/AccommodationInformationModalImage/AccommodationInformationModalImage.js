@@ -8,6 +8,11 @@ import classes from './AccommodationInformationModalImage.module.css';
 // import img from '../../../../../public/img/accommodation/acc0001';
 
 const AccommodationInformationModalImage = ({ imageProps }) => {
+  const [showCarousel, setShowCarousel] = useState({
+    show: false,
+    initImg: null,
+  });
+
   const imgSrc = (propKey, name, accomId) => {
     // return array
     const src = `${process.env.PUBLIC_URL}/img/accommodation/${accomId}/${propKey}/${name}.jpg`;
@@ -20,39 +25,39 @@ const AccommodationInformationModalImage = ({ imageProps }) => {
     kitchen: {
       key: 'kitchen',
       heading: 'kitchen',
-      img: ['kitchen_1', 'kitchen_1', 'kitchen_1', 'kitchen_1'],
+      img: ['kitchen_0', 'kitchen_1', 'kitchen_2', 'kitchen_3'],
     },
     living: {
       key: 'living',
       heading: 'living room',
       img: [
+        'living_0',
         'living_1',
-        'living_1',
-        'living_1',
-        'living_1',
-        'living_1',
-        'living_1',
+        'living_2',
+        'living_3',
+        'living_4',
+        'living_5',
       ],
     },
     exterior: {
       key: 'exterior',
       heading: 'exterior',
-      img: ['exterior_1', 'exterior_1', 'exterior_1'],
+      img: ['exterior_0', 'exterior_1', 'exterior_2'],
     },
     bathroom: {
       key: 'bathroom',
       heading: 'bathroom',
-      img: ['bathroom_1', 'bathroom_1'],
+      img: ['bathroom_0', 'bathroom_1'],
     },
     additional: {
       key: 'additional',
       heading: 'additional',
       img: [
+        'additional_0',
         'additional_1',
-        'additional_1',
-        'additional_1',
-        'additional_1',
-        'additional_1',
+        'additional_2',
+        'additional_3',
+        'additional_4',
       ],
     },
   };
@@ -64,6 +69,14 @@ const AccommodationInformationModalImage = ({ imageProps }) => {
   // 3 pass imgSrc array into helper function to generate img grid
   // 4 use helper function with switch that returns a grid layout depending on number of imgSrc inputs
   const imgPropsKeys = Object.keys(imgProps);
+
+  const imgFileNameArr = [];
+  imgPropsKeys.forEach((element) => {
+    imgProps[element].img.forEach((element) => {
+      imgFileNameArr.push(element);
+    });
+  });
+
   const navContent = imgPropsKeys.map((element) => (
     <div
       aria-hidden
@@ -80,8 +93,7 @@ const AccommodationInformationModalImage = ({ imageProps }) => {
     </div>
   ));
 
-  const [showCarousel, setShowCarousel] = useState(false);
-
+  // TODO: REMOVE KEY FROM IMG OBJECT AND USE ELEMENT INSTEAD
   const imageCardContent = imgPropsKeys.map((element) => (
     <div className={classes.modalImageCard} id={element}>
       <h3 data-boldfont>{imgProps[element].heading}</h3>
@@ -89,6 +101,7 @@ const AccommodationInformationModalImage = ({ imageProps }) => {
         imageProps={imgProps[element]}
         accomIdProps={accomId}
         showCarouselProps={setShowCarousel}
+        imgSrcProps={imgSrc}
       />
     </div>
   ));
@@ -97,11 +110,13 @@ const AccommodationInformationModalImage = ({ imageProps }) => {
 
   return (
     <div className={classes.modalImageContainer}>
-      {showCarousel && (
+      {showCarousel.show && (
         <ModalImageCarousel
           showCarouselProps={setShowCarousel}
-          imgKeysProps={imgPropsKeys}
-          imgProps={imgProps}
+          initImgProps={showCarousel.initImg}
+          imgSrcProps={imgSrc}
+          accomIdProps={accomId}
+          imgFileNameArrProps={imgFileNameArr}
         />
       )}
       <div className={classes.modalImageContent}>

@@ -2,18 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classes from './ModalImageGrid.module.css';
 
-const ModalImageGrid = ({ imageProps, accomIdProps, showCarouselProps }) => {
+const ModalImageGrid = ({
+  imageProps,
+  accomIdProps,
+  showCarouselProps,
+  imgSrcProps,
+}) => {
   let content;
 
-  const showCarouselHandler = () => {
-    showCarouselProps(true);
+  const showCarouselHandler = (e) => {
+    console.log(e.target.id);
+    showCarouselProps({ show: true, initImg: e.target.id.split('#')[1] });
   };
 
-  const imgSrc = (propKey, name, accomId) => {
-    // return array
-    const src = `${process.env.PUBLIC_URL}/img/accommodation/${accomId}/${propKey}/${name}.jpg`;
-    return src;
-  };
+  console.log(imageProps);
 
   const imageGrid = {
     oneImageClass: ['big'],
@@ -28,11 +30,11 @@ const ModalImageGrid = ({ imageProps, accomIdProps, showCarouselProps }) => {
     <div className={classes.imgGrid}>
       {imageProps.img.map((element, index) => (
         <img
-          id={`id-${element}`}
+          id={`id#${element}`}
           aria-hidden
-          onClick={showCarouselHandler}
+          onClick={(e) => showCarouselHandler(e)}
           className={`${classes[imageClass[index]]}`}
-          src={imgSrc(imageProps.key, element, accomIdProps)}
+          src={imgSrcProps(imageProps.key, element, accomIdProps)}
           alt="Grid img"
         />
       ))}
