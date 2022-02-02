@@ -1,9 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { LoremIpsum } from 'react-lorem-ipsum';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import AccommodationCard from './AccommodationCard/AccommodationCard';
+import Spinner from '../../miniComponents/Spinner/Spinner';
 import classes from './AccommodationContent.module.css';
 
 const AccommodationContent = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetch(
+          'https://e-m-adv.herokuapp.com/api/accommodation'
+        );
+        console.log(data);
+      } catch (err) {
+        console.error(err.message);
+      }
+    };
+    fetchData();
+  });
+
   const accommodation = [
     {
       id: 'acc0001',
@@ -27,94 +45,27 @@ const AccommodationContent = () => {
     },
   ];
 
+  const content = loading ? (
+    <div className={classes.spinnerContainer}>
+      <Spinner />
+    </div>
+  ) : (
+    <AccommodationCard
+      idProps={accommodation[0].id}
+      nameProps={accommodation[0].name}
+      descriptionProps={accommodation[0].shortDescription}
+      priceProps={accommodation[0].basePrice}
+    />
+  );
+
   return (
     <main className={classes.accommodationGrid}>
+      {/* <button onClick={() => setLoading(false)}>test</button> */}
       <h1 className={classes.accommodationHeading}>
         Find the perfect base for your adventure
       </h1>
-      <Link to="/accommodationInformation">INFO</Link>
-      <div
-        className={classes.accommodationCard}
-        // onClick={() => console.log('clclclclclclcc')}
-      >
-        <h2 className={classes.accommodationCard__heading}>
-          {accommodation[0].name}
-        </h2>
-        <img
-          className={classes.accommodationCard__img}
-          src={`img/accommodation/${accommodation[0].id}/hero.jpg`}
-          alt={accommodation[0].name}
-        />
-        <p className={classes.accommodationCard__description}>
-          {accommodation[0].shortDescription}
-        </p>
-        <p className={classes.accommodationCard__location}>
-          {accommodation[0].city}
-        </p>
-        <p className={classes.accommodationCard__price}>
-          {`£${accommodation[0].basePrice} / night`}
-        </p>
-      </div>
-      <div className={classes.accommodationCard}>
-        <h2 className={classes.accommodationCard__heading}>
-          {accommodation[0].name}
-        </h2>
-        <img
-          className={classes.accommodationCard__img}
-          src={`img/accommodation/${accommodation[0].id}/hero.jpg`}
-          alt={accommodation[0].name}
-        />
-        <p className={classes.accommodationCard__description}>
-          {accommodation[0].shortDescription}
-        </p>
-        <p className={classes.accommodationCard__location}>
-          {accommodation[0].city}
-        </p>
-        <p className={classes.accommodationCard__price}>
-          {`£${accommodation[0].basePrice} / night`}
-        </p>
-      </div>
-      <div
-        className={classes.accommodationCard}
-        // onClick={() => console.log('clclclclclclcc')}
-      >
-        <h2 className={classes.accommodationCard__heading}>
-          {accommodation[0].name}
-        </h2>
-        <img
-          className={classes.accommodationCard__img}
-          src={`img/accommodation/${accommodation[0].id}/hero.jpg`}
-          alt={accommodation[0].name}
-        />
-        <p className={classes.accommodationCard__description}>
-          {accommodation[0].shortDescription}
-        </p>
-        <p className={classes.accommodationCard__location}>
-          {accommodation[0].city}
-        </p>
-        <p className={classes.accommodationCard__price}>
-          {`£${accommodation[0].basePrice} / night`}
-        </p>
-      </div>
-      <div className={classes.accommodationCard}>
-        <h2 className={classes.accommodationCard__heading}>
-          {accommodation[0].name}
-        </h2>
-        <img
-          className={classes.accommodationCard__img}
-          src={`img/accommodation/${accommodation[0].id}/hero.jpg`}
-          alt={accommodation[0].name}
-        />
-        <p className={classes.accommodationCard__description}>
-          {accommodation[0].shortDescription}
-        </p>
-        <p className={classes.accommodationCard__location}>
-          {accommodation[0].city}
-        </p>
-        <p className={classes.accommodationCard__price}>
-          {`£${accommodation[0].basePrice} / night`}
-        </p>
-      </div>
+      {content}
+      {/* <Link to="/accommodationInformation">INFO</Link> */}
     </main>
   );
 };

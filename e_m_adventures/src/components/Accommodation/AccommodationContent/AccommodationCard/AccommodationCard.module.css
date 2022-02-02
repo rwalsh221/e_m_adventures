@@ -1,0 +1,37 @@
+.accommodationCard {
+  width: 90%;
+  margin: 2rem auto;
+  border: var(--b-2-gold);
+  border-radius: 2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: grid;
+  grid-template-rows: repeat(3, max-content);
+  grid-template-columns: 2fr 1fr;
+}
+
+.accommodationCard__heading {
+  grid-column: 1 / span 2;
+  margin: 3rem 1rem;
+  border-bottom: var(--b-2-gold);
+}
+
+.accommodationCard__img {
+  width: 35rem;
+  border-radius: 2rem;
+  justify-self: center;
+}
+
+.accommodationCard__location,
+.accommodationCard__price {
+  margin: 1rem;
+  border-bottom: var(--b-2-gold);
+}
+
+.accommodationCard__location {
+  justify-self: end;
+}
+
+.accommodationCard__price {
+  justify-self: start;
+}
