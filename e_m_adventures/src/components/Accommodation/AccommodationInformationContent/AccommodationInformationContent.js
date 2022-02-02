@@ -7,7 +7,7 @@ import MapBoxContainer from '../../miniComponents/MapboxContainer/MapBoxContaine
 import logoBlack from '../../../assets/img/logo-black.png';
 import reviewPortrait from '../../../assets/img/accommodation/outline.png';
 
-const AccommodationInformationContent = ({ location }) => {
+const AccommodationInformationContent = () => {
   const accomIdProps = 'acc0001';
   // document.body.style.overflow = 'hidden';
   const [showModal, setShowModal] = useState({
@@ -17,7 +17,7 @@ const AccommodationInformationContent = ({ location }) => {
     share: false,
   });
 
-  console.log(location.state.message);
+  // console.log(location.state.message);
 
   const setShowModalHandler = (content, imageName, share) => {
     setShowModal({

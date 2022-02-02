@@ -20,6 +20,7 @@ import Accommodation from './layout/Accommodation/Accommodation';
 import AccommodationInformation from './layout/AccommodationInformation/AccommodationInformation';
 
 import { AuthProvider } from './contexts/AuthContext';
+import { AccommodationContextProvider } from './contexts/AccommodationContext';
 import PrivateRoute from './helpers/Routes/PrivateRoute';
 
 require('./App.css');
@@ -33,29 +34,42 @@ function App() {
         <AuthProvider>
           <ScrollToTop />
           <Switch>
-            <Route
-              path="/accommodationInformation"
-              component={AccommodationInformation}
-            />
-            <Route path="/accommodation" component={Accommodation} />
             <PrivateRoute
               path="/confirmation"
               component={BookingConfirmation}
             />
-            <Route path="/timeout" component={Timeout} />
-            <PrivateRoute path="/summary" component={BookingSummary} />
-            <PrivateRoute path="/update-profile" component={UpdateProfile} />
-            <PrivateRoute path="/modify-booking" component={ModifyBooking} />
-            <Route path="/forgot-password" component={ForgotPassword} />
-            <Route path="/login" component={Login} />
-            <PrivateRoute path="/dashboard" component={Dashboard} />
-            <Route path="/signup" component={Signup} />
-            <Route path="/world" component={ExploreWorld} />
-            <Route path="/food" component={Food} />
-            <Route path="/explore" component={ExploreNearby} />
-            <Route path="/covid" component={Covid} />
-            <Route path="/" component={Home} />
+            <Route path="/timeout" exact component={Timeout} />
+            <PrivateRoute path="/summary" exact component={BookingSummary} />
+            <PrivateRoute
+              path="/update-profile"
+              exact
+              component={UpdateProfile}
+            />
+            <PrivateRoute
+              path="/modify-booking"
+              exact
+              component={ModifyBooking}
+            />
+            <Route path="/forgot-password" exact component={ForgotPassword} />
+            <Route path="/login" exact component={Login} />
+            <PrivateRoute path="/dashboard" exact component={Dashboard} />
+            <Route path="/signup" exact component={Signup} />
+            <Route path="/world" exact component={ExploreWorld} />
+            <Route path="/food" exact component={Food} />
+            <Route path="/explore" exact component={ExploreNearby} />
+            <Route path="/covid" exact component={Covid} />
+            <Route path="/" exact component={Home} />
           </Switch>
+          <AccommodationContextProvider>
+            <Switch>
+              <Route
+                path="/accommodationInformation"
+                exact
+                component={AccommodationInformation}
+              />
+              <Route path="/accommodation" exact component={Accommodation} />
+            </Switch>
+          </AccommodationContextProvider>
         </AuthProvider>
       </Router>
     </div>

@@ -1,44 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-import { useHistory } from 'react-router-dom';
 import AccommodationCard from './AccommodationCard/AccommodationCard';
 import Spinner from '../../miniComponents/Spinner/Spinner';
 import classes from './AccommodationContent.module.css';
+import { useAccommodationContext } from '../../../contexts/AccommodationContext';
 
 const AccommodationContent = () => {
-  const [getAccommodation, setGetAccommodation] = useState({
-    loading: true,
-    data: null,
-  });
-
-  const history = useHistory();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const getData = await fetch(
-          'https://e-m-adv.herokuapp.com/api/accommodation'
-        );
-        const data = await getData.json();
-        // accommodationData = [...data.data];
-        // console.log(accommodationData);
-        console.log(data);
-        console.log(
-          data.data.findIndex((data) => data.accommodationId === 'acc0001')
-        );
-
-        // setGetAccommodation({ loading: false });
-        setGetAccommodation({ loading: false, data: data.data });
-      } catch (err) {
-        console.error(err.message);
-      }
-    };
-    fetchData();
-  }, [setGetAccommodation]);
-
-  const linkHandler = () => {
-    history.push('/accommodationInformation', [{ message: 'test' }]);
-  };
+  const { getAccommodation, accommodationFocusHandler } =
+    useAccommodationContext();
 
   const content = getAccommodation.loading ? (
     <div className={classes.spinnerContainer}>
@@ -47,7 +16,6 @@ const AccommodationContent = () => {
   ) : (
     getAccommodation.data.map((data) => (
       <AccommodationCard
-        onClickProps={linkHandler}
         key={data.accommodationId}
         idProps={data.accommodationId}
         nameProps={data.accommodationName}
@@ -58,14 +26,17 @@ const AccommodationContent = () => {
     ))
   );
 
+  const test = () => {
+    if (!getAccommodation.loading) accommodationFocusHandler('acc0001');
+  };
+
   return (
     <main className={classes.accommodationGrid}>
-      {/* <button onClick={() => setLoading(false)}>test</button> */}
       <h1 className={classes.accommodationHeading}>
         Find the perfect base for your adventure
       </h1>
+      <button onClick={test}></button>
       {content}
-      {/* <Link to="/accommodationInformation">INFO</Link> */}
     </main>
   );
 };
