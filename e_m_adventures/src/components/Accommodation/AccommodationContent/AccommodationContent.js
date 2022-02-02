@@ -16,6 +16,7 @@ const AccommodationContent = () => {
   ) : (
     getAccommodation.data.map((data) => (
       <AccommodationCard
+        onClickProps={accommodationFocusHandler}
         key={data.accommodationId}
         idProps={data.accommodationId}
         nameProps={data.accommodationName}
@@ -26,16 +27,12 @@ const AccommodationContent = () => {
     ))
   );
 
-  const test = () => {
-    if (!getAccommodation.loading) accommodationFocusHandler('acc0001');
-  };
-
   return (
     <main className={classes.accommodationGrid}>
       <h1 className={classes.accommodationHeading}>
         Find the perfect base for your adventure
       </h1>
-      <button onClick={test}></button>
+
       {content}
     </main>
   );

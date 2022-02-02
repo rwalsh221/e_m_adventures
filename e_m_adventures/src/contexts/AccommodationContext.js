@@ -6,6 +6,7 @@ import React, {
   useState,
   useCallback,
 } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const AccommodationContext = createContext(null);
 
@@ -17,7 +18,12 @@ export const AccommodationContextProvider = ({ children }) => {
     data: null,
   });
 
-  const [accommodationFocus, setAccommodationFocus] = useState();
+  const [accommodationFocus, setAccommodationFocus] = useState({
+    focusSet: false,
+    data: null,
+  });
+
+  const history = useHistory();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,7 +47,9 @@ export const AccommodationContextProvider = ({ children }) => {
 
       const idIndex = data.findIndex((arr) => arr.accommodationId === id);
 
-      setAccommodationFocus({ ...data[idIndex] });
+      setAccommodationFocus({ focusSet: true, data: data[idIndex] });
+
+      history.push('/accommodationInformation');
     },
     [getAccommodation.data]
   );
@@ -57,6 +65,7 @@ export const AccommodationContextProvider = ({ children }) => {
     }),
     [getAccommodation, accommodationFocusHandler, accommodationFocus]
   );
+  console.log('ACOOM CONTEXT');
   return (
     <AccommodationContext.Provider value={value}>
       {children}

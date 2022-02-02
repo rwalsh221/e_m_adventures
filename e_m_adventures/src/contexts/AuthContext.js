@@ -37,6 +37,8 @@ export const AuthProvider = ({ children }) => {
     // };
   }, []);
 
+  console.log('AUTH RENDER');
+
   // TODO: USEMEMO ADDED ESLINT WARN Prevent react contexts from taking non-stable values (react/jsx-no-constructed-context-values)
   const value = {
     currentUser,

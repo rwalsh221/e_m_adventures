@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+
 import classes from './AccommodationInformationContent.module.css';
+import { useAccommodationContext } from '../../../contexts/AccommodationContext';
 
 import ShowMoreModalBtn from '../../miniComponents/Buttons/ShowMoreModalBtn/ShowMoreModalBtn';
 import AccommodationInformationModal from '../../Modal/AccommodationInformationModal/AccommodationInformationModal';
@@ -8,6 +10,8 @@ import logoBlack from '../../../assets/img/logo-black.png';
 import reviewPortrait from '../../../assets/img/accommodation/outline.png';
 
 const AccommodationInformationContent = () => {
+  const { accommodationFocus } = useAccommodationContext();
+
   const accomIdProps = 'acc0001';
   // document.body.style.overflow = 'hidden';
   const [showModal, setShowModal] = useState({
@@ -37,7 +41,9 @@ const AccommodationInformationContent = () => {
       />
       {/* HEADING SECTION */}
       <section className={classes.sectionHeading}>
-        <h1 className={classes.mainHeading}>Accommodation Name</h1>
+        <h1 className={classes.mainHeading}>
+          {accommodationFocus.data.accommodationName}
+        </h1>
         <ul className={classes.headingInformation}>
           <li>
             <ion-icon name="star" />

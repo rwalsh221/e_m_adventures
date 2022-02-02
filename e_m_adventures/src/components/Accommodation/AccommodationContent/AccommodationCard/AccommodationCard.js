@@ -9,7 +9,11 @@ const AccommodationCard = ({
   cityProps,
   priceProps,
 }) => (
-  <div className={classes.accommodationCard} onClick={onClickProps} aria-hidden>
+  <div
+    className={classes.accommodationCard}
+    onClick={() => onClickProps(idProps)}
+    aria-hidden
+  >
     <h2 className={classes.accommodationCard__heading}>{nameProps}</h2>
     <img
       className={classes.accommodationCard__img}
