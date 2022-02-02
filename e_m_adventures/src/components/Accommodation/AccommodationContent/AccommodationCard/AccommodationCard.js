@@ -2,16 +2,14 @@ import React from 'react';
 import classes from './AccommodationCard.module.css';
 
 const AccommodationCard = ({
+  onClickProps,
   nameProps,
   idProps,
   descriptionProps,
   cityProps,
   priceProps,
 }) => (
-  <div
-    className={classes.accommodationCard}
-    // onClick={() => console.log('clclclclclclcc')}
-  >
+  <div className={classes.accommodationCard} onClick={onClickProps} aria-hidden>
     <h2 className={classes.accommodationCard__heading}>{nameProps}</h2>
     <img
       className={classes.accommodationCard__img}
