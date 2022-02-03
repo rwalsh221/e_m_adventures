@@ -25,6 +25,14 @@
   border-radius: 50%;
   vertical-align: middle;
 }
+
+.showModal {
+  text-decoration: underline;
+  font-weight: bold;
+  color: var(--main-color-gold);
+  cursor: pointer;
+}
+
 .infoHeadingContainer {
   display: flex;
 

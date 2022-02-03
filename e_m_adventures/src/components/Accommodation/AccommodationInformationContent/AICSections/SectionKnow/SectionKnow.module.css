@@ -1,0 +1,60 @@
+.bold {
+  font-weight: bold;
+}
+
+.lightText {
+  color: var(--sec-color-grey);
+}
+
+.dot {
+  display: inline-block;
+  background-color: var(--sec-color-grey-light);
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.showModal {
+  text-decoration: underline;
+  font-weight: bold;
+  color: var(--main-color-gold);
+  cursor: pointer;
+}
+
+.knowContentContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.knowContent {
+  flex-basis: 30%;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.knowContentCovid {
+  display: inline;
+}
+
+.knowContent h4 {
+  margin-bottom: 1rem;
+}
+
+.knowContent > p {
+  margin: 1rem 0;
+}
+
+.knowContent ul li {
+  display: flex;
+}
+
+.knowContent ul li:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+.ionIconContainer {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  margin-top: 3px;
+}

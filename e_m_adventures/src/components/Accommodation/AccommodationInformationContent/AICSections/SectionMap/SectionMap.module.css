@@ -1,0 +1,17 @@
+.sectionMap {
+  border-bottom: var(--grey-border-1px);
+  padding: 2rem 0;
+}
+
+.sectionMap h3 {
+  margin: 1rem 0;
+  font-weight: bold;
+}
+
+.sectionMap p {
+  margin: 1rem 0;
+}
+
+.mapBoxContainer {
+  height: 40rem;
+}
