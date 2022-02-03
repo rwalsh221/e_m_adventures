@@ -56,17 +56,6 @@ main {
   vertical-align: middle;
 }
 
-.infoHeadingContainer,
-.accommodationFeatures,
-.longDescription,
-.sleep,
-.locationFeatures {
-  width: 70%;
-  padding: 1rem 0 3rem 0;
-  border-bottom: var(--grey-border-1px);
-  margin-bottom: 2rem;
-}
-
 .showModal {
   text-decoration: underline;
   font-weight: bold;
@@ -80,94 +69,6 @@ main {
 
 /* ACCOMMODATION INFORMATION SECTION */
 
-.infoHeadingContainer {
-  display: flex;
-
-  align-items: center;
-}
-
-.infoHeading ul {
-  list-style: none;
-  font-size: 1.8rem;
-  width: 80%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.infoHeading ul li {
-  display: inline-block;
-  position: relative;
-}
-
-.infoHeading ul li:not(:first-child) {
-  margin-left: 1rem;
-}
-
-.infoHeading ul li:not(:first-child)::before {
-  content: '';
-  height: 5px;
-  width: 5px;
-  position: absolute;
-  background-color: var(--sec-color-grey-light);
-  top: 45.7%;
-  left: -8.3%;
-  border-radius: 50%;
-}
-.infoHeadingLogoContainer {
-  margin-left: auto;
-}
-
-.infoHeadingLogo {
-  height: 100%;
-  width: 12rem;
-  margin-left: auto;
-}
-
-.accommodationFeatures ul {
-  list-style: none;
-}
-
-.accommodationFeatures ul li div {
-  display: flex;
-  margin: 1rem 0 0.5rem 0;
-}
-
-.accommodationFeatures ul li > p {
-  margin-left: 2.5rem;
-  color: var(--sec-color-grey);
-}
-.accommodationFeatures {
-  padding: 1rem 0 3rem 0;
-  border-bottom: var(--grey-border-1px);
-}
-
-.sleep {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.sleep h2 {
-  width: 100%;
-}
-
-.sleepCard {
-  padding: 2rem;
-  border: var(--grey-border-1px);
-  border-radius: 1rem;
-}
-
-.sleepCard:not(:last-of-type) {
-  margin-right: 2rem;
-}
-
-.locationFeatures ul {
-  list-style: none;
-}
-
-.locationFeatures ul li {
-  margin-bottom: 1rem;
-}
-
 /* REVIEW SECTION */
 .sectionReviews,
 .sectionMap,
@@ -175,32 +76,6 @@ main {
 .sectionRules {
   border-bottom: var(--grey-border-1px);
   padding: 2rem 0;
-}
-
-.reviewCardContainer {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-}
-
-.reviewCardHeading {
-  display: flex;
-  align-items: center;
-}
-
-.reviewCardHeading img {
-  height: 7rem;
-  width: 7rem;
-}
-.reviewCardHeading__name {
-  margin-left: 0.5rem;
-}
-
-.reviewCardHeading__name p:last-child {
-  font-size: 1.5rem;
-}
-.reviewCardContent {
-  margin: 1rem 0;
 }
 
 /* MAP SECTION */

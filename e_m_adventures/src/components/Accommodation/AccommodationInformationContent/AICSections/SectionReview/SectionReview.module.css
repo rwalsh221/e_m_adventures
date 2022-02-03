@@ -1,0 +1,47 @@
+.bold {
+  font-weight: bold;
+}
+
+.lightText {
+  color: var(--sec-color-grey);
+}
+
+.dot {
+  display: inline-block;
+  background-color: var(--sec-color-grey-light);
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.sectionReviews {
+  border-bottom: var(--grey-border-1px);
+  padding: 2rem 0;
+}
+
+.reviewCardContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.reviewCardHeading {
+  display: flex;
+  align-items: center;
+}
+
+.reviewCardHeading img {
+  height: 7rem;
+  width: 7rem;
+}
+.reviewCardHeading__name {
+  margin-left: 0.5rem;
+}
+
+.reviewCardHeading__name p:last-child {
+  font-size: 1.5rem;
+}
+.reviewCardContent {
+  margin: 1rem 0;
+}

@@ -8,11 +8,15 @@ import logoBlack from '../../../assets/img/logo-black.png';
 import reviewPortrait from '../../../assets/img/accommodation/outline.png';
 import SectionHeading from './AICSections/SectionHeading/SectionHeading';
 import SectionImageGrid from './AICSections/SectionImageGrid/SectionImageGrid';
+import SectionInformation from './AICSections/SectionInformation/SectionInformation';
+import SectionReview from './AICSections/SectionReview/SectionReview';
 
 import classes from './AccommodationInformationContent.module.css';
 
 const AccommodationInformationContent = () => {
   const { accommodationFocus } = useAccommodationContext();
+
+  console.log(accommodationFocus.data);
 
   const accomIdProps = 'acc0001';
   // document.body.style.overflow = 'hidden';
@@ -52,242 +56,24 @@ const AccommodationInformationContent = () => {
         showModalProps={setShowModalHandler}
       />
       {/* ACCOMMODATION INFORMATION SECTION */}
-      <section className={classes.sectionAccommodationInfo}>
-        <div className={classes.infoHeadingContainer}>
-          <div className={classes.infoHeading}>
-            <h2>Propety type hosted by e &amp; m</h2>
-
-            <ul>
-              <li>2 guests</li>
-              <li>1 bedroom</li>
-              <li>1 bed</li>
-              <li>1 bathroom</li>
-            </ul>
-          </div>
-          <div className={classes.infoHeadingLogoContainer}>
-            <img
-              src={logoBlack}
-              alt="e &amp; m logo"
-              className={classes.infoHeadingLogo}
-            />
-          </div>
-        </div>
-        {/* FEATURES */}
-        <div className={classes.accommodationFeatures}>
-          <ul>
-            <li>
-              <div>
-                <ion-icon name="home-outline" />
-                <p className={classes.bold}>Entire Home</p>
-              </div>
-              <p>You&apos;ll have the LOCATIONTYPE to yourself</p>
-            </li>
-            <li>
-              <div>
-                <ion-icon name="happy-outline" />
-                <p>
-                  <span className={classes.bold}>Enhanced Clean</span>
-                </p>
-              </div>
-              <p>
-                Covid 5-step enhanced cleaning process
-                <span
-                  aria-hidden
-                  type="button"
-                  onClick={() =>
-                    setShowModal({
-                      showModal: true,
-                      content: 'covid',
-                    })
-                  }
-                  className={classes.showModal}
-                >
-                  . Show more
-                </span>
-              </p>
-            </li>
-            <li>
-              <div>
-                <ion-icon name="bookmark-outline" />
-                <p>
-                  <span className={classes.bold}>Toilet</span>
-                </p>
-              </div>
-              <p>Guests often search for this amenity</p>
-            </li>
-            <li>
-              <div>
-                <ion-icon name="star-outline" />
-                <p>
-                  <span className={classes.bold}>Experienced hosts</span>
-                </p>
-              </div>
-              <p>Years of experience welcoming guests</p>
-            </li>
-          </ul>
-        </div>
-        {/* DESCRIPTION */}
-        <div className={classes.longDescription}>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa
-            sed elementum tempus egestas sed sed. Sed velit dignissim sodales ut
-            eu sem integer vitae. Cursus sit amet dictum sit amet justo.
-            Sollicitudin tempor id eu nisl nunc mi ipsum. Turpis egestas integer
-            eget aliquet nibh. Elit ut aliquam purus sit amet luctus venenatis
-            lectus magna. Massa enim nec dui nunc mattis enim ut. Amet est
-            placerat in egestas erat imperdiet. Egestas sed tempus urna et
-            pharetra pharetra massa massa.
-          </p>
-          <ShowMoreModalBtn
-            clickHandler={() => setShowModalHandler('accommodationDescription')}
-          />
-        </div>
-        {/* SLEEP */}
-        <div className={classes.sleep}>
-          <h2>Where you&apos;ll sleep</h2>
-          <div className={classes.sleepCard}>
-            <ion-icon name="bed-outline" />
-            <p>
-              <span className={classes.bold}>Bedroom 1</span>
-              <br />1 king bed
-            </p>
-          </div>
-          <div className={classes.sleepCard}>
-            <ion-icon name="bed-outline" />
-            <ion-icon name="bed-outline" />
-            <p>
-              <span className={classes.bold}>Bedroom 2</span>
-              <br />2 single bed
-            </p>
-          </div>
-          <div className={classes.sleepCard}>
-            {ionIconRef.iconBed}
-            <p>
-              <span className={classes.bold}>Living room</span>
-              <br />1 sofa bed
-            </p>
-          </div>
-        </div>
-        {/* LOCATION FEATURES */}
-        <div className={classes.locationFeatures}>
-          <h2>What this place offers</h2>
-          <ul>
-            <li>
-              <p>
-                <ion-icon name="leaf-outline" /> Forest view
-              </p>
-            </li>
-            <li>
-              <p>
-                <ion-icon name="pizza-outline" /> Kitchen
-              </p>
-            </li>
-            <li>
-              <p>
-                <ion-icon name="car-sport-outline" /> Free Parking
-              </p>
-            </li>
-            <li>
-              <p>
-                <ion-icon name="home-outline" /> Patio or balcony
-              </p>
-            </li>
-          </ul>
-          <ShowMoreModalBtn
-            clickHandler={() => setShowModalHandler('features')}
-          />
-        </div>
-      </section>
+      <SectionInformation
+        showModalProps={setShowModalHandler}
+        logoProps={logoBlack}
+        propertyTypeProps={
+          accommodationFocus.data.accommodationLocation.accommodationType
+        }
+        propertySettingProps={
+          accommodationFocus.data.accommodationLocation.accommodationSetting
+        }
+        guestsProps={accommodationFocus.data.numGuests}
+        bathroomsProps={accommodationFocus.data.numBathrooms}
+        bedroomsProps={accommodationFocus.data.numBedrooms}
+        longDescriptionProps={
+          accommodationFocus.data.accommodationDescription.longDescription
+        }
+      />
       {/* REVIEW SECTION */}
-      <section className={classes.sectionReviews}>
-        <h2>
-          <ion-icon name="star" />
-          4.99 <span className={classes.dot} /> 5 reviews
-        </h2>
-        <div className={classes.reviewCardContainer}>
-          <div className={classes.reviewCard}>
-            <div className={classes.reviewCardHeading}>
-              <img src={reviewPortrait} alt="portrait" />
-              <div className={classes.reviewCardHeading__name}>
-                <p className={classes.bold}>John Matrix</p>
-                <p className={classes.lightText}>October 2021</p>
-              </div>
-            </div>
-            <div className={classes.reviewCardContent}>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Massa sed elementum tempus egestas sed sed.
-              </p>
-            </div>
-          </div>
-          <div className={classes.reviewCard}>
-            <div className={classes.reviewCardHeading}>
-              <img src={reviewPortrait} alt="portrait" />
-              <div className={classes.reviewCardHeading__name}>
-                <p className={classes.bold}>John Matrix</p>
-                <p className={classes.lightText}>October 2021</p>
-              </div>
-            </div>
-            <div className={classes.reviewCardContent}>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Massa sed elementum tempus egestas sed sed.
-              </p>
-            </div>
-          </div>
-          <div className={classes.reviewCard}>
-            <div className={classes.reviewCardHeading}>
-              <img src={reviewPortrait} alt="portrait" />
-              <div className={classes.reviewCardHeading__name}>
-                <p className={classes.bold}>John Matrix</p>
-                <p className={classes.lightText}>October 2021</p>
-              </div>
-            </div>
-            <div className={classes.reviewCardContent}>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Massa sed elementum tempus egestas sed sed.
-              </p>
-            </div>
-          </div>
-          <div className={classes.reviewCard}>
-            <div className={classes.reviewCardHeading}>
-              <img src={reviewPortrait} alt="portrait" />
-              <div className={classes.reviewCardHeading__name}>
-                <p className={classes.bold}>John Matrix</p>
-                <p className={classes.lightText}>October 2021</p>
-              </div>
-            </div>
-            <div className={classes.reviewCardContent}>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Massa sed elementum tempus egestas sed sed.
-              </p>
-            </div>
-          </div>
-          <div className={classes.reviewCard}>
-            <div className={classes.reviewCardHeading}>
-              <img src={reviewPortrait} alt="portrait" />
-              <div className={classes.reviewCardHeading__name}>
-                <p className={classes.bold}>John Matrix</p>
-                <p className={classes.lightText}>October 2021</p>
-              </div>
-            </div>
-            <div className={classes.reviewCardContent}>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Massa sed elementum tempus egestas sed sed.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <SectionReview portraitProps={reviewPortrait} />
       {/* MAP SECTION */}
       <section className={classes.sectionMap}>
         <h2>Where you&apos;ll be</h2>
