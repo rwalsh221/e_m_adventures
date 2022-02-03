@@ -18,7 +18,9 @@ const SectionInformation = ({
     <div className={classes.infoHeadingContainer}>
       <div className={classes.infoHeading}>
         <h2>
-          {propertySettingProps} {propertyTypeProps} hosted by e &amp; m
+          <span data-capitalizefont>{propertySettingProps} </span>
+          <span data-capitalizefont>{propertyTypeProps} </span>hosted by
+          <span data-capitalizefont> e &amp; m</span>
         </h2>
         <ul>
           <li>{guestsProps} guests</li>
@@ -41,7 +43,7 @@ const SectionInformation = ({
         <li>
           <div>
             <ion-icon name="home-outline" />
-            <p className={classes.bold}>Entire Home</p>
+            <p data-boldfont>Entire Home</p>
           </div>
           <p>You&apos;ll have the {propertyTypeProps} to yourself</p>
         </li>
@@ -49,7 +51,7 @@ const SectionInformation = ({
           <div>
             <ion-icon name="happy-outline" />
             <p>
-              <span className={classes.bold}>Enhanced Clean</span>
+              <span data-boldfont>Enhanced Clean</span>
             </p>
           </div>
           <p>
@@ -57,12 +59,7 @@ const SectionInformation = ({
             <span
               aria-hidden
               type="button"
-              onClick={() =>
-                showModalProps({
-                  showModal: true,
-                  content: 'covid',
-                })
-              }
+              onClick={() => showModalProps('covid')}
               className={classes.showModal}
             >
               . Show more
@@ -73,7 +70,7 @@ const SectionInformation = ({
           <div>
             <ion-icon name="bookmark-outline" />
             <p>
-              <span className={classes.bold}>Toilet</span>
+              <span data-boldfont>Toilet</span>
             </p>
           </div>
           <p>Guests often search for this amenity</p>
@@ -82,7 +79,7 @@ const SectionInformation = ({
           <div>
             <ion-icon name="star-outline" />
             <p>
-              <span className={classes.bold}>Experienced hosts</span>
+              <span data-boldfont>Experienced hosts</span>
             </p>
           </div>
           <p>Years of experience welcoming guests</p>
@@ -102,7 +99,7 @@ const SectionInformation = ({
       <div className={classes.sleepCard}>
         <ion-icon name="bed-outline" />
         <p>
-          <span className={classes.bold}>Bedroom 1</span>
+          <span data-boldfont>Bedroom 1</span>
           <br />1 king bed
         </p>
       </div>
@@ -110,14 +107,14 @@ const SectionInformation = ({
         <ion-icon name="bed-outline" />
         <ion-icon name="bed-outline" />
         <p>
-          <span className={classes.bold}>Bedroom 2</span>
+          <span data-boldfont>Bedroom 2</span>
           <br />2 single bed
         </p>
       </div>
       <div className={classes.sleepCard}>
         <ion-icon name="bed-outline" />
         <p>
-          <span className={classes.bold}>Living room</span>
+          <span data-boldfont>Living room</span>
           <br />1 sofa bed
         </p>
       </div>

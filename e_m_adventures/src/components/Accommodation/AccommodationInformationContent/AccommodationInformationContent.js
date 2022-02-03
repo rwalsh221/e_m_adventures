@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useAccommodationContext } from '../../../contexts/AccommodationContext';
 
-import ShowMoreModalBtn from '../../miniComponents/Buttons/ShowMoreModalBtn/ShowMoreModalBtn';
 import AccommodationInformationModal from '../../Modal/AccommodationInformationModal/AccommodationInformationModal';
 import logoBlack from '../../../assets/img/logo-black.png';
 import reviewPortrait from '../../../assets/img/accommodation/outline.png';
@@ -18,8 +17,6 @@ import classes from './AccommodationInformationContent.module.css';
 const AccommodationInformationContent = () => {
   const { accommodationFocus } = useAccommodationContext();
 
-  console.log(accommodationFocus.data);
-
   const accomIdProps = 'acc0001';
   // document.body.style.overflow = 'hidden';
   const [showModal, setShowModal] = useState({
@@ -28,8 +25,6 @@ const AccommodationInformationContent = () => {
     image: {},
     share: false,
   });
-
-  // console.log(location.state.message);
 
   const setShowModalHandler = (content, imageName, share) => {
     setShowModal({
@@ -40,7 +35,6 @@ const AccommodationInformationContent = () => {
     });
   };
 
-  // const ionIconRef = { iconBed: <ion-icon name="bed-outline" /> };
   return (
     <main className={classes.main}>
       <AccommodationInformationModal

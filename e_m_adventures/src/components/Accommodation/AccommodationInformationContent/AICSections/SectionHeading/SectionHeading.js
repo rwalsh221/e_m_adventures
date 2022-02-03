@@ -3,13 +3,13 @@ import classes from './SectionHeading.module.css';
 
 const SectionHeading = ({ accomNameProps, accomCityProps }) => (
   <section className={classes.sectionHeading}>
-    <h1 className={classes.mainHeading}>{accomNameProps}</h1>
+    <h1 data-capitalizefont>{accomNameProps}</h1>
     <ul className={classes.headingInformation}>
       <li>
         <ion-icon name="star" />
         4.99 (100 reviews)
       </li>
-      <li>
+      <li data-capitalizefont>
         <ion-icon name="location" />
         {accomCityProps}
       </li>

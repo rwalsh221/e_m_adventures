@@ -11,7 +11,7 @@ const SectionMap = ({ accomCityProps, showModalProps }) => (
     <div className={classes.mapBoxContainer}>
       <MapBoxContainer />
     </div>
-    <h3>{accomCityProps}, United Kingdom</h3>
+    <h3 data-capitalizefont>{accomCityProps}, United Kingdom</h3>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua. Condimentum lacinia

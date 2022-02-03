@@ -12,8 +12,8 @@ const SectionReview = ({ portraitProps }) => (
         <div className={classes.reviewCardHeading}>
           <img src={portraitProps} alt="portrait" />
           <div className={classes.reviewCardHeading__name}>
-            <p className={classes.bold}>John Matrix</p>
-            <p className={classes.lightText}>October 2021</p>
+            <p data-boldfont>John Matrix</p>
+            <p data-lightfont>October 2021</p>
           </div>
         </div>
         <div className={classes.reviewCardContent}>
@@ -28,8 +28,8 @@ const SectionReview = ({ portraitProps }) => (
         <div className={classes.reviewCardHeading}>
           <img src={portraitProps} alt="portrait" />
           <div className={classes.reviewCardHeading__name}>
-            <p className={classes.bold}>John Matrix</p>
-            <p className={classes.lightText}>October 2021</p>
+            <p data-boldfont>John Matrix</p>
+            <p data-lightfont>October 2021</p>
           </div>
         </div>
         <div className={classes.reviewCardContent}>
@@ -44,8 +44,8 @@ const SectionReview = ({ portraitProps }) => (
         <div className={classes.reviewCardHeading}>
           <img src={portraitProps} alt="portrait" />
           <div className={classes.reviewCardHeading__name}>
-            <p className={classes.bold}>John Matrix</p>
-            <p className={classes.lightText}>October 2021</p>
+            <p data-boldfont>John Matrix</p>
+            <p data-lightfont>October 2021</p>
           </div>
         </div>
         <div className={classes.reviewCardContent}>
@@ -60,8 +60,8 @@ const SectionReview = ({ portraitProps }) => (
         <div className={classes.reviewCardHeading}>
           <img src={portraitProps} alt="portrait" />
           <div className={classes.reviewCardHeading__name}>
-            <p className={classes.bold}>John Matrix</p>
-            <p className={classes.lightText}>October 2021</p>
+            <p data-boldfont>John Matrix</p>
+            <p data-lightfont>October 2021</p>
           </div>
         </div>
         <div className={classes.reviewCardContent}>
@@ -76,8 +76,8 @@ const SectionReview = ({ portraitProps }) => (
         <div className={classes.reviewCardHeading}>
           <img src={portraitProps} alt="portrait" />
           <div className={classes.reviewCardHeading__name}>
-            <p className={classes.bold}>John Matrix</p>
-            <p className={classes.lightText}>October 2021</p>
+            <p data-boldfont>John Matrix</p>
+            <p data-lightfont>October 2021</p>
           </div>
         </div>
         <div className={classes.reviewCardContent}>

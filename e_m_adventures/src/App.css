@@ -111,6 +111,14 @@ p {
   font-weight: bold;
 }
 
+[data-capitalizefont] {
+  text-transform: capitalize;
+}
+
+[data-lightfont] {
+  color: var(--sec-color-grey);
+}
+
 @media (max-width: 975px) {
   html {
     font-size: 55%;
