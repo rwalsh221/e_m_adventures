@@ -15,6 +15,7 @@ import SectionKnow from './AICSections/SectionKnow/SectionKnow';
 import classes from './AccommodationInformationContent.module.css';
 
 const AccommodationInformationContent = () => {
+  // TODO: ADD ERROR DISPLAY FOR NO DATA
   const { accommodationFocus } = useAccommodationContext();
 
   const accomIdProps = 'acc0001';
@@ -35,6 +36,16 @@ const AccommodationInformationContent = () => {
     });
   };
 
+  const {
+    accommodationName,
+    accommodationLocation,
+    accommodationId,
+    accommodationDescription,
+    numBathrooms,
+    numBedrooms,
+    numGuests,
+  } = accommodationFocus.data;
+
   return (
     <main className={classes.main}>
       <AccommodationInformationModal
@@ -43,37 +54,31 @@ const AccommodationInformationContent = () => {
       />
       {/* HEADING SECTION */}
       <SectionHeading
-        accomNameProps={accommodationFocus.data.accommodationName}
-        accomCityProps={accommodationFocus.data.accommodationLocation.city}
+        accomNameProps={accommodationName}
+        accomCityProps={accommodationLocation.city}
       />
       {/* IMAGE GRID SECTION */}
       <SectionImageGrid
-        accomIdProps={accommodationFocus.data.accommodationId}
+        accomIdProps={accommodationId}
         showModalProps={setShowModalHandler}
       />
       {/* ACCOMMODATION INFORMATION SECTION */}
       <SectionInformation
         showModalProps={setShowModalHandler}
         logoProps={logoBlack}
-        propertyTypeProps={
-          accommodationFocus.data.accommodationLocation.accommodationType
-        }
-        propertySettingProps={
-          accommodationFocus.data.accommodationLocation.accommodationSetting
-        }
-        guestsProps={accommodationFocus.data.numGuests}
-        bathroomsProps={accommodationFocus.data.numBathrooms}
-        bedroomsProps={accommodationFocus.data.numBedrooms}
-        longDescriptionProps={
-          accommodationFocus.data.accommodationDescription.longDescription
-        }
+        propertyTypeProps={accommodationLocation.accommodationType}
+        propertySettingProps={accommodationLocation.accommodationSetting}
+        guestsProps={numGuests}
+        bathroomsProps={numBathrooms}
+        bedroomsProps={numBedrooms}
+        longDescriptionProps={accommodationDescription.longDescription}
       />
       {/* REVIEW SECTION */}
       <SectionReview portraitProps={reviewPortrait} />
       {/* MAP SECTION */}
       <SectionMap
         showModalProps={setShowModalHandler}
-        accomCityProps={accommodationFocus.data.accommodationLocation.city}
+        accomCityProps={accommodationLocation.city}
       />
       {/* ABOUT HOST SECTION */}
       <SectionAboutHost
