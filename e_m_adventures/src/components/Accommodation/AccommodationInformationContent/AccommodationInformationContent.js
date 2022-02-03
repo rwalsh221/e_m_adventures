@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-
-import classes from './AccommodationInformationContent.module.css';
 import { useAccommodationContext } from '../../../contexts/AccommodationContext';
 
 import ShowMoreModalBtn from '../../miniComponents/Buttons/ShowMoreModalBtn/ShowMoreModalBtn';
@@ -8,6 +6,10 @@ import AccommodationInformationModal from '../../Modal/AccommodationInformationM
 import MapBoxContainer from '../../miniComponents/MapboxContainer/MapBoxContainer';
 import logoBlack from '../../../assets/img/logo-black.png';
 import reviewPortrait from '../../../assets/img/accommodation/outline.png';
+import SectionHeading from './AICSections/SectionHeading/SectionHeading';
+import SectionImageGrid from './AICSections/SectionImageGrid/SectionImageGrid';
+
+import classes from './AccommodationInformationContent.module.css';
 
 const AccommodationInformationContent = () => {
   const { accommodationFocus } = useAccommodationContext();
@@ -40,58 +42,15 @@ const AccommodationInformationContent = () => {
         setShowModalParentProps={setShowModal}
       />
       {/* HEADING SECTION */}
-      <section className={classes.sectionHeading}>
-        <h1 className={classes.mainHeading}>
-          {accommodationFocus.data.accommodationName}
-        </h1>
-        <ul className={classes.headingInformation}>
-          <li>
-            <ion-icon name="star" />
-            4.99 (100 reviews)
-          </li>
-          <li>
-            <ion-icon name="location" />
-            City, Country
-          </li>
-          <li>
-            <ion-icon name="share-outline" />
-            Share
-          </li>
-        </ul>
-      </section>
+      <SectionHeading
+        accomNameProps={accommodationFocus.data.accommodationName}
+        accomCityProps={accommodationFocus.data.accommodationLocation.city}
+      />
       {/* IMAGE GRID SECTION */}
-      <section className={classes.sectionImageGrid}>
-        <div className={classes.imageGrid}>
-          <img
-            aria-hidden
-            onClick={() => setShowModalHandler('imageModal', 'hero', true)}
-            src={`img/accommodation/${accomIdProps}/hero.jpg`}
-            alt="accommodation"
-            className={classes.imageGridHero}
-          />
-
-          <img
-            src={`img/accommodation/${accomIdProps}/hero.jpg`}
-            alt="accommodation"
-            className={classes.imageGridTc}
-          />
-          <img
-            src={`img/accommodation/${accomIdProps}/hero.jpg`}
-            alt="accommodation"
-            className={classes.imageGridTr}
-          />
-          <img
-            src={`img/accommodation/${accomIdProps}/hero.jpg`}
-            alt="accommodation"
-            className={classes.imageGridBc}
-          />
-          <img
-            src={`img/accommodation/${accomIdProps}/hero.jpg`}
-            alt="accommodation"
-            className={classes.imageGridBr}
-          />
-        </div>
-      </section>
+      <SectionImageGrid
+        accomIdProps={accommodationFocus.data.accommodationId}
+        showModalProps={setShowModalHandler}
+      />
       {/* ACCOMMODATION INFORMATION SECTION */}
       <section className={classes.sectionAccommodationInfo}>
         <div className={classes.infoHeadingContainer}>

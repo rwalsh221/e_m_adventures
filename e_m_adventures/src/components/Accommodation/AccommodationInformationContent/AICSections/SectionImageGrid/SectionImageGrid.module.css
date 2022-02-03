@@ -1,0 +1,39 @@
+.sectionImageGrid {
+  margin: 2rem 0;
+}
+
+.imageGrid {
+  display: grid;
+  grid-template-areas:
+    'hero tc tr'
+    'hero bc br';
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 1rem;
+  width: 100%;
+  height: 50rem;
+}
+
+.imageGrid img {
+  height: 100%;
+  cursor: pointer;
+}
+
+.imageGridHero {
+  grid-area: hero;
+  height: 100%;
+  border-radius: 2rem 0 0 2rem;
+}
+.imageGridTc {
+  grid-area: tc;
+}
+.imageGridTr {
+  grid-area: tr;
+  border-top-right-radius: 2rem;
+}
+.imageGridBc {
+  grid-area: bc;
+}
+.imageGridBr {
+  grid-area: br;
+  border-bottom-right-radius: 2rem;
+}

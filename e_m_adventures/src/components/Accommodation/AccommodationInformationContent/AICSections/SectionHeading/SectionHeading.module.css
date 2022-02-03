@@ -1,0 +1,30 @@
+.headingInformation {
+  list-style: none;
+  font-size: 1.8rem;
+  margin: 1rem 0;
+}
+
+.headingInformation li {
+  display: inline;
+}
+
+.headingInformation li:nth-of-type(2) {
+  margin: 0 2rem;
+  list-style-type: circle;
+  position: relative;
+}
+
+.headingInformation li:nth-of-type(2)::before {
+  content: '';
+  height: 5px;
+  width: 5px;
+  position: absolute;
+  background-color: var(--sec-color-grey-light);
+  top: 45.7%;
+  left: -8.3%;
+  border-radius: 50%;
+}
+
+.headingInformation li:last-child {
+  float: right;
+}
