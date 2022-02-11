@@ -119,6 +119,10 @@ p {
   color: var(--sec-color-grey);
 }
 
+[data-upperCasefont] {
+  text-transform: uppercase;
+}
+
 @media (max-width: 975px) {
   html {
     font-size: 55%;

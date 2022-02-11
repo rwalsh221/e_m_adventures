@@ -5,11 +5,11 @@ import classes from './MapBoxContainer.module.css';
 mapboxgl.accessToken =
   'pk.eyJ1Ijoicmlja3lyaWNhcmRpbmhvIiwiYSI6ImNrdnJsczBsNTA5ODIyb2x5bGExbDlscHMifQ.UA26VXh63_0G21WVA8d_Ug';
 
-const MapBoxContainer = React.memo(() => {
+const MapBoxContainer = React.memo(({ latlonProps }) => {
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const longitude = -2.767456;
-  const latitude = 54.128879;
+  const { lat, lon } = latlonProps;
+
   const zoom = 13;
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const MapBoxContainer = React.memo(() => {
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/streets-v11',
-      center: [longitude, latitude],
+      center: [lon, lat],
       zoom,
     });
   });

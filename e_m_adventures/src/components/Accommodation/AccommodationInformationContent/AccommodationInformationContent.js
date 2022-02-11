@@ -41,10 +41,14 @@ const AccommodationInformationContent = () => {
     accommodationLocation,
     accommodationId,
     accommodationDescription,
-    numBathrooms,
-    numBedrooms,
-    numGuests,
+    occupancy,
   } = accommodationFocus.data;
+
+  const occupancyBedrooms = [
+    { bedroomType: 'bedroom', beds: [{ type: 'king', number: 1 }] },
+    { bedroomType: 'bedroom', beds: [{ type: 'single', number: 2 }] },
+    { bedroomType: 'common space', beds: [{ type: 'sofa', number: 1 }] },
+  ];
 
   return (
     <main className={classes.main}>
@@ -66,19 +70,24 @@ const AccommodationInformationContent = () => {
       <SectionInformation
         showModalProps={setShowModalHandler}
         logoProps={logoBlack}
-        propertyTypeProps={accommodationLocation.accommodationType}
-        propertySettingProps={accommodationLocation.accommodationSetting}
-        guestsProps={numGuests}
-        bathroomsProps={numBathrooms}
-        bedroomsProps={numBedrooms}
+        accommodationTypeProps={accommodationLocation.accommodationType}
+        accommodationSettingProps={accommodationLocation.accommodationSetting}
+        occupancyProps={occupancy}
         longDescriptionProps={accommodationDescription.longDescription}
+        accommodationFeaturesProps={accommodationDescription.features}
+        starAmenityProps={accommodationDescription.starAmenity}
+        sharedAccommodationProps={accommodationDescription.sharedAccommodation}
+        occupancyBedroomsProps={occupancyBedrooms}
       />
       {/* REVIEW SECTION */}
       <SectionReview portraitProps={reviewPortrait} />
       {/* MAP SECTION */}
       <SectionMap
         showModalProps={setShowModalHandler}
-        accomCityProps={accommodationLocation.city}
+        cityProps={accommodationLocation.city}
+        locationDescriptionProps={accommodationLocation.locationDescription}
+        countryProps={accommodationLocation.country}
+        latlonProps={accommodationLocation.latlon}
       />
       {/* ABOUT HOST SECTION */}
       <SectionAboutHost
