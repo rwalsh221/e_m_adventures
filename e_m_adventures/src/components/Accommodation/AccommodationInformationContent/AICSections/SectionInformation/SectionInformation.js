@@ -18,6 +18,38 @@ const SectionInformation = ({
   sharedAccommodationProps,
   occupancyBedroomsProps,
 }) => {
+  const renderSleepCard = (bedroomType, beds, index) => {
+    const bedContent = [];
+    const bedIcon = [];
+
+    beds.forEach((element) => {
+      const bed = element.number > 1 ? 'beds' : 'bed';
+
+      for (let i = 1; i <= element.number; i += 1) {
+        bedIcon.push(<ion-icon name="bed-outline" />);
+      }
+
+      bedContent.push(
+        <span className={classes.bedContent}>
+          {element.number} {element.type} {bed}
+        </span>
+      );
+    });
+
+    return (
+      <div className={classes.sleepCard}>
+        {bedIcon}
+        <p>
+          <span data-boldfont data-capitalizefont>
+            {bedroomType} {index + 1}
+          </span>
+          <br />
+          {bedContent}
+        </p>
+      </div>
+    );
+  };
+
   const sharedAccommodationContent = sharedAccommodationProps ? (
     <li>
       <div>
@@ -36,40 +68,17 @@ const SectionInformation = ({
     </li>
   );
 
-  const sleepCard = (element, index) => {
-    console.log(element);
-    console.log(element.beds[0].number);
-    const bed = element.beds[0].number > 1 ? 'beds' : 'bed';
-
-    const bedIcon = [];
-
-    for (let i = 1; i <= element.beds[0].number; i += 1) {
-      bedIcon.push(<ion-icon name="bed-outline" />);
-    }
-    console.log(bedIcon);
-    return (
-      <div className={classes.sleepCard}>
-        {bedIcon}
-        <p>
-          <span data-boldfont>
-            {element.bedroomType} {index + 1}
-          </span>
-          <br />
-          {element.beds.map((element) => (
-            <span>
-              {element.number} {element.type} {bed}
-            </span>
-          ))}
-        </p>
-      </div>
-    );
-  };
-
+  const featuresContent = accommodationFeaturesProps.map((element) => (
+    <li key={nanoid()}>
+      <p>
+        <ion-icon name="sparkles-outline" />
+        &nbsp;{element}
+      </p>
+    </li>
+  ));
   const sleepContent = occupancyBedroomsProps.map((element, index) =>
-    sleepCard(element, index)
+    renderSleepCard(element.bedroomType, element.beds, index)
   );
-
-  console.log(sleepContent);
 
   return (
     <section className={classes.sectionAccommodationInfo}>
@@ -151,42 +160,11 @@ const SectionInformation = ({
       <div className={classes.sleep}>
         <h2>Where you&apos;ll sleep</h2>
         {sleepContent}
-        {/* <div className={classes.sleepCard}>
-          <ion-icon name="bed-outline" />
-          <p>
-            <span data-boldfont>Bedroom 1</span>
-            <br />1 king bed
-          </p>
-        </div>
-        <div className={classes.sleepCard}>
-          <ion-icon name="bed-outline" />
-          <ion-icon name="bed-outline" />
-          <p>
-            <span data-boldfont>Bedroom 2</span>
-            <br />2 single bed
-          </p>
-        </div>
-        <div className={classes.sleepCard}>
-          <ion-icon name="bed-outline" />
-          <p>
-            <span data-boldfont>Living room</span>
-            <br />1 sofa bed
-          </p>
-        </div> */}
       </div>
       {/* LOCATION FEATURES */}
       <div className={classes.locationFeatures}>
         <h2>What this place offers</h2>
-        <ul>
-          {accommodationFeaturesProps.map((element) => (
-            <li key={nanoid()}>
-              <p>
-                <ion-icon name="sparkles-outline" />
-                &nbsp;{element}
-              </p>
-            </li>
-          ))}
-        </ul>
+        <ul>{featuresContent}</ul>
         <ShowMoreModalBtn clickHandler={() => showModalProps('features')} />
       </div>
     </section>

@@ -46,7 +46,13 @@ const AccommodationInformationContent = () => {
 
   const occupancyBedrooms = [
     { bedroomType: 'bedroom', beds: [{ type: 'king', number: 1 }] },
-    { bedroomType: 'bedroom', beds: [{ type: 'single', number: 2 }] },
+    {
+      bedroomType: 'bedroom',
+      beds: [
+        { type: 'single', number: 2 },
+        { type: 'king', number: 1 },
+      ],
+    },
     { bedroomType: 'common space', beds: [{ type: 'sofa', number: 1 }] },
   ];
 
