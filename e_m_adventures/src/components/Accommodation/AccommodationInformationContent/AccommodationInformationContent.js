@@ -42,6 +42,7 @@ const AccommodationInformationContent = () => {
     accommodationId,
     accommodationDescription,
     occupancy,
+    accommodationRules,
   } = accommodationFocus.data;
 
   const occupancyBedrooms = [
@@ -101,7 +102,11 @@ const AccommodationInformationContent = () => {
         showModalProps={setShowModalHandler}
       />
       {/* KNOW SECTION */}
-      <SectionKnow showModalProps={setShowModalHandler} />
+      <SectionKnow
+        showModalProps={setShowModalHandler}
+        checkInProps={accommodationRules.checkIn}
+        checkOutProps={accommodationRules.checkOut}
+      />
     </main>
   );
 };

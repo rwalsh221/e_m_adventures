@@ -4,7 +4,7 @@ import ShowMoreModalBtn from '../../../../miniComponents/Buttons/ShowMoreModalBt
 
 import classes from './SectionKnow.module.css';
 
-const SectionKnow = ({ showModalProps }) => (
+const SectionKnow = ({ showModalProps, checkInProps, checkOutProps }) => (
   <section className={classes.sectionKnow}>
     <h2>Things to Know</h2>
     <div className={classes.knowContentContainer}>
@@ -15,13 +15,15 @@ const SectionKnow = ({ showModalProps }) => (
             <div className={classes.ionIconContainer}>
               <ion-icon name="checkmark-circle" />
             </div>
-            <p>Check-in: 15:00 - 21:00</p>
+            <p>
+              Check-in: {checkInProps.min}:00 - {checkInProps.max}:00
+            </p>
           </li>
           <li>
             <div className={classes.ionIconContainer}>
               <ion-icon name="checkmark-circle" />
             </div>
-            <p>Check-out: 11:00</p>
+            <p>Check-out: {checkOutProps}:00</p>
           </li>
           <li>
             <div className={classes.ionIconContainer}>
