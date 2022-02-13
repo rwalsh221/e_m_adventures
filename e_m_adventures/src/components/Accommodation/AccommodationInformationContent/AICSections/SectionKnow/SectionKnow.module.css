@@ -1,3 +1,7 @@
+.sectionKnow {
+  grid-column: 1 / span 2;
+}
+
 .showModal {
   text-decoration: underline;
   font-weight: bold;

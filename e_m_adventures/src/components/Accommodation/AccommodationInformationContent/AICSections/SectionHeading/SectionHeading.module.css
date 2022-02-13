@@ -1,3 +1,7 @@
+.sectionHeading {
+  grid-column: 1 / span 2;
+}
+
 .headingInformation {
   list-style: none;
   font-size: 1.8rem;

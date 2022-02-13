@@ -1,11 +1,9 @@
-.sectionAboutHosts {
+.sectionAboutHost {
   border-bottom: var(--grey-border-1px);
   padding: 2rem 0;
-}
-
-.sectionAboutHost {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-column: 1 / span 2;
 }
 
 .aboutHostHeading {

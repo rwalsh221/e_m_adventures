@@ -1,6 +1,7 @@
 .sectionMap {
   border-bottom: var(--grey-border-1px);
   padding: 2rem 0;
+  grid-column: 1 / span 2;
 }
 
 .sectionMap h3 {

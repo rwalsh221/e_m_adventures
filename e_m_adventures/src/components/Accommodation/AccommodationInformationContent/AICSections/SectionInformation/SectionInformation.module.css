@@ -1,9 +1,13 @@
+.sectionAccommodationInfo {
+  grid-column: 1 / span 1;
+}
+
 .infoHeadingContainer,
 .accommodationFeatures,
 .longDescription,
 .sleep,
 .locationFeatures {
-  width: 70%;
+  /* width: 70%; */
   padding: 1rem 0 3rem 0;
   border-bottom: var(--grey-border-1px);
   margin-bottom: 2rem;

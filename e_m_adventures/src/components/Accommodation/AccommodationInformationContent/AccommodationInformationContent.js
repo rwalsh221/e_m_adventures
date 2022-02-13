@@ -13,6 +13,7 @@ import SectionAboutHost from './AICSections/SectionAboutHost/SectionAboutHost';
 import SectionKnow from './AICSections/SectionKnow/SectionKnow';
 
 import classes from './AccommodationInformationContent.module.css';
+import AccommodationSearch from './AICSections/AccommodationSearch/AccommodationSearch';
 
 const AccommodationInformationContent = () => {
   // TODO: ADD ERROR DISPLAY FOR NO DATA
@@ -43,6 +44,7 @@ const AccommodationInformationContent = () => {
     accommodationDescription,
     occupancy,
     accommodationRules,
+    basePrice,
   } = accommodationFocus.data;
 
   const occupancyBedrooms = [
@@ -86,6 +88,7 @@ const AccommodationInformationContent = () => {
         sharedAccommodationProps={accommodationDescription.sharedAccommodation}
         occupancyBedroomsProps={occupancyBedrooms}
       />
+      <AccommodationSearch basePriceProps={basePrice} />
       {/* REVIEW SECTION */}
       <SectionReview portraitProps={reviewPortrait} />
       {/* MAP SECTION */}

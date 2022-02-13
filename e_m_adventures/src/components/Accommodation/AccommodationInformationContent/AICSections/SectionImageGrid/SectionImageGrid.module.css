@@ -1,5 +1,6 @@
 .sectionImageGrid {
   margin: 2rem 0;
+  grid-column: 1 / span 2;
 }
 
 .imageGrid {

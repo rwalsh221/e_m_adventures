@@ -123,6 +123,10 @@ p {
   text-transform: uppercase;
 }
 
+[data-underlinefont] {
+  text-decoration: underline;
+}
+
 @media (max-width: 975px) {
   html {
     font-size: 55%;

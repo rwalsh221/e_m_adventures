@@ -9,6 +9,9 @@ main {
   padding: 2rem;
   width: 60%;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: 60% 40%;
+  grid-auto-rows: max-content;
 }
 
 .main ion-icon {

@@ -1,5 +1,4 @@
 import { nanoid } from 'nanoid';
-import { element } from 'prop-types';
 import React from 'react';
 
 import ShowMoreModalBtn from '../../../../miniComponents/Buttons/ShowMoreModalBtn/ShowMoreModalBtn';
