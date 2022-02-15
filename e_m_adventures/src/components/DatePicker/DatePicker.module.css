@@ -1,11 +1,32 @@
-.cardContainer {
+.leftCardContainer {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  width: 60vh;
+  background-color: hotpink;
+  /* width: 50%; */
+}
+
+.rightCardContainer {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background-color: greenyellow;
+  /* width: 50%; */
 }
 
 .dayCard {
-  background-color: hotpink;
-  padding: 5rem;
+  /* background-color: hotpink; */
+  width: 1fr;
   display: inline-block;
+  color: black !important;
+}
+
+.dayCard p {
+  color: black;
+}
+
+.datePicker {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: black;
 }
