@@ -1,8 +1,19 @@
-.leftCardContainer {
+.leftCardContainer,
+.rightCardContainer {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  background-color: hotpink;
+  grid-template-rows: repeat(6, 1fr);
+  background-color: black;
+  gap: 1rem;
+  padding: 1rem;
+
   /* width: 50%; */
+}
+
+.displayMonth {
+  grid-column: 1 / span 7;
+  color: hotpink;
+  justify-self: center;
 }
 
 .rightCardContainer {
@@ -17,6 +28,7 @@
   width: 1fr;
   display: inline-block;
   color: black !important;
+  background-color: blueviolet;
 }
 
 .dayCard p {

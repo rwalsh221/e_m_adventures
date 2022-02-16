@@ -4,7 +4,14 @@ import React, { useState } from 'react';
 import classes from './DatePicker.module.css';
 
 const DatePicker = () => {
-  const [month, setMonth] = useState({ left: 1, right: 2 });
+  const [month, setMonth] = useState({
+    left: 1,
+    right: 2,
+    displayMonthLeft: 1,
+    displayMonthRight: 2,
+  });
+
+  console.log(month.displayMonth);
 
   const todayDate = new Date();
 
@@ -12,6 +19,21 @@ const DatePicker = () => {
   const nextMonth = [];
 
   const checkLeapYear = (year) => new Date(year, 1, 29).getDate() === 29;
+
+  const monthsArray = [
+    'january',
+    'febuary',
+    'march',
+    'april',
+    'may',
+    'june',
+    'july',
+    'august',
+    'september',
+    'october',
+    'november',
+    'december',
+  ];
 
   const getNumDays = (month) => {
     let numDays;
@@ -32,12 +54,12 @@ const DatePicker = () => {
 
   // create seperate func for init setup. setstate for current mont and current month +1. then use getdays() for forward / back
 
-  const getDays = (month = null, arr) => {
+  const getDays = (month = undefined, arr) => {
     const currentDay = todayDate.getDate();
     const numDays = getNumDays(month);
     const d = new Date();
-
-    if (month) {
+    console.log(month);
+    if (month !== undefined) {
       d.setMonth(month);
     }
 
@@ -52,7 +74,7 @@ const DatePicker = () => {
 
       d.setDate(i);
 
-      arr.push(d.toDateString());
+      arr.push(d.getDate());
     }
   };
 
@@ -60,20 +82,58 @@ const DatePicker = () => {
     const currentSetMonthLeft = month.left;
     const currentSetMonthRight = month.right;
 
+    const monthCopy = { ...month };
+
+    let { displayMonthLeft, displayMonthRight } = monthCopy;
+
+    // console.log(`display month ${displayMonth}`);
+
+    if (displayMonthLeft >= 11) {
+      displayMonthLeft = 0;
+    } else {
+      displayMonthLeft += 1;
+    }
+
+    if (displayMonthRight >= 11) {
+      displayMonthRight = 0;
+    } else {
+      displayMonthRight += 1;
+    }
+
     setMonth({
+      ...month,
+      displayMonthLeft,
+      displayMonthRight,
       left: currentSetMonthLeft + 1,
       right: currentSetMonthRight + 1,
     });
   };
 
   const prevMonthHandler = () => {
-    const currentSetMonthLeft = month.left;
-    const currentSetMonthRight = month.right;
+    const d = new Date();
+    console.log(d.getMonth());
+    console.log(month.left);
+    console.log('break0');
+    const x = 1;
+    const y = 0;
 
-    setMonth({
-      left: currentSetMonthLeft - 1,
-      right: currentSetMonthRight - 1,
-    });
+    if (d.getMonth() < month.left) {
+      const currentSetMonthLeft = month.left;
+      const currentSetMonthRight = month.right;
+
+      setMonth({
+        left: currentSetMonthLeft - 1,
+        right: currentSetMonthRight - 1,
+      });
+    }
+
+    // const currentSetMonthLeft = month.left;
+    // const currentSetMonthRight = month.right;
+
+    // setMonth({
+    //   left: currentSetMonthLeft - 1,
+    //   right: currentSetMonthRight - 1,
+    // });
   };
 
   getDays(month.left, focusMonth);
@@ -92,10 +152,20 @@ const DatePicker = () => {
   ));
   return (
     <section className={classes.datePicker}>
-      <div className={classes.leftCardContainer}>{leftContent}</div>
-      <div className={classes.rightCardContainer}>{rightContent}</div>
-      <button onClick={nextMonthHandler}>forward</button>
+      <div className={classes.leftCardContainer}>
+        <h3 className={classes.displayMonth}>
+          {monthsArray[month.displayMonthLeft]}
+        </h3>
+        {leftContent}
+      </div>
+      <div className={classes.rightCardContainer}>
+        <h3 className={classes.displayMonth}>
+          {monthsArray[month.displayMonthRight]}
+        </h3>
+        {rightContent}
+      </div>
       <button onClick={prevMonthHandler}>back</button>
+      <button onClick={nextMonthHandler}>forward</button>
     </section>
   );
 };
