@@ -35,6 +35,8 @@ const DatePicker = () => {
     'december',
   ];
 
+  const dayArray = ['mo', 'tu', 'we', 'th', 'fr', 'sa', 'su'];
+
   const getNumDays = (month) => {
     let numDays;
     // let leapYear = true;
@@ -52,6 +54,18 @@ const DatePicker = () => {
     return numDays;
   };
 
+  const getDayOffset = (date) => {
+    let day;
+    date.setDate(1);
+    const getDay = date.getDay();
+    if (getDay === 0) {
+      day = 7;
+    } else {
+      day = getDay;
+    }
+    return day - 1; // minus 1 to get correct day js month starts at 1 not zero
+  };
+
   // create seperate func for init setup. setstate for current mont and current month +1. then use getdays() for forward / back
 
   const getDays = (month = undefined, arr) => {
@@ -63,6 +77,8 @@ const DatePicker = () => {
       d.setMonth(month);
     }
 
+    const dayOffset = getDayOffset(d);
+    console.log(dayOffset);
     // month ? d.setMonth(month) : d.setMonth(d.getMonth());
 
     const x = new Date('July 21, 1983 01:15:00');
@@ -73,8 +89,15 @@ const DatePicker = () => {
       // i = i + 32;
 
       d.setDate(i);
+      const dayDate = d.getDate(); // returns the day of the month
+      const dayISOString = d.toISOString().slice(0, 10); // returns date as yyyy-mm-dd
+      const displayDay = dayDate + dayOffset;
 
-      arr.push(d.getDate());
+      arr.push({
+        dayDate,
+        dayISOString,
+        displayDay,
+      });
     }
   };
 
@@ -111,11 +134,6 @@ const DatePicker = () => {
 
   const prevMonthHandler = () => {
     const d = new Date();
-    console.log(d.getMonth());
-    console.log(month.left);
-    console.log('break0');
-    const x = 1;
-    const y = 0;
 
     if (d.getMonth() < month.left) {
       const currentSetMonthLeft = month.left;
@@ -140,28 +158,42 @@ const DatePicker = () => {
   getDays(month.right, nextMonth);
 
   const leftContent = focusMonth.map((element) => (
-    <div className={classes.dayCard}>
-      <p>{element}</p>
+    <div
+      style={{ gridArea: `d${element.displayDay}` }}
+      className={classes.dayCard}
+      id={element.dayISOString}
+    >
+      <p>{element.dayDate}</p>
     </div>
   ));
 
   const rightContent = nextMonth.map((element) => (
-    <div className={classes.dayCard}>
-      <p>{element}</p>
+    <div
+      style={{ gridArea: `d${element.displayDay}` }}
+      className={classes.dayCard}
+      id={element.dayISOString}
+    >
+      <p>{element.dayDate}</p>
     </div>
+  ));
+
+  const dayContent = dayArray.map((element) => (
+    <h6 style={{ gridArea: element }}>{element}</h6>
   ));
   return (
     <section className={classes.datePicker}>
-      <div className={classes.leftCardContainer}>
+      <div className={classes.cardGrid}>
         <h3 className={classes.displayMonth}>
           {monthsArray[month.displayMonthLeft]}
         </h3>
+        {dayContent}
         {leftContent}
       </div>
-      <div className={classes.rightCardContainer}>
+      <div className={classes.cardGrid}>
         <h3 className={classes.displayMonth}>
           {monthsArray[month.displayMonthRight]}
         </h3>
+        {dayContent}
         {rightContent}
       </div>
       <button onClick={prevMonthHandler}>back</button>

@@ -1,8 +1,29 @@
+.cardGrid {
+  display: grid;
+  grid-template-areas:
+    'month month month month month month month'
+    'mo tu we th fr sa su'
+    'd1 d2 d3 d4 d5 d6 d7'
+    'd8 d9 d10 d11 d12 d13 d14'
+    'd15 d16 d17 d18 d19 d20 d21'
+    'd22 d23 d24 d25 d26 d27 d28'
+    'd29 d30 d31 d32 d33 d34 d35'
+    'd36 d37 d38 d39 d40 d41 d42';
+
+  /* grid-template-areas:
+    'hd hd hd hd   hd   hd   hd   hd   hd'
+    'sd sd sd main main main main main main'
+    'sd sd sd  ft  ft   ft   ft   ft   ft'; */
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  background-color: khaki;
+}
+
 .leftCardContainer,
 .rightCardContainer {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-rows: repeat(7, 1fr);
   background-color: black;
   gap: 1rem;
   padding: 1rem;
@@ -11,7 +32,7 @@
 }
 
 .displayMonth {
-  grid-column: 1 / span 7;
+  grid-area: month;
   color: hotpink;
   justify-self: center;
 }
