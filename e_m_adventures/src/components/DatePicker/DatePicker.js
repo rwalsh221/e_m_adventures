@@ -1,5 +1,3 @@
-import { current } from '@reduxjs/toolkit';
-import { element } from 'prop-types';
 import React, { useState } from 'react';
 import classes from './DatePicker.module.css';
 
@@ -10,6 +8,8 @@ const DatePicker = () => {
     displayMonthLeft: 1,
     displayMonthRight: 2,
   });
+
+  // TODO: error in date picker. month increases past 11. so never get febuary. need to add year to state and reset month to 0 for january and render new date.
 
   console.log(month.displayMonth);
 
@@ -38,9 +38,11 @@ const DatePicker = () => {
   const dayArray = ['mo', 'tu', 'we', 'th', 'fr', 'sa', 'su'];
 
   const getNumDays = (month) => {
+    console.log(` THE MONTH IS ${month} ************************`);
     let numDays;
     // let leapYear = true;
     if (month === 1) {
+      console.log('FEB ******************************************************');
       const d = new Date();
       const leapYear = checkLeapYear(d.getFullYear());
 
@@ -177,28 +179,49 @@ const DatePicker = () => {
     </div>
   ));
 
-  const dayContent = dayArray.map((element) => (
-    <h6 style={{ gridArea: element }}>{element}</h6>
+  const dayNameContent = dayArray.map((element) => (
+    <h6 className={classes.dayName} style={{ gridArea: element }}>
+      {element}
+    </h6>
   ));
   return (
-    <section className={classes.datePicker}>
-      <div className={classes.cardGrid}>
-        <h3 className={classes.displayMonth}>
-          {monthsArray[month.displayMonthLeft]}
-        </h3>
-        {dayContent}
-        {leftContent}
+    <div className={classes.testContainer}>
+      <div className={classes.datePicker}>
+        <div className={classes.cardGrid}>
+          <div className={classes.cardGridHeader}>
+            <button
+              type="button"
+              onClick={prevMonthHandler}
+              className={classes.changeMonthBtn}
+            >
+              <ion-icon name="caret-back-outline" />
+            </button>
+            <h3 className={classes.displayMonth}>
+              {monthsArray[month.displayMonthLeft]}
+            </h3>
+          </div>
+
+          {dayNameContent}
+          {leftContent}
+        </div>
+        <div className={classes.cardGrid}>
+          <div className={classes.cardGridHeader}>
+            <button
+              type="button"
+              className={classes.changeMonthBtn}
+              onClick={nextMonthHandler}
+            >
+              <ion-icon name="caret-forward-outline" />
+            </button>
+            <h3 className={classes.displayMonth}>
+              {monthsArray[month.displayMonthRight]}
+            </h3>
+          </div>
+          {dayNameContent}
+          {rightContent}
+        </div>
       </div>
-      <div className={classes.cardGrid}>
-        <h3 className={classes.displayMonth}>
-          {monthsArray[month.displayMonthRight]}
-        </h3>
-        {dayContent}
-        {rightContent}
-      </div>
-      <button onClick={prevMonthHandler}>back</button>
-      <button onClick={nextMonthHandler}>forward</button>
-    </section>
+    </div>
   );
 };
 
