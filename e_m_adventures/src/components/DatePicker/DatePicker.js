@@ -7,9 +7,11 @@ const DatePicker = () => {
     right: 2,
     displayMonthLeft: 1,
     displayMonthRight: 2,
+    displayYear: 2022,
   });
 
   // TODO: error in date picker. month increases past 11. so never get febuary. need to add year to state and reset month to 0 for january and render new date.
+  // TODO: might need seperate function for each side of date picker because date is rendering the same on both sides
 
   console.log(month.displayMonth);
 
@@ -70,7 +72,7 @@ const DatePicker = () => {
 
   // create seperate func for init setup. setstate for current mont and current month +1. then use getdays() for forward / back
 
-  const getDays = (month = undefined, arr) => {
+  const getDays = (month = undefined, arr, monthObject) => {
     const currentDay = todayDate.getDate();
     const numDays = getNumDays(month);
     const d = new Date();
@@ -91,6 +93,8 @@ const DatePicker = () => {
       // i = i + 32;
 
       d.setDate(i);
+      // d.setFullYear(monthObject.displayYear, monthObject.left, i);
+      console.log(monthObject.displayYear);
       const dayDate = d.getDate(); // returns the day of the month
       const dayISOString = d.toISOString().slice(0, 10); // returns date as yyyy-mm-dd
       const displayDay = dayDate + dayOffset;
@@ -125,13 +129,24 @@ const DatePicker = () => {
       displayMonthRight += 1;
     }
 
-    setMonth({
-      ...month,
-      displayMonthLeft,
-      displayMonthRight,
-      left: currentSetMonthLeft + 1,
-      right: currentSetMonthRight + 1,
-    });
+    if (currentSetMonthLeft >= 11) {
+      setMonth({
+        ...month,
+        displayMonthLeft,
+        displayMonthRight,
+        left: 0,
+        right: 1,
+        displayYear: month.displayYear + 1,
+      });
+    } else {
+      setMonth({
+        ...month,
+        displayMonthLeft,
+        displayMonthRight,
+        left: currentSetMonthLeft + 1,
+        right: currentSetMonthRight + 1,
+      });
+    }
   };
 
   const prevMonthHandler = () => {
@@ -156,8 +171,8 @@ const DatePicker = () => {
     // });
   };
 
-  getDays(month.left, focusMonth);
-  getDays(month.right, nextMonth);
+  getDays(month.left, focusMonth, month);
+  getDays(month.right, nextMonth, month);
 
   const leftContent = focusMonth.map((element) => (
     <div
@@ -206,6 +221,9 @@ const DatePicker = () => {
         </div>
         <div className={classes.cardGrid}>
           <div className={classes.cardGridHeader}>
+            <h3 className={classes.displayMonth}>
+              {monthsArray[month.displayMonthRight]}
+            </h3>
             <button
               type="button"
               className={classes.changeMonthBtn}
@@ -213,9 +231,6 @@ const DatePicker = () => {
             >
               <ion-icon name="caret-forward-outline" />
             </button>
-            <h3 className={classes.displayMonth}>
-              {monthsArray[month.displayMonthRight]}
-            </h3>
           </div>
           {dayNameContent}
           {rightContent}
