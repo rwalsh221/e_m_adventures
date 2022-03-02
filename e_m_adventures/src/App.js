@@ -20,6 +20,8 @@ import Accommodation from './layout/Accommodation/Accommodation';
 import AccommodationInformation from './layout/AccommodationInformation/AccommodationInformation';
 import DatePicker from './components/DatePicker/DatePicker';
 
+import NewHeaderSearch from './components/NewSearch/HeaderSearch';
+
 import { AuthProvider } from './contexts/AuthContext';
 import { AccommodationContextProvider } from './contexts/AccommodationContext';
 import PrivateRoute from './helpers/Routes/PrivateRoute';
@@ -35,7 +37,7 @@ function App() {
         <AuthProvider>
           <ScrollToTop />
           <Switch>
-            <Route path="/datepicker" component={DatePicker} />
+            <Route path="/datepicker" component={NewHeaderSearch} />
             <PrivateRoute
               path="/confirmation"
               component={BookingConfirmation}
