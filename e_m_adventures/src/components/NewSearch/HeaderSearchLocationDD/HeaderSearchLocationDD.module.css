@@ -1,0 +1,49 @@
+.headerSearchLocationDD {
+  /* background-color: lawngreen; */
+  width: 30%;
+  border-radius: 3rem;
+  border: 2px solid var(--main-color-gold);
+}
+
+.locationHeading {
+  /* background-color: blue; */
+  width: 80%;
+  margin: 1rem auto;
+  padding: 2rem 0;
+  border-bottom: 2px solid var(--main-color-gold);
+}
+
+.locationHeading p {
+  text-align: center;
+  font-weight: bold;
+  font-size: 2.5rem;
+  color: black;
+}
+
+.accommodationCardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.accommodationCard {
+  display: flex;
+  border: 2px solid var(--main-color-gold);
+  width: 50%;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.accommodationCard p {
+  color: black;
+  font-weight: bold;
+}
+
+.cardImgTest {
+  height: 5rem;
+  width: 5rem;
+  background-color: hotpink;
+  border-radius: 1rem;
+}

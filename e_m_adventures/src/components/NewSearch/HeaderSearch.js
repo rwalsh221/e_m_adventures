@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import classes from './HeaderSearch.module.css';
 
 import DatePicker from '../DatePicker/DatePicker';
+import HeaderSearchLocationDD from './HeaderSearchLocationDD/HeaderSearchLocationDD';
 
 const HeaderSearch = () => {
   const [showPicker, setShowPicker] = useState(true);
@@ -9,6 +10,10 @@ const HeaderSearch = () => {
   return (
     <div>
       <div className={classes.test}>{showPicker && <DatePicker />}</div>;
+      <div className={classes.test}>
+        {showPicker && <HeaderSearchLocationDD />}
+      </div>
+      ;
       <div className={classes.searchContainer}>
         <button
           className={`${classes.startBtn} ${classes.searchBtn}`}
