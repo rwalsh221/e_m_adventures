@@ -10,16 +10,13 @@ const HeaderSearch = () => {
     <div>
       <div className={classes.test}>{showPicker && <DatePicker />}</div>;
       <div className={classes.searchContainer}>
-        <div className={classes.test2}>
-          <button
-            className={`${classes.startBtn} ${classes.searchBtn}`}
-            type="button"
-          >
-            <h6>Start Your Adventure</h6>
-            <p>where are you going?</p>
-          </button>
-        </div>
-
+        <button
+          className={`${classes.startBtn} ${classes.searchBtn}`}
+          type="button"
+        >
+          <h6>Start Your Adventure</h6>
+          <p>where are you going?</p>
+        </button>
         <button
           className={`${classes.checkInBtn} ${classes.searchBtn}`}
           type="button"

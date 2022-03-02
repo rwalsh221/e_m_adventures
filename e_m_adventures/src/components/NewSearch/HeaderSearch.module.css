@@ -7,7 +7,7 @@
   background-color: var(--sec-color-grey-vlight);
   border-radius: 5rem;
   border: 3px solid var(--main-color-gold);
-
+  position: relative;
   overflow: hidden;
 }
 
@@ -35,13 +35,26 @@
 }
 
 .test2 {
-  /* overflow: hidden;
-  z-index: 1; */
+  overflow: hidden;
+  z-index: 1;
   /* position: fixed; */
+  background-color: hotpink;
+  width: 25%;
+  position: relative;
+  left: 0;
+}
+
+.test3 {
+  display: flex;
+  width: 80%;
+  z-index: 2;
+  position: relative;
+  background-color: indigo;
+  /* right: 80%; */
+  border-radius: 50vh;
 }
 
 .startBtn {
-  /* width: 20rem; */
 }
 
 .startBtn p {
@@ -121,6 +134,9 @@
 .submitBtn {
   background-color: var(--main-color-gold);
   justify-self: flex-end;
+  height: 7rem;
+  align-self: center;
+  margin-right: 1rem;
 }
 
 @media (max-width: 975px) {
