@@ -2,7 +2,15 @@ import React, { useState } from 'react';
 import classes from './DatePicker.module.css';
 
 const DatePicker = () => {
-  const [month, setMonth] = useState({
+  // const [month, setMonth] = useState({
+  //   left: 1,
+  //   right: 2,
+  //   displayMonthLeft: 1,
+  //   displayMonthRight: 2,
+  //   displayYear: 2022,
+  // });
+
+  const [monthState, setMonthState] = useState({
     left: 1,
     right: 2,
     displayMonthLeft: 1,
@@ -10,17 +18,18 @@ const DatePicker = () => {
     displayYear: 2022,
   });
 
+  // TODO: LOOK AT VARIIABLE NAMES> THERE MESSED UP
+  // TODO: Change month useState to MonthState
+  // TODO: MIGHT NEED LEFT RIGHT RENDER FUNCTIONS. BASE RIGHT SIDE ON LEFT SIDE AS LEFT SIDE SHOULD BE THE MAIN VS REIGHT SIDE SECONDARY
+
   // TODO: error in date picker. month increases past 11. so never get febuary. need to add year to state and reset month to 0 for january and render new date.
   // TODO: might need seperate function for each side of date picker because date is rendering the same on both sides
-
-  console.log(month.displayMonth);
-
-  const todayDate = new Date();
 
   const focusMonth = [];
   const nextMonth = [];
 
-  const checkLeapYear = (year) => new Date(year, 1, 29).getDate() === 29;
+  const checkLeapYear = () =>
+    new Date(monthState.displayYear, 1, 29).getDate() === 29;
 
   const monthsArray = [
     'january',
@@ -46,7 +55,7 @@ const DatePicker = () => {
     if (month === 1) {
       console.log('FEB ******************************************************');
       const d = new Date();
-      const leapYear = checkLeapYear(d.getFullYear());
+      const leapYear = checkLeapYear();
 
       numDays = leapYear ? 29 : 28;
     } else if (month === 3 || month === 5 || month === 8 || month === 10) {
@@ -73,19 +82,16 @@ const DatePicker = () => {
   // create seperate func for init setup. setstate for current mont and current month +1. then use getdays() for forward / back
 
   const getDays = (month = undefined, arr, monthObject) => {
-    const currentDay = todayDate.getDate();
     const numDays = getNumDays(month);
     const d = new Date();
     console.log(month);
     if (month !== undefined) {
-      d.setMonth(month);
+      d.setFullYear(monthState.displayYear, month);
     }
 
     const dayOffset = getDayOffset(d);
     console.log(dayOffset);
     // month ? d.setMonth(month) : d.setMonth(d.getMonth());
-
-    const x = new Date('July 21, 1983 01:15:00');
 
     // d.setMinutes(0);
     // d.setHours(0);
@@ -93,7 +99,11 @@ const DatePicker = () => {
       // i = i + 32;
 
       d.setDate(i);
+      // d.setMonth(month.displayMonthLeft);
+      // d.setFullYear(monthState.displayYear, monthState.displayMonthLeft, i);
       // d.setFullYear(monthObject.displayYear, monthObject.left, i);
+      console.log(monthState.displayYear);
+      console.log(d);
       console.log(monthObject.displayYear);
       const dayDate = d.getDate(); // returns the day of the month
       const dayISOString = d.toISOString().slice(0, 10); // returns date as yyyy-mm-dd
@@ -108,12 +118,12 @@ const DatePicker = () => {
   };
 
   const nextMonthHandler = () => {
-    const currentSetMonthLeft = month.left;
-    const currentSetMonthRight = month.right;
+    const currentSetMonthLeft = monthState.left;
+    const currentSetMonthRight = monthState.right;
 
-    const monthCopy = { ...month };
+    const monthStateCopy = { ...monthState };
 
-    let { displayMonthLeft, displayMonthRight } = monthCopy;
+    let { displayMonthLeft, displayMonthRight } = monthStateCopy;
 
     // console.log(`display month ${displayMonth}`);
 
@@ -130,17 +140,18 @@ const DatePicker = () => {
     }
 
     if (currentSetMonthLeft >= 11) {
-      setMonth({
-        ...month,
+      setMonthState({
+        ...monthState,
         displayMonthLeft,
         displayMonthRight,
         left: 0,
         right: 1,
-        displayYear: month.displayYear + 1,
+        displayYear: monthState.displayYear + 1,
       });
+      console.log('set monthe greater than 11', monthState.displayYear);
     } else {
-      setMonth({
-        ...month,
+      setMonthState({
+        ...monthState,
         displayMonthLeft,
         displayMonthRight,
         left: currentSetMonthLeft + 1,
@@ -152,11 +163,11 @@ const DatePicker = () => {
   const prevMonthHandler = () => {
     const d = new Date();
 
-    if (d.getMonth() < month.left) {
-      const currentSetMonthLeft = month.left;
-      const currentSetMonthRight = month.right;
+    if (d.getMonth() < monthState.left) {
+      const currentSetMonthLeft = monthState.left;
+      const currentSetMonthRight = monthState.right;
 
-      setMonth({
+      setMonthState({
         left: currentSetMonthLeft - 1,
         right: currentSetMonthRight - 1,
       });
@@ -171,8 +182,8 @@ const DatePicker = () => {
     // });
   };
 
-  getDays(month.left, focusMonth, month);
-  getDays(month.right, nextMonth, month);
+  getDays(monthState.left, focusMonth, monthState);
+  getDays(monthState.right, nextMonth, monthState);
 
   const leftContent = focusMonth.map((element) => (
     <div
@@ -212,7 +223,8 @@ const DatePicker = () => {
               <ion-icon name="caret-back-outline" />
             </button>
             <h3 className={classes.displayMonth}>
-              {monthsArray[month.displayMonthLeft]}
+              {monthsArray[monthState.displayMonthLeft]}{' '}
+              {monthState.displayYear}
             </h3>
           </div>
 
@@ -222,7 +234,8 @@ const DatePicker = () => {
         <div className={classes.cardGrid}>
           <div className={classes.cardGridHeader}>
             <h3 className={classes.displayMonth}>
-              {monthsArray[month.displayMonthRight]}
+              {monthsArray[monthState.displayMonthRight]}{' '}
+              {monthState.displayYear}
             </h3>
             <button
               type="button"
