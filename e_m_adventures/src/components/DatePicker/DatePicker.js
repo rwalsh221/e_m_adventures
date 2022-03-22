@@ -8,6 +8,8 @@ const DatePicker = () => {
     displayYear: new Date().getFullYear(),
   });
 
+  const [selectedDate, setSelectedDate] = useState([]);
+
   // ARRAY OF MONTHS
   const monthsArray = [
     'january',
@@ -166,10 +168,30 @@ const DatePicker = () => {
     });
   };
 
+  const getDateHandler = (event) => {
+    if (event.target.tagName === 'DIV') {
+      const selectedDateCopy = [...selectedDate];
+      selectedDateCopy.push(event.target.id);
+      setSelectedDate([...selectedDateCopy]);
+    }
+  };
+
+  const styleDateHandler = (dayISOString) => {
+    if (selectedDate.length === 0) {
+      return;
+    }
+
+    if (selectedDate.indexOf(dayISOString) !== -1) {
+      return true;
+    }
+  };
+
   const leftContent = getDaysLeft(datePickerState).map((element) => (
     <div
       style={{ gridArea: `d${element.dayGridPosition}` }}
-      className={classes.dayCard}
+      className={`${classes.dayCard} ${
+        styleDateHandler(element.dayISOString) ? classes.checkIn : ''
+      }`}
       id={element.dayISOString}
     >
       <p>{element.dayDate}</p>
@@ -179,8 +201,12 @@ const DatePicker = () => {
   const rightContent = getDaysRight(datePickerState).map((element) => (
     <div
       style={{ gridArea: `d${element.dayGridPosition}` }}
-      className={classes.dayCard}
+      className={`${classes.dayCard} ${
+        styleDateHandler(element.dayISOString) ? classes.checkIn : ''
+      }`}
       id={element.dayISOString}
+      onClick={(e) => getDateHandler(e)}
+      aria-hidden
     >
       <p>{element.dayDate}</p>
     </div>

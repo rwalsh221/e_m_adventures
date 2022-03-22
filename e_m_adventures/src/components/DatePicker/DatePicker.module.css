@@ -45,6 +45,7 @@
 .dayCard p {
   color: black;
   font-weight: bold;
+  pointer-events: none;
 }
 
 .datePicker {
@@ -91,4 +92,13 @@
   align-items: center;
   grid-area: month;
   margin-bottom: 2rem;
+}
+
+.checkIn {
+  background-color: black;
+  border: 2px solid var(--main-color-gold);
+}
+
+.checkIn p {
+  color: var(--main-color-gold);
 }
