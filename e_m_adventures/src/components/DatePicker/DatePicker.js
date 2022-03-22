@@ -3,8 +3,6 @@ import classes from './DatePicker.module.css';
 
 const DatePicker = () => {
   const [datePickerState, setdatePickerState] = useState({
-    // left: 1,
-    // right: 2,
     displayMonthLeft: new Date().getMonth(),
     displayMonthRight: new Date().getMonth() + 1,
     displayYear: new Date().getFullYear(),
@@ -16,9 +14,6 @@ const DatePicker = () => {
 
   // TODO: error in date picker. month increases past 11. so never get febuary. need to add year to state and reset month to 0 for january and render new date.
   // TODO: might need seperate function for each side of date picker because date is rendering the same on both sides
-
-  const focusMonth = [];
-  const nextMonth = [];
 
   // CHECKS IF YEAR IS LEAP YEAR
   const checkLeapYear = () =>
@@ -72,44 +67,6 @@ const DatePicker = () => {
     return day - 1; // minus 1 to get correct day js month starts at 1 not zero
   };
 
-  // create seperate func for init setup. setstate for current mont and current month +1. then use getdays() for forward / back
-
-  const getDays = (month = undefined, arr, monthObject) => {
-    const numDays = getNumDays(month);
-    const d = new Date();
-    console.log(month);
-    // if (month !== undefined) {
-    //   d.setFullYear(datePickerState.displayYear, month);
-    // }
-
-    const dayOffset = getDayOffsetCSSGrid(d);
-    console.log(dayOffset);
-    // month ? d.setMonth(month) : d.setMonth(d.getMonth());
-
-    // d.setMinutes(0);
-    // d.setHours(0);
-    for (let i = 1; i <= numDays; i += 1) {
-      // i = i + 32;
-
-      d.setDate(i);
-      // d.setMonth(month.displayMonthLeft);
-      // d.setFullYear(datePickerState.displayYear, datePickerState.displayMonthLeft, i);
-      // d.setFullYear(monthObject.displayYear, monthObject.left, i);
-      // console.log(datePickerState.displayYear);
-      // console.log(d);
-      // console.log(monthObject.displayYear);
-      const dayDate = d.getDate(); // returns the day of the month
-      const dayISOString = d.toISOString().slice(0, 10); // returns date as yyyy-mm-dd
-      const displayDay = dayDate + dayOffset;
-
-      arr.push({
-        dayDate,
-        dayISOString,
-        displayDay,
-      });
-    }
-  };
-
   const renderDays = (
     date,
     dayOffset,
@@ -119,8 +76,6 @@ const DatePicker = () => {
     const renderDaysArr = [];
 
     for (let i = 1; i <= numDays; i += 1) {
-      // i = i + 32;
-
       date.setDate(i);
 
       const dayDate = date.getDate(); // returns the day of the month
@@ -170,8 +125,6 @@ const DatePicker = () => {
 
     let { displayMonthLeft, displayMonthRight } = datePickerStateCopy;
 
-    // console.log(`display month ${displayMonth}`);
-
     if (displayMonthLeft >= 11) {
       displayMonthLeft = 0;
     } else {
@@ -184,9 +137,6 @@ const DatePicker = () => {
       displayMonthRight += 1;
     }
 
-    console.log('MONTH LEFT', displayMonthLeft);
-    console.log('MONTH Right', displayMonthRight);
-
     if (currentSetMonthLeft >= 11) {
       setdatePickerState({
         ...datePickerState,
@@ -196,7 +146,6 @@ const DatePicker = () => {
         right: 1,
         displayYear: datePickerState.displayYear + 1,
       });
-      console.log('set monthe greater than 11', datePickerState.displayYear);
     } else {
       setdatePickerState({
         ...datePickerState,
@@ -220,18 +169,7 @@ const DatePicker = () => {
         right: currentSetMonthRight - 1,
       });
     }
-
-    // const currentSetMonthLeft = month.left;
-    // const currentSetMonthRight = month.right;
-
-    // setMonth({
-    //   left: currentSetMonthLeft - 1,
-    //   right: currentSetMonthRight - 1,
-    // });
   };
-
-  getDays(datePickerState.displayMonthLeft, focusMonth, datePickerState);
-  getDays(datePickerState.displayMonthRight, nextMonth, datePickerState);
 
   const leftContent = getDaysLeft(datePickerState).map((element) => (
     <div
