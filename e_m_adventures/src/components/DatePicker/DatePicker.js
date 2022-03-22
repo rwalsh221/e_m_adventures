@@ -8,17 +8,6 @@ const DatePicker = () => {
     displayYear: new Date().getFullYear(),
   });
 
-  // TODO: LOOK AT VARIIABLE NAMES> THERE MESSED UP
-  // TODO: Change month useState to datePickerState
-  // TODO: MIGHT NEED LEFT RIGHT RENDER FUNCTIONS. BASE RIGHT SIDE ON LEFT SIDE AS LEFT SIDE SHOULD BE THE MAIN VS REIGHT SIDE SECONDARY
-
-  // TODO: error in date picker. month increases past 11. so never get febuary. need to add year to state and reset month to 0 for january and render new date.
-  // TODO: might need seperate function for each side of date picker because date is rendering the same on both sides
-
-  // CHECKS IF YEAR IS LEAP YEAR
-  const checkLeapYear = () =>
-    new Date(datePickerState.displayYear, 1, 29).getDate() === 29;
-
   // ARRAY OF MONTHS
   const monthsArray = [
     'january',
@@ -37,6 +26,10 @@ const DatePicker = () => {
 
   // ARRAY OF DAYS
   const dayArray = ['mo', 'tu', 'we', 'th', 'fr', 'sa', 'su'];
+
+  // CHECKS IF YEAR IS LEAP YEAR
+  const checkLeapYear = () =>
+    new Date(datePickerState.displayYear, 1, 29).getDate() === 29;
 
   // RETURNS THE NUMBER OF DAYS IN A MONTH AND CHECKS IF FEB IS LEAP YEAR
   const getNumDays = (month) => {
@@ -57,14 +50,14 @@ const DatePicker = () => {
   // FINDS THE START DAY OF THE MONTH FOR CSS GRID AREA
   const getDayOffsetCSSGrid = (date) => {
     let day;
-    date.setDate(1);
-    const getDay = date.getDay();
+    date.setDate(1); // set date parameter to first day of month
+    const getDay = date.getDay(); // returns 0 - 6. 0 is sunday so 0 needs to be changed to 7;
     if (getDay === 0) {
       day = 7;
     } else {
       day = getDay;
     }
-    return day - 1; // minus 1 to get correct day js month starts at 1 not zero
+    return day - 1; // minus 1 to get correct offset to add to date. i.e monday is 1. 1 - 1 = 0. + first day of month = postion 1
   };
 
   const renderDays = (
@@ -118,15 +111,11 @@ const DatePicker = () => {
   };
 
   const nextMonthHandler = () => {
-    const currentSetMonthLeft = datePickerState.displayMonthLeft;
-    const currentSetMonthRight = datePickerState.displayMonthRight;
-
-    const datePickerStateCopy = { ...datePickerState };
-
-    let { displayMonthLeft, displayMonthRight } = datePickerStateCopy;
+    let { displayMonthLeft, displayMonthRight, displayYear } = datePickerState;
 
     if (displayMonthLeft >= 11) {
       displayMonthLeft = 0;
+      displayYear += 1;
     } else {
       displayMonthLeft += 1;
     }
@@ -137,38 +126,44 @@ const DatePicker = () => {
       displayMonthRight += 1;
     }
 
-    if (currentSetMonthLeft >= 11) {
-      setdatePickerState({
-        ...datePickerState,
-        displayMonthLeft,
-        displayMonthRight,
-        left: 0,
-        right: 1,
-        displayYear: datePickerState.displayYear + 1,
-      });
-    } else {
-      setdatePickerState({
-        ...datePickerState,
-        displayMonthLeft,
-        displayMonthRight,
-        left: currentSetMonthLeft + 1,
-        right: currentSetMonthRight + 1,
-      });
-    }
+    setdatePickerState({
+      ...datePickerState,
+      displayMonthLeft,
+      displayMonthRight,
+      displayYear,
+    });
   };
 
   const prevMonthHandler = () => {
-    const d = new Date();
+    let { displayMonthLeft, displayMonthRight, displayYear } = datePickerState;
 
-    if (d.getMonth() < datePickerState.displayMonthLeft) {
-      const currentSetMonthLeft = datePickerState.displayMonthLeft;
-      const currentSetMonthRight = datePickerState.displayMonthRight;
+    const currentMonth = new Date().getMonth();
+    const currentYear = new Date().getFullYear();
 
-      setdatePickerState({
-        left: currentSetMonthLeft - 1,
-        right: currentSetMonthRight - 1,
-      });
+    // STOPS THE DATE PICKER GOING INTO THE PAST
+    if (currentMonth === displayMonthLeft && currentYear === displayYear) {
+      return;
     }
+
+    if (displayMonthLeft <= 0) {
+      displayMonthLeft = 11;
+      displayYear -= 1;
+    } else {
+      displayMonthLeft -= 1;
+    }
+
+    if (displayMonthRight <= 0) {
+      displayMonthRight = 11;
+    } else {
+      displayMonthRight -= 1;
+    }
+
+    setdatePickerState({
+      ...datePickerState,
+      displayMonthLeft,
+      displayMonthRight,
+      displayYear,
+    });
   };
 
   const leftContent = getDaysLeft(datePickerState).map((element) => (
