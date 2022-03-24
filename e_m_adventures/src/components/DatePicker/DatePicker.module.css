@@ -94,11 +94,20 @@
   margin-bottom: 2rem;
 }
 
-.checkIn {
+.checkInCheckOut {
   background-color: black;
   border: 2px solid var(--main-color-gold);
 }
 
-.checkIn p {
+.checkInCheckOut p {
   color: var(--main-color-gold);
+}
+
+.fullDay {
+  background-color: var(--main-color-gold);
+  border: 2px solid black;
+}
+
+.fullDay p {
+  color: black;
 }

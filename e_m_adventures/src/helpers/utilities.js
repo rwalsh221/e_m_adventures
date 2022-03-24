@@ -64,20 +64,22 @@ export const getDay = (unixTimeStamp) => {
   return day;
 };
 
+// CONVERTS DATE ISO STRING TO MILLISECONDS
 export const dateToMilliseconds = (date) => {
   const dateArr = date.split('-');
 
   return Date.UTC(dateArr[0], dateArr[1] - 1, dateArr[2]);
 };
 
+// TAKES CHECKIN AND CHECKOUT DAY IN MILLISECONDS AND RETURNS FULL DAYS INBETWEEN
 export const getFullDays = (checkIn, checkOut) => {
   const milliSeconds = 24 * 60 * 60 * 1000;
 
-  const bookedDaysArr = [];
+  const fullDaysArr = [];
 
   for (let i = checkIn; i < checkOut; i += milliSeconds) {
-    if (i !== checkIn) bookedDaysArr.push(i);
+    if (i !== checkIn) fullDaysArr.push(i);
   }
 
-  return bookedDaysArr;
+  return fullDaysArr;
 };

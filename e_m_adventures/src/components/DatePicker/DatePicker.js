@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import classes from './DatePicker.module.css';
 
+import { dateToMilliseconds, getFullDays } from '../../helpers/utilities';
+
 const DatePicker = () => {
   const [datePickerState, setdatePickerState] = useState({
     displayMonthLeft: new Date().getMonth(),
@@ -8,7 +10,12 @@ const DatePicker = () => {
     displayYear: new Date().getFullYear(),
   });
 
-  const [selectedDate, setSelectedDate] = useState([]);
+  const [selectedDate, setSelectedDate] = useState({
+    checkInCheckOut: 'checkIn',
+    checkIn: null,
+    checkOut: null,
+    fullDays: [],
+  });
 
   // ARRAY OF MONTHS
   const monthsArray = [
@@ -75,6 +82,7 @@ const DatePicker = () => {
 
       const dayDate = date.getDate(); // returns the day of the month
       const dayISOString = date.toISOString().slice(0, 10); // returns date as yyyy-mm-dd
+      const dayInMilliseconds = dateToMilliseconds(dayISOString);
       const dayGridPosition = dayDate + dayOffset;
 
       renderDaysArr.push({
@@ -82,6 +90,7 @@ const DatePicker = () => {
         dayISOString,
         dayGridPosition,
         displayYear,
+        dayInMilliseconds,
       });
     }
 
@@ -168,50 +177,83 @@ const DatePicker = () => {
     });
   };
 
-  const getDateHandler = (event) => {
+  const selectDateHandler = (event) => {
     if (event.target.tagName === 'DIV') {
-      const selectedDateCopy = [...selectedDate];
-      selectedDateCopy.push(event.target.id);
-      setSelectedDate([...selectedDateCopy]);
+      console.log(event.target.dataset.dayMilliseconds);
+      const selectedDateCopy = { ...selectedDate };
+
+      selectedDateCopy[selectedDate.checkInCheckOut] = event.target.id;
+
+      if (selectedDate.checkInCheckOut === 'checkIn') {
+        selectedDateCopy.checkInCheckOut = 'checkOut';
+        setSelectedDate({ ...selectedDateCopy });
+      } else {
+        selectedDateCopy.fullDays = getFullDays(
+          dateToMilliseconds(selectedDateCopy.checkIn),
+          dateToMilliseconds(selectedDateCopy.checkOut)
+        );
+        console.table(selectedDateCopy);
+        setSelectedDate({ ...selectedDateCopy });
+      }
     }
   };
 
-  const styleDateHandler = (dayISOString) => {
-    if (selectedDate.length === 0) {
-      return;
+  const styleSelectedDateHandler = (dayISOString, dayMillisecond) => {
+    if (selectedDate.checkIn === null) {
+      return classes.dayCard;
     }
 
-    if (selectedDate.indexOf(dayISOString) !== -1) {
-      return true;
+    if (
+      selectedDate.checkIn === dayISOString ||
+      selectedDate.checkOut === dayISOString
+    ) {
+      // const test = classes.checkIn
+      return `${classes.dayCard} ${classes.checkInCheckOut}`;
     }
+    if (selectedDate.fullDays.indexOf(dayMillisecond) !== -1) {
+      return `${classes.dayCard} ${classes.fullDay}`;
+    }
+
+    return classes.dayCard;
   };
 
+  // RENDERS CONTENT FOR LEFT SIDE OF DATEPICER
   const leftContent = getDaysLeft(datePickerState).map((element) => (
     <div
       style={{ gridArea: `d${element.dayGridPosition}` }}
-      className={`${classes.dayCard} ${
-        styleDateHandler(element.dayISOString) ? classes.checkIn : ''
-      }`}
+      className={styleSelectedDateHandler(
+        element.dayISOString,
+        element.dayInMilliseconds
+      )}
       id={element.dayISOString}
-    >
-      <p>{element.dayDate}</p>
-    </div>
-  ));
-
-  const rightContent = getDaysRight(datePickerState).map((element) => (
-    <div
-      style={{ gridArea: `d${element.dayGridPosition}` }}
-      className={`${classes.dayCard} ${
-        styleDateHandler(element.dayISOString) ? classes.checkIn : ''
-      }`}
-      id={element.dayISOString}
-      onClick={(e) => getDateHandler(e)}
+      data-day-milliseconds={element.dayInMilliseconds}
+      onClick={(e) => selectDateHandler(e)}
       aria-hidden
     >
       <p>{element.dayDate}</p>
     </div>
   ));
 
+  // const test = classes.checkIn;
+
+  // RENDERS CONTENT FOR RIGHT SIDE OF DATEPICKER
+  const rightContent = getDaysRight(datePickerState).map((element) => (
+    <div
+      style={{ gridArea: `d${element.dayGridPosition}` }}
+      className={styleSelectedDateHandler(
+        element.dayISOString,
+        element.dayInMilliseconds
+      )}
+      id={element.dayISOString}
+      onClick={(e) => selectDateHandler(e)}
+      aria-hidden
+      // {styleSelectedDateHandler()}
+    >
+      <p>{element.dayDate}</p>
+    </div>
+  ));
+
+  // RENDERS DAY NAMES AT TOP OF DATE PIKER
   const dayNameContent = dayArray.map((element) => (
     <h6 className={classes.dayName} style={{ gridArea: element }}>
       {element}
