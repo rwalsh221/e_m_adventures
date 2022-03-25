@@ -37,7 +37,6 @@ function App() {
         <AuthProvider>
           <ScrollToTop />
           <Switch>
-            <Route path="/datepicker" component={NewHeaderSearch} />
             <PrivateRoute
               path="/confirmation"
               component={BookingConfirmation}
@@ -72,6 +71,7 @@ function App() {
                 component={AccommodationInformation}
               />
               <Route path="/accommodation" exact component={Accommodation} />
+              <Route path="/datepicker" component={NewHeaderSearch} />
             </Switch>
           </AccommodationContextProvider>
         </AuthProvider>

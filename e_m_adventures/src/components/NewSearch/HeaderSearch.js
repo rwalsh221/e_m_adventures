@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import classes from './HeaderSearch.module.css';
 
 import DatePicker from './DatePicker/DatePicker';
-import HeaderSearchLocationDD from './HeaderSearchLocationDD/HeaderSearchLocationDD';
+import HeaderSearchAccommodation from './HeaderSearchAccommodation/HeaderSearchAccommodation';
 
 const HeaderSearch = () => {
   const [showMenu, setShowMenu] = useState({
@@ -17,6 +17,8 @@ const HeaderSearch = () => {
     checkOut: null,
     fullDays: [],
   });
+
+  const [selectedAccommodation, setSelectedAccommodation] = useState({});
 
   const showMenuHandler = (menu) => {
     const showMenuCopy = { ...showMenu };
@@ -96,7 +98,7 @@ const HeaderSearch = () => {
             setSelectedDateProps={setSelectedDate}
           />
         )}
-        {showMenu.accommodation && <HeaderSearchLocationDD />}
+        {showMenu.accommodation && <HeaderSearchAccommodation />}
       </div>
     </div>
   );

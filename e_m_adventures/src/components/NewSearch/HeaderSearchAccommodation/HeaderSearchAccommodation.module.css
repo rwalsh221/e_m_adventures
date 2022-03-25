@@ -1,5 +1,4 @@
-.headerSearchLocationDD {
-  /* background-color: lawngreen; */
+.headerSearchAccommodation {
   width: 30%;
   border-radius: 3rem;
   border: 2px solid var(--main-color-gold);
@@ -7,14 +6,13 @@
 }
 
 .locationHeading {
-  /* background-color: blue; */
   width: 80%;
   margin: 1rem auto;
   padding: 2rem 0;
   border-bottom: 2px solid var(--main-color-gold);
 }
 
-.locationHeading p {
+.locationHeading h6 {
   text-align: center;
   font-weight: bold;
   font-size: 2.5rem;
@@ -30,11 +28,12 @@
 .accommodationCard {
   display: flex;
   border: 2px solid var(--main-color-gold);
-  width: 50%;
-  margin: 0.5rem 0;
+  width: 60%;
+  margin: 1rem 0;
   padding: 0.5rem;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  text-transform: capitalize;
 }
 
 .accommodationCard p {
@@ -42,9 +41,8 @@
   font-weight: bold;
 }
 
-.cardImgTest {
-  height: 5rem;
-  width: 5rem;
-  background-color: hotpink;
+.cardImg {
+  height: 8rem;
+  width: 8rem;
   border-radius: 1rem;
 }
