@@ -1,12 +1,12 @@
 .headerSearchAccommodation {
-  width: 30%;
+  width: 40%;
   border-radius: 3rem;
   border: 2px solid var(--main-color-gold);
   margin: 2rem auto;
 }
 
 .locationHeading {
-  width: 80%;
+  width: 90%;
   margin: 1rem auto;
   padding: 2rem 0;
   border-bottom: 2px solid var(--main-color-gold);
@@ -28,7 +28,7 @@
 .accommodationCard {
   display: flex;
   border: 2px solid var(--main-color-gold);
-  width: 60%;
+  width: 70%;
   margin: 1rem 0;
   padding: 0.5rem;
   align-items: center;
