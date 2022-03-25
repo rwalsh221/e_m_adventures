@@ -1,14 +1,12 @@
 .headerSearch {
-  max-width: 40%;
+  max-width: 60%;
   min-width: max-content;
-  height: max-content;
+  height: 10rem;
   display: flex;
   justify-content: space-between;
   background-color: var(--sec-color-grey-vlight);
   border-radius: 5rem;
   border: 3px solid var(--main-color-gold);
-  /* position: relative; */
-  overflow: hidden;
   margin: 0 auto;
 }
 
@@ -17,141 +15,39 @@
   transition: all 0.5s;
   background-color: inherit;
   border-radius: 50vh;
-  height: 100%;
-  height: 8rem;
-  /* min-width: 1fr; */
-  flex-basis: 25%;
+  flex-basis: 15%;
   padding: 0;
-}
-
-.searchBtn:hover {
-  background-color: var(--sec-color-grey-light);
-}
-
-.searchBtn {
   color: black;
   font-size: 1.5rem;
   text-align: center;
   font-weight: bold;
 }
 
-.test2 {
-  overflow: hidden;
-  z-index: 1;
-  /* position: fixed; */
-  background-color: hotpink;
-  width: 25%;
-  position: relative;
-  left: 0;
-}
-
-.test3 {
-  display: flex;
-  width: 80%;
-  z-index: 2;
-  position: relative;
-  background-color: indigo;
-  /* right: 80%; */
-  border-radius: 50vh;
+.searchBtn:hover {
+  background-color: var(--sec-color-grey-light);
 }
 
 .startBtn {
   font-size: 1rem;
   font-weight: normal;
-}
-.searchForm {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.checkInBtn {
-  z-index: 2;
-}
-
-.submitBtn {
+  flex-basis: 30%;
+  flex-grow: 1;
 }
 
 .headerSearch button:not(:first-child):not(:last-child) {
   border-left: 2px solid var(--main-color-gold);
-  /* color: hotpink; */
-}
-
-/* .searchContainer button:not(:last-child) {
-  border-left: 2px solid hotpink;
-  color: hotpink;
-} */
-
-.start {
-  font-size: 3rem;
-}
-
-.start,
-.date,
-.guests {
-  padding: 2rem;
-  position: relative;
-}
-
-.start::after,
-.date::after,
-.guests::after {
-  content: '';
-  height: 5rem;
-  position: absolute;
-  border-right: 2px solid var(--sec-color-grey-light);
-}
-
-.start::after {
-  left: 100%;
-  top: 18%;
-}
-
-.date::after,
-.guests::after {
-  left: 100%;
-  top: 32%;
-}
-
-.date,
-.guests {
-  display: flex;
-  flex-direction: column;
-}
-
-.date input,
-.guests select {
-  height: 5rem;
-}
-
-.searchLabel {
-  font-size: 2rem;
-  color: var(--main-color-black);
 }
 
 .submitBtn {
   background-color: var(--main-color-gold);
   justify-self: flex-end;
-  height: 7rem;
+  height: 80%;
   align-self: center;
   margin-right: 1rem;
 }
 
 @media (max-width: 975px) {
-  .searchContainer {
-    margin: 2rem 0;
-  }
-
-  .searchForm input,
-  .searchForm select,
-  .searchForm label {
-    width: 100%;
-    font-size: 1.5rem;
-  }
 }
 
 @media (max-width: 600px) {
-  .searchContainer {
-    display: none;
-  }
 }
