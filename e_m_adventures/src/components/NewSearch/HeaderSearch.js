@@ -18,7 +18,10 @@ const HeaderSearch = () => {
     fullDays: [],
   });
 
-  const [selectedAccommodation, setSelectedAccommodation] = useState({});
+  const [selectedAccommodation, setSelectedAccommodation] = useState({
+    accommodationId: null,
+    accommodationName: null,
+  });
 
   const showMenuHandler = (menu) => {
     const showMenuCopy = { ...showMenu };
@@ -40,6 +43,16 @@ const HeaderSearch = () => {
     }
   };
 
+  const startBtnContent = selectedAccommodation.accommodationName ? (
+    selectedAccommodation.accommodationName
+  ) : (
+    <>
+      <span className={classes.startBtn__heading}>Start Your Adventure</span>
+      <br />
+      where are you going?
+    </>
+  );
+
   return (
     <div className={classes.headerSearchContainer}>
       <div className={classes.headerSearch}>
@@ -50,8 +63,7 @@ const HeaderSearch = () => {
             showMenuHandler('accommodation');
           }}
         >
-          <h6>Start Your Adventure</h6>
-          where are you going?
+          {startBtnContent}
         </button>
         <button
           className={`${classes.checkInBtn} ${classes.searchBtn}`}
@@ -98,7 +110,12 @@ const HeaderSearch = () => {
             setSelectedDateProps={setSelectedDate}
           />
         )}
-        {showMenu.accommodation && <HeaderSearchAccommodation />}
+        {showMenu.accommodation && (
+          <HeaderSearchAccommodation
+            selectedAccommodationProps={selectedAccommodation}
+            setSelectedAccommodationProps={setSelectedAccommodation}
+          />
+        )}
       </div>
     </div>
   );

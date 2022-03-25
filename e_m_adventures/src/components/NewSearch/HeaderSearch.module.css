@@ -1,5 +1,10 @@
+.headerSearchContainer {
+  max-width: 80vw;
+  height: max-content;
+  margin: 0 auto;
+}
 .headerSearch {
-  max-width: 60%;
+  max-width: 80%;
   min-width: max-content;
   height: 10rem;
   display: flex;
@@ -28,10 +33,14 @@
 }
 
 .startBtn {
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: normal;
   flex-basis: 30%;
   flex-grow: 1;
+}
+
+.startBtn__heading {
+  font-size: 2rem;
 }
 
 .headerSearch button:not(:first-child):not(:last-child) {

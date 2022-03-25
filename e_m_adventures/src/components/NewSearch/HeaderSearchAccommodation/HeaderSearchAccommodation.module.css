@@ -41,6 +41,10 @@
   font-weight: bold;
 }
 
+.accommodationCard > * {
+  pointer-events: none;
+}
+
 .cardImg {
   height: 8rem;
   width: 8rem;

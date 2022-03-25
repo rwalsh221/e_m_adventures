@@ -1,14 +1,16 @@
 .datePickerContainer {
-  width: max-content;
-  margin: 0 auto;
+  max-width: 70%;
+  margin: 2rem auto 0 auto;
+  padding: 0.5rem;
+  border: 2px solid var(--main-color-gold);
+  border-radius: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .datePicker {
-  width: 100%;
   padding: 2rem;
-  border: 2px solid var(--main-color-gold);
-  border-radius: 3rem;
-  margin-top: 2rem;
   display: grid;
   grid-template-columns: repeat(2, max-content);
   gap: 2rem;
