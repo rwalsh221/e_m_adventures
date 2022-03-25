@@ -1,44 +1,84 @@
 import React, { useState } from 'react';
 import classes from './HeaderSearch.module.css';
 
-import DatePicker from '../DatePicker/DatePicker';
+import DatePicker from './DatePicker/DatePicker';
 import HeaderSearchLocationDD from './HeaderSearchLocationDD/HeaderSearchLocationDD';
 
 const HeaderSearch = () => {
-  const [showPicker, setShowPicker] = useState(true);
+  const [showMenu, setShowMenu] = useState({
+    datePicker: false,
+    accommodation: false,
+    guests: false,
+  });
+
+  const [selectedDate, setSelectedDate] = useState({
+    checkInCheckOut: 'checkIn',
+    checkIn: null,
+    checkOut: null,
+    fullDays: [],
+  });
+
+  const showMenuHandler = (menu) => {
+    const showMenuCopy = { ...showMenu };
+
+    Object.keys(showMenuCopy).forEach((element) => {
+      if (element === menu) {
+        showMenuCopy[element] = true;
+      } else {
+        showMenuCopy[element] = false;
+      }
+    });
+
+    setShowMenu({ ...showMenuCopy });
+  };
+
+  const setCheckInCheckoutHandler = (input) => {
+    if (showMenu.datePicker) {
+      setSelectedDate({ ...selectedDate, checkInCheckOut: input });
+    }
+  };
 
   return (
-    <div>
-      <div className={classes.test}>{showPicker && <DatePicker />}</div>;
-      <div className={classes.test}>
-        {showPicker && <HeaderSearchLocationDD />}
-      </div>
-      ;
-      <div className={classes.searchContainer}>
+    <div className={classes.headerSearchContainer}>
+      <div className={classes.headerSearch}>
         <button
           className={`${classes.startBtn} ${classes.searchBtn}`}
           type="button"
+          onClick={() => {
+            showMenuHandler('accommodation');
+          }}
         >
           <h6>Start Your Adventure</h6>
-          <p>where are you going?</p>
+          where are you going?
         </button>
         <button
           className={`${classes.checkInBtn} ${classes.searchBtn}`}
           type="button"
+          onClick={() => {
+            showMenuHandler('datePicker');
+            setCheckInCheckoutHandler('checkIn');
+          }}
         >
-          <p>Check-in</p>
+          Check-in
         </button>
         <button
           className={`${classes.checkOutBtn} ${classes.searchBtn}`}
           type="button"
+          onClick={() => {
+            showMenuHandler('datePicker');
+            setCheckInCheckoutHandler('checkOut');
+          }}
         >
-          <p>Check-out</p>
+          Check-out
         </button>
         <button
           className={`${classes.guestBtn} ${classes.searchBtn}`}
           type="button"
+          onClick={() => {
+            showMenuHandler('guests');
+          }}
         >
-          <p>Guests</p>
+          Guests
         </button>
 
         <button
@@ -46,10 +86,18 @@ const HeaderSearch = () => {
           className={`${classes.submitBtn} ${classes.searchBtn}`}
           onClick={() => {}}
         >
-          <p>SUBMIT</p>
+          SUBMIT
         </button>
       </div>
-      {/* {error && <ErrorComponent messageProps={error} />} */}
+      <div className={classes.menuContainer}>
+        {showMenu.datePicker && (
+          <DatePicker
+            selectedDateProps={selectedDate}
+            setSelectedDateProps={setSelectedDate}
+          />
+        )}
+        {showMenu.accommodation && <HeaderSearchLocationDD />}
+      </div>
     </div>
   );
 };

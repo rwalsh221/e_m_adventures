@@ -18,7 +18,7 @@ import ModifyBooking from './layout/ModifyBooking/ModifyBooking';
 import Timeout from './layout/Timeout/Timeout';
 import Accommodation from './layout/Accommodation/Accommodation';
 import AccommodationInformation from './layout/AccommodationInformation/AccommodationInformation';
-import DatePicker from './components/DatePicker/DatePicker';
+// import DatePicker from './components/DatePicker/DatePicker';
 
 import NewHeaderSearch from './components/NewSearch/HeaderSearch';
 

@@ -1,4 +1,4 @@
-.searchContainer {
+.headerSearch {
   max-width: 40%;
   min-width: max-content;
   height: max-content;
@@ -7,8 +7,9 @@
   background-color: var(--sec-color-grey-vlight);
   border-radius: 5rem;
   border: 3px solid var(--main-color-gold);
-  position: relative;
+  /* position: relative; */
   overflow: hidden;
+  margin: 0 auto;
 }
 
 .searchBtn {
@@ -27,7 +28,7 @@
   background-color: var(--sec-color-grey-light);
 }
 
-.searchBtn p {
+.searchBtn {
   color: black;
   font-size: 1.5rem;
   text-align: center;
@@ -55,9 +56,6 @@
 }
 
 .startBtn {
-}
-
-.startBtn p {
   font-size: 1rem;
   font-weight: normal;
 }
@@ -74,7 +72,7 @@
 .submitBtn {
 }
 
-.searchContainer button:not(:first-child):not(:last-child) {
+.headerSearch button:not(:first-child):not(:last-child) {
   border-left: 2px solid var(--main-color-gold);
   /* color: hotpink; */
 }

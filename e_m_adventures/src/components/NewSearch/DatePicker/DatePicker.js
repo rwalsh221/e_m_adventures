@@ -1,20 +1,13 @@
 import React, { useState } from 'react';
 import classes from './DatePicker.module.css';
 
-import { dateToMilliseconds, getFullDays } from '../../helpers/utilities';
+import { dateToMilliseconds, getFullDays } from '../../../helpers/utilities';
 
-const DatePicker = () => {
+const DatePicker = ({ selectedDateProps, setSelectedDateProps }) => {
   const [datePickerState, setdatePickerState] = useState({
     displayMonthLeft: new Date().getMonth(),
     displayMonthRight: new Date().getMonth() + 1,
     displayYear: new Date().getFullYear(),
-  });
-
-  const [selectedDate, setSelectedDate] = useState({
-    checkInCheckOut: 'checkIn',
-    checkIn: null,
-    checkOut: null,
-    fullDays: [],
   });
 
   // ARRAY OF MONTHS
@@ -179,38 +172,37 @@ const DatePicker = () => {
 
   const selectDateHandler = (event) => {
     if (event.target.tagName === 'DIV') {
-      console.log(event.target.dataset.dayMilliseconds);
-      const selectedDateCopy = { ...selectedDate };
+      const selectedDateCopy = { ...selectedDateProps };
 
-      selectedDateCopy[selectedDate.checkInCheckOut] = event.target.id;
+      selectedDateCopy[selectedDateProps.checkInCheckOut] = event.target.id;
 
-      if (selectedDate.checkInCheckOut === 'checkIn') {
+      if (selectedDateProps.checkInCheckOut === 'checkIn') {
         selectedDateCopy.checkInCheckOut = 'checkOut';
-        setSelectedDate({ ...selectedDateCopy });
+        setSelectedDateProps({ ...selectedDateCopy });
       } else {
         selectedDateCopy.fullDays = getFullDays(
           dateToMilliseconds(selectedDateCopy.checkIn),
           dateToMilliseconds(selectedDateCopy.checkOut)
         );
-        console.table(selectedDateCopy);
-        setSelectedDate({ ...selectedDateCopy });
+
+        setSelectedDateProps({ ...selectedDateCopy });
       }
     }
   };
 
   const styleSelectedDateHandler = (dayISOString, dayMillisecond) => {
-    if (selectedDate.checkIn === null) {
+    if (selectedDateProps.checkIn === null) {
       return classes.dayCard;
     }
 
     if (
-      selectedDate.checkIn === dayISOString ||
-      selectedDate.checkOut === dayISOString
+      selectedDateProps.checkIn === dayISOString ||
+      selectedDateProps.checkOut === dayISOString
     ) {
       // const test = classes.checkIn
       return `${classes.dayCard} ${classes.checkInCheckOut}`;
     }
-    if (selectedDate.fullDays.indexOf(dayMillisecond) !== -1) {
+    if (selectedDateProps.fullDays.indexOf(dayMillisecond) !== -1) {
       return `${classes.dayCard} ${classes.fullDay}`;
     }
 
@@ -260,7 +252,7 @@ const DatePicker = () => {
     </h6>
   ));
   return (
-    <div className={classes.testContainer}>
+    <div className={classes.datePickerContainer}>
       <div className={classes.datePicker}>
         <div className={classes.cardGrid}>
           <div className={classes.cardGridHeader}>

@@ -1,3 +1,19 @@
+.datePickerContainer {
+  width: max-content;
+  margin: 0 auto;
+}
+
+.datePicker {
+  width: 100%;
+  padding: 2rem;
+  border: 2px solid var(--main-color-gold);
+  border-radius: 3rem;
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: 2rem;
+}
+
 .cardGrid {
   display: grid;
   grid-template-areas:
@@ -48,21 +64,6 @@
   pointer-events: none;
 }
 
-.datePicker {
-  width: 100%;
-  padding: 2rem;
-  border: 2px solid var(--main-color-gold);
-  border-radius: 3rem;
-  margin-top: 2rem;
-  display: grid;
-  grid-template-columns: repeat(2, max-content);
-  gap: 2rem;
-}
-
-.testContainer {
-  width: max-content;
-  margin: 0 auto;
-}
 .dayName {
   font-size: 1.5rem;
   text-align: center;
