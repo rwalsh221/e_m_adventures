@@ -34,6 +34,11 @@
   align-items: center;
   justify-content: space-evenly;
   text-transform: capitalize;
+  cursor: pointer;
+}
+
+.accommodationCard:hover {
+  background-color: var(--sec-color-grey-vlight);
 }
 
 .accommodationCard p {

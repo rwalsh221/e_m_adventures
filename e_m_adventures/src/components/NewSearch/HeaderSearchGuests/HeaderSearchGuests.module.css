@@ -38,6 +38,7 @@
   border-radius: 50%;
   /* background-color: var(--sec-color-grey-light); */
   border: 2px solid var(--sec-color-grey-light);
+  cursor: pointer;
 }
 
 .btnCounter:hover,

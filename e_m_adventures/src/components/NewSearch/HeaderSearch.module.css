@@ -26,9 +26,11 @@
   font-size: 1.5rem;
   text-align: center;
   font-weight: bold;
+  cursor: pointer;
 }
 
-.searchBtn:hover {
+.searchBtn:hover,
+.searchBtn:focus {
   background-color: var(--sec-color-grey-light);
 }
 
