@@ -43,6 +43,7 @@
 
 .startBtn__heading {
   font-size: 2rem;
+  text-transform: capitalize;
 }
 
 .headerSearch button:not(:first-child):not(:last-child) {

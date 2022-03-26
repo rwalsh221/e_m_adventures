@@ -58,7 +58,9 @@ const HeaderSearch = () => {
   };
 
   const startBtnContent = selectedAccommodation.accommodationName ? (
-    selectedAccommodation.accommodationName
+    <span className={classes.startBtn__heading}>
+      {selectedAccommodation.accommodationName}
+    </span>
   ) : (
     <>
       <span className={classes.startBtn__heading}>Start Your Adventure</span>
