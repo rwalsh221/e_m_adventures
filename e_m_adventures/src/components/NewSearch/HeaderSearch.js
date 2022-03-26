@@ -3,6 +3,7 @@ import classes from './HeaderSearch.module.css';
 
 import DatePicker from './DatePicker/DatePicker';
 import HeaderSearchAccommodation from './HeaderSearchAccommodation/HeaderSearchAccommodation';
+import HeaderSearchGuests from './HeaderSearchGuests/HeaderSearchGuests';
 
 const HeaderSearch = () => {
   const [showMenu, setShowMenu] = useState({
@@ -21,6 +22,13 @@ const HeaderSearch = () => {
   const [selectedAccommodation, setSelectedAccommodation] = useState({
     accommodationId: null,
     accommodationName: null,
+  });
+
+  const [selectedGuests, setSelectedGuests] = useState({
+    adults: 0,
+    children: 0,
+    infants: 0,
+    pets: 0,
   });
 
   const showMenuHandler = (menu) => {
@@ -98,7 +106,9 @@ const HeaderSearch = () => {
         <button
           type="button"
           className={`${classes.submitBtn} ${classes.searchBtn}`}
-          onClick={() => {}}
+          onClick={() => {
+            showMenuHandler('guests');
+          }}
         >
           SUBMIT
         </button>
@@ -114,6 +124,12 @@ const HeaderSearch = () => {
           <HeaderSearchAccommodation
             selectedAccommodationProps={selectedAccommodation}
             setSelectedAccommodationProps={setSelectedAccommodation}
+          />
+        )}
+        {showMenu.guests && (
+          <HeaderSearchGuests
+            selectedGuestsProps={selectedGuests}
+            setSelectedGuestsProps={setSelectedGuests}
           />
         )}
       </div>
