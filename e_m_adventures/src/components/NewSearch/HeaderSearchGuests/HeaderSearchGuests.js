@@ -27,7 +27,7 @@ const HeaderSearchGuests = ({
   return (
     <div className={classes.headerSearchGuests}>
       <div className={classes.guestCard}>
-        <div>
+        <div className={classes.guestType}>
           <p data-boldfont>Adults</p>
           <p data-lightfont>Ages 13 or above</p>
         </div>
@@ -40,7 +40,7 @@ const HeaderSearchGuests = ({
               subtractGuestsHandler('adults');
             }}
           >
-            -
+            &ndash;
           </button>
           <p>{selectedGuestsProps.adults}</p>
           <button
@@ -55,7 +55,7 @@ const HeaderSearchGuests = ({
         </div>
       </div>
       <div className={classes.guestCard}>
-        <div>
+        <div className={classes.guestType}>
           <p data-boldfont>Children</p>
           <p data-lightfont>2 - 12</p>
         </div>
@@ -68,7 +68,7 @@ const HeaderSearchGuests = ({
               subtractGuestsHandler('children');
             }}
           >
-            -
+            &ndash;
           </button>
           <p>{selectedGuestsProps.children}</p>
           <button
@@ -83,7 +83,7 @@ const HeaderSearchGuests = ({
         </div>
       </div>
       <div className={classes.guestCard}>
-        <div>
+        <div className={classes.guestType}>
           <p data-boldfont>Infants</p>
           <p data-lightfont>Under 2</p>
         </div>
@@ -96,7 +96,7 @@ const HeaderSearchGuests = ({
               subtractGuestsHandler('infants');
             }}
           >
-            -
+            &ndash;
           </button>
           <p>{selectedGuestsProps.infants}</p>
           <button
@@ -111,11 +111,8 @@ const HeaderSearchGuests = ({
         </div>
       </div>
       <div className={classes.guestCard}>
-        <div>
+        <div className={classes.guestType}>
           <p data-boldfont>Pets</p>
-          <p data-boldfont data-underlinefont>
-            Bringing a service animal
-          </p>
         </div>
         <div className={classes.counterContainer}>
           <button
@@ -126,7 +123,7 @@ const HeaderSearchGuests = ({
               subtractGuestsHandler('pets');
             }}
           >
-            -
+            &ndash;
           </button>
           <p>{selectedGuestsProps.pets}</p>
           <button
