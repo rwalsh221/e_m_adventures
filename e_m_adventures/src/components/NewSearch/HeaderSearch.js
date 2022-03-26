@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import classes from './HeaderSearch.module.css';
 
 import DatePicker from './DatePicker/DatePicker';
@@ -6,6 +6,10 @@ import HeaderSearchAccommodation from './HeaderSearchAccommodation/HeaderSearchA
 import HeaderSearchGuests from './HeaderSearchGuests/HeaderSearchGuests';
 
 const HeaderSearch = () => {
+  // TODO: PROP VALIDATION
+  // TODO: CHECK KEYS ON CHILDREN
+  // TODO: CONNECT TO BOOKING SYSTEM
+
   const [showMenu, setShowMenu] = useState({
     datePicker: false,
     accommodation: false,
@@ -30,6 +34,8 @@ const HeaderSearch = () => {
     infants: 0,
     pets: 0,
   });
+
+  const checkInBtnRef = useRef();
 
   const showMenuHandler = (menu) => {
     const showMenuCopy = { ...showMenu };
@@ -80,6 +86,7 @@ const HeaderSearch = () => {
             showMenuHandler('datePicker');
             setCheckInCheckoutHandler('checkIn');
           }}
+          ref={checkInBtnRef}
         >
           Check-in
         </button>
@@ -124,6 +131,8 @@ const HeaderSearch = () => {
           <HeaderSearchAccommodation
             selectedAccommodationProps={selectedAccommodation}
             setSelectedAccommodationProps={setSelectedAccommodation}
+            showMenuHandlerProps={showMenuHandler}
+            checkInBtnRefProps={checkInBtnRef}
           />
         )}
         {showMenu.guests && (

@@ -7,12 +7,14 @@ import Spinner from '../../miniComponents/Spinner/Spinner';
 const HeaderSearchAccommodation = ({
   selectedAccommodationProps,
   setSelectedAccommodationProps,
+  showMenuHandlerProps,
+  checkInBtnRefProps,
 }) => {
   const { getAccommodation } = useAccommodationContext();
 
   const selectAccommodationHandler = (event) => {
     const selectedAccommodationCopy = { ...selectedAccommodationProps };
-    console.log(event.target.dataset);
+
     selectedAccommodationCopy.accommodationId =
       event.target.dataset.accommodationId;
     selectedAccommodationCopy.accommodationName =
@@ -33,6 +35,8 @@ const HeaderSearchAccommodation = ({
         data-accommodation-name={element.accommodationName}
         onClick={(e) => {
           selectAccommodationHandler(e);
+          showMenuHandlerProps('datePicker');
+          checkInBtnRefProps.current.focus();
         }}
         aria-hidden
       >
