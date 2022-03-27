@@ -30,6 +30,7 @@ const HeaderSearchAccommodation = ({
   ) : (
     getAccommodation.data.map((element) => (
       <div
+        key={element.accommodationId}
         className={classes.accommodationCard}
         data-acommodation-id={element.accommodationId}
         data-accommodation-name={element.accommodationName}

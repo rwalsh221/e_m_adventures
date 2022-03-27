@@ -212,6 +212,7 @@ const DatePicker = ({ selectedDateProps, setSelectedDateProps }) => {
   // RENDERS CONTENT FOR LEFT SIDE OF DATEPICER
   const leftContent = getDaysLeft(datePickerState).map((element) => (
     <div
+      key={element.dayInMilliseconds}
       style={{ gridArea: `d${element.dayGridPosition}` }}
       className={styleSelectedDateHandler(
         element.dayISOString,
@@ -231,6 +232,7 @@ const DatePicker = ({ selectedDateProps, setSelectedDateProps }) => {
   // RENDERS CONTENT FOR RIGHT SIDE OF DATEPICKER
   const rightContent = getDaysRight(datePickerState).map((element) => (
     <div
+      key={element.dayInMilliseconds}
       style={{ gridArea: `d${element.dayGridPosition}` }}
       className={styleSelectedDateHandler(
         element.dayISOString,
@@ -247,7 +249,7 @@ const DatePicker = ({ selectedDateProps, setSelectedDateProps }) => {
 
   // RENDERS DAY NAMES AT TOP OF DATE PIKER
   const dayNameContent = dayArray.map((element) => (
-    <h6 className={classes.dayName} style={{ gridArea: element }}>
+    <h6 key={element} className={classes.dayName} style={{ gridArea: element }}>
       {element}
     </h6>
   ));
