@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import classes from './DatePicker.module.css';
 
 import { dateToMilliseconds, getFullDays } from '../../../helpers/utilities';
@@ -299,3 +300,8 @@ const DatePicker = ({ selectedDateProps, setSelectedDateProps }) => {
 };
 
 export default DatePicker;
+
+DatePicker.propTypes = {
+  selectedDateProps: PropTypes.objectOf(PropTypes.any).isRequired,
+  setSelectedDateProps: PropTypes.func.isRequired,
+};

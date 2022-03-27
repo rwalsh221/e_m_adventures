@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classes from './HeaderSearchGuests.module.css';
 
 const HeaderSearchGuests = ({
@@ -142,3 +143,8 @@ const HeaderSearchGuests = ({
 };
 
 export default HeaderSearchGuests;
+
+HeaderSearchGuests.propTypes = {
+  selectedGuestsProps: PropTypes.objectOf(PropTypes.any).isRequired,
+  setSelectedGuestsProps: PropTypes.func.isRequired,
+};

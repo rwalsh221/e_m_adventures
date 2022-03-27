@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classes from './HeaderSearchAccommodation.module.css';
 import { useAccommodationContext } from '../../../contexts/AccommodationContext';
 
@@ -64,3 +65,12 @@ const HeaderSearchAccommodation = ({
 };
 
 export default HeaderSearchAccommodation;
+
+HeaderSearchAccommodation.propTypes = {
+  selectedAccommodationProps: PropTypes.objectOf(PropTypes.any).isRequired,
+  setSelectedAccommodationProps: PropTypes.func.isRequired,
+  showMenuHandlerProps: PropTypes.func.isRequired,
+  checkInBtnRefProps: PropTypes.shape({
+    current: PropTypes.instanceOf(Element),
+  }).isRequired,
+};
