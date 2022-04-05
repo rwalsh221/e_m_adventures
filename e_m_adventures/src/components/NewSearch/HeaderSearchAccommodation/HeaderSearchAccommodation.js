@@ -33,7 +33,7 @@ const HeaderSearchAccommodation = ({
       <div
         key={element.accommodationId}
         className={classes.accommodationCard}
-        data-acommodation-id={element.accommodationId}
+        data-accommodation-id={element.accommodationId}
         data-accommodation-name={element.accommodationName}
         onClick={(e) => {
           selectAccommodationHandler(e);

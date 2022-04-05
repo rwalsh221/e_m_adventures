@@ -9,6 +9,7 @@ import HeaderSearchGuests from './HeaderSearchGuests/HeaderSearchGuests';
 
 import { validateDate } from '../../helpers/validation';
 import { dateToMilliseconds } from '../../helpers/utilities';
+import { HeaderSearchBtnDelete } from '../miniComponents/Buttons/HeaderSearchBtn/HeaderSearchBtn';
 // import ErrorComponent from '../../miniComponents/ErrorComponent/ErrorComponent';
 
 import holdCurrentBooking from '../../helpers/booking/holdCurrentBooking';
@@ -19,6 +20,9 @@ import * as actionTypes from '../Header/HeaderSearch/HeaderSearchSlice';
 const mapDispatch = { ...actionTypes };
 
 const HeaderSearch = () => {
+  // TODO: ADD CLOSE AND DELETE TO SEARCH MENU
+  // TODO: ADD ACOMM ID TO BOOKING SYSTEM
+
   const [showMenu, setShowMenu] = useState({
     datePicker: false,
     accommodation: false,
@@ -44,15 +48,16 @@ const HeaderSearch = () => {
     pets: 0,
   });
 
-  console.log(selectedDate);
+  const initSelectedDate = useRef(selectedDate);
+  const initSelectedAccommodation = useRef(selectedAccommodation);
+  const initSelectedGuests = useRef(selectedGuests);
+
   // TODO: REFACTOR CANCEL AND MODIFY WITH BOOKING HELPERS
 
   const dispatch = useDispatch();
 
-  const [error, setError] = useState();
+  // const [error, setError] = useState();
 
-  const checkIn = useRef();
-  const checkOut = useRef();
   const history = useHistory();
 
   // let formIsValid = false;
@@ -124,7 +129,7 @@ const HeaderSearch = () => {
     <>
       <span className={classes.startBtn__heading}>Start Your Adventure</span>
       <br />
-      where are you going?
+      <span>where are you going?</span>
     </>
   );
 
@@ -143,19 +148,38 @@ const HeaderSearch = () => {
     return validForm;
   };
 
+  const deleteSearchHandler = (initObject, state, key) => {
+    state({ ...initObject.current });
+    showMenuHandler(key);
+  };
+
   return (
     <div className={classes.headerSearchContainer}>
       <div className={classes.headerSearch}>
-        <button
+        <div
           className={`${classes.startBtn} ${classes.searchBtn}`}
-          type="button"
+          // role="button"
           onClick={() => {
             showMenuHandler('accommodation');
           }}
+          aria-hidden
         >
-          {startBtnContent}
-        </button>
-        <button
+          <div>{startBtnContent}</div>
+          {selectedAccommodation.accommodationId && (
+            <HeaderSearchBtnDelete
+              onClickProps={() =>
+                deleteSearchHandler(
+                  initSelectedAccommodation,
+                  setSelectedAccommodation,
+                  'accommodation'
+                )
+              }
+            />
+          )}
+        </div>
+        <div
+          role="button"
+          aria-hidden
           className={`${classes.checkInBtn} ${classes.searchBtn}`}
           type="button"
           onClick={() => {
@@ -164,9 +188,13 @@ const HeaderSearch = () => {
           }}
           ref={checkInBtnRef}
         >
-          {selectedDate.checkIn ? selectedDate.checkIn : 'Check-in'}
-        </button>
-        <button
+          <span>
+            {selectedDate.checkIn ? selectedDate.checkIn : 'Check-in'}
+          </span>
+        </div>
+        <div
+          role="button"
+          aria-hidden
           className={`${classes.checkOutBtn} ${classes.searchBtn}`}
           type="button"
           onClick={() => {
@@ -174,18 +202,43 @@ const HeaderSearch = () => {
             setCheckInCheckoutHandler('checkOut');
           }}
         >
-          {selectedDate.checkOut ? selectedDate.checkOut : 'Check-out'}
-        </button>
-        <button
+          <span>
+            {selectedDate.checkOut ? selectedDate.checkOut : 'Check-out'}
+          </span>
+          {selectedDate.checkOut && (
+            <HeaderSearchBtnDelete
+              onClickProps={() =>
+                deleteSearchHandler(
+                  initSelectedDate,
+                  setSelectedDate,
+                  'datePicker'
+                )
+              }
+            />
+          )}
+        </div>
+        <div
+          role="button"
+          aria-hidden
           className={`${classes.guestBtn} ${classes.searchBtn}`}
           type="button"
           onClick={() => {
             showMenuHandler('guests');
           }}
         >
-          Guests
-        </button>
-
+          <span>Guests</span>
+          {selectedGuests.adults > 0 && (
+            <HeaderSearchBtnDelete
+              onClickProps={() =>
+                deleteSearchHandler(
+                  initSelectedGuests,
+                  setSelectedGuests,
+                  'guests'
+                )
+              }
+            />
+          )}
+        </div>
         <button
           type="button"
           className={`${classes.submitBtn} ${classes.searchBtn}`}

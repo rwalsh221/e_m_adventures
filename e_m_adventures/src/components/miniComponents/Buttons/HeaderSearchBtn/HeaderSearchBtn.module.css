@@ -1,0 +1,16 @@
+.btnDelete {
+  background-color: red;
+  border: 2px solid black;
+  border-radius: 50%;
+  height: max-content;
+  margin: 0 0.5rem 0 auto;
+  width: max-content;
+
+  z-index: 1;
+}
+
+.btnDelete:hover {
+  border: 2px solid red;
+  background-color: black;
+  color: red;
+}
