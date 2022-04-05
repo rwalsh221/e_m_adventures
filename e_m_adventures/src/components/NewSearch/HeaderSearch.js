@@ -6,8 +6,6 @@ import HeaderSearchAccommodation from './HeaderSearchAccommodation/HeaderSearchA
 import HeaderSearchGuests from './HeaderSearchGuests/HeaderSearchGuests';
 
 const HeaderSearch = () => {
-  // TODO: PROP VALIDATION
-  // TODO: CHECK KEYS ON CHILDREN
   // TODO: CONNECT TO BOOKING SYSTEM
 
   const [showMenu, setShowMenu] = useState({
