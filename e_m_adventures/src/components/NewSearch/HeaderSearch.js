@@ -1,12 +1,27 @@
 import React, { useState, useRef } from 'react';
-import classes from './HeaderSearch.module.css';
 
+import { connect, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { nanoid } from 'nanoid';
 import DatePicker from './DatePicker/DatePicker';
 import HeaderSearchAccommodation from './HeaderSearchAccommodation/HeaderSearchAccommodation';
 import HeaderSearchGuests from './HeaderSearchGuests/HeaderSearchGuests';
 
+import validateDate from '../../helpers/validation';
+import { dateToMilliseconds } from '../../helpers/utilities';
+// import ErrorComponent from '../../miniComponents/ErrorComponent/ErrorComponent';
+
+import holdCurrentBooking from '../../helpers/booking/holdCurrentBooking';
+import errorTimeout from '../../helpers/error/errorTimeout';
+import classes from './HeaderSearch.module.css';
+import * as actionTypes from '../Header/HeaderSearch/HeaderSearchSlice';
+
+const mapDispatch = { ...actionTypes };
+
 const HeaderSearch = () => {
   // TODO: CONNECT TO BOOKING SYSTEM
+
+  // TODO: DISABLE DAYS BEFORE CHECKIN
 
   const [showMenu, setShowMenu] = useState({
     datePicker: false,
@@ -32,6 +47,56 @@ const HeaderSearch = () => {
     infants: 0,
     pets: 0,
   });
+
+  console.log(selectedDate);
+  // TODO: REFACTOR CANCEL AND MODIFY WITH BOOKING HELPERS
+
+  const dispatch = useDispatch();
+
+  const [error, setError] = useState();
+
+  const checkIn = useRef();
+  const checkOut = useRef();
+  const history = useHistory();
+
+  // let formIsValid = false;
+
+  const submitSearchHandler = async () => {
+    const formIsValid = true;
+    // formIsValid = validateDate(checkIn.current.value, checkOut.current.value);
+    if (formIsValid) {
+      const ref = `ref${nanoid()}`;
+      const checkInMilliseconds = dateToMilliseconds(selectedDate.checkIn);
+      const checkOutMilliseconds = dateToMilliseconds(selectedDate.checkOut);
+      if (
+        await holdCurrentBooking(
+          checkInMilliseconds,
+          checkOutMilliseconds,
+          setError,
+          ref
+        )
+      ) {
+        dispatch(
+          actionTypes.booking({
+            checkIn: checkInMilliseconds,
+            checkOut: checkOutMilliseconds,
+            holdRef: ref,
+          })
+        );
+        history.push('/summary', {
+          pathname: 'summary',
+          state: { holdStatus: false },
+        });
+      } else {
+        history.push({
+          pathname: 'summary',
+          state: { holdStatus: true },
+        });
+      }
+    } else {
+      errorTimeout(setError, 'Please check your dates and try again');
+    }
+  };
 
   const checkInBtnRef = useRef();
 
@@ -66,6 +131,16 @@ const HeaderSearch = () => {
       where are you going?
     </>
   );
+
+  const formIsValid = () => {
+    let validForm = false;
+
+    if (selectedDate.checkOut === null || selectedDate.checkIn == null) {
+      validForm = true;
+    }
+
+    return validForm;
+  };
 
   return (
     <div className={classes.headerSearchContainer}>
@@ -113,9 +188,10 @@ const HeaderSearch = () => {
         <button
           type="button"
           className={`${classes.submitBtn} ${classes.searchBtn}`}
-          onClick={() => {
-            showMenuHandler('guests');
+          onClick={async () => {
+            submitSearchHandler();
           }}
+          disabled={formIsValid()}
         >
           SUBMIT
         </button>
@@ -146,4 +222,4 @@ const HeaderSearch = () => {
   );
 };
 
-export default HeaderSearch;
+export default connect(null, mapDispatch)(HeaderSearch);
