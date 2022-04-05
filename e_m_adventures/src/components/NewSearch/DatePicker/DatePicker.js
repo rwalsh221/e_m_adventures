@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classes from './DatePicker.module.css';
 
 import { dateToMilliseconds, getFullDays } from '../../../helpers/utilities';
+import { validateDisplayDate } from '../../../helpers/validation';
 
 const DatePicker = ({ selectedDateProps, setSelectedDateProps }) => {
   const [datePickerState, setdatePickerState] = useState({
@@ -222,6 +223,10 @@ const DatePicker = ({ selectedDateProps, setSelectedDateProps }) => {
       id={element.dayISOString}
       data-day-milliseconds={element.dayInMilliseconds}
       onClick={(e) => selectDateHandler(e)}
+      disabled={validateDisplayDate(
+        element.dayISOString,
+        selectedDateProps.checkIn
+      )}
       aria-hidden
     >
       <p>{element.dayDate}</p>
@@ -241,6 +246,10 @@ const DatePicker = ({ selectedDateProps, setSelectedDateProps }) => {
       )}
       id={element.dayISOString}
       onClick={(e) => selectDateHandler(e)}
+      disabled={validateDisplayDate(
+        element.dayISOString,
+        selectedDateProps.checkIn
+      )}
       aria-hidden
       // {styleSelectedDateHandler()}
     >

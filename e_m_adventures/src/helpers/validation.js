@@ -1,12 +1,12 @@
+import { dateToMilliseconds } from './utilities';
+
 const validateDate = (checkIn, checkOut) => {
   let validated = false;
-  console.log('validate');
+
   if (!checkIn || !checkOut) {
-    console.log(validated);
     return validated;
   }
   const milliSeconds = 24 * 60 * 60 * 1000;
-  //   const date = new Date();
 
   const yesterday = Date.now() - milliSeconds;
 
@@ -23,7 +23,25 @@ const validateDate = (checkIn, checkOut) => {
   if (checkInUtc > yesterday && checkOutUtc > checkInUtc) {
     validated = true;
   }
-  console.log(validated);
+
+  return validated;
+};
+
+export const validateDisplayDate = (displayDate, selectedCheckInDate) => {
+  let validated = false;
+
+  if (!selectedCheckInDate) {
+    return validated;
+  }
+
+  const displayDateMilliseconds = dateToMilliseconds(displayDate);
+  const selectedCheckInDateMilliseconds =
+    dateToMilliseconds(selectedCheckInDate);
+
+  if (displayDateMilliseconds < selectedCheckInDateMilliseconds) {
+    validated = true;
+  }
+
   return validated;
 };
 

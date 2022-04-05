@@ -57,6 +57,12 @@
   cursor: pointer;
 }
 
+.dayCard[disabled] {
+  background-color: var(--sec-color-grey-light);
+  border: 2px solid var(--main-color-gold);
+  pointer-events: none;
+}
+
 .dayCard:hover {
   border-color: var(--main-color-gold);
 }
