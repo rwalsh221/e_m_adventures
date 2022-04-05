@@ -9,7 +9,7 @@ import ErrorComponent from '../miniComponents/ErrorComponent/ErrorComponent';
 import errorTimeout from '../../helpers/error/errorTimeout';
 import Backdrop from '../miniComponents/Backdrop/Backdrop';
 
-import validateDate from '../../helpers/validation';
+import { validateDate } from '../../helpers/validation';
 import {
   dateToMilliseconds,
   getFullDays,

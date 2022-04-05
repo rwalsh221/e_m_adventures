@@ -1,6 +1,6 @@
 import { dateToMilliseconds } from './utilities';
 
-const validateDate = (checkIn, checkOut) => {
+export const validateDate = (checkIn, checkOut) => {
   let validated = false;
 
   if (!checkIn || !checkOut) {
@@ -10,17 +10,13 @@ const validateDate = (checkIn, checkOut) => {
 
   const yesterday = Date.now() - milliSeconds;
 
-  const checkInArr = checkIn.split('-');
-  const checkOutArr = checkOut.split('-');
+  const checkInMilliseconds = dateToMilliseconds(checkIn);
+  const checkOutMilliseconds = dateToMilliseconds(checkOut);
 
-  const checkInUtc = Date.UTC(checkInArr[0], checkInArr[1] - 1, checkInArr[2]);
-  const checkOutUtc = Date.UTC(
-    checkOutArr[0],
-    checkOutArr[1] - 1,
-    checkOutArr[2]
-  );
-
-  if (checkInUtc > yesterday && checkOutUtc > checkInUtc) {
+  if (
+    checkInMilliseconds > yesterday &&
+    checkOutMilliseconds > checkInMilliseconds
+  ) {
     validated = true;
   }
 
@@ -44,5 +40,3 @@ export const validateDisplayDate = (displayDate, selectedCheckInDate) => {
 
   return validated;
 };
-
-export default validateDate;

@@ -7,7 +7,7 @@ import DatePicker from './DatePicker/DatePicker';
 import HeaderSearchAccommodation from './HeaderSearchAccommodation/HeaderSearchAccommodation';
 import HeaderSearchGuests from './HeaderSearchGuests/HeaderSearchGuests';
 
-import validateDate from '../../helpers/validation';
+import { validateDate } from '../../helpers/validation';
 import { dateToMilliseconds } from '../../helpers/utilities';
 // import ErrorComponent from '../../miniComponents/ErrorComponent/ErrorComponent';
 
