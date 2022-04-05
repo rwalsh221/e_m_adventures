@@ -176,12 +176,14 @@ const DatePicker = ({ selectedDateProps, setSelectedDateProps }) => {
     if (event.target.tagName === 'DIV') {
       const selectedDateCopy = { ...selectedDateProps };
 
-      selectedDateCopy[selectedDateProps.checkInCheckOut] = event.target.id;
-
       if (selectedDateProps.checkInCheckOut === 'checkIn') {
+        // REMOVES CHECKOUT DATE IF USER CHANGES CHECKIN
+        selectedDateCopy[selectedDateProps.checkInCheckOut] = event.target.id;
+        selectedDateCopy.checkOut = null;
         selectedDateCopy.checkInCheckOut = 'checkOut';
         setSelectedDateProps({ ...selectedDateCopy });
       } else {
+        selectedDateCopy[selectedDateProps.checkInCheckOut] = event.target.id;
         selectedDateCopy.fullDays = getFullDays(
           dateToMilliseconds(selectedDateCopy.checkIn),
           dateToMilliseconds(selectedDateCopy.checkOut)

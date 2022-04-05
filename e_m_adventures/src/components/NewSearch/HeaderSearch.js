@@ -19,10 +19,6 @@ import * as actionTypes from '../Header/HeaderSearch/HeaderSearchSlice';
 const mapDispatch = { ...actionTypes };
 
 const HeaderSearch = () => {
-  // TODO: CONNECT TO BOOKING SYSTEM
-
-  // TODO: DISABLE DAYS BEFORE CHECKIN
-
   const [showMenu, setShowMenu] = useState({
     datePicker: false,
     accommodation: false,
@@ -168,7 +164,7 @@ const HeaderSearch = () => {
           }}
           ref={checkInBtnRef}
         >
-          Check-in
+          {selectedDate.checkIn ? selectedDate.checkIn : 'Check-in'}
         </button>
         <button
           className={`${classes.checkOutBtn} ${classes.searchBtn}`}
@@ -178,7 +174,7 @@ const HeaderSearch = () => {
             setCheckInCheckoutHandler('checkOut');
           }}
         >
-          Check-out
+          {selectedDate.checkOut ? selectedDate.checkOut : 'Check-out'}
         </button>
         <button
           className={`${classes.guestBtn} ${classes.searchBtn}`}

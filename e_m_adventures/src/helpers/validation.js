@@ -25,16 +25,27 @@ export const validateDate = (checkIn, checkOut) => {
 
 export const validateDisplayDate = (displayDate, selectedCheckInDate) => {
   let validated = false;
+  const milliSeconds = 24 * 60 * 60 * 1000;
+
+  const yesterday = Date.now() - milliSeconds;
+  const displayDateMilliseconds = dateToMilliseconds(displayDate);
+
+  if (displayDateMilliseconds <= yesterday) {
+    validated = true;
+    return validated;
+  }
 
   if (!selectedCheckInDate) {
     return validated;
   }
 
-  const displayDateMilliseconds = dateToMilliseconds(displayDate);
   const selectedCheckInDateMilliseconds =
     dateToMilliseconds(selectedCheckInDate);
 
-  if (displayDateMilliseconds < selectedCheckInDateMilliseconds) {
+  if (
+    displayDateMilliseconds < selectedCheckInDateMilliseconds ||
+    displayDateMilliseconds < Date.now()
+  ) {
     validated = true;
   }
 

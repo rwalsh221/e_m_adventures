@@ -1,9 +1,10 @@
 .header {
   min-height: 80vh;
+  max-height: 80vh;
   background-color: var(--main-color-black);
   background-image: url('../../assets/img/caravan.jpg');
   background-repeat: no-repeat;
-  background-size: 80% 60%;
+  background-size: 80% 80%;
   background-position: center;
   display: flex;
   flex-direction: column;
@@ -15,7 +16,6 @@
 .heading {
   margin-top: 50rem;
   color: var(--main-color-white);
-
   font-size: 4rem;
 }
 

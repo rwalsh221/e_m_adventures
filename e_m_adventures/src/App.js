@@ -61,7 +61,6 @@ function App() {
             <Route path="/food" exact component={Food} />
             <Route path="/explore" exact component={ExploreNearby} />
             <Route path="/covid" exact component={Covid} />
-            <Route path="/" exact component={Home} />
           </Switch>
           <AccommodationContextProvider>
             <Switch>
@@ -72,6 +71,7 @@ function App() {
               />
               <Route path="/accommodation" exact component={Accommodation} />
               <Route path="/datepicker" component={NewHeaderSearch} />
+              <Route path="/" exact component={Home} />
             </Switch>
           </AccommodationContextProvider>
         </AuthProvider>
