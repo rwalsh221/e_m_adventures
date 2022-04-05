@@ -135,7 +135,12 @@ const HeaderSearch = () => {
   const formIsValid = () => {
     let validForm = false;
 
-    if (selectedDate.checkOut === null || selectedDate.checkIn == null) {
+    if (selectedDate.checkOut === null || selectedDate.checkIn === null) {
+      validForm = true;
+      return validForm;
+    }
+
+    if (!validateDate(selectedDate.checkIn, selectedDate.checkOut)) {
       validForm = true;
     }
 

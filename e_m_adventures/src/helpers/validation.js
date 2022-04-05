@@ -1,7 +1,8 @@
 const validateDate = (checkIn, checkOut) => {
   let validated = false;
-
+  console.log('validate');
   if (!checkIn || !checkOut) {
+    console.log(validated);
     return validated;
   }
   const milliSeconds = 24 * 60 * 60 * 1000;
@@ -22,7 +23,7 @@ const validateDate = (checkIn, checkOut) => {
   if (checkInUtc > yesterday && checkOutUtc > checkInUtc) {
     validated = true;
   }
-
+  console.log(validated);
   return validated;
 };
 
