@@ -20,6 +20,7 @@ import * as actionTypes from '../Header/HeaderSearch/HeaderSearchSlice';
 const mapDispatch = { ...actionTypes };
 
 const HeaderSearch = () => {
+  // TODO: LOOK AT SHOW MENU STATE. MAYBE DONT NEED OBJECT
   // TODO: ADD CLOSE AND DELETE TO SEARCH MENU
   // TODO: ADD ACOMM ID TO BOOKING SYSTEM
 

@@ -36,8 +36,8 @@
 .searchBtn > span {
   margin: 0 auto;
 }
-.searchBtn:hover,
-.searchBtn:focus {
+.searchBtn:focus,
+.searchBtn:hover {
   background-color: var(--main-color-gold);
 }
 
