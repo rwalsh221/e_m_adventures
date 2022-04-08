@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import DropdownMenu from '../../miniComponents/DropdownMenu/DropdownMenu';
+import NavigationBtn from '../../miniComponents/Buttons/HeaderNavigation/NavigationBtn';
 
 import logoWhite from '../../../assets/img/logo-white.png';
 import classes from './HeaderNavigation.module.css';
@@ -16,15 +17,12 @@ const HeaderNavigation = () => (
       onClick={() => {}}
     />
     <div className={classes.navBtnContainer}>
-      <Link className={classes.foodBtn} role="button" to="/accommodation">
-        Our Accommodation
-      </Link>
-      <button type="button" className={classes.navBtn}>
-        Experiences
-      </button>
-      <button type="button" className={classes.navBtn}>
-        Local Eats
-      </button>
+      <NavigationBtn
+        btnContentProps="our accommodation"
+        routeProps="/accommodation"
+      />
+      <NavigationBtn btnContentProps="expriences" routeProps="/" />
+      <NavigationBtn btnContentProps="local eats" routeProps="/" />
     </div>
     <div className={classes.loginContainer}>
       <p className={classes.loginManage}>manage your ADVENTURE</p>
