@@ -21,7 +21,8 @@ const mapDispatch = { ...actionTypes };
 
 const HeaderSearch = () => {
   // TODO: LOOK AT SHOW MENU STATE. MAYBE DONT NEED OBJECT
-  // TODO: ADD CLOSE AND DELETE TO SEARCH MENU
+  // TODO: ADD datePicker to modify booking
+  // TODO: ADD NEW SEARCH TO BOOKING UNAVALIBALE
   // TODO: ADD ACOMM ID TO BOOKING SYSTEM
 
   const [showMenu, setShowMenu] = useState({
@@ -49,6 +50,8 @@ const HeaderSearch = () => {
     pets: 0,
   });
 
+  const [error, setError] = useState();
+
   const initSelectedDate = useRef(selectedDate);
   const initSelectedAccommodation = useRef(selectedAccommodation);
   const initSelectedGuests = useRef(selectedGuests);
@@ -70,6 +73,7 @@ const HeaderSearch = () => {
       const ref = `ref${nanoid()}`;
       const checkInMilliseconds = dateToMilliseconds(selectedDate.checkIn);
       const checkOutMilliseconds = dateToMilliseconds(selectedDate.checkOut);
+      console.log(checkInMilliseconds, checkOutMilliseconds);
       if (
         await holdCurrentBooking(
           checkInMilliseconds,
@@ -97,6 +101,7 @@ const HeaderSearch = () => {
       }
     } else {
       errorTimeout(setError, 'Please check your dates and try again');
+      // errorTimeout('Please check your dates and try again');
     }
   };
 

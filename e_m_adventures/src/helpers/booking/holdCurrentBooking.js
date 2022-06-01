@@ -24,6 +24,8 @@ const holdCurrentBooking = async (checkIn, checkOut, setError, ref) => {
     timeStamp: Date.now(),
   };
 
+  console.log(currentBooking);
+
   try {
     // ADD CURRENT BOOKING TO DATABASE
     const patchHoldBookings = await fetch(
