@@ -260,7 +260,7 @@ const ModifyBookingContent = () => {
       </button>
       <button
         type="button"
-        onClick={() => setShowModalHandler(true)}
+        onClick={() => setShowModalHandler('modify')}
         className={classes.submitBtn}
       >
         Change Your Booking
