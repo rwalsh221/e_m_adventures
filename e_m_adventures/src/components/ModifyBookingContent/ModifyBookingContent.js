@@ -5,6 +5,8 @@ import { nanoid } from 'nanoid';
 import getBookingData from '../../helpers/booking/getBookingData';
 import { useAuth } from '../../contexts/AuthContext';
 
+// import HeaderSearch from '../NewSearch/HeaderSearch';
+import AccommodationIformationModal from '../Modal/AccommodationInformationModal/AccommodationInformationModal';
 import ErrorComponent from '../miniComponents/ErrorComponent/ErrorComponent';
 import errorTimeout from '../../helpers/error/errorTimeout';
 import Backdrop from '../miniComponents/Backdrop/Backdrop';
@@ -23,6 +25,7 @@ import holdCurrentBooking from '../../helpers/booking/holdCurrentBooking';
 import * as actionTypes from '../Header/HeaderSearch/HeaderSearchSlice';
 
 import classes from './ModifyBookingContent.module.css';
+import ChangeBooking from './ChangeBooking/ChangeBooking';
 
 const mapDispatch = { ...actionTypes };
 
@@ -30,6 +33,7 @@ const ModifyBookingContent = () => {
   const [showBackdrop, setShowBackdrop] = useState(false);
   const [backdropContent, setBackdropContent] = useState('');
   const [error, setError] = useState('');
+  const [changeBooking, setChangeBooking] = useState('true');
 
   const backdropRef = useRef(null);
   const newCheckInRef = useRef();
@@ -67,34 +71,10 @@ const ModifyBookingContent = () => {
     };
   }, [showBackdrop]);
 
-  // const getBookingData = async () => {
-  //   // GET CURENT USERS BOOKINGS
-  //   const userBookings = await fetch(
-  //     `${database}/users/${currentUser.uid}/booking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`
-  //   );
-
-  //   const userBookingsJson = await userBookings.json();
-  //   // GET FULLDAYS
-  //   const fullDays = await fetch(
-  //     `${database}/fulldays.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`
-  //   );
-
-  //   const fullDaysJson = await fullDays.json();
-
-  //   // GET ALL BOOKINGS
-  //   const allBookings = await fetch(
-  //     `${database}/booking.json?auth=${process.env.REACT_APP_FIREBASE_DATABASE_SECRET}`
-  //   );
-
-  //   const allBookingsJson = await allBookings.json();
-
-  //   return { userBookingsJson, fullDaysJson, allBookingsJson };
-  // };
-
   const cancelBookingHandler = async () => {
     try {
       await cancelBooking(reduxState, currentUser, history);
-    } catch (errror) {
+    } catch (error) {
       console.error(error);
     }
   };
@@ -200,7 +180,7 @@ const ModifyBookingContent = () => {
         <h2>Change Your Booking</h2>
         <form className={classes.searchForm}>
           <div className={classes.start}>
-            <h6>Start Your Adventure</h6>
+            <h6>Carnforth Forest Lodge</h6>
           </div>
           <div className={classes.date}>
             <label htmlFor="checkIn" className={classes.dateCheckin}>
@@ -231,9 +211,26 @@ const ModifyBookingContent = () => {
             Cancel
           </button>
         </div>
+        {/* <HeaderSearch /> */}
       </div>
     );
     setShowBackdrop(true);
+  };
+
+  const [showModal, setShowModal] = useState({
+    showModal: true,
+    content: '',
+    image: {},
+    share: false,
+  });
+
+  const setShowModalHandler = (content, imageName, share) => {
+    setShowModal({
+      showModal: true,
+      content,
+      // image: { imageName, accomId: accomIdProps },
+      share,
+    });
   };
 
   return (
@@ -271,6 +268,10 @@ const ModifyBookingContent = () => {
       >
         Change Your Booking
       </button>
+      <AccommodationIformationModal
+        showModalProps={showModal}
+        setShowModalParentProps={setShowModal}
+      />
     </main>
   );
 };

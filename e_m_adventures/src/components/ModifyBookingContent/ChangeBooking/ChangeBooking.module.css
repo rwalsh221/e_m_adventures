@@ -1,0 +1,9 @@
+.changeBooking {
+  position: fixed;
+  height: 60rem;
+  width: 60rem;
+  background-color: hotpink;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

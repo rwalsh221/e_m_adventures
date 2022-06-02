@@ -21,7 +21,7 @@ const mapDispatch = { ...actionTypes };
 
 const HeaderSearch = () => {
   // TODO: LOOK AT SHOW MENU STATE. MAYBE DONT NEED OBJECT
-  // TODO: ADD datePicker to modify booking
+  // TODO: ADD datePicker to modify booking -- create custom hook for modal state -- change accominof modal to generix to be reused.
   // TODO: ADD NEW SEARCH TO BOOKING UNAVALIBALE
   // TODO: ADD ACOMM ID TO BOOKING SYSTEM
 

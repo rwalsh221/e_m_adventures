@@ -48,11 +48,11 @@ function App() {
               exact
               component={UpdateProfile}
             />
-            <PrivateRoute
+            {/* <PrivateRoute
               path="/modify-booking"
               exact
               component={ModifyBooking}
-            />
+            /> */}
             <Route path="/forgot-password" exact component={ForgotPassword} />
             <Route path="/login" exact component={Login} />
             <PrivateRoute path="/dashboard" exact component={Dashboard} />
@@ -72,6 +72,11 @@ function App() {
               <Route path="/accommodation" exact component={Accommodation} />
               <Route path="/datepicker" component={NewHeaderSearch} />
               <Route path="/" exact component={Home} />
+              <PrivateRoute
+                path="/modify-booking"
+                exact
+                component={ModifyBooking}
+              />
             </Switch>
           </AccommodationContextProvider>
         </AuthProvider>
