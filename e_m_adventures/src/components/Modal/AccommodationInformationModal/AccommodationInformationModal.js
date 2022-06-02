@@ -75,6 +75,7 @@ const AccommodationIformationModal = ({
   // END OF TEST OBJECTS
 
   const setModalContent = (input) => {
+    console.log('switch');
     let content;
     switch (input) {
       case 'cancellation':

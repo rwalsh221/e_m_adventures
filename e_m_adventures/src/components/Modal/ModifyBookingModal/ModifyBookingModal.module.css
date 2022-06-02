@@ -1,0 +1,68 @@
+.accomInfoModalBg {
+  position: fixed;
+  z-index: 100;
+  background-color: rgba(72, 72, 77, 0.5);
+  height: 100%;
+  width: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.accomInfoModalContent {
+  height: max-content;
+  min-width: 60rem;
+  max-width: max-content;
+  background-color: var(--main-color-gold);
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  animation: slideIn 0.5s;
+  border-radius: 2rem;
+  border: 1px solid var(--main-color-gold);
+  padding: 3rem;
+}
+
+.accomInfoModalContentHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 4rem;
+  font-size: 2rem;
+}
+
+.accomInfoModalContentShare {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.accomInfoModalContentShare p {
+  text-decoration: underline;
+  text-underline-offset: 1px;
+}
+
+.accomInfoModalContentShare ion-icon {
+  color: var(--main-color-black);
+}
+
+.closeBtn {
+  background-color: inherit;
+  border-radius: 50%;
+  border: none;
+  font-size: 3rem;
+}
+
+.closeBtn:hover {
+  background-color: var(--sec-color-grey-light);
+}
+
+@keyframes slideIn {
+  0% {
+    top: 150%;
+  }
+  100% {
+    top: 50%;
+  }
+}

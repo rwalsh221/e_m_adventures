@@ -1,0 +1,43 @@
+.submitBtn {
+  background-color: var(--main-color-black);
+  width: 16rem;
+  min-width: max-content;
+  padding: 3rem;
+  border-radius: 3rem;
+  font-size: 2rem;
+  margin: 3rem auto;
+  border: none;
+}
+
+.submitBtn,
+.submitBtn:visited {
+  color: var(--main-color-gold);
+}
+
+.backdropBtnContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/* @media (max-width: 905px) {
+  .main {
+    width: 80%;
+  }
+  .mainHeading {
+    font-size: 4.5rem;
+  }
+  .secHeading {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 460px) {
+  .main {
+    width: 90%;
+  }
+
+  .bookingInfo {
+    font-size: 2rem;
+    padding: 4rem 2rem;
+  }
+} */
