@@ -6,6 +6,9 @@ mapboxgl.accessToken =
   'pk.eyJ1Ijoicmlja3lyaWNhcmRpbmhvIiwiYSI6ImNrdnJsczBsNTA5ODIyb2x5bGExbDlscHMifQ.UA26VXh63_0G21WVA8d_Ug';
 
 const MapBoxContainer = React.memo(({ latlonProps }) => {
+  console.log('mapbox');
+  console.log(latlonProps);
+
   const mapContainer = useRef(null);
   const map = useRef(null);
   const { lat, lon } = latlonProps;

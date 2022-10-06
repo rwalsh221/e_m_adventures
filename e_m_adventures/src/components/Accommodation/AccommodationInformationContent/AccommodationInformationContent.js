@@ -47,6 +47,8 @@ const AccommodationInformationContent = () => {
     basePrice,
   } = accommodationFocus.data;
 
+  console.log(accommodationFocus.data);
+
   const occupancyBedrooms = [
     { bedroomType: 'bedroom', beds: [{ type: 'king', number: 1 }] },
     {
@@ -64,6 +66,7 @@ const AccommodationInformationContent = () => {
       <AccommodationInformationModal
         showModalProps={showModal}
         setShowModalParentProps={setShowModal}
+        latlonProps={accommodationLocation.latlon}
       />
       {/* HEADING SECTION */}
       <SectionHeading

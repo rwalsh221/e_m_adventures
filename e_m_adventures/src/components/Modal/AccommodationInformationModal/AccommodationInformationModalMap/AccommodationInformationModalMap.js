@@ -6,6 +6,7 @@ import classes from './AccommodationInformationModalMap.module.css';
 const AccommodationInformationModalMap = ({
   contentProps,
   // mapCoordProps,
+  latlonProps,
 }) => {
   const [showLocationDesc, setShowLocationDesc] = useState({
     showDesc: false,
@@ -35,6 +36,8 @@ const AccommodationInformationModalMap = ({
   const setDescriptionState = (state) => {
     state({ showDesc: true, showBtn: 'none' });
   };
+
+  console.log(latlonProps);
 
   return (
     <div className={classes.accommInfoMapModal}>
@@ -72,7 +75,7 @@ const AccommodationInformationModalMap = ({
         </button>
       </div>
       <div className={classes.mapContainer}>
-        <MapBoxContainer />
+        <MapBoxContainer latlonProps={latlonProps} />
       </div>
     </div>
   );

@@ -12,7 +12,9 @@ import AccommodationInformationModalImage from './AccommodationInformationModalI
 const AccommodationIformationModal = ({
   showModalProps,
   setShowModalParentProps,
+  latlonProps,
 }) => {
+  console.log(latlonProps);
   const initStyle = showModalProps.showModal ? 'block' : 'none';
 
   const features = {
@@ -157,6 +159,7 @@ const AccommodationIformationModal = ({
               locationDescription: map.locationDescription,
               gettingAroundDescription: map.gettingAroundDescription,
             }}
+            latlonProps={latlonProps}
           />
         );
         break;
