@@ -12,6 +12,7 @@ main {
   display: grid;
   grid-template-columns: 60% 40%;
   grid-auto-rows: max-content;
+  overflow: hidden;
 }
 
 .main ion-icon {
@@ -29,7 +30,7 @@ main {
 }
 
 .main h2 {
-  font-size: 3rem;
+  /* font-size: 3rem; */
   margin: 0 0 2rem 0;
 }
 
@@ -45,5 +46,11 @@ main {
 @media (max-width: 1095px) {
   .main {
     width: 90%;
+  }
+}
+
+@media (max-width: 500px) {
+  .main {
+    width: 100%;
   }
 }

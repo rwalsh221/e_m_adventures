@@ -1,0 +1,32 @@
+.mobile_search {
+  width: 100%;
+  position: fixed;
+  /* top: calc(338px - 10rem); */
+  left: 0;
+  background-color: white;
+  height: 10rem;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid var(--sec-color-grey-light);
+}
+
+.mobile_search_content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80%;
+}
+
+.mobile_search_content p:first-of-type {
+  margin-right: 1rem;
+}
+
+.mobile_search_btn {
+  margin-left: auto;
+  padding: 2rem;
+  border-radius: 2rem;
+  background-color: var(--main-color-gold);
+  border: none;
+}

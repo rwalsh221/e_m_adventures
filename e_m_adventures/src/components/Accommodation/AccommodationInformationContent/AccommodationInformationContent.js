@@ -14,6 +14,7 @@ import SectionKnow from './AICSections/SectionKnow/SectionKnow';
 
 import classes from './AccommodationInformationContent.module.css';
 import AccommodationSearch from './AICSections/AccommodationSearch/AccommodationSearch';
+import AccommodationSearchMobile from './AICSections/AccommodationSearchMobile/AccommodationSearchMobile';
 
 const AccommodationInformationContent = () => {
   // TODO: ADD ERROR DISPLAY FOR NO DATA
@@ -47,7 +48,7 @@ const AccommodationInformationContent = () => {
     basePrice,
   } = accommodationFocus.data;
 
-  console.log(accommodationFocus.data);
+  console.log(window.screen.height);
 
   const occupancyBedrooms = [
     { bedroomType: 'bedroom', beds: [{ type: 'king', number: 1 }] },
@@ -91,7 +92,12 @@ const AccommodationInformationContent = () => {
         sharedAccommodationProps={accommodationDescription.sharedAccommodation}
         occupancyBedroomsProps={occupancyBedrooms}
       />
-      <AccommodationSearch basePriceProps={basePrice} />
+      {window.screen.width > 500 ? (
+        <AccommodationSearch basePriceProps={basePrice} />
+      ) : (
+        <AccommodationSearchMobile basePriceProps={basePrice} />
+      )}
+
       {/* REVIEW SECTION */}
       <SectionReview portraitProps={reviewPortrait} />
       {/* MAP SECTION */}
