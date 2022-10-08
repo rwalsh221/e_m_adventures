@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { nanoid } from 'nanoid';
 import AccommodationCard from './AccommodationCard/AccommodationCard';
 import Spinner from '../../miniComponents/Spinner/Spinner';
 import classes from './AccommodationContent.module.css';
@@ -19,7 +19,7 @@ const AccommodationContent = () => {
     getAccommodation.data.map((data) => (
       <AccommodationCard
         onClickProps={accommodationFocusHandler}
-        key={data.accommodationId}
+        key={nanoid()}
         idProps={data.accommodationId}
         nameProps={data.accommodationName}
         descriptionProps={data.accommodationDescription.shortDescription}

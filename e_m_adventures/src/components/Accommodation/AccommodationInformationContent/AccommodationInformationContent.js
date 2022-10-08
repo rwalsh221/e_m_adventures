@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAccommodationContext } from '../../../contexts/AccommodationContext';
+import { useHistory } from 'react-router-dom';
 
 import AccommodationInformationModal from '../../Modal/AccommodationInformationModal/AccommodationInformationModal';
 import logoBlack from '../../../assets/img/logo-black.png';
@@ -19,6 +20,12 @@ import AccommodationSearchMobile from './AICSections/AccommodationSearchMobile/A
 const AccommodationInformationContent = () => {
   // TODO: ADD ERROR DISPLAY FOR NO DATA
   const { accommodationFocus } = useAccommodationContext();
+
+  const history = useHistory();
+
+  if (accommodationFocus.focusSet === false) {
+    history.push('/accommodation');
+  }
 
   const accomIdProps = 'acc0001';
   // document.body.style.overflow = 'hidden';
@@ -47,8 +54,6 @@ const AccommodationInformationContent = () => {
     accommodationRules,
     basePrice,
   } = accommodationFocus.data;
-
-  console.log(window.screen.height);
 
   const occupancyBedrooms = [
     { bedroomType: 'bedroom', beds: [{ type: 'king', number: 1 }] },
