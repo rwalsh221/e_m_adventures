@@ -35,3 +35,11 @@
 .accommodationCard__price {
   justify-self: start;
 }
+
+@media (max-width: 320px) {
+  .accommodationCard__img {
+    width: 30rem;
+    border-radius: 2rem;
+    justify-self: center;
+  }
+}

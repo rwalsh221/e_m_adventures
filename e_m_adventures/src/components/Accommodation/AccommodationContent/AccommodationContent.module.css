@@ -1,7 +1,3 @@
-.test {
-  color: hotpink;
-}
-
 .accommodationGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -27,4 +23,15 @@
   align-items: center;
   height: 40vh;
   grid-column: span 2;
+}
+
+@media (max-width: 500px) {
+  .accommodationGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .accommodationHeading {
+    grid-column: initial;
+    margin-left: 4rem;
+  }
 }

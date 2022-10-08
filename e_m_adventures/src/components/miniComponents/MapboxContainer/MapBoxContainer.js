@@ -7,7 +7,7 @@ mapboxgl.accessToken =
 
 const MapBoxContainer = React.memo(({ latlonProps }) => {
   console.log('mapbox');
-  console.log(latlonProps);
+  // console.log(latlonProps);
 
   const mapContainer = useRef(null);
   const map = useRef(null);
