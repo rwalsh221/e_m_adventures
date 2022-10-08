@@ -122,3 +122,30 @@
 .bedContent {
   display: block;
 }
+
+@media (max-width: 1200px) {
+  .infoHeading h2 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 860px) {
+  .sleepCard {
+    padding: 1rem;
+    border: var(--grey-border-1px);
+    border-radius: 1rem;
+  }
+}
+
+@media (max-width: 790px) {
+  .infoHeading ul li:not(:first-child)::before {
+    content: '';
+    height: 3px;
+    width: 3px;
+    position: absolute;
+    background-color: var(--sec-color-grey-light);
+    top: 45.7%;
+    left: -11%;
+    border-radius: 50%;
+  }
+}
