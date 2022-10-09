@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useAccommodationContext } from '../../../contexts/AccommodationContext';
 import { useHistory } from 'react-router-dom';
+import { useAccommodationContext } from '../../../contexts/AccommodationContext';
 
 import AccommodationInformationModal from '../../Modal/AccommodationInformationModal/AccommodationInformationModal';
 import logoBlack from '../../../assets/img/logo-black.png';
@@ -18,9 +18,9 @@ import AccommodationSearch from './AICSections/AccommodationSearch/Accommodation
 import AccommodationSearchMobile from './AICSections/AccommodationSearchMobile/AccommodationSearchMobile';
 
 const AccommodationInformationContent = () => {
-  // TODO: ADD ERROR DISPLAY FOR NO DATA
+  // TODO: ADD ERROR DISPLAY FOR NO DATA history push wont work during render
   const { accommodationFocus } = useAccommodationContext();
-
+  console.log(accommodationFocus);
   const history = useHistory();
 
   if (accommodationFocus.focusSet === false) {

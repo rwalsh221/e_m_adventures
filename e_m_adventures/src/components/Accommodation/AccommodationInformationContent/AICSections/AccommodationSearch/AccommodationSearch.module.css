@@ -22,7 +22,6 @@
   border: var(--grey-border-1px);
   border-radius: 1rem;
   box-shadow: 2px 2px 10px var(--sec-color-grey-light);
-  /* background-color: hotpink; */
 }
 
 .header {

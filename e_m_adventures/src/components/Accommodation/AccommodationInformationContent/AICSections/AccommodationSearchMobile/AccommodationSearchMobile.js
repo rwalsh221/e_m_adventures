@@ -29,7 +29,7 @@ const AccommodationSearchMobile = ({ basePriceProps }) => {
           <span data-underlinefont>16 reviews</span>
         </p>
         <button className={classes.mobile_search_btn} type="button">
-          search
+          book
         </button>
       </div>
     </div>

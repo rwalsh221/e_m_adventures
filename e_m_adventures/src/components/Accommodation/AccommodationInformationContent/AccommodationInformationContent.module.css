@@ -12,7 +12,7 @@ main {
   display: grid;
   grid-template-columns: 60% 40%;
   grid-auto-rows: max-content;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .main ion-icon {

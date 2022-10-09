@@ -11,6 +11,7 @@
 }
 
 .mapContainer {
+  background-color: hotpink;
   height: 100%;
   flex: 1 0 50%;
 }
@@ -74,4 +75,16 @@
 .readMoreBtn ion-icon {
   position: relative;
   top: 4px;
+}
+
+@media (max-width: 500px) {
+  .accommInfoMapModal {
+    flex-direction: column;
+  }
+
+  .mapContainer {
+    margin-top: 1rem;
+    height: 50%;
+    width: 100%;
+  }
 }

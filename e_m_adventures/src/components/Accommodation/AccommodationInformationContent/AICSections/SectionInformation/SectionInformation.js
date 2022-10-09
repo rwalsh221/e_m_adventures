@@ -36,7 +36,7 @@ const SectionInformation = ({
     });
 
     return (
-      <div className={classes.sleepCard}>
+      <div className={classes.sleepCard} key={nanoid()}>
         {bedIcon}
         <p>
           <span data-boldfont data-capitalizefont>
