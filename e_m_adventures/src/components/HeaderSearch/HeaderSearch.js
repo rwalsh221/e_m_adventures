@@ -134,8 +134,8 @@ const HeaderSearch = () => {
   ) : (
     <>
       <span className={classes.startBtn__heading}>Start Your Adventure</span>
-      <br />
-      <span>where are you going?</span>
+      {/* <br />
+      <span>where are you going?</span> */}
     </>
   );
 
