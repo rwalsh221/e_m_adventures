@@ -14,11 +14,12 @@
     'windspeed sunrise';
   grid-template-rows: 2fr repeat(3, 1fr);
   grid-template-columns: repeat(2, 1fr);
-  flex-basis: 20%;
+  flex-basis: 25%;
   margin: 1rem;
   background-color: var(--main-color-black);
   color: var(--main-color-white);
   border-radius: 2rem;
+  padding: 1rem 5rem;
 }
 
 .weatherCardError {

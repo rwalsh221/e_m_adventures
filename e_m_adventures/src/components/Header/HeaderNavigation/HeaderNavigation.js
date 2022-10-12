@@ -20,8 +20,6 @@ const HeaderNavigation = () => (
         btnContentProps="our accommodation"
         routeProps="/accommodation"
       />
-      <NavigationBtn btnContentProps="expriences" routeProps="/" />
-      <NavigationBtn btnContentProps="local eats" routeProps="/" />
     </div>
     <div className={classes.loginContainer}>
       <p className={classes.loginManage}>manage your ADVENTURE</p>

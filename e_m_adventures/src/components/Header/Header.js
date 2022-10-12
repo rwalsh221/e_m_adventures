@@ -27,7 +27,7 @@ const Header = () => {
         <img src={hero} alt="hero" />
       </div>
       <div className={classes.line_break} />
-      <button
+      {/* <button
         type="button"
         className={classes.btnPopUp}
         onClick={() => {
@@ -47,7 +47,7 @@ const Header = () => {
         style={{ display: popUp }}
       >
         X
-      </button>
+      </button> */}
       <div className={classes.header_heading_container}>
         <h1 className={classes.heading}>
           Made possible by
