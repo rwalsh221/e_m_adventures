@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import HeaderSearch from '../Header/HeaderSearch/HeaderSearch';
+import HeaderSearch from '../HeaderSearch/HeaderSearch';
 
 import classes from './TimeoutContent.module.css';
 

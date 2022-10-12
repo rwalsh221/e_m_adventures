@@ -15,7 +15,7 @@ import { HeaderSearchBtnDelete } from '../miniComponents/Buttons/HeaderSearchBtn
 import holdCurrentBooking from '../../helpers/booking/holdCurrentBooking';
 import errorTimeout from '../../helpers/error/errorTimeout';
 import classes from './HeaderSearch.module.css';
-import * as actionTypes from '../Header/HeaderSearch/HeaderSearchSlice';
+import * as actionTypes from './HeaderSearchSlice';
 
 const mapDispatch = { ...actionTypes };
 

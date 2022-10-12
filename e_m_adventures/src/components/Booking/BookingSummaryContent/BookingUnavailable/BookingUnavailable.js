@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import HeaderSearch from '../../../Header/HeaderSearch/HeaderSearch';
+import HeaderSearch from '../../../HeaderSearch/HeaderSearch';
 import classes from './BookingUnavailable.module.css';
 
 const BookingUnavailable = ({ holdBookingProps }) => {

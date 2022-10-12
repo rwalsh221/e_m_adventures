@@ -22,7 +22,7 @@ import cancelBooking from '../../helpers/booking/cancelBooking';
 import bookingIsAvaliable from '../../helpers/booking/bookingIsAvaliable';
 import holdCurrentBooking from '../../helpers/booking/holdCurrentBooking';
 
-import * as actionTypes from '../Header/HeaderSearch/HeaderSearchSlice';
+import * as actionTypes from '../HeaderSearch/HeaderSearchSlice';
 
 import classes from './ModifyBookingContent.module.css';
 import ChangeBooking from './ChangeBooking/ChangeBooking';

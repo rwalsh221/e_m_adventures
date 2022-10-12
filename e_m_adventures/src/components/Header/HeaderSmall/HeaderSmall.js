@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import HeaderSearch from '../HeaderSearch/HeaderSearch';
+import HeaderSearch from '../../HeaderSearch/HeaderSearch';
 import DropdownMenu from '../../miniComponents/DropdownMenu/DropdownMenu';
 
 import logoWhite from '../../../assets/img/logo-white.png';

@@ -7,7 +7,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--main-color-white);
+  background-color: var(--sec-color-grey-vlight);
+
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5000;
 }
 
 .datePicker {
@@ -37,6 +42,7 @@
   border-radius: 3rem;
   width: 100%;
   height: 100%;
+  background-color: var(--main-color-white);
 }
 
 .displayMonth {

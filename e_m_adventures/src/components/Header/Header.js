@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 
 import HeaderNavigation from './HeaderNavigation/HeaderNavigation';
 // import HeaderSearch from './HeaderSearch/HeaderSearch';
-import HeaderSearch from '../NewSearch/HeaderSearch';
+import HeaderSearch from '../HeaderSearch/HeaderSearch';
 import classes from './Header.module.css';
-import SearchPopUp from './HeaderSearch/SearchPopUP/SearchPopUp';
+import SearchPopUp from './OLDHeaderSearch/SearchPopUP/SearchPopUp';
 
 const Header = () => {
   const [popUp, setPopUp] = useState('none');

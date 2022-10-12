@@ -20,7 +20,7 @@ import Accommodation from './layout/Accommodation/Accommodation';
 import AccommodationInformation from './layout/AccommodationInformation/AccommodationInformation';
 // import DatePicker from './components/DatePicker/DatePicker';
 
-import NewHeaderSearch from './components/NewSearch/HeaderSearch';
+import NewHeaderSearch from './components/HeaderSearch/HeaderSearch';
 
 import { AuthProvider } from './contexts/AuthContext';
 import { AccommodationContextProvider } from './contexts/AccommodationContext';
