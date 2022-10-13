@@ -92,3 +92,13 @@
     display: none;
   }
 }
+
+@media (max-width: 420px) {
+  .searchContainer {
+    max-width: 50%;
+    min-width: max-content;
+    background-color: var(--main-color-white);
+    border-radius: 5rem;
+    border: 1px solid var(--main-color-gold);
+  }
+}

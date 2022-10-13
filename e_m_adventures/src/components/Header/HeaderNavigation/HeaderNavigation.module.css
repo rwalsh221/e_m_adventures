@@ -8,8 +8,8 @@
 .logo {
   width: 15rem;
   flex: 0 1 auto;
-  margin-left: 5rem;
-  margin-right: 10%;
+  margin-left: 3rem;
+  margin-right: 14%;
 }
 
 .navBtnContainer {
@@ -51,13 +51,13 @@
 
 @media (max-width: 1095px) {
   .navBtnContainer {
-    margin: 0 3rem;
+    /* margin: 0 3rem; */
   }
 }
 
 @media (max-width: 1015px) {
   .navBtnContainer {
-    margin: 0 1rem;
+    /* margin: 0 1rem; */
   }
 }
 
@@ -67,13 +67,17 @@
   }
 
   .logo {
-    margin: 0;
+    /* margin: 0; */
   }
 }
 
 @media (max-width: 600px) {
   .loginManage {
     display: none;
+  }
+  .logo {
+    margin-right: 0;
+    margin-left: 3rem;
   }
 }
 

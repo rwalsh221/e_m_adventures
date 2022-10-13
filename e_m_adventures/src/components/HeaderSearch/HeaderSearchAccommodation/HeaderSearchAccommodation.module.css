@@ -62,3 +62,13 @@
   width: 8rem;
   border-radius: 1rem;
 }
+
+@media (max-width: 600px) {
+  .headerSearchAccommodation {
+    width: 80%;
+  }
+
+  .accommodationCard {
+    width: 80%;
+  }
+}

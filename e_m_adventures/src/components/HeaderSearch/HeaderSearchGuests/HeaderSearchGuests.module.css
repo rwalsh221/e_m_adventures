@@ -51,3 +51,13 @@
 .btnCounter:focus {
   border: 2px solid var(--main-color-gold);
 }
+
+@media (max-width: 600px) {
+  .headerSearchGuests {
+    width: 80%;
+  }
+
+  .guestCard {
+    width: 80%;
+  }
+}
