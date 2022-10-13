@@ -15,7 +15,7 @@ const WeatherCard = ({ dayProps, weatherDataProps, errorProps }) => {
         {/* DAY */}
         <div className={classes.day}>
           <h3>{getDay(weatherDataProps.daily[dayProps].dt)}</h3>
-          <h5>{formatDate(weatherDataProps.daily[dayProps].dt)}</h5>
+          <p>{formatDate(weatherDataProps.daily[dayProps].dt)}</p>
         </div>
         {/* IMAGE */}
         <div className={classes.weatherImg}>
@@ -29,31 +29,27 @@ const WeatherCard = ({ dayProps, weatherDataProps, errorProps }) => {
           <h4>
             {weatherDataProps.daily[dayProps].temp.day.toFixed(0)}&#x2103;
           </h4>
-          <div className={classes.temperatureHiLo}>
-            <div className={classes.temperatureHiLoContainer}>
-              <ion-icon name="chevron-up-outline" />
-              <p>
-                {weatherDataProps.daily[dayProps].temp.max.toFixed(0)}&#x2103;
-              </p>
-            </div>
-            <div className={classes.temperatureHiLoContainer}>
-              <ion-icon name="chevron-down-outline" />
-              <p>
-                {weatherDataProps.daily[dayProps].temp.min.toFixed(0)}&#x2103;
-              </p>
-            </div>
-          </div>
+          {/* <div className={classes.temperatureHiLo}>
+            <div className={classes.temperatureHiLoContainer}> */}
+          <ion-icon name="chevron-up-outline" />
+          <p>{weatherDataProps.daily[dayProps].temp.max.toFixed(0)}&#x2103;</p>
+          {/* </div> */}
+          {/* <div className={classes.temperatureHiLoContainer}> */}
+          <ion-icon name="chevron-down-outline" />
+          <p>{weatherDataProps.daily[dayProps].temp.min.toFixed(0)}&#x2103;</p>
+          {/* </div> */}
+          {/* </div> */}
         </div>
         {/* CHANCERAIN */}
         <div className={classes.chanceRain}>
           <ion-icon name="umbrella-outline" />
-          <h5>
+          <p>
             &ensp;{(weatherDataProps.daily[dayProps].pop * 100).toFixed(0)}%
-          </h5>
+          </p>
         </div>
         {/* DESCRIPTION */}
         <div className={classes.description}>
-          <h5>{weatherDataProps.daily[dayProps].weather[0].description}</h5>
+          <p>{weatherDataProps.daily[dayProps].weather[0].description}</p>
         </div>
         {/* WINDSPEED */}
         <div className={classes.windSpeed}>
@@ -63,22 +59,22 @@ const WeatherCard = ({ dayProps, weatherDataProps, errorProps }) => {
               transform: `rotate(${weatherDataProps.daily[dayProps].wind_deg}deg)`,
             }}
           />
-          <h5>
+          <p>
             &ensp;{weatherDataProps.daily[dayProps].wind_speed.toFixed(1)}
             &ensp;m/s
-          </h5>
+          </p>
         </div>
         {/* SUNRISE */}
         <div className={classes.sunrise}>
-          <div className={classes.sunTime}>
-            <ion-icon name="chevron-up-outline" />
-            <h5>{formatTime(weatherDataProps.daily[dayProps].sunrise)}</h5>
-          </div>
+          {/* <div className={classes.sunTime}> */}
+          <ion-icon name="chevron-up-outline" />
+          <p>{formatTime(weatherDataProps.daily[dayProps].sunrise)}</p>
+          {/* </div> */}
           <ion-icon name="sunny-outline" />
-          <div className={classes.sunTime}>
-            <ion-icon name="chevron-down-outline" />
-            <h5>{formatTime(weatherDataProps.daily[dayProps].sunset)}</h5>
-          </div>
+          {/* <div className={classes.sunTime}> */}
+          <ion-icon name="chevron-down-outline" />
+          <p>{formatTime(weatherDataProps.daily[dayProps].sunset)}</p>
+          {/* </div> */}
         </div>
       </div>
     );

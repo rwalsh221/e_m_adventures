@@ -155,32 +155,11 @@
   .datePicker {
     padding: 0.5rem 0.5rem;
   }
-
-  .dayCard {
-    padding: 1rem;
-    margin: 1rem;
-  }
-
-  .dayName {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 2rem;
-  }
 }
 
 @media (max-width: 340px) {
-  .datePicker {
-    padding: 0.5rem 0.5rem;
-  }
-
   .dayCard {
     padding: 1rem;
     margin: 0.5rem;
-  }
-
-  .dayName {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 2rem;
   }
 }

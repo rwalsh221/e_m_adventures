@@ -8,6 +8,32 @@
   align-items: flex-start;
   justify-content: space-between;
   flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: auto; /* Firefox */
+  scrollbar-color: var(--main-color-gold) var(--main-color-white);
+  cursor: grab;
+}
+
+.weatherContainer::-webkit-scrollbar {
+  /* display: none; */
+  background: gold;
+  border-radius: 5px;
+  border: 1px solid black;
+  height: 10px;
+}
+
+@media screen and (max-width: 1180px) {
+  .weatherContainer {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .weatherContainer::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @media (max-width: 600px) {

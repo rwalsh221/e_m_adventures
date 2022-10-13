@@ -14,12 +14,12 @@
     'windspeed sunrise';
   grid-template-rows: 2fr repeat(3, 1fr);
   grid-template-columns: repeat(2, 1fr);
-  flex-basis: 25%;
+  flex: 0 0 40rem;
   margin: 1rem;
   background-color: var(--main-color-black);
   color: var(--main-color-white);
   border-radius: 2rem;
-  padding: 1rem 5rem;
+  padding: 1rem 3rem;
 }
 
 .weatherCardError {
@@ -66,6 +66,26 @@
   justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: 2fr repeat(2, 1fr);
+  justify-items: center;
+}
+
+.temperature h4 {
+  grid-row: 1;
+  grid-column: 1 / span 2;
+}
+
+.temperature ion-icon:first-of-type {
+  grid-row: 2;
+  grid-column: 1;
+  vertical-align: baseline;
+}
+
+.temperature ion-icon:last-of-type {
+  grid-row: 3;
+  grid-column: 1;
 }
 
 .temperatureHiLo {
@@ -116,10 +136,15 @@
 
 .sunrise {
   grid-area: sunrise;
-  display: flex;
+  /* display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column; */
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: repeat(3, 1fr);
+  justify-items: center;
+  padding: 1rem;
 }
 
 .sunTime {
@@ -133,26 +158,75 @@
   margin-right: 1rem;
 }
 
+.sunrise ion-icon:first-of-type {
+  grid-column: 1;
+  grid-row: 1;
+  /* background-color: hotpink; */
+}
+
+.sunrise ion-icon:nth-of-type(2) {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.sunrise ion-icon:last-of-type {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.sunrise p:first-of-type {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.sunrise p:last-of-type {
+  grid-column: 2;
+  grid-row: 3;
+}
+
 .sunTime h5 {
   width: 80%;
 }
 
-@media (max-width: 1095px) {
+.temperature ion-icon,
+.sunrise ion-icon {
+  margin: auto;
+}
+
+/* @media (max-width: 1540px) {
   .weatherCard {
     flex-basis: 45%;
     flex-shrink: 0;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1180px) {
   .weatherCard {
-    flex-basis: 60rem;
+    flex-basis: 45%;
+    flex-shrink: 0;
+  }
+} */
+
+@media (max-width: 790px) {
+  .weatherCard {
+    flex-basis: 50rem;
+    font-size: 2rem;
+  }
+
+  .weatherCard p {
+    font-size: 3rem;
   }
 }
 
+/* @media (max-width: 600px) {
+  .weatherCard {
+    flex-basis: 40rem;
+  }
+} */
+
 @media (max-width: 500px) {
   .weatherCard {
-    flex-basis: 50rem;
+    flex-basis: 40rem;
     grid-template-rows: repeat(4, 1fr);
   }
 }
