@@ -38,12 +38,6 @@ function App() {
           <ScrollToTop />
           <Switch>
             <PrivateRoute
-              path="/confirmation"
-              component={BookingConfirmation}
-            />
-            <Route path="/timeout" exact component={Timeout} />
-            <PrivateRoute path="/summary" exact component={BookingSummary} />
-            <PrivateRoute
               path="/update-profile"
               exact
               component={UpdateProfile}
@@ -55,12 +49,7 @@ function App() {
             /> */}
             <Route path="/forgot-password" exact component={ForgotPassword} />
             <Route path="/login" exact component={Login} />
-            <PrivateRoute path="/dashboard" exact component={Dashboard} />
             <Route path="/signup" exact component={Signup} />
-            <Route path="/world" exact component={ExploreWorld} />
-            <Route path="/food" exact component={Food} />
-            <Route path="/explore" exact component={ExploreNearby} />
-            <Route path="/covid" exact component={Covid} />
           </Switch>
           <AccommodationContextProvider>
             <Switch>
@@ -77,6 +66,17 @@ function App() {
                 exact
                 component={ModifyBooking}
               />
+              <Route path="/world" exact component={ExploreWorld} />
+              <Route path="/food" exact component={Food} />
+              <Route path="/explore" exact component={ExploreNearby} />
+              <PrivateRoute path="/dashboard" exact component={Dashboard} />
+              <PrivateRoute
+                path="/confirmation"
+                component={BookingConfirmation}
+              />
+              <Route path="/timeout" exact component={Timeout} />
+              <PrivateRoute path="/summary" exact component={BookingSummary} />
+              <Route path="/covid" exact component={Covid} />
             </Switch>
           </AccommodationContextProvider>
         </AuthProvider>
