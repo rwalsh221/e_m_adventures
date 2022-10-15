@@ -3,13 +3,28 @@ import PropTypes from 'prop-types';
 import classes from './ModifyBookingModal.module.css';
 
 import ModifyBookingModalCancel from './ModifyBookingModalCancel/ModifyBookingModalCancel';
+import ModifyBookingModalChange from './ModifyBookingModalChange/ModifyBookingModalChange';
 
 const ModifyBookingModal = ({
   showModalProps,
   setShowModalParentProps,
   cancelBookingHandlerProps,
+  modifyBookingHandlerProps,
 }) => {
   const initStyle = showModalProps.showModal ? 'block' : 'none';
+
+  // CLOSE MODAL WITH BACKGROUND CLICK OR BTN CLICK
+  const closeModal = (e) => {
+    console.log(e.target.dataset.btn);
+
+    if (
+      e.target.id === 'modalBackground' ||
+      e.target.dataset.btn === 'modalClose'
+    ) {
+      console.log('close');
+      setShowModalParentProps({ showModal: false, content: '' });
+    }
+  };
 
   const setModalContent = (input) => {
     let content;
@@ -18,6 +33,15 @@ const ModifyBookingModal = ({
         content = (
           <ModifyBookingModalCancel
             cancelBookingHandlerProps={cancelBookingHandlerProps}
+            closeModalProps={closeModal}
+          />
+        );
+        break;
+      case 'modify':
+        content = (
+          <ModifyBookingModalChange
+            changeBookingHandlerProps={modifyBookingHandlerProps}
+            closeModalProps={closeModal}
           />
         );
         break;
@@ -25,13 +49,6 @@ const ModifyBookingModal = ({
         content = null;
     }
     return content;
-  };
-
-  // CLOSE MODAL WITH BACKGROUND CLICK OR BTN CLICK
-  const closeModal = (e) => {
-    if (e.target.id === 'modalBackground' || e.target.id === 'modalCloseBtn') {
-      setShowModalParentProps({ showModal: false, content: '' });
-    }
   };
 
   return (
@@ -45,7 +62,7 @@ const ModifyBookingModal = ({
       <div className={classes.accomInfoModalContent}>
         <div className={classes.accomInfoModalContentHeader}>
           <button
-            id="modalCloseBtn"
+            data-btn="modalClose"
             type="button"
             onClick={(e) => closeModal(e)}
             className={classes.closeBtn}
