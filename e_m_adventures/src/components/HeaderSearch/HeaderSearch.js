@@ -52,6 +52,7 @@ const HeaderSearch = () => {
 
   const [error, setError] = useState();
 
+  // SAVE INITIAL STATE WHEN COMPONENT MOUNTED - USED TO RESET STATE TO INIT WHEN CANCEL BTN USED
   const initSelectedDate = useRef(selectedDate);
   const initSelectedAccommodation = useRef(selectedAccommodation);
   const initSelectedGuests = useRef(selectedGuests);
@@ -67,6 +68,7 @@ const HeaderSearch = () => {
   // let formIsValid = false;
 
   const submitSearchHandler = async () => {
+    // FORM WILL BE VALID AS SEARCH BTN WILL BE DISABLED UNTIL CHECKIN AND CHECKOUT DAYS ARE SET
     const formIsValid = true;
     // formIsValid = validateDate(checkIn.current.value, checkOut.current.value);
     if (formIsValid) {
@@ -122,6 +124,7 @@ const HeaderSearch = () => {
   };
 
   const setCheckInCheckoutHandler = (input) => {
+    // INPUT EITHER CHECKIN OR CHECKOUT TO SET RESPECTIVE DATES FROM DATE PICKER COMPONENT
     if (showMenu.datePicker) {
       setSelectedDate({ ...selectedDate, checkInCheckOut: input });
     }
@@ -140,18 +143,18 @@ const HeaderSearch = () => {
   );
 
   const formIsValid = () => {
-    let validForm = false;
+    let inValidForm = false;
 
     if (selectedDate.checkOut === null || selectedDate.checkIn === null) {
-      validForm = true;
-      return validForm;
+      inValidForm = true;
+      return inValidForm;
     }
 
     if (!validateDate(selectedDate.checkIn, selectedDate.checkOut)) {
-      validForm = true;
+      inValidForm = true;
     }
 
-    return validForm;
+    return inValidForm;
   };
 
   const deleteSearchHandler = (initObject, state, key) => {

@@ -15,7 +15,7 @@ const ModifyBookingModal = ({
 
   // CLOSE MODAL WITH BACKGROUND CLICK OR BTN CLICK
   const closeModal = (e) => {
-    console.log(e.target.dataset.btn);
+    console.log(e.target.id);
 
     if (
       e.target.id === 'modalBackground' ||
@@ -57,7 +57,7 @@ const ModifyBookingModal = ({
       aria-hidden
       style={{ display: initStyle }}
       className={classes.accomInfoModalBg}
-      onClick={(e) => closeModal(e)}
+      // onClick={(e) => closeModal(e)}
     >
       <div className={classes.accomInfoModalContent}>
         <div className={classes.accomInfoModalContentHeader}>

@@ -7,6 +7,11 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  pointer-events: auto;
+}
+
+.accomInfoModalBg * {
+  /* pointer-events: none; */
 }
 
 .accomInfoModalContent {
@@ -56,6 +61,27 @@
 
 .closeBtn:hover {
   background-color: var(--sec-color-grey-light);
+}
+
+.submitBtn {
+  background-color: var(--main-color-black);
+  width: 16rem;
+  min-width: max-content;
+  padding: 3rem;
+  border-radius: 3rem;
+  font-size: 2rem;
+  margin: 3rem auto;
+  border: none;
+}
+
+.submitBtn,
+.submitBtn:visited {
+  color: var(--main-color-gold);
+}
+
+.backdropBtnContainer {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 @keyframes slideIn {

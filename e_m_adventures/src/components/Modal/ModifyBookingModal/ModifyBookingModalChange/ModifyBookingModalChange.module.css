@@ -1,0 +1,64 @@
+.searchBtn {
+  border: none;
+  transition: all 0.5s;
+  background-color: inherit;
+  border-radius: 50vh;
+
+  color: black;
+  font-size: 1.5rem;
+  /* text-align: center; */
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  min-width: max-content;
+}
+
+.searchBtn button {
+  position: absolute;
+  top: 85%;
+}
+
+.searchBtn > span {
+  margin: 0 auto;
+}
+.searchBtn:focus,
+.searchBtn:hover {
+  background-color: var(--main-color-gold);
+}
+
+.submitBtn {
+  background-color: var(--main-color-black);
+  width: 16rem;
+  min-width: max-content;
+  padding: 3rem;
+  border-radius: 3rem;
+  font-size: 2rem;
+  margin: 3rem auto;
+  border: none;
+}
+
+.submitBtn,
+.submitBtn:visited {
+  color: var(--main-color-gold);
+}
+
+.backdropBtnContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.datePicker_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* THESE STYLES OVERWITE STYLES IN DATEPICKER CSS WHICH ARE USED FOR HEADER SEARCH */
+.datePicker_container > div {
+  position: static;
+  transform: none;
+}
