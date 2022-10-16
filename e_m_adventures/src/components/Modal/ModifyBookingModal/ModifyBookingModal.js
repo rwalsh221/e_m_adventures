@@ -9,7 +9,7 @@ const ModifyBookingModal = ({
   showModalProps,
   setShowModalParentProps,
   cancelBookingHandlerProps,
-  modifyBookingHandlerProps,
+  changeBookingHandlerProps,
   currentBookingProps,
 }) => {
   const initStyle = showModalProps.showModal ? 'block' : 'none';
@@ -41,7 +41,7 @@ const ModifyBookingModal = ({
       case 'modify':
         content = (
           <ModifyBookingModalChange
-            changeBookingHandlerProps={modifyBookingHandlerProps}
+            changeBookingHandlerProps={changeBookingHandlerProps}
             closeModalProps={closeModal}
             currentBookingProps={currentBookingProps}
           />

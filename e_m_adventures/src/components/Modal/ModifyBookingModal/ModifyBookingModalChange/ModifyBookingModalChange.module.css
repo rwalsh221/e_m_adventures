@@ -91,6 +91,10 @@
   min-width: max-content; */
 }
 
+.searchBtn:disabled {
+  background-color: aquamarine;
+}
+
 .searchBtn button {
   position: absolute;
   top: 85%;
@@ -101,7 +105,7 @@
 } */
 .searchBtn:focus,
 .searchBtn:hover {
-  background-color: var(--main-color-gold);
+  /* background-color: var(--main-color-gold); */
 }
 
 .submitBtn {

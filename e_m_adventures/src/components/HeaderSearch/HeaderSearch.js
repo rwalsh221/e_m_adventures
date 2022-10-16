@@ -24,6 +24,7 @@ const HeaderSearch = () => {
   // TODO: ADD datePicker to modify booking -- create custom hook for modal state -- change accominof modal to generix to be reused.
   // TODO: ADD NEW SEARCH TO BOOKING UNAVALIBALE
   // TODO: ADD ACOMM ID TO BOOKING SYSTEM
+  // TODO: LOOK AT / 1000 in FORMATDATE HELPER IN CHANGEBOOKING
 
   const [showMenu, setShowMenu] = useState({
     datePicker: false,

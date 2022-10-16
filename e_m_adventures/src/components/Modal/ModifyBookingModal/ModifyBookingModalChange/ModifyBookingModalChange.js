@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import classes from './ModifyBookingModalChange.module.css';
 
 import { HeaderSearchBtnDelete } from '../../../miniComponents/Buttons/HeaderSearchBtn/HeaderSearchBtn';
+import { formatDate } from '../../../../helpers/utilities';
 import DatePicker from '../../../HeaderSearch/DatePicker/DatePicker';
 
 // const ModifyBookingModalChange = () => (
@@ -78,6 +79,13 @@ const ModifyBookingModalChange = ({
     // showMenuHandler(key);
   };
 
+  const searchBtnDisabled = () => {
+    if (selectedDate.checkOut) {
+      return false;
+    }
+    return true;
+  };
+
   return (
     <div>
       {/* {error && <ErrorComponent messageProps={error} />} */}
@@ -105,8 +113,8 @@ const ModifyBookingModalChange = ({
         </div>
 
         <div className={classes.changeBooking_current}>
-          <p>Check-in: {currentBookingProps.checkIn}</p>
-          <p>Check-out: {currentBookingProps.checkOut}</p>
+          <p>Check-in: {formatDate(currentBookingProps.checkIn / 1000)}</p>
+          <p>Check-out: {formatDate(currentBookingProps.checkOut / 1000)}</p>
         </div>
         <div className={classes.changeBooking_new}>
           {/* CHECKIN BTN  */}
@@ -163,8 +171,14 @@ const ModifyBookingModalChange = ({
       <div className={classes.backdropBtnContainer}>
         <button
           type="button"
-          className={classes.submitBtn}
-          onClick={changeBookingHandlerProps}
+          className={`${classes.submitBtn} ${classes.searchBtn}`}
+          onClick={() =>
+            changeBookingHandlerProps(
+              selectedDate.checkIn,
+              selectedDate.checkOut
+            )
+          }
+          disabled={searchBtnDisabled()}
         >
           Search
         </button>

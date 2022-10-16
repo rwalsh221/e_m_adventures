@@ -83,39 +83,39 @@ const ModifyBookingContent = () => {
   console.log(reduxState);
 
   // WAS SUBMITHANDLER
-  const changeBookingHandler = async () => {
-    const newCheckIn = dateToMilliseconds(newCheckInRef.current.value);
-    const checkOut = dateToMilliseconds(newCheckOutRef.current.value);
+  const changeBookingHandler = async (newCheckInDate, newCheckOutDate) => {
+    const newCheckIn = dateToMilliseconds(newCheckInDate);
+    const newCheckOut = dateToMilliseconds(newCheckOutDate);
 
-    const fullDays = getFullDays(newCheckIn, checkOut);
+    const fullDays = getFullDays(newCheckIn, newCheckOut);
 
-    const currentBooking = {
+    const newBooking = {
       newCheckIn,
-      checkOut,
+      newCheckOut,
       fullDays,
     };
 
     try {
       const { allBookingsJson } = await getBookingData(currentUser);
+      console.log(allBookingsJson);
+      const oldBooking = reduxState;
 
-      delete allBookingsJson[reduxState.bookingRef];
+      delete allBookingsJson[oldBooking.bookingRef];
 
-      if (
-        bookingIsAvaliable(allBookingsJson, currentBooking, setError) === true
-      ) {
+      if (bookingIsAvaliable(allBookingsJson, newBooking, setError) === true) {
         const ref = `ref${nanoid()}`;
         if (
           await holdCurrentBooking(
-            dateToMilliseconds(newCheckInRef.current.value),
-            dateToMilliseconds(newCheckOutRef.current.value),
+            dateToMilliseconds(newCheckInDate),
+            dateToMilliseconds(newCheckOutDate),
             setError,
             ref
           )
         ) {
           dispatch(
             actionTypes.booking({
-              checkIn: dateToMilliseconds(newCheckInRef.current.value),
-              checkOut: dateToMilliseconds(newCheckOutRef.current.value),
+              checkIn: dateToMilliseconds(newCheckInDate),
+              checkOut: dateToMilliseconds(newCheckOutDate),
               holdRef: ref,
             })
           );
@@ -273,6 +273,7 @@ const ModifyBookingContent = () => {
           showModalProps={showModal}
           setShowModalParentProps={setShowModal}
           cancelBookingHandlerProps={cancelBookingHandler}
+          changeBookingHandlerProps={changeBookingHandler}
           currentBookingProps={reduxState}
         />
       )}
