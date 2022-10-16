@@ -20,7 +20,7 @@ const ModifyBookingModalCancel = ({
         type="button"
         className={classes.submitBtn}
         data-btn="modalClose"
-        onClick={(e) => closeModalProps(e)}
+        // onClick={(e) => closeModalProps(e)}
       >
         NO
       </button>

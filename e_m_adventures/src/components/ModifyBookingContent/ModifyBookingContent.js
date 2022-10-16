@@ -80,60 +80,63 @@ const ModifyBookingContent = () => {
     }
   };
 
-  // const submitHandler = async () => {
-  //   const checkIn = dateToMilliseconds(newCheckInRef.current.value);
-  //   const checkOut = dateToMilliseconds(newCheckOutRef.current.value);
+  console.log(reduxState);
 
-  //   const fullDays = getFullDays(checkIn, checkOut);
+  // WAS SUBMITHANDLER
+  const changeBookingHandler = async () => {
+    const newCheckIn = dateToMilliseconds(newCheckInRef.current.value);
+    const checkOut = dateToMilliseconds(newCheckOutRef.current.value);
 
-  //   const currentBooking = {
-  //     checkIn,
-  //     checkOut,
-  //     fullDays,
-  //   };
+    const fullDays = getFullDays(newCheckIn, checkOut);
 
-  //   try {
-  //     const { allBookingsJson } = await getBookingData(currentUser);
+    const currentBooking = {
+      newCheckIn,
+      checkOut,
+      fullDays,
+    };
 
-  //     delete allBookingsJson[reduxState.bookingRef];
+    try {
+      const { allBookingsJson } = await getBookingData(currentUser);
 
-  //     if (
-  //       bookingIsAvaliable(allBookingsJson, currentBooking, setError) === true
-  //     ) {
-  //       const ref = `ref${nanoid()}`;
-  //       if (
-  //         await holdCurrentBooking(
-  //           dateToMilliseconds(newCheckInRef.current.value),
-  //           dateToMilliseconds(newCheckOutRef.current.value),
-  //           setError,
-  //           ref
-  //         )
-  //       ) {
-  //         dispatch(
-  //           actionTypes.booking({
-  //             checkIn: dateToMilliseconds(newCheckInRef.current.value),
-  //             checkOut: dateToMilliseconds(newCheckOutRef.current.value),
-  //             holdRef: ref,
-  //           })
-  //         );
+      delete allBookingsJson[reduxState.bookingRef];
 
-  //         history.push({
-  //           pathname: 'summary',
-  //           state: { holdStatus: false, modify: true },
-  //         });
-  //       } else {
-  //         history.push({
-  //           pathname: 'summary',
-  //           state: { holdStatus: true },
-  //         });
-  //       }
-  //     } else {
-  //       errorTimeout(setError, 'Unfortunatley Those Dates Are Unavaliable');
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+      if (
+        bookingIsAvaliable(allBookingsJson, currentBooking, setError) === true
+      ) {
+        const ref = `ref${nanoid()}`;
+        if (
+          await holdCurrentBooking(
+            dateToMilliseconds(newCheckInRef.current.value),
+            dateToMilliseconds(newCheckOutRef.current.value),
+            setError,
+            ref
+          )
+        ) {
+          dispatch(
+            actionTypes.booking({
+              checkIn: dateToMilliseconds(newCheckInRef.current.value),
+              checkOut: dateToMilliseconds(newCheckOutRef.current.value),
+              holdRef: ref,
+            })
+          );
+
+          history.push({
+            pathname: 'summary',
+            state: { holdStatus: false, modify: true },
+          });
+        } else {
+          history.push({
+            pathname: 'summary',
+            state: { holdStatus: true },
+          });
+        }
+      } else {
+        errorTimeout(setError, 'Unfortunatley Those Dates Are Unavaliable');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   // // VALIDATE CHANGE BOOKING FORM
   // const validateChangeBookingForm = async () => {
@@ -270,6 +273,7 @@ const ModifyBookingContent = () => {
           showModalProps={showModal}
           setShowModalParentProps={setShowModal}
           cancelBookingHandlerProps={cancelBookingHandler}
+          currentBookingProps={reduxState}
         />
       )}
     </main>

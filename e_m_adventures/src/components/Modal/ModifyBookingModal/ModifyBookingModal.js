@@ -10,6 +10,7 @@ const ModifyBookingModal = ({
   setShowModalParentProps,
   cancelBookingHandlerProps,
   modifyBookingHandlerProps,
+  currentBookingProps,
 }) => {
   const initStyle = showModalProps.showModal ? 'block' : 'none';
 
@@ -42,6 +43,7 @@ const ModifyBookingModal = ({
           <ModifyBookingModalChange
             changeBookingHandlerProps={modifyBookingHandlerProps}
             closeModalProps={closeModal}
+            currentBookingProps={currentBookingProps}
           />
         );
         break;
@@ -57,7 +59,7 @@ const ModifyBookingModal = ({
       aria-hidden
       style={{ display: initStyle }}
       className={classes.accomInfoModalBg}
-      // onClick={(e) => closeModal(e)}
+      onClick={(e) => closeModal(e)}
     >
       <div className={classes.accomInfoModalContent}>
         <div className={classes.accomInfoModalContentHeader}>

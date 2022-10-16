@@ -1,19 +1,94 @@
+.changeBooking_grid {
+  display: grid;
+  grid-template-columns: repeat(4, 2fr) 1fr;
+  grid-template-rows: 1fr 2fr;
+  justify-items: center;
+  align-items: center;
+  background-color: black;
+  gap: 3px;
+  border: 3px solid black;
+}
+
+.changeBooking_reset {
+  grid-column: 5 / span 2;
+  grid-row: 2;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.changeBooking_reset button {
+  margin: 0 0 0 1rem;
+}
+
+.changeBooking_grid div {
+  background-color: var(--main-color-gold);
+  width: 100%;
+  height: 100%;
+}
+
+.changeBooking_grid > div {
+  padding: 0.1rem 0.5rem;
+}
+
+.changeBooking_grid h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  /* width: 50%; */
+}
+
+.changeBooking_grid div:nth-of-type(2) {
+  grid-column: 1 / span 2;
+}
+
+.changeBooking_grid div:nth-of-type(3) {
+  grid-column: 3 / span 2;
+}
+
+.changeBooking_current {
+  grid-column: 1 / span 2;
+}
+
+.changeBooking_new {
+  grid-column: 3 / span 2;
+}
+
+.changeBooking_current,
+.changeBooking_new {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: var(--sec-color-grey) !important;
+}
+
+.changeBooking_current p,
+.changeBooking_new p {
+  color: var(--main-color-gold);
+  flex: 0 0 100%;
+}
+
+.changeBooking_new div {
+  height: max-content;
+}
+
+.changeBooking_new button {
+}
+
 .searchBtn {
-  border: none;
+  /* border: none;
   transition: all 0.5s;
   background-color: inherit;
   border-radius: 50vh;
 
   color: black;
   font-size: 1.5rem;
-  /* text-align: center; */
+  text-align: center;
   font-weight: bold;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 1.5rem;
-  min-width: max-content;
+  min-width: max-content; */
 }
 
 .searchBtn button {
@@ -21,9 +96,9 @@
   top: 85%;
 }
 
-.searchBtn > span {
+/* .searchBtn > span {
   margin: 0 auto;
-}
+} */
 .searchBtn:focus,
 .searchBtn:hover {
   background-color: var(--main-color-gold);

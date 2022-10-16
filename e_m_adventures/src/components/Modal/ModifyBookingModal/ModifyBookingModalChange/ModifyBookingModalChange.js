@@ -47,6 +47,7 @@ import DatePicker from '../../../HeaderSearch/DatePicker/DatePicker';
 const ModifyBookingModalChange = ({
   changeBookingHandlerProps,
   setShowBackdropProps,
+  currentBookingProps,
 }) => {
   // STATE TO SHOW DATE PICKER
   const [showDatePicker, setShowDatePicker] = useState(false);
@@ -81,52 +82,77 @@ const ModifyBookingModalChange = ({
     <div>
       {/* {error && <ErrorComponent messageProps={error} />} */}
       <h2>Do you want to change your booking?</h2>
-      {/* CHECKIN BTN  */}
-      <div
-        role="button"
-        aria-hidden
-        className={`${classes.checkInBtn} ${classes.searchBtn}`}
-        type="button"
-        onClick={() => {
-          setShowDatePicker(true);
-          setCheckInCheckoutHandler('checkIn');
-        }}
-        // ref={checkInBtnRef}
-      >
-        <span>{selectedDate.checkIn ? selectedDate.checkIn : 'Check-in'}</span>
-      </div>
-      {/* CHECKOUT BTN */}
-      <div
-        role="button"
-        aria-hidden
-        className={`${classes.checkOutBtn} ${classes.searchBtn}`}
-        type="button"
-        onClick={() => {
-          setShowDatePicker(true);
-          setCheckInCheckoutHandler('checkOut');
-        }}
-      >
-        <span>
-          {selectedDate.checkOut ? selectedDate.checkOut : 'Check-out'}
-        </span>
-        {selectedDate.checkOut && (
-          <HeaderSearchBtnDelete
-            onClickProps={() =>
-              deleteSearchHandler(
-                initSelectedDate,
-                setSelectedDate,
-                'datePicker'
-              )
-            }
-          />
-        )}
-      </div>
-      {/* {showDatePicker && (
+      <div className={classes.changeBooking_grid}>
+        <div className={classes.changeBooking_reset}>
+          {/* RESET DATE PICKER BUTTON */}
+          {selectedDate.checkOut && (
+            <HeaderSearchBtnDelete
+              onClickProps={() =>
+                deleteSearchHandler(
+                  initSelectedDate,
+                  setSelectedDate,
+                  'datePicker'
+                )
+              }
+            />
+          )}
+        </div>
+        <div className={classes.changeBooking_heading}>
+          <h3>Current Booking</h3>
+        </div>
+        <div className={classes.changeBooking_heading}>
+          <h3>New Booking</h3>
+        </div>
+
+        <div className={classes.changeBooking_current}>
+          <p>Check-in: {currentBookingProps.checkIn}</p>
+          <p>Check-out: {currentBookingProps.checkOut}</p>
+        </div>
+        <div className={classes.changeBooking_new}>
+          {/* CHECKIN BTN  */}
+          {/* <div
+            role="button"
+            aria-hidden
+            className={`${classes.checkInBtn} ${classes.searchBtn}`}
+            type="button"
+            onClick={() => {
+              setShowDatePicker(true);
+              setCheckInCheckoutHandler('checkIn');
+            }}
+            // ref={checkInBtnRef}
+          > */}
+          <p>
+            {selectedDate.checkIn
+              ? `New Check-in: ${selectedDate.checkIn}`
+              : 'New Check-in:'}
+          </p>
+          {/* </div> */}
+          {/* CHECKOUT BTN */}
+          {/* <div
+            role="button"
+            aria-hidden
+            className={`${classes.checkOutBtn} ${classes.searchBtn}`}
+            type="button"
+            onClick={() => {
+              setShowDatePicker(true);
+              setCheckInCheckoutHandler('checkOut');
+            }}
+          > */}
+          <p>
+            {selectedDate.checkOut
+              ? `New Check-out: ${selectedDate.checkOut}`
+              : 'New Check-out:'}
+          </p>
+          {/* </div> */}
+          {/* {showDatePicker && (
         <DatePicker
           selectedDateProps={selectedDate}
           setSelectedDateProps={setSelectedDate}
         />
       )} */}
+        </div>
+      </div>
+
       <div className={classes.datePicker_container}>
         <DatePicker
           selectedDateProps={selectedDate}
