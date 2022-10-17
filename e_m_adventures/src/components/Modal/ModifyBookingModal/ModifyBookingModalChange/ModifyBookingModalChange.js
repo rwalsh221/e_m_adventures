@@ -63,6 +63,8 @@ const ModifyBookingModalChange = ({
 
   console.log(selectedDate);
 
+  console.log(currentBookingProps);
+
   // SAVE INITIAL STATE WHEN COMPONENT MOUNTED - USED TO RESET STATE TO INIT WHEN CANCEL BTN USED
   const initSelectedDate = useRef(selectedDate);
 
@@ -113,8 +115,8 @@ const ModifyBookingModalChange = ({
         </div>
 
         <div className={classes.changeBooking_current}>
-          <p>Check-in: {formatDate(currentBookingProps.checkIn / 1000)}</p>
-          <p>Check-out: {formatDate(currentBookingProps.checkOut / 1000)}</p>
+          <p>Check-in: {formatDate(currentBookingProps.checkIn)}</p>
+          <p>Check-out: {formatDate(currentBookingProps.checkOut)}</p>
         </div>
         <div className={classes.changeBooking_new}>
           {/* CHECKIN BTN  */}

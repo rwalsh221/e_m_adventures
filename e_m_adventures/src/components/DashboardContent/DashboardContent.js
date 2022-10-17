@@ -151,10 +151,10 @@ const DashboardContent = () => {
               </span>
             </li>
             <li>{`Check In: ${formatDate(
-              myBookingsState.bookingsFuture[key].checkIn / 1000
+              myBookingsState.bookingsFuture[key].checkIn
             )}`}</li>
             <li>{`Check Out: ${formatDate(
-              myBookingsState.bookingsFuture[key].checkOut / 1000
+              myBookingsState.bookingsFuture[key].checkOut
             )}`}</li>
           </ul>
         </div>
@@ -175,10 +175,10 @@ const DashboardContent = () => {
               </span>
             </li>
             <li>{`Check In: ${formatDate(
-              myBookingsState.bookingsPast[key].checkIn / 1000
+              myBookingsState.bookingsPast[key].checkIn
             )}`}</li>
             <li>{`Check Out: ${formatDate(
-              myBookingsState.bookingsPast[key].checkOut / 1000
+              myBookingsState.bookingsPast[key].checkOut
             )}`}</li>
           </ul>
         </div>
@@ -200,15 +200,11 @@ const DashboardContent = () => {
             </li>
             <li>
               <span className={classes.subHeading}>Check In:&nbsp;</span>
-              {backdropContent
-                ? formatDate(backdropContent.checkIn / 1000)
-                : null}
+              {backdropContent ? formatDate(backdropContent.checkIn) : null}
             </li>
             <li>
               <span className={classes.subHeading}>Check Out:&nbsp;</span>
-              {backdropContent
-                ? formatDate(backdropContent.checkOut / 1000)
-                : null}
+              {backdropContent ? formatDate(backdropContent.checkOut) : null}
             </li>
           </ul>
         </div>

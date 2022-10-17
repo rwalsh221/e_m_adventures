@@ -248,10 +248,10 @@ const ModifyBookingContent = () => {
           Booking Reference:&nbsp;<span>{reduxState.bookingRef}</span>
         </li>
         <li>
-          Check In:&nbsp;<span>{formatDate(reduxState.checkIn / 1000)}</span>
+          Check In:&nbsp;<span>{formatDate(reduxState.checkIn)}</span>
         </li>
         <li>
-          Check Out:&nbsp;<span>{formatDate(reduxState.checkOut / 1000)}</span>
+          Check Out:&nbsp;<span>{formatDate(reduxState.checkOut)}</span>
         </li>
       </ul>
       <button

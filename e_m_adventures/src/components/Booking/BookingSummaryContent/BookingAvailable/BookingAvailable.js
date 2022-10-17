@@ -47,9 +47,9 @@ const BookingAvailable = ({ submitHandlerProps }) => {
       <div className={classes.summaryCard}>
         <h4 className={classes.summaryHeading}>Your Dates</h4>
         <h5 className={classes.summarySubHeading}>CheckIn:</h5>
-        <p>{formatDate(reduxState.headerSearch.checkIn / 1000)}</p>
+        <p>{formatDate(reduxState.headerSearch.checkIn)}</p>
         <h5 className={classes.summarySubHeading}>CheckOut:</h5>
-        <p>{formatDate(reduxState.headerSearch.checkOut / 1000)}</p>
+        <p>{formatDate(reduxState.headerSearch.checkOut)}</p>
         <button
           type="button"
           className={classes.summaryBtn}

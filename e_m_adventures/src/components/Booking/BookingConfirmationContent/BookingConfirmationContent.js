@@ -13,11 +13,11 @@ const BookingConfirmationContent = () => {
       <div className={classes.bookingCard}>
         <div className={classes.checkIn}>
           <h3>Check In:</h3>
-          <p>{formatDate(reduxState.headerSearch.checkIn / 1000)}</p>
+          <p>{formatDate(reduxState.headerSearch.checkIn)}</p>
         </div>
         <div className={classes.checkOut}>
           <h3>Check Out:</h3>
-          <p>{formatDate(reduxState.headerSearch.checkOut / 1000)}</p>
+          <p>{formatDate(reduxState.headerSearch.checkOut)}</p>
         </div>
         <h2 className={classes.cardHeading}>ENJOY YOUR STAY!</h2>
       </div>

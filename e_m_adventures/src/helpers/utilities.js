@@ -11,9 +11,9 @@ export const formatTime = (unixTimeStamp) => {
   return `${hours} : ${minutes.substr(-2)}`;
 };
 
-export const formatDate = (unixTimeStamp) => {
-  const time = unixTimeStamp;
-  const date = new Date(time * 1000);
+export const formatDate = (unixTimeStampMillisecond) => {
+  // PASSING ONE ARGUMENT INTO DATE OBJECT TREATS IT AS MILLISECONDS
+  const date = new Date(unixTimeStampMillisecond);
 
   const day = date.getDate();
 
