@@ -1,7 +1,16 @@
 import { useEffect } from 'react';
 
-const useClickOutsideCloseHeader = (component, ref, state, setState) => {
+const useClickOutsideCloseHeader = (
+  component,
+  ref = null,
+  state = null,
+  setState = null
+) => {
   useEffect(() => {
+    // NEEDED FOR DATEPICKER IN MODIFY BOOKING AS IT IS ALWAYS SHOWN
+    if (state === null) {
+      return;
+    }
     const pageClickEvent = (e) => {
       // If the active element exists and is clicked outside of
       if (ref.current !== null && !ref.current.contains(e.target)) {

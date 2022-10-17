@@ -277,12 +277,16 @@ const HeaderSearch = () => {
             setSelectedAccommodationProps={setSelectedAccommodation}
             showMenuHandlerProps={showMenuHandler}
             checkInBtnRefProps={checkInBtnRef}
+            showMenuProps={showMenu}
+            setShowMenuProps={setShowMenu}
           />
         )}
         {showMenu.guests && (
           <HeaderSearchGuests
             selectedGuestsProps={selectedGuests}
             setSelectedGuestsProps={setSelectedGuests}
+            showMenuProps={showMenu}
+            setShowMenuProps={setShowMenu}
           />
         )}
       </div>

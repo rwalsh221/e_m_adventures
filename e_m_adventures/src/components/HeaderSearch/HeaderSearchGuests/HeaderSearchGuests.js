@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import classes from './HeaderSearchGuests.module.css';
+
+import useClickOutsideCloseHeader from '../../../hooks/useClickOutsideClose';
 
 const HeaderSearchGuests = ({
   selectedGuestsProps,
   setSelectedGuestsProps,
+  showMenuProps,
+  setShowMenuProps,
 }) => {
+  const headerSearchGuestsOpen = useRef(null);
+
+  useClickOutsideCloseHeader(
+    'guests',
+    headerSearchGuestsOpen,
+    showMenuProps,
+    setShowMenuProps
+  );
+
   const addGuestsHandler = (guestType) => {
     const selectedGuestsPropsCopy = { ...selectedGuestsProps };
 
@@ -26,7 +39,7 @@ const HeaderSearchGuests = ({
     });
   };
   return (
-    <div className={classes.headerSearchGuests}>
+    <div className={classes.headerSearchGuests} ref={headerSearchGuestsOpen}>
       <div className={classes.guestCard}>
         <div className={classes.guestType}>
           <p data-boldfont>Adults</p>

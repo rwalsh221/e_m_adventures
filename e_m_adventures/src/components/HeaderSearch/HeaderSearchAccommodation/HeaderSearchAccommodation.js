@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import classes from './HeaderSearchAccommodation.module.css';
 import { useAccommodationContext } from '../../../contexts/AccommodationContext';
 
+import useClickOutsideCloseHeader from '../../../hooks/useClickOutsideClose';
 import Spinner from '../../miniComponents/Spinner/Spinner';
 
 const HeaderSearchAccommodation = ({
@@ -10,6 +11,8 @@ const HeaderSearchAccommodation = ({
   setSelectedAccommodationProps,
   showMenuHandlerProps,
   checkInBtnRefProps,
+  showMenuProps,
+  setShowMenuProps,
 }) => {
   const { getAccommodation } = useAccommodationContext();
 
@@ -23,6 +26,15 @@ const HeaderSearchAccommodation = ({
 
     setSelectedAccommodationProps({ ...selectedAccommodationCopy });
   };
+
+  const headerSearchAccommodationOpen = useRef(null);
+
+  useClickOutsideCloseHeader(
+    'accommodation',
+    headerSearchAccommodationOpen,
+    showMenuProps,
+    setShowMenuProps
+  );
 
   const accommodationCardContent = getAccommodation.loading ? (
     <div className={classes.spinnerContainer}>
@@ -53,7 +65,10 @@ const HeaderSearchAccommodation = ({
   );
 
   return (
-    <div className={classes.headerSearchAccommodation}>
+    <div
+      className={classes.headerSearchAccommodation}
+      ref={headerSearchAccommodationOpen}
+    >
       <div className={classes.locationHeading}>
         <h6>Our Accomodation</h6>
       </div>
