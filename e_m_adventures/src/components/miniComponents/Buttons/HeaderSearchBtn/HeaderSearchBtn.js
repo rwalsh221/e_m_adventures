@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './HeaderSearchBtn.module.css';
 
-export const HeaderSearchBtnDelete = ({ onClickProps }) => (
+const HeaderSearchBtnDelete = ({ onClickProps }) => (
   <button
     className={classes.btnDelete}
     type="button"
@@ -13,3 +13,5 @@ export const HeaderSearchBtnDelete = ({ onClickProps }) => (
     X
   </button>
 );
+
+export default HeaderSearchBtnDelete;

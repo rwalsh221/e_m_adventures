@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+
 import { nanoid } from 'nanoid';
 
 import ModalImageCarousel from './ModalImageCarousel/ModalImageCarousel';
@@ -8,7 +8,7 @@ import classes from './AccommodationInformationModalImage.module.css';
 
 // import img from '../../../../../public/img/accommodation/acc0001';
 
-const AccommodationInformationModalImage = ({ imageProps }) => {
+const AccommodationInformationModalImage = () => {
   const [showCarousel, setShowCarousel] = useState({
     show: false,
     initImg: null,
@@ -118,8 +118,6 @@ const AccommodationInformationModalImage = ({ imageProps }) => {
   );
 };
 
-AccommodationInformationModalImage.propTypes = {
-  imageProps: PropTypes.objectOf(PropTypes.string).isRequired,
-};
+AccommodationInformationModalImage.propTypes = {};
 
 export default AccommodationInformationModalImage;

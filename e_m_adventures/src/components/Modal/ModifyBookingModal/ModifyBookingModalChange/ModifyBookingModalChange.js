@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import classes from './ModifyBookingModalChange.module.css';
 
-import { HeaderSearchBtnDelete } from '../../../miniComponents/Buttons/HeaderSearchBtn/HeaderSearchBtn';
+import HeaderSearchBtnDelete from '../../../miniComponents/Buttons/HeaderSearchBtn/HeaderSearchBtn';
 import { formatDate } from '../../../../helpers/utilities';
 import DatePicker from '../../../HeaderSearch/DatePicker/DatePicker';
 

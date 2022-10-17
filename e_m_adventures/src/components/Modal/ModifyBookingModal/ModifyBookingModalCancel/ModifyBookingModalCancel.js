@@ -1,10 +1,7 @@
 import React from 'react';
 import classes from './ModifyBookingModalCancel.module.css';
 
-const ModifyBookingModalCancel = ({
-  cancelBookingHandlerProps,
-  closeModalProps,
-}) => (
+const ModifyBookingModalCancel = ({ cancelBookingHandlerProps }) => (
   <div>
     {/* {error && <ErrorComponent messageProps={error} />} */}
     <h2>Are You Sure You Want To Cancel Your Booking?</h2>

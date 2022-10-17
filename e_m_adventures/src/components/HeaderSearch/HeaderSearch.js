@@ -9,7 +9,7 @@ import HeaderSearchGuests from './HeaderSearchGuests/HeaderSearchGuests';
 
 import { validateDate } from '../../helpers/validation';
 import { dateToMilliseconds } from '../../helpers/utilities';
-import { HeaderSearchBtnDelete } from '../miniComponents/Buttons/HeaderSearchBtn/HeaderSearchBtn';
+import HeaderSearchBtnDelete from '../miniComponents/Buttons/HeaderSearchBtn/HeaderSearchBtn';
 // import ErrorComponent from '../../miniComponents/ErrorComponent/ErrorComponent';
 
 import holdCurrentBooking from '../../helpers/booking/holdCurrentBooking';
@@ -50,7 +50,7 @@ const HeaderSearch = () => {
   });
 
   const [error, setError] = useState();
-
+  console.log(error);
   // SAVE INITIAL STATE WHEN COMPONENT MOUNTED - USED TO RESET STATE TO INIT WHEN CANCEL BTN USED
   const initSelectedDate = useRef(selectedDate);
   const initSelectedAccommodation = useRef(selectedAccommodation);
