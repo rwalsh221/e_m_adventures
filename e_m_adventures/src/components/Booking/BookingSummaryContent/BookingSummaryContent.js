@@ -14,11 +14,12 @@ import cancelBooking from '../../../helpers/booking/cancelBooking';
 
 import BookingUnavailable from './BookingUnavailable/BookingUnavailable';
 import BookingAvailable from './BookingAvailable/BookingAvailable';
+import ErrorContent from '../../ErrorContent/ErrorContent';
 import Spinner from '../../miniComponents/Spinner/Spinner';
 
 const BookingSummaryContent = () => {
   const reduxState = useSelector((state) => state);
-
+  console.log(reduxState);
   const history = useHistory();
 
   const { currentUser } = useAuth();
@@ -121,7 +122,7 @@ const BookingSummaryContent = () => {
         await cancelBooking(reduxState.modifyBooking, currentUser, history);
       }
 
-      history.push('/confirmation');
+      history.replace('/confirmation');
     } catch (err) {
       console.error(err.message);
     }
@@ -135,7 +136,14 @@ const BookingSummaryContent = () => {
 
   useEffect(() => {
     if (!unavaliableDaysState.loading) {
-      if (unavaliableDaysState.data.includes(reduxState.headerSearch.checkIn)) {
+      if (
+        Object.keys(reduxState.headerSearch).length === 0 &&
+        Object.keys(reduxState.modifyBooking).length === 0
+      ) {
+        setContent(<ErrorContent />);
+      } else if (
+        unavaliableDaysState.data.includes(reduxState.headerSearch.checkIn)
+      ) {
         setContent(<BookingUnavailable />);
       } else if (location.state.holdStatus) {
         setContent(<BookingUnavailable holdBookingProps />);
@@ -156,6 +164,8 @@ const BookingSummaryContent = () => {
     location.state.holdStatus,
     location.state.ref,
     setBookingTimeOut,
+    reduxState.headerSearch,
+    reduxState.modifyBooking,
   ]);
 
   return content;

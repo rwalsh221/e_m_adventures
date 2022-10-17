@@ -24,8 +24,6 @@ const HeaderSearch = () => {
 
   // TODO: ADD ACOMM ID TO BOOKING SYSTEM
 
-  // TODO: ADD ERROR ON BOOKING UNAVALIBLE IN CHANGEBOOKING
-
   const [showMenu, setShowMenu] = useState({
     datePicker: false,
     accommodation: false,
