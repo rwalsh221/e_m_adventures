@@ -26,7 +26,7 @@ const HeaderSearch = () => {
   // TODO: ADD ACOMM ID TO BOOKING SYSTEM
 
   // TODO: ADD ERROR ON BOOKING UNAVALIBLE IN CHANGEBOOKING
-  // TODO: ERROR IF YOU CLICK CHECKOUT DAY FIRST ADD IF CHECK
+
   // TODO: ADD WINDOW CLICK LISTNER TO CLOSE HEADER
 
   const [showMenu, setShowMenu] = useState({
@@ -267,6 +267,8 @@ const HeaderSearch = () => {
           <DatePicker
             selectedDateProps={selectedDate}
             setSelectedDateProps={setSelectedDate}
+            showMenuProps={showMenu}
+            setShowMenuProps={setShowMenu}
           />
         )}
         {showMenu.accommodation && (

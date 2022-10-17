@@ -1,16 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import classes from './DatePicker.module.css';
 
+import useClickOutsideCloseHeader from '../../../hooks/useClickOutsideClose';
 import { dateToMilliseconds, getFullDays } from '../../../helpers/utilities';
 import { validateDisplayDate } from '../../../helpers/validation';
 
-const DatePicker = ({ selectedDateProps, setSelectedDateProps }) => {
+const DatePicker = ({
+  selectedDateProps,
+  setSelectedDateProps,
+  showMenuProps,
+  setShowMenuProps,
+}) => {
   const [datePickerState, setdatePickerState] = useState({
     displayMonthLeft: new Date().getMonth(),
     displayMonthRight: new Date().getMonth() + 1,
     displayYear: new Date().getFullYear(),
   });
+
+  const datePickerOpen = useRef(null);
+
+  useClickOutsideCloseHeader(
+    'datePicker',
+    datePickerOpen,
+    showMenuProps,
+    setShowMenuProps
+  );
 
   // ARRAY OF MONTHS
   const monthsArray = [
@@ -266,7 +281,7 @@ const DatePicker = ({ selectedDateProps, setSelectedDateProps }) => {
     </h6>
   ));
   return (
-    <div className={classes.datePickerContainer}>
+    <div className={classes.datePickerContainer} ref={datePickerOpen}>
       <div className={classes.datePicker}>
         <div className={classes.cardGrid}>
           <div className={classes.cardGridHeader}>
