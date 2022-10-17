@@ -1,11 +1,16 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { formatDate } from '../../../helpers/utilities';
+import ErrorContent from '../../ErrorContent/ErrorContent';
 
 import classes from './BookingConfirmationContent.module.css';
 
 const BookingConfirmationContent = () => {
   const reduxState = useSelector((state) => state);
+
+  if (Object.keys(reduxState).length === 0) {
+    return <ErrorContent />;
+  }
 
   return (
     <main className={classes.main}>

@@ -19,7 +19,7 @@ import Spinner from '../../miniComponents/Spinner/Spinner';
 
 const BookingSummaryContent = () => {
   const reduxState = useSelector((state) => state);
-  console.log(reduxState);
+
   const history = useHistory();
 
   const { currentUser } = useAuth();
