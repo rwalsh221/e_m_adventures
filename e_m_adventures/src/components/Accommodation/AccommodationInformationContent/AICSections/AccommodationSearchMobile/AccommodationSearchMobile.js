@@ -1,21 +1,23 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef } from 'react';
 import classes from './AccommodationSearchMobile.module.css';
 
 const AccommodationSearchMobile = ({ basePriceProps }) => {
   //   CALCULATE TOP OFFSET FOR CSS STYLE SO COMPONENT IS ON BOTTOM OF SCREEN
   const mobileSearch = useRef();
-  const [mobileSearchOffset, setMobileSearchOffset] = useState();
-
-  useEffect(() => {
-    const offSet = window.screen.height - mobileSearch.current.offsetHeight;
-    const offSetString = offSet.toString();
-    setMobileSearchOffset(offSetString);
-  }, [setMobileSearchOffset]);
+  // const [mobileSearchOffset, setMobileSearchOffset] = useState();
+  console.log(window.screen.outerHeight);
+  console.log(document.documentElement.clientHeight);
+  // useEffect(() => {
+  //   const offSet =
+  //     document.documentElement.clientHeight - mobileSearch.current.offsetHeight;
+  //   const offSetString = offSet.toString();
+  //   setMobileSearchOffset(offSetString);
+  // }, [setMobileSearchOffset]);
 
   return (
     <div
       className={classes.mobile_search}
-      style={{ top: `${mobileSearchOffset}px` }}
+      // style={{ top: `${mobileSearchOffset}px` }}
       ref={mobileSearch}
     >
       <div className={classes.mobile_search_content}>
