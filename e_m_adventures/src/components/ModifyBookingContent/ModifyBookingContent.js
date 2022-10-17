@@ -1,17 +1,12 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch, connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import getBookingData from '../../helpers/booking/getBookingData';
 import { useAuth } from '../../contexts/AuthContext';
 
-// import HeaderSearch from '../NewSearch/HeaderSearch';
-
-import ErrorComponent from '../miniComponents/ErrorComponent/ErrorComponent';
 import errorTimeout from '../../helpers/error/errorTimeout';
-import Backdrop from '../miniComponents/Backdrop/Backdrop';
 
-import { validateDate } from '../../helpers/validation';
 import {
   dateToMilliseconds,
   getFullDays,
@@ -25,52 +20,28 @@ import holdCurrentBooking from '../../helpers/booking/holdCurrentBooking';
 import * as actionTypes from '../HeaderSearch/HeaderSearchSlice';
 
 import classes from './ModifyBookingContent.module.css';
-import ChangeBooking from './ChangeBooking/ChangeBooking';
+
 import ModifyBookingModal from '../Modal/ModifyBookingModal/ModifyBookingModal';
+import ErrorContent from '../ErrorContent/ErrorContent';
 
 const mapDispatch = { ...actionTypes };
 
 const ModifyBookingContent = () => {
-  const [showBackdrop, setShowBackdrop] = useState(false);
-  const [backdropContent, setBackdropContent] = useState('');
-  const [error, setError] = useState('');
-  const [changeBooking, setChangeBooking] = useState('true');
-
-  const backdropRef = useRef(null);
-  const newCheckInRef = useRef();
-  const newCheckOutRef = useRef();
+  const [showModal, setShowModal] = useState({
+    showModal: false,
+    content: '',
+  });
 
   const dispatch = useDispatch();
   const history = useHistory();
 
   const reduxState = useSelector((state) => state.modifyBooking);
 
-  // const database =
-  //   'https://e-m-adventures-development-default-rtdb.europe-west1.firebasedatabase.app/';
-
   const { currentUser } = useAuth();
 
-  // // USEEFFECT FOR SHOWBACKDROP
-  // useEffect(() => {
-  //   const pageClickEvent = (e) => {
-  //     // If the active element exists and is clicked outside of
-  //     if (
-  //       backdropRef.current !== null &&
-  //       !backdropRef.current.contains(e.target)
-  //     ) {
-  //       setError('');
-  //       setShowBackdrop(false);
-  //     }
-  //   };
-  //   // If the item is active (ie open) then listen for clicks
-  //   if (showBackdrop) {
-  //     window.addEventListener('click', pageClickEvent);
-  //   }
-
-  //   return () => {
-  //     window.removeEventListener('click', pageClickEvent);
-  //   };
-  // }, [showBackdrop]);
+  if (Object.keys(reduxState).length === 0) {
+    return <ErrorContent />;
+  }
 
   const cancelBookingHandler = async () => {
     try {
@@ -80,9 +51,6 @@ const ModifyBookingContent = () => {
     }
   };
 
-  console.log(reduxState);
-
-  // WAS SUBMITHANDLER
   const changeBookingHandler = async (
     newCheckInDate,
     newCheckOutDate,
@@ -101,13 +69,11 @@ const ModifyBookingContent = () => {
 
     try {
       const { allBookingsJson } = await getBookingData(currentUser);
-      // console.log(allBookingsJson);
       const oldBooking = reduxState;
 
       delete allBookingsJson[oldBooking.bookingRef];
 
       if (bookingIsAvaliable(allBookingsJson, newBooking, setError) === true) {
-        console.log('bookingIsAvaliable');
         const ref = `ref${nanoid()}`;
         if (
           await holdCurrentBooking(
@@ -143,94 +109,6 @@ const ModifyBookingContent = () => {
     }
   };
 
-  // // VALIDATE CHANGE BOOKING FORM
-  // const validateChangeBookingForm = async () => {
-  //   let formIsValid = false;
-
-  //   formIsValid = validateDate(
-  //     newCheckInRef.current.value,
-  //     newCheckOutRef.current.value
-  //   );
-
-  //   if (formIsValid) {
-  //     submitHandler();
-  //   }
-  // };
-
-  // const cancelBookingBackdropContent = () => {
-  //   setBackdropContent(
-  //     <div>
-  //       {error && <ErrorComponent messageProps={error} />}
-  //       <h2>Are You Sure You Want To Cancel Your Booking?</h2>
-  //       <div className={classes.backdropBtnContainer}>
-  //         <button
-  //           type="button"
-  //           className={classes.submitBtn}
-  //           onClick={cancelBookingHandler}
-  //         >
-  //           YES
-  //         </button>
-  //         <button
-  //           type="button"
-  //           className={classes.submitBtn}
-  //           onClick={() => setShowBackdrop(false)}
-  //         >
-  //           NO
-  //         </button>
-  //       </div>
-  //     </div>
-  //   );
-  //   setShowBackdrop(true);
-  // };
-
-  // const changeBookingBackdropContent = () => {
-  //   setBackdropContent(
-  //     <div>
-  //       <h2>Change Your Booking</h2>
-  //       <form className={classes.searchForm}>
-  //         <div className={classes.start}>
-  //           <h6>Carnforth Forest Lodge</h6>
-  //         </div>
-  //         <div className={classes.date}>
-  //           <label htmlFor="checkIn" className={classes.dateCheckin}>
-  //             Check-in
-  //           </label>
-  //           <input type="date" id="checkIn" ref={newCheckInRef} />
-  //         </div>
-  //         <div className={classes.date}>
-  //           <label htmlFor="checkOut" className={classes.dateCheckout}>
-  //             Check-out
-  //           </label>
-  //           <input type="date" id="checkOut" ref={newCheckOutRef} />
-  //         </div>
-  //       </form>
-  //       <div className={classes.backdropBtnContainer}>
-  //         <button
-  //           type="button"
-  //           className={classes.submitBtn}
-  //           onClick={validateChangeBookingForm}
-  //         >
-  //           Submit
-  //         </button>
-  //         <button
-  //           type="button"
-  //           className={classes.submitBtn}
-  //           onClick={() => setShowBackdrop(false)}
-  //         >
-  //           Cancel
-  //         </button>
-  //       </div>
-  //       {/* <HeaderSearch /> */}
-  //     </div>
-  //   );
-  //   setShowBackdrop(true);
-  // };
-
-  const [showModal, setShowModal] = useState({
-    showModal: false,
-    content: '',
-  });
-
   const setShowModalHandler = (content) => {
     setShowModal({
       showModal: true,
@@ -240,10 +118,6 @@ const ModifyBookingContent = () => {
 
   return (
     <main className={classes.main}>
-      {/* {error && <ErrorComponent messageProps={error} />}
-      <Backdrop showProps={showBackdrop} ref={backdropRef}>
-        {backdropContent}
-      </Backdrop> */}
       <h1 className={classes.mainHeading}>Change Your Booking</h1>
       <h2 className={classes.secHeading}>
         Your Going to Carnforth Forest Lodge
