@@ -24,7 +24,7 @@ const HeaderSearch = () => {
   // TODO: ADD datePicker to modify booking -- create custom hook for modal state -- change accominof modal to generix to be reused.
   // TODO: ADD NEW SEARCH TO BOOKING UNAVALIBALE
   // TODO: ADD ACOMM ID TO BOOKING SYSTEM
-  // TODO: LOOK AT / 1000 in FORMATDATE HELPER IN CHANGEBOOKING
+
   // TODO: ADD ERROR ON BOOKING UNAVALIBLE IN CHANGEBOOKING
   // TODO: ERROR IF YOU CLICK CHECKOUT DAY FIRST ADD IF CHECK
   // TODO: ADD WINDOW CLICK LISTNER TO CLOSE HEADER
@@ -212,7 +212,6 @@ const HeaderSearch = () => {
           type="button"
           onClick={() => {
             showMenuHandler('datePicker');
-            setCheckInCheckoutHandler('checkOut');
           }}
         >
           <span>
