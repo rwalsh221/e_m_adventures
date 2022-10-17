@@ -83,26 +83,31 @@ const ModifyBookingContent = () => {
   console.log(reduxState);
 
   // WAS SUBMITHANDLER
-  const changeBookingHandler = async (newCheckInDate, newCheckOutDate) => {
+  const changeBookingHandler = async (
+    newCheckInDate,
+    newCheckOutDate,
+    setError
+  ) => {
     const newCheckIn = dateToMilliseconds(newCheckInDate);
     const newCheckOut = dateToMilliseconds(newCheckOutDate);
 
     const fullDays = getFullDays(newCheckIn, newCheckOut);
 
     const newBooking = {
-      newCheckIn,
-      newCheckOut,
+      checkIn: newCheckIn,
+      checkOut: newCheckOut,
       fullDays,
     };
 
     try {
       const { allBookingsJson } = await getBookingData(currentUser);
-      console.log(allBookingsJson);
+      // console.log(allBookingsJson);
       const oldBooking = reduxState;
 
       delete allBookingsJson[oldBooking.bookingRef];
 
       if (bookingIsAvaliable(allBookingsJson, newBooking, setError) === true) {
+        console.log('bookingIsAvaliable');
         const ref = `ref${nanoid()}`;
         if (
           await holdCurrentBooking(

@@ -20,14 +20,11 @@ import * as actionTypes from './HeaderSearchSlice';
 const mapDispatch = { ...actionTypes };
 
 const HeaderSearch = () => {
-  // TODO: LOOK AT SHOW MENU STATE. MAYBE DONT NEED OBJECT
   // TODO: ADD datePicker to modify booking -- create custom hook for modal state -- change accominof modal to generix to be reused.
-  // TODO: ADD NEW SEARCH TO BOOKING UNAVALIBALE
+
   // TODO: ADD ACOMM ID TO BOOKING SYSTEM
 
   // TODO: ADD ERROR ON BOOKING UNAVALIBLE IN CHANGEBOOKING
-
-  // TODO: ADD WINDOW CLICK LISTNER TO CLOSE HEADER
 
   const [showMenu, setShowMenu] = useState({
     datePicker: false,
@@ -65,11 +62,7 @@ const HeaderSearch = () => {
 
   const dispatch = useDispatch();
 
-  // const [error, setError] = useState();
-
   const history = useHistory();
-
-  // let formIsValid = false;
 
   const submitSearchHandler = async () => {
     // FORM WILL BE VALID AS SEARCH BTN WILL BE DISABLED UNTIL CHECKIN AND CHECKOUT DAYS ARE SET
@@ -139,11 +132,7 @@ const HeaderSearch = () => {
       {selectedAccommodation.accommodationName}
     </span>
   ) : (
-    <>
-      <span className={classes.startBtn__heading}>Start Your Adventure</span>
-      {/* <br />
-      <span>where are you going?</span> */}
-    </>
+    <span className={classes.startBtn__heading}>Start Your Adventure</span>
   );
 
   const formIsValid = () => {
@@ -171,11 +160,11 @@ const HeaderSearch = () => {
       <div className={classes.headerSearch}>
         <div
           className={`${classes.startBtn} ${classes.searchBtn}`}
-          // role="button"
+          role="button"
+          aria-hidden
           onClick={() => {
             showMenuHandler('accommodation');
           }}
-          aria-hidden
         >
           <div>{startBtnContent}</div>
           {selectedAccommodation.accommodationId && (
@@ -194,7 +183,6 @@ const HeaderSearch = () => {
           role="button"
           aria-hidden
           className={`${classes.checkInBtn} ${classes.searchBtn}`}
-          type="button"
           onClick={() => {
             showMenuHandler('datePicker');
             setCheckInCheckoutHandler('checkIn');
@@ -209,7 +197,6 @@ const HeaderSearch = () => {
           role="button"
           aria-hidden
           className={`${classes.checkOutBtn} ${classes.searchBtn}`}
-          type="button"
           onClick={() => {
             showMenuHandler('datePicker');
           }}
@@ -233,7 +220,6 @@ const HeaderSearch = () => {
           role="button"
           aria-hidden
           className={`${classes.guestBtn} ${classes.searchBtn}`}
-          type="button"
           onClick={() => {
             showMenuHandler('guests');
           }}
