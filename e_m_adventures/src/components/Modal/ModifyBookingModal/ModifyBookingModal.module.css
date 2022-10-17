@@ -1,4 +1,4 @@
-.accomInfoModalBg {
+.modifyBookingModalBg {
   position: fixed;
   z-index: 100;
   background-color: rgba(72, 72, 77, 0.5);
@@ -10,11 +10,7 @@
   pointer-events: auto;
 }
 
-.accomInfoModalBg * {
-  /* pointer-events: none; */
-}
-
-.accomInfoModalContent {
+.modifyBookingModalContent {
   height: max-content;
   min-width: 60rem;
   max-width: max-content;
@@ -30,7 +26,7 @@
   padding: 3rem;
 }
 
-.accomInfoModalContentHeader {
+.modalCloseContainer {
   display: flex;
   justify-content: space-between;
   padding: 2rem 4rem;
@@ -90,5 +86,15 @@
   }
   100% {
     top: 50%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .modalCloseContainer {
+    padding: 1rem;
+  }
+
+  .modifyBookingModalContent {
+    padding: 0 2rem;
   }
 }

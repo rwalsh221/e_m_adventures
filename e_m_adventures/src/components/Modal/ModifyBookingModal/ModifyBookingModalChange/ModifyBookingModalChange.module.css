@@ -1,3 +1,8 @@
+.modifyBookingModalChange h2 {
+  margin: 1rem 0;
+  font-size: 3rem;
+}
+
 .changeBooking_grid {
   display: grid;
   grid-template-columns: repeat(4, 2fr) 1fr;
@@ -140,4 +145,20 @@
 .datePicker_container > div {
   position: static;
   transform: none;
+}
+
+@media screen and (max-width: 500px) {
+  .changeBooking_current p,
+  .changeBooking_new p {
+    font-size: 1.5rem;
+  }
+
+  .submitBtn {
+    padding: 2rem;
+    margin: 0.5rem auto;
+  }
+
+  .datePicker_container > div {
+    margin: 0.5rem auto auto auto;
+  }
 }

@@ -87,7 +87,7 @@ const ModifyBookingModalChange = ({
   };
 
   return (
-    <div>
+    <div className={classes.modifyBookingModalChange}>
       {/* {error && <ErrorComponent messageProps={error} />} */}
       <h2>Do you want to change your booking?</h2>
       <div className={classes.changeBooking_grid}>

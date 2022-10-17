@@ -58,11 +58,11 @@ const ModifyBookingModal = ({
       id="modalBackground"
       aria-hidden
       style={{ display: initStyle }}
-      className={classes.accomInfoModalBg}
+      className={classes.modifyBookingModalBg}
       onClick={(e) => closeModal(e)}
     >
-      <div className={classes.accomInfoModalContent}>
-        <div className={classes.accomInfoModalContentHeader}>
+      <div className={classes.modifyBookingModalContent}>
+        <div className={classes.modalCloseContainer}>
           <button
             data-btn="modalClose"
             type="button"
