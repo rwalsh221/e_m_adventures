@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAccommodationContext } from '../../../contexts/AccommodationContext';
 
 import AccommodationInformationModal from '../../Modal/AccommodationInformationModal/AccommodationInformationModal';
@@ -16,16 +16,10 @@ import SectionKnow from './AICSections/SectionKnow/SectionKnow';
 import classes from './AccommodationInformationContent.module.css';
 import AccommodationSearch from './AICSections/AccommodationSearch/AccommodationSearch';
 import AccommodationSearchMobile from './AICSections/AccommodationSearchMobile/AccommodationSearchMobile';
+import ErrorContent from '../../ErrorContent/ErrorContent';
 
 const AccommodationInformationContent = () => {
-  // TODO: ADD ERROR DISPLAY FOR NO DATA history push wont work during render
   const { accommodationFocus } = useAccommodationContext();
-  console.log(accommodationFocus);
-  const history = useHistory();
-
-  if (accommodationFocus.focusSet === false) {
-    history.push('/accommodation');
-  }
 
   const accomIdProps = 'acc0001';
   // document.body.style.overflow = 'hidden';
@@ -35,6 +29,10 @@ const AccommodationInformationContent = () => {
     image: {},
     share: false,
   });
+
+  if (accommodationFocus.focusSet === false) {
+    return <ErrorContent />;
+  }
 
   const setShowModalHandler = (content, imageName, share) => {
     setShowModal({

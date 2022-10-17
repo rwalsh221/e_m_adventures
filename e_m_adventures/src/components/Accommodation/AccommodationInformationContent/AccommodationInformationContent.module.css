@@ -12,6 +12,8 @@ main {
   display: grid;
   grid-template-columns: 60% 40%;
   grid-auto-rows: max-content;
+  min-height: 60vh;
+
   /* overflow: hidden; */
 }
 
