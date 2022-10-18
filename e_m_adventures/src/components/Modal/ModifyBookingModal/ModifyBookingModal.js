@@ -16,13 +16,10 @@ const ModifyBookingModal = ({
 
   // CLOSE MODAL WITH BACKGROUND CLICK OR BTN CLICK
   const closeModal = (e) => {
-    console.log(e.target.id);
-
     if (
       e.target.id === 'modalBackground' ||
       e.target.dataset.btn === 'modalClose'
     ) {
-      console.log('close');
       setShowModalParentProps({ showModal: false, content: '' });
     }
   };
@@ -82,6 +79,13 @@ const ModifyBookingModal = ({
 ModifyBookingModal.propTypes = {
   showModalProps: PropTypes.objectOf(PropTypes.any).isRequired,
   setShowModalParentProps: PropTypes.func.isRequired,
+  cancelBookingHandlerProps: PropTypes.func.isRequired,
+  changeBookingHandlerProps: PropTypes.func.isRequired,
+  currentBookingProps: PropTypes.shape({
+    bookingRef: PropTypes.string,
+    checkIn: PropTypes.number,
+    checkOut: PropTypes.number,
+  }).isRequired,
 };
 
 export default ModifyBookingModal;

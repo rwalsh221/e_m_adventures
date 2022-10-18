@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import PropTypes from 'prop-types';
 import classes from './ModifyBookingModalChange.module.css';
 
 import HeaderSearchBtnDelete from '../../../miniComponents/Buttons/HeaderSearchBtn/HeaderSearchBtn';
@@ -111,5 +112,15 @@ const ModifyBookingModalChange = ({
       </div>
     </div>
   );
+};
+
+ModifyBookingModalChange.propTypes = {
+  changeBookingHandlerProps: PropTypes.func.isRequired,
+  setShowBackdropProps: PropTypes.func.isRequired,
+  currentBookingProps: PropTypes.shape({
+    bookingRef: PropTypes.string,
+    checkIn: PropTypes.number,
+    checkOut: PropTypes.number,
+  }).isRequired,
 };
 export default ModifyBookingModalChange;

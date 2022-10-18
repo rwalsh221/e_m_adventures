@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classes from './ModifyBookingModalCancel.module.css';
 
 const ModifyBookingModalCancel = ({ cancelBookingHandlerProps }) => (
@@ -24,5 +25,9 @@ const ModifyBookingModalCancel = ({ cancelBookingHandlerProps }) => (
     </div>
   </div>
 );
+
+ModifyBookingModalCancel.propTypes = {
+  cancelBookingHandlerProps: PropTypes.func.isRequired,
+};
 
 export default ModifyBookingModalCancel;
