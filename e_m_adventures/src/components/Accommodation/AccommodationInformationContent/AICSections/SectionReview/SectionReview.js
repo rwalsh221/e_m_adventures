@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classes from './SectionReview.module.css';
 
 const SectionReview = ({ portraitProps }) => (
@@ -91,5 +92,7 @@ const SectionReview = ({ portraitProps }) => (
     </div>
   </section>
 );
+
+SectionReview.propTypes = { portraitProps: PropTypes.string.isRequired };
 
 export default SectionReview;

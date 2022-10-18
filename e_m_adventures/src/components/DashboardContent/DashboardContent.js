@@ -86,8 +86,8 @@ const DashboardContent = () => {
           bookingsPast: [...myBookingsDataArrPast],
           bookingsFuture: [...myBookingsDataArrFuture],
         });
-      } catch (error) {
-        console.error(error);
+      } catch (fetchError) {
+        console.error(fetchError);
       }
     };
     fetchBookings();

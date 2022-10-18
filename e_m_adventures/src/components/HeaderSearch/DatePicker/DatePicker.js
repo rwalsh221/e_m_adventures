@@ -330,4 +330,6 @@ export default DatePicker;
 DatePicker.propTypes = {
   selectedDateProps: PropTypes.objectOf(PropTypes.any).isRequired,
   setSelectedDateProps: PropTypes.func.isRequired,
+  showMenuProps: PropTypes.bool.isRequired,
+  setShowMenuProps: PropTypes.func.isRequired,
 };

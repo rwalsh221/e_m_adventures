@@ -36,7 +36,6 @@ const BookingSummaryContent = () => {
 
   // TODO: check google
   const setBookingTimeOut = useCallback(() => {
-    console.log('BOOKING TIMEOUT START');
     bookingTimeout = setTimeout(async () => {
       history.replace('/timeout');
     }, 300000); // TIMEOUT IN 5 MINUTES
