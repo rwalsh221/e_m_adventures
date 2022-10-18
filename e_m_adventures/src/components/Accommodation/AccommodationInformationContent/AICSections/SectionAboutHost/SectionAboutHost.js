@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classes from './SectionAboutHost.module.css';
 
 const SectionAboutHost = ({ logoBlackProps, showModalProps }) => (
@@ -69,5 +70,10 @@ const SectionAboutHost = ({ logoBlackProps, showModalProps }) => (
     </div>
   </section>
 );
+
+SectionAboutHost.propTypes = {
+  logoBlackProps: PropTypes.string.isRequired,
+  showModalProps: PropTypes.func.isRequired,
+};
 
 export default SectionAboutHost;

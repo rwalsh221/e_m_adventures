@@ -39,7 +39,7 @@ AccommodationCard.propTypes = {
   idProps: PropTypes.string.isRequired,
   descriptionProps: PropTypes.string.isRequired,
   cityProps: PropTypes.string.isRequired,
-  priceProps: PropTypes.string.isRequired,
+  priceProps: PropTypes.number.isRequired,
 };
 
 export default AccommodationCard;

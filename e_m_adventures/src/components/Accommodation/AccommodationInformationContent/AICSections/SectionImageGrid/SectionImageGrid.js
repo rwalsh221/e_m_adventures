@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classes from './SectionImageGrid.module.css';
 
 const SectionImageGrid = ({ accomIdProps, showModalProps }) => (
@@ -35,5 +36,10 @@ const SectionImageGrid = ({ accomIdProps, showModalProps }) => (
     </div>
   </section>
 );
+
+SectionImageGrid.propTypes = {
+  accomIdProps: PropTypes.string.isRequired,
+  showModalProps: PropTypes.func.isRequired,
+};
 
 export default SectionImageGrid;

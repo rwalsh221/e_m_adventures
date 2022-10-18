@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classes from './SectionHeading.module.css';
 
 const SectionHeading = ({ accomNameProps, accomCityProps }) => (
@@ -20,5 +21,10 @@ const SectionHeading = ({ accomNameProps, accomCityProps }) => (
     </ul>
   </section>
 );
+
+SectionHeading.propTypes = {
+  accomNameProps: PropTypes.string.isRequired,
+  accomCityProps: PropTypes.string.isRequired,
+};
 
 export default SectionHeading;

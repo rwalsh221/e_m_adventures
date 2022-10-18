@@ -32,7 +32,7 @@ const AccommodationSearch = ({ basePriceProps }) => (
 );
 
 AccommodationSearch.propTypes = {
-  basePriceProps: Proptypes.string.isRequired,
+  basePriceProps: Proptypes.number.isRequired,
 };
 
 export default AccommodationSearch;
