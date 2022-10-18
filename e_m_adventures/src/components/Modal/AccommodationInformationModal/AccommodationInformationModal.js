@@ -14,7 +14,6 @@ const AccommodationIformationModal = ({
   setShowModalParentProps,
   latlonProps,
 }) => {
-  console.log(latlonProps);
   const initStyle = showModalProps.showModal ? 'block' : 'none';
 
   const features = {
@@ -77,7 +76,6 @@ const AccommodationIformationModal = ({
   // END OF TEST OBJECTS
 
   const setModalContent = (input) => {
-    console.log('switch');
     let content;
     switch (input) {
       case 'cancellation':
@@ -223,6 +221,7 @@ const AccommodationIformationModal = ({
 AccommodationIformationModal.propTypes = {
   showModalProps: PropTypes.objectOf(PropTypes.any).isRequired,
   setShowModalParentProps: PropTypes.func.isRequired,
+  latlonProps: PropTypes.objectOf(PropTypes.number).isRequired,
 };
 
 export default AccommodationIformationModal;

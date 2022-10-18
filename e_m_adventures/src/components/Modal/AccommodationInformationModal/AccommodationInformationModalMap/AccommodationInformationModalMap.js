@@ -37,8 +37,6 @@ const AccommodationInformationModalMap = ({
     state({ showDesc: true, showBtn: 'none' });
   };
 
-  console.log(latlonProps);
-
   return (
     <div className={classes.accommInfoMapModal}>
       <div className={classes.contentContainer}>
@@ -83,6 +81,7 @@ const AccommodationInformationModalMap = ({
 
 AccommodationInformationModalMap.propTypes = {
   contentProps: PropTypes.objectOf(PropTypes.string).isRequired,
+  latlonProps: PropTypes.objectOf(PropTypes.number).isRequired,
 };
 
 export default AccommodationInformationModalMap;
