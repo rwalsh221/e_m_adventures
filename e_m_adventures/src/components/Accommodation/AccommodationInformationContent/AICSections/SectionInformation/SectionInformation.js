@@ -1,6 +1,6 @@
-import { nanoid } from 'nanoid';
 import React from 'react';
-
+import PropTypes from 'prop-types';
+import { nanoid } from 'nanoid';
 import ShowMoreModalBtn from '../../../../miniComponents/Buttons/ShowMoreModalBtn/ShowMoreModalBtn';
 
 import classes from './SectionInformation.module.css';
@@ -17,6 +17,7 @@ const SectionInformation = ({
   sharedAccommodationProps,
   occupancyBedroomsProps,
 }) => {
+  console.log(occupancyBedroomsProps);
   const renderSleepCard = (bedroomType, beds, index) => {
     const bedContent = [];
     const bedIcon = [];
@@ -168,6 +169,24 @@ const SectionInformation = ({
       </div>
     </section>
   );
+};
+
+SectionInformation.propTypes = {
+  logoProps: PropTypes.string.isRequired,
+  accommodationTypeProps: PropTypes.string.isRequired,
+  accommodationSettingProps: PropTypes.string.isRequired,
+  occupancyProps: PropTypes.PropTypes.shape({
+    bedroomInfo: PropTypes.arrayOf(PropTypes.number),
+    numBathrooms: PropTypes.number,
+    numGuests: PropTypes.number,
+  }).isRequired,
+
+  showModalProps: PropTypes.func.isRequired,
+  longDescriptionProps: PropTypes.string.isRequired,
+  accommodationFeaturesProps: PropTypes.arrayOf(PropTypes.string).isRequired,
+  starAmenityProps: PropTypes.string.isRequired,
+  sharedAccommodationProps: PropTypes.bool.isRequired,
+  occupancyBedroomsProps: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default SectionInformation;
