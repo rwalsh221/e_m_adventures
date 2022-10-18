@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import ShowMoreModalBtn from '../../../../miniComponents/Buttons/ShowMoreModalBtn/ShowMoreModalBtn';
 import MapBoxContainer from '../../../../miniComponents/MapboxContainer/MapBoxContainer';
 
@@ -24,5 +24,13 @@ const SectionMap = ({
     <ShowMoreModalBtn clickHandler={() => showModalProps('map')} />
   </section>
 );
+
+SectionMap.propTypes = {
+  cityProps: PropTypes.string.isRequired,
+  showModalProps: PropTypes.func.isRequired,
+  countryProps: PropTypes.string.isRequired,
+  locationDescriptionProps: PropTypes.string.isRequired,
+  latlonProps: PropTypes.objectOf(PropTypes.number).isRequired,
+};
 
 export default SectionMap;

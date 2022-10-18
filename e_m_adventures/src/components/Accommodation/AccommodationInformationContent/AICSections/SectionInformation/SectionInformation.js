@@ -17,7 +17,6 @@ const SectionInformation = ({
   sharedAccommodationProps,
   occupancyBedroomsProps,
 }) => {
-  console.log(occupancyBedroomsProps);
   const renderSleepCard = (bedroomType, beds, index) => {
     const bedContent = [];
     const bedIcon = [];
@@ -179,6 +178,7 @@ SectionInformation.propTypes = {
     bedroomInfo: PropTypes.arrayOf(PropTypes.number),
     numBathrooms: PropTypes.number,
     numGuests: PropTypes.number,
+    numBedrooms: PropTypes.number,
   }).isRequired,
 
   showModalProps: PropTypes.func.isRequired,

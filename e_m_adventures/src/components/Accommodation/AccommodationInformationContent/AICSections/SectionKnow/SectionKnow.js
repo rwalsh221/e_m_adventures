@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import ShowMoreModalBtn from '../../../../miniComponents/Buttons/ShowMoreModalBtn/ShowMoreModalBtn';
 
 import classes from './SectionKnow.module.css';
@@ -110,5 +110,11 @@ const SectionKnow = ({ showModalProps, checkInProps, checkOutProps }) => (
     </div>
   </section>
 );
+
+SectionKnow.propTypes = {
+  showModalProps: PropTypes.func.isRequired,
+  checkInProps: PropTypes.objectOf(PropTypes.number).isRequired,
+  checkOutProps: PropTypes.number.isRequired,
+};
 
 export default SectionKnow;
