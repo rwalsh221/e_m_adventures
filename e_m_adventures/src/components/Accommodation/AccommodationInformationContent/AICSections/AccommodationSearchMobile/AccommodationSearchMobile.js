@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classes from './AccommodationSearchMobile.module.css';
 
 const AccommodationSearchMobile = ({ basePriceProps }) => (
@@ -19,5 +20,9 @@ const AccommodationSearchMobile = ({ basePriceProps }) => (
     </div>
   </div>
 );
+
+AccommodationSearchMobile.propTypes = {
+  basePriceProps: PropTypes.string.isRequired,
+};
 
 export default AccommodationSearchMobile;

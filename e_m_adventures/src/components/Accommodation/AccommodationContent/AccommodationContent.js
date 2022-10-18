@@ -9,8 +9,6 @@ const AccommodationContent = () => {
   const { getAccommodation, accommodationFocusHandler } =
     useAccommodationContext();
 
-  console.log(getAccommodation);
-
   const content = getAccommodation.loading ? (
     <div className={classes.spinnerContainer}>
       <Spinner />
