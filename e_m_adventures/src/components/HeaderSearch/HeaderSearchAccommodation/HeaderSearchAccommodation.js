@@ -88,4 +88,6 @@ HeaderSearchAccommodation.propTypes = {
   checkInBtnRefProps: PropTypes.shape({
     current: PropTypes.instanceOf(Element),
   }).isRequired,
+  showMenuProps: PropTypes.bool.isRequired,
+  setShowMenuProps: PropTypes.func.isRequired,
 };

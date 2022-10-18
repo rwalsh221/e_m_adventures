@@ -50,7 +50,7 @@ const HeaderSearch = () => {
   });
 
   const [error, setError] = useState();
-  console.log(error);
+
   // SAVE INITIAL STATE WHEN COMPONENT MOUNTED - USED TO RESET STATE TO INIT WHEN CANCEL BTN USED
   const initSelectedDate = useRef(selectedDate);
   const initSelectedAccommodation = useRef(selectedAccommodation);
@@ -70,7 +70,7 @@ const HeaderSearch = () => {
       const ref = `ref${nanoid()}`;
       const checkInMilliseconds = dateToMilliseconds(selectedDate.checkIn);
       const checkOutMilliseconds = dateToMilliseconds(selectedDate.checkOut);
-      console.log(checkInMilliseconds, checkOutMilliseconds);
+
       if (
         await holdCurrentBooking(
           checkInMilliseconds,

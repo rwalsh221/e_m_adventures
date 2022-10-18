@@ -160,4 +160,6 @@ export default HeaderSearchGuests;
 HeaderSearchGuests.propTypes = {
   selectedGuestsProps: PropTypes.objectOf(PropTypes.any).isRequired,
   setSelectedGuestsProps: PropTypes.func.isRequired,
+  showMenuProps: PropTypes.bool.isRequired,
+  setShowMenuProps: PropTypes.func.isRequired,
 };
