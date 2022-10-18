@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import mapboxgl from 'mapbox-gl';
 import classes from './MapBoxContainer.module.css';
 
@@ -6,7 +7,6 @@ mapboxgl.accessToken =
   'pk.eyJ1Ijoicmlja3lyaWNhcmRpbmhvIiwiYSI6ImNrdnJsczBsNTA5ODIyb2x5bGExbDlscHMifQ.UA26VXh63_0G21WVA8d_Ug';
 
 const MapBoxContainer = React.memo(({ latlonProps }) => {
-  console.log('mapbox');
   // console.log(latlonProps);
 
   const mapContainer = useRef(null);
@@ -31,5 +31,9 @@ const MapBoxContainer = React.memo(({ latlonProps }) => {
     </div>
   );
 });
+
+MapBoxContainer.propTypes = {
+  latlonProps: PropTypes.objectOf(PropTypes.number).isRequired,
+};
 
 export default MapBoxContainer;

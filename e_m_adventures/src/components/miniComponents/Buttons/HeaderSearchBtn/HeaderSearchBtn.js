@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classes from './HeaderSearchBtn.module.css';
 
 const HeaderSearchBtnDelete = ({ onClickProps }) => (
@@ -13,5 +14,9 @@ const HeaderSearchBtnDelete = ({ onClickProps }) => (
     X
   </button>
 );
+
+HeaderSearchBtnDelete.propTypes = {
+  onClickProps: PropTypes.func.isRequired,
+};
 
 export default HeaderSearchBtnDelete;

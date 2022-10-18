@@ -6,6 +6,8 @@ import React, {
   useState,
   useCallback,
 } from 'react';
+
+import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 
 const AccommodationContext = createContext(null);
@@ -51,7 +53,7 @@ export const AccommodationContextProvider = ({ children }) => {
 
       history.push('/accommodationInformation');
     },
-    [getAccommodation.data]
+    [getAccommodation.data, history]
   );
 
   const testMessage = () => 'HELLOW FROM THE ACCCOMMODATION CONTEXT';
@@ -65,10 +67,14 @@ export const AccommodationContextProvider = ({ children }) => {
     }),
     [getAccommodation, accommodationFocusHandler, accommodationFocus]
   );
-  console.log('ACOOM CONTEXT');
+
   return (
     <AccommodationContext.Provider value={value}>
       {children}
     </AccommodationContext.Provider>
   );
+};
+
+AccommodationContextProvider.propTypes = {
+  children: PropTypes.element.isRequired,
 };
