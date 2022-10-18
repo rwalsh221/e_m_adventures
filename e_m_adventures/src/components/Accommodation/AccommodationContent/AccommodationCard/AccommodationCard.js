@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classes from './AccommodationCard.module.css';
 
 const AccommodationCard = ({
@@ -31,5 +32,14 @@ const AccommodationCard = ({
     </p>
   </div>
 );
+
+AccommodationCard.propTypes = {
+  onClickProps: PropTypes.func.isRequired,
+  nameProps: PropTypes.string.isRequired,
+  idProps: PropTypes.string.isRequired,
+  descriptionProps: PropTypes.string.isRequired,
+  cityProps: PropTypes.string.isRequired,
+  priceProps: PropTypes.string.isRequired,
+};
 
 export default AccommodationCard;
