@@ -31,7 +31,7 @@ export const AccommodationContextProvider = ({ children }) => {
     const fetchData = async () => {
       try {
         const getData = await fetch(
-          'https://e-m-adv.herokuapp.com/api/accommodation'
+          'https://em-adv-be.onrender.com/api/accommodation'
         );
         const data = await getData.json();
 
